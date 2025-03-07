@@ -20,19 +20,17 @@
 }
 
 .scTable {
-    height: fit-content;
-    width: fit-content;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: var(--scTable-width);
-    font-family: 'Merriweather', sans-serif;
-    font-size: 14pt;
-    font-size: 12pt;
     border: 3pt solid black;
     border-bottom-width: 2pt;
     background-color: white;
     box-sizing: border-box;
     margin-bottom: 3vh;
+    height: fit-content;
+    font-family: 'Merriweather', sans-serif;
+    font-size: var(--font-size-base);
+    width: var(--scTable-width);
 }
 
 .scTable > * {
@@ -40,7 +38,7 @@
     padding: 0.1in;
     box-sizing: border-box;
 }
-/* .scTable > :first-child { */
+
 .tabName {
     border: 3pt solid #434343;
     background-color: #434343;
