@@ -55,3 +55,65 @@ body {
     font-optical-sizing: auto;
     font-family: "Montserrat", "Raleway", sans-serif;
 }
+
+
+/* PROGRAMS.HTML */
+/* Hide all sections by default */
+.content-section {
+    display: none;
+}
+
+/* Show only the active section */
+.active-section {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+th {
+    background-color: #f4f4f4;
+    background-color: #f4f4f4;
+    background-color: #434343;
+    color: #9ec38f;
+    font-weight: bold;
+    font-size: 18pt;
+    font-family: 'Merriweather', serif;
+    text-align: center;
+}
+
+/* Alternating row colors */
+tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+/* Commands column styling */
+.commands {
+    font-family: Consolas, monospace;
+    font-size: 14pt;
+    font-weight: bold;
+    line-height: 1.5;
+    white-space: pre-line; /* Ensures multi-line commands look correct */
+    width: 30%;
+}
+
+/* Ensures the "$ " is not bold */
+.commands span {
+    font-weight: normal;
+}
+
+/* Description column styling */
+.description {
+    
+    font-family: 'Merriweather', serif;
+    line-height: 1.5;
+    font-size: 12pt;
+}

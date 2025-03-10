@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programming Languages</title>
     <link rel="stylesheet" href="Style/main.css">
-    <style></style>
+    <style>
+    </style>
 </head>
 
 <body>
@@ -14,5 +15,118 @@
         <a href="shortcuts.html">Shortcuts</a>
         <a href="programs.html" class="active">Programming</a>
     </div>
+    <div class="topnav" id="prognav">
+        <a class="active" data-target="linux-sect">Linux</a>
+        <a data-target="powershell-sect">Powershell</a>
+        <a data-target="go-sect">Go</a>
+    </div>
+
+    <div id="linux-sect" class="content-section">
+        <h1>Linux</h1>
+        <table>
+            <tr>
+                <th>Commands</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>nano ~/.bashrc</td>
+                <td class="description">Edit linux bash profile</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>source ~/.bashrc</td>
+                <td class="description">Apply changes made to bash profile</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>sudo apt upgrade -y</td>
+                <td class="description">Upgrades all installed packages without asking for confirmation</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>mokutil --sb-state</td>
+                <td class="description">Check if secure boot is enabled</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>sudo systemctl reboot --firmware-setup</td>
+                <td class="description">Reboot directly into secure boot</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>uname -r</td>
+                <td class="description">Get the kernel version</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>lspci | grep -i vga</td>
+                <td class="description">List gpu driver (GeForce 2080)</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>lsmod | grep nvidia</td>
+                <td class="description">List nvidia stuff (drivers? modules?)</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>ls -l FILE</td>
+                <td class="description">View permissions of a file</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>pip list | grep tr</td>
+                <td class="description">List pip modules that contain "tr"</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>ps -eo pid,comm,pcpu --sort=-pcpu | awk '{if($3>0.0) print $0}'</td>
+                <td class="description">List running processes by CPU usage if the %CPU > 0.0</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>man ps<br><span>$ </span>ps --help<br><span>$ </span>ps --help all<br><span>$ </span>info ps</td>
+                <td class="description">Get Help for the Linux `ps` command</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span></td>
+                <td class="description"></td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span></td>
+                <td class="description"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="powershell-sect" class="content-section">
+        <h1>Powershell</h1>
+    </div>
+    <div id="go-sect" class="content-section">
+        <h1>Golang</h1>
+    </div>
+
+    <script>
+        function showActiveSection() {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active-section');
+            });
+
+            // Find the currently active <a> link
+            let activeLink = document.querySelector('#prognav .active');
+            if (activeLink) {
+                let targetId = activeLink.getAttribute('data-target');
+                let activeSection = document.getElementById(targetId);
+                if (activeSection) {
+                    activeSection.classList.add('active-section');
+                }
+            }
+        }
+
+        // Initialize the correct section on page load
+        showActiveSection();
+
+        // Add click event listener to all nav links
+        document.querySelectorAll('#prognav a').forEach(link => {
+            link.addEventListener('click', function() {
+                // Remove "active" class from all links
+                document.querySelectorAll('#prognav a').forEach(a => a.classList.remove('active'));
+                
+                // Add "active" class to the clicked link
+                this.classList.add('active');
+
+                // Show the corresponding section
+                showActiveSection();
+            });
+        });
+    </script>
 </body>
 </html>

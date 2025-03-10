@@ -12,6 +12,7 @@
     font-weight: 800;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 /* Style the links inside the navigation bar */
@@ -24,14 +25,10 @@
     text-decoration: none;
     font-size: 20px;
 }
-
-/* Change the color of links on hover */
 .topnav a:hover {
     background-color: #ddd;
     color: black;
 }
-
-/* Add an active class to highlight the current page */
 .topnav a.active {
     background-color: #04AA6D;
     color: white;
@@ -40,6 +37,16 @@
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
     display: none;
+}
+
+/* 2nd Navigation bar for programming languages */
+#prognav {
+    background-color: #929292;
+    margin: -2vh -2vw 2vh;
+}
+#prognav a {
+    padding: 9px 15px;
+    font-size: 15px;
 }
 
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
