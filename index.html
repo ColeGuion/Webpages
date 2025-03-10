@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Notes</title>
     <link rel="stylesheet" href="Style/main.css">
+    <style>
+        #d1 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: 1fr 3fr;
+            border-collapse: collapse;
+            width: 40vw;
+            margin-left: 28vw;
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+        #d1 > div {
+            display: flex;
+            border: 1px solid black;
+            box-sizing: border-box;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            padding: 1vh;
+        }
+        .r1 {
+            background-color: #add9e6;
+        }
+        .r2 {
+            background-color: #90ee91;
+            font-size: 36px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,6 +42,19 @@
         <a href="shortcuts.html">Shortcuts</a>
         <a href="programs.html">Programming</a>
     </div>
+    <div id="d1">
+        <div class="r1">1024 Bytes</div>
+        <div class="r1">1024 KB</div>
+        <div class="r1">1024 MB</div>
+        <div class="r1">1024 GB</div>
+        <div class="r1">1024 TB</div>
+        <div class="r2">KB</div>
+        <div class="r2">MB</div>
+        <div class="r2">GB</div>
+        <div class="r2">TB</div>
+        <div class="r2">PB</div>
+    </div>
+    <br><br>
     
     <div id="win-paths">
         <div class="grid-title">Windows Compter Important Paths</div>
