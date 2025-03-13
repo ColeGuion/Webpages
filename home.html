@@ -30,8 +30,6 @@
         <a href="programs.html">Programming</a>
         <a href="playground.html">Playground</a>
     </nav>
-    <span class="todo"><u>TODO</u>: Add copyable command "ssh tech@172.21.188.179"</span>
-
 
     <div id="byteBlk">
         <div class="topBytes">1024 Bytes</div>
@@ -45,7 +43,14 @@
         <div class="bottomBytes">TB</div>
         <div class="bottomBytes">PB</div>
     </div>
-    <br><br>
+
+
+    <div class="copyable-divs">
+        <h2 style="margin: 0;">Copyable Commands</h2>
+        <div onclick="copyText(this)">$ <span>ssh tech@172.21.188.179</span></div>
+        <div onclick="copyText(this)">$ <span>ssh tech@172.21.188.179</span></div>
+    </div>
+
     
     <div id="win-paths">
         <div class="grid-title">Windows Compter Important Paths</div>
@@ -93,6 +98,21 @@
         }
         shrinkTextToFit();
         window.addEventListener('resize', shrinkTextToFit);
+
+        function copyText(element) {
+            //const text = element.innerText;
+            const text = element.querySelector('span').innerText;
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                element.innerText = 'Copied!'; // Change text to "Copied!"
+                setTimeout(() => {
+                    element.innerText = text; // Revert to original text after 2 seconds
+                }, 2000);
+                })
+                .catch((err) => {
+                console.error('Failed to copy text: ', err);
+                });
+        }
     </script>
 </body>
 </html>

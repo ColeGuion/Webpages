@@ -13,12 +13,10 @@
             margin: 5vh 0;
         }
 
-
         .tooltip {
             position: relative;
             display: inline-block;
         }
-
         .tooltip::after {
             content: "Tooltip text";
             position: absolute;
@@ -33,12 +31,28 @@
             visibility: hidden;
             transition: opacity 0.3s ease;
         }
-
         .tooltip:hover::after {
             opacity: 1;
             visibility: visible;
         }
 
+        .viewGrid {
+            display: grid; 
+            grid-template-columns: 5vw 5vw;
+            grid-template-rows: auto 5vh;
+            font-family: Lexend;
+            font-size: 18px;
+            text-align: center;
+        }
+        .viewGrid #vheight {
+            text-align: right;
+            align-content: center;
+            padding-right: 10%;
+        }
+        .viewGrid #vbox {
+            border-top: 3px solid black;
+            border-left: 3px solid black;
+        }
     </style>
     <!-- Link to Prism CSS for syntax highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
@@ -51,6 +65,14 @@
         <a href="programs.html">Programming</a>
         <a href="playground.html" class="active">Playground</a>
     </nav>
+
+    <div class="viewGrid">
+        <div></div>
+        <div>5vw</div>
+        <div id="vheight" style="text-align: right;">5vh</div>
+        <div id="vbox"></div>
+    </div>
+
     <div class="sect">
         <h1>Example Code Highlighting</h1>
 
