@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Lexend', sans-serif;
+}
+body {
+    background-color: #f4f4f9;
+}
+
+h1,h2,h3.h4,h5,h6 {
+    width: 100%;
+    text-align: center;
+    align-content: center;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+button:hover {
+    background-color: #45a049;
+}
+
+.addBar {
+    display: inline-block;
+    display: flex;
+    gap: 2%;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+/* .addBar > button {
+    flex-grow: 1;
+} */
+#addBtns {
+    font-size: auto;
+    font-size: large;
+    font-size: 16px;
+    font-size: 20px;
+    margin: 0 10px;
+    padding: 10px 16px;
+    padding: 8px 14px;
+    border-radius: 100%;
+    /* padding: 0 10px; */
+    /* height: 100%; */
+}
+
+.container {
+    width: clamp(40vw, 60vw, 90vw);
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], #description-input {
+    /* min-width: 80%; */
+    width: 100%;
+    flex: 1;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#description-input {
+    display: none;
+    height: 150px;
+    resize: none;
+    white-space: pre-wrap;
+}
+
+
+.todo-list {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.todo-item {
+    background-color: #fafafa;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.todo-title {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+.todo-title:hover {
+    color: #4CAF50;
+}
+
+.todo-description {
+    margin-top: 8px;
+    padding-left: 16px;
+    border-left: 2px solid #ccc;
+    font-size: 16px;
+    color: #555;
+    white-space: pre-wrap;
+    display: none;
+}

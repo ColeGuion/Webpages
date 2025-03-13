@@ -12,30 +12,6 @@
             padding: 10px;
             margin: 5vh 0;
         }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-        .tooltip::after {
-            content: "Tooltip text";
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: black;
-            color: white;
-            padding: 5px;
-            border-radius: 3px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-        }
-        .tooltip:hover::after {
-            opacity: 1;
-            visibility: visible;
-        }
-
         .viewGrid {
             display: grid; 
             grid-template-columns: 5vw 5vw;
@@ -54,9 +30,6 @@
             border-left: 3px solid black;
         }
     </style>
-    <!-- Link to Prism CSS for syntax highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-
 </head>
 <body>
     <nav>
@@ -64,36 +37,20 @@
         <a href="shortcuts.html">Shortcuts</a>
         <a href="programs.html">Programming</a>
         <a href="playground.html" class="active">Playground</a>
+        <a href="todo.html">To Do List</a>
     </nav>
 
-    <div class="viewGrid">
-        <div></div>
-        <div>5vw</div>
-        <div id="vheight" style="text-align: right;">5vh</div>
-        <div id="vbox"></div>
+    <div class="sect">
+        <div class="viewGrid">
+            <div></div>
+            <div>5vw</div>
+            <div id="vheight" style="text-align: right;">5vh</div>
+            <div id="vbox"></div>
+        </div>
     </div>
 
     <div class="sect">
-        <h1>Example Code Highlighting</h1>
-
-    <pre><code class="language-css">
-/* This is a CSS example */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
-    </code></pre>
-
-    <pre><code class="language-javascript">
-        // This is a JavaScript example
-        function greet(name) {
-            console.log('Hello, ' + name);
-        }
-    </code></pre>
-
-    <!-- Link to Prism JS for syntax highlighting functionality -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-
-    </div>    
+    </div>
+ 
 </body>
 </html>

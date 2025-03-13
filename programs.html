@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="Style/programs.css">
     <!-- Link to Prism CSS for syntax highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+    <!-- Link to Prism JS for syntax highlighting functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <style>
     </style>
 </head>
@@ -18,11 +20,12 @@
         <a href="shortcuts.html">Shortcuts</a>
         <a href="programs.html" class="active">Programming</a>
         <a href="playground.html">Playground</a>
+        <a href="todo.html">To Do List</a>
     </nav>
     <nav id="prognav">
         <a data-target="linux-sect">Linux</a>
-        <a data-target="powershell-sect">Powershell</a>
         <a data-target="go-sect">Go</a>
+        <a data-target="powershell-sect">Powershell</a>
         <a data-target="css-sect" class="active">CSS</a>
     </nav>
 
@@ -113,12 +116,29 @@
                     <button class="close-btn" onclick="closeModal()">Close</button>
                 </div>
             </div>
-        </div>
-        <hr>
+        </div><hr>
+
         <div class="sect">
             <h2>Tooltip</h2>
-        </div>
-        <hr>
+            <div class="tooltip">
+                Hover over me
+                <div class="tooltip-text">Tooltip text goes here</div>
+            </div>
+        </div><hr>
+
+        <div class="sect">
+            <h2>Example Syntax Highlighting</h2>
+            <div>
+                <pre><code class="language-css">
+/* This is a CSS example */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+    </code></pre>
+            </div>
+        </div><hr>
+
     </div>
     <script>
         function openModal() {
@@ -166,8 +186,5 @@
         });
     </script>
     
-    
-    <!-- Link to Prism JS for syntax highlighting functionality -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 </body>
 </html>

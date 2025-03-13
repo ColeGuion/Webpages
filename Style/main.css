@@ -4,6 +4,7 @@
 
 body {
     margin: 0 2vw 200px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 * {
     box-sizing: border-box;
@@ -15,6 +16,15 @@ body {
     color: #ff4500;
     font-weight: 700;
 }
+
+/* Broad Class Attributes */
+.txt-center {
+    width: 100%;
+    text-align: center;
+    align-content: center;
+}
+
+
 
 /* HOME.HTML */
 #win-paths {
@@ -109,6 +119,7 @@ body {
 .copyable-divs > div:hover {
     background-color: #d0d1d9; /* Slightly darker background on hover */
 }
+
 
 /* PROGRAMS.HTML */
 /* Hide all sections by default */

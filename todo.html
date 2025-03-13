@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="Style/main.css">
+    <link rel="stylesheet" href="Style/todo.css">
+    <style>
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="shortcuts.html">Shortcuts</a>
+        <a href="programs.html">Programming</a>
+        <a href="playground.html">Playground</a>
+        <a href="todo.html" class="active">To Do List</a>
+    </nav>
+
+    <!-- <div id="addBar">Hello</div> -->
+
+    <div class="container">
+        <h1>To-Do List</h1>
+        <div class="buttons">
+            <button onclick="toggleBackground()">Toggle Background</button>
+        </div>
+        <!-- To-Do Input -->
+        <div class="addBar">
+            <button id="addBtn" onclick="addToDo()"><i class="fa-solid fa-plus"></i></button>
+            <input type="text" id="todo-input" placeholder="Enter a to-do item..." />
+            <button onclick="toggleDescription()" style="width:fit-content">Add Description</button>
+        </div>
+
+        <textarea id="description-input" placeholder="Enter description..."></textarea>
+
+        <ul id="todo-list" class="todo-list"></ul>
+
+    </div>
+
+    <script>
+        let descriptionVisible = false;
+        let isWhiteBackground = true;
+
+        // Toggle visibility of the description textarea
+        function toggleDescription() {
+            const descriptionInput = document.getElementById('description-input');
+            descriptionVisible = !descriptionVisible;
+            descriptionInput.style.display = descriptionVisible ? 'block' : 'none';
+            /* descriptionInput.value = '- '; */
+        }
+
+        // Add to-do item to the list (placeholder for functionality)
+        function addToDo() {
+            const todoInput = document.getElementById('todo-input').value.trim();
+            const descriptionInput = document.getElementById('description-input').value.trim();
+            /* if (todoInput !== "") {
+                document.getElementById('todo-input').value = "";
+            } */
+            if (todoInput !== "") {
+                const todoList = document.getElementById('todo-list');
+
+                // Create a new list item
+                const listItem = document.createElement('li');
+                listItem.classList.add('todo-item');
+
+                // Create clickable title
+                const title = document.createElement('div');
+                title.classList.add('todo-title');
+                title.textContent = todoInput;
+
+                // Create description element if it exists
+                let description = null;
+                if (descriptionInput !== "") {
+                    description = document.createElement('div');
+                    description.classList.add('todo-description');
+                    description.textContent = descriptionInput;
+
+                    // Add click event to show/hide description
+                    title.addEventListener('click', () => {
+                        const isVisible = description.style.display === 'block';
+                        description.style.display = isVisible ? 'none' : 'block';
+                    });
+                }
+
+                // Add title and description to the list item
+                listItem.appendChild(title);
+                if (description) listItem.appendChild(description);
+
+                // Add list item to the todo list
+                todoList.appendChild(listItem);
+
+                // Clear input fields
+                document.getElementById('todo-input').value = '';
+                document.getElementById('description-input').value = '';
+            }
+        }
+
+        // Handle formatting in the description textarea
+        document.getElementById('description-input').addEventListener('keydown', (e) => {
+            const input = e.target;
+            const cursorPosition = input.selectionStart;
+
+            // When user presses Enter -> add new dash
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                // Get current value and add a new dash
+                const value = input.value;
+                let newValue = value.slice(0, cursorPosition) + '\n- ' + value.slice(cursorPosition);
+                if (newValue === "\n- ") {
+                    newValue = "- ";//value.slice(0, cursorPosition) + '- ' + value.slice(cursorPosition);
+                }
+                input.value = newValue;
+                input.selectionStart = input.selectionEnd = cursorPosition + 3;
+            }
+
+            // When user presses Tab -> indent to sub-pointer
+            if (e.key === 'Tab') {
+                e.preventDefault();
+
+                // Get current value and add indentation
+                const value = input.value;
+                const newValue = value.slice(0, cursorPosition) + '\t- ' + value.slice(cursorPosition);
+
+                input.value = newValue;
+                input.selectionStart = input.selectionEnd = cursorPosition + 4;
+            }
+        });
+
+        // Toggle background color of .addBar
+        function toggleBackground() {
+            const addBar = document.querySelector('.addBar');
+            isWhiteBackground = !isWhiteBackground;
+            addBar.style.backgroundColor = isWhiteBackground ? 'white' : 'wheat';
+        }
+    </script>
+
+
+
+
+
+
+    <script>
+        //TODO: Save to local storage!!!
+        /* TODO LIST WEBPAGE:
+        - Input bar for adding todo items
+            - Add button to add todo item
+            - Button to add a description list (such as in "Projects to Build" in todays notes)
+            - Optional category to add to item
+                - Make the category & description addable to an item later 
+        - List of todo items below input bar
+            - Each item should have a checkbox to mark as done
+            - Each item should have a button to delete
+                - Undo deletions
+            - Each item should have a button to edit
+            - Each item should have a button to add a description list
+        - Sort list by category
+        - Make description collapsible and show once the title is clicked
+
+
+        (Maybe turn into public site & profit!)
+
+        */
+    </script>
+</body>
+
+</html>
