@@ -19,7 +19,6 @@
             box-sizing: border-box;
             margin: 0;
             padding: 15px;
-
         }
     </style>
 </head>
@@ -31,6 +30,9 @@
         <a href="programs.html">Programming</a>
         <a href="playground.html">Playground</a>
     </nav>
+    <span class="todo"><u>TODO</u>: Add copyable command "ssh tech@172.21.188.179"</span>
+
+
     <div id="byteBlk">
         <div class="topBytes">1024 Bytes</div>
         <div class="topBytes">1024 KB</div>
@@ -47,18 +49,15 @@
     
     <div id="win-paths">
         <div class="grid-title">Windows Compter Important Paths</div>
-        <div>CMake</div>
-        <div>C:\Program Files\CMake\</div>
-        <div>gcc</div>
-        <div>C:\msys64\ucrt64\bin\gcc</div>
-        <div>g++</div>
-        <div>C:\msys64\ucrt64\bin\g++</div>
+        <div>CMake</div><div class="paths">C:\Program Files\CMake\</div>
+        <div>gcc</div><div class="paths">C:\msys64\ucrt64\bin\gcc</div>
+        <div>g++</div><div class="paths">C:\msys64\ucrt64\bin\g++</div>
         <div>python3.12.8</div>
-        <div style="font-size: 9pt;">C:\Users\Cole\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFounHowdation.Python.3.12_qbz5n2kfra8p0</div>
-        <div>VS Code</div><div style="font-size: 10pt;">C:\Users\Cole\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code</div>
-        <div>ngrok</div><div>C:\Users\Cole\Documents\Dependencies\ngrok-v3-stable-windows-amd64\ngrok</div>
-        <div>php</div><div>C:\Users\Cole\php</div>
-        <div>Xampp PHP Projects</div><div>C:\xampp\htdocs</div>
+        <div class="paths" id="shrink-text">C:\Users\Cole\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFounHowdation.Python.3.12_qbz5n2kfra8p0</div>
+        <div>VS Code</div><div class="paths">C:\Users\Cole\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Visual Studio Code</div>
+        <div>ngrok</div><div class="paths">C:\Users\Cole\Documents\Dependencies\ngrok-v3-stable-windows-amd64\ngrok</div>
+        <div>php</div><div class="paths">C:\Users\Cole\php</div>
+        <div>Xampp PHP</div><div class="paths">C:\xampp\htdocs</div>
     </div>
     <br><br>
 
@@ -80,6 +79,20 @@
         document.getElementById('notesBlock').addEventListener('input', (event) => {
           localStorage.setItem('notes', event.target.value);
         });
+
+        // Make windows paths shrink to fit their container
+        function shrinkTextToFit() {
+            const winPaths = document.querySelectorAll('.paths');
+            winPaths.forEach(div => {
+                let fontSize = parseFloat(window.getComputedStyle(div).fontSize);
+                while (div.scrollWidth > div.clientWidth && fontSize > 0) {
+                    fontSize -= 0.5; // Reduce font size by 0.5px
+                    div.style.fontSize = `${fontSize}px`;
+                }
+            });
+        }
+        shrinkTextToFit();
+        window.addEventListener('resize', shrinkTextToFit);
     </script>
 </body>
 </html>

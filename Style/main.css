@@ -10,19 +10,24 @@ body {
     box-sizing: border-box;
 }
 
+.todo {
+    font-family: Lexend, sans-serif;
+    font-size: 14pt;
+    color: #ff4500;
+    font-weight: 700;
+}
+
 /* HOME.HTML */
 #win-paths {
-    border: 3px solid black;
-    min-width: 50%;
-    min-height: 300px;
-    margin-left: 25%;
-    margin-left: 0;
-    box-sizing: border-box;
-    padding: 10px;
     display: grid;
     grid-template-columns: 3fr 10fr;
     grid-template-rows: 1fr 1fr;
-    width: fit-content;
+    border: 3px solid black;
+    padding: 10px;
+    margin-left: 0;
+    min-height: 300px;
+    max-width: 50%;
+    width: 40%;
 }
 /* All children except heading */
 #win-paths > *:not(.grid-title) {
@@ -39,12 +44,16 @@ body {
     font-size: 14pt;
     font-weight: 700;
     text-align: right;
+    padding-right: 20px;
 }
-#win-paths > :nth-child(2n+3) {
+#win-paths > .paths {
     font-family: "Source Code Pro", monospace;
     font-size: 11pt;
     font-weight: 600;
-    padding-left: 20px;
+    text-overflow: ellipsis; /* Add an ellipsis (...) if the text overflows */
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
 }
 .grid-title {
     grid-column: 1 / 3;
@@ -56,6 +65,13 @@ body {
     text-decoration: underline;
     font-optical-sizing: auto;
     font-family: "Montserrat", "Raleway", sans-serif;
+}
+
+.shrink-text {
+    width: 100%; /* Set the desired width of the div */
+    white-space: nowrap; /* Prevent text from wrapping to the next line */
+    overflow: hidden; /* Hide any overflow */
+    text-overflow: ellipsis; /* Add an ellipsis (...) if the text overflows */
 }
 
 #byteBlk {
