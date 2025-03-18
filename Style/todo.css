@@ -87,13 +87,15 @@ input[type="text"], #description-input {
 }
 
 .todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
     background-color: #fafafa;
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 8px;
     border: 1px solid #ccc;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.2s ease;
+    margin-bottom: 10px;
 }
 
 .todo-title {
@@ -118,3 +120,16 @@ input[type="text"], #description-input {
     display: none;
 }
 
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    color: #ff4d4d;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.delete-btn:hover {
+    background-color: transparent;
+    color: #ff0000;
+}

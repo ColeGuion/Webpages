@@ -1,3 +1,6 @@
+let descriptionVisible = false;
+let isWhiteBackground = true;
+
 function LoadData() {
     const savedToDos = JSON.parse(localStorage.getItem('todoList')) || [];
     savedToDos.forEach(todo => {
@@ -6,9 +9,6 @@ function LoadData() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    let descriptionVisible = false;
-    let isWhiteBackground = true;
-
     // Initialize to-do list from localStorage if it exists
     LoadData();
     
@@ -91,9 +91,19 @@ function AddToList(task, todoDescription) {
         });
     }
 
+    // Create delete button
+    const deleteBtn = document.createElement('button');
+    deleteBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    deleteBtn.classList.add('delete-btn');
+    deleteBtn.onclick = () => {
+        listItem.remove(); // Remove task from DOM
+        saveToLocalStorage(); // Update localStorage
+    };
+
     // Add title and description to the list item
     listItem.appendChild(title);
     if (description) listItem.appendChild(description);
+    listItem.appendChild(deleteBtn);
 
     // Add list item to the todo list
     todoList.appendChild(listItem);
