@@ -20,13 +20,14 @@
         <a href="shortcuts.html">Shortcuts</a>
         <a href="programs.html" class="active">Programming</a>
         <a href="playground.html">Playground</a>
+        <a href="bootstrap.html">Bootstrap</a>
         <a href="todo.html">To Do List</a>
     </nav>
     <nav id="prognav">
-        <a data-target="linux-sect">Linux</a>
-        <a data-target="go-sect">Go</a>
-        <a data-target="powershell-sect">Powershell</a>
-        <a data-target="css-sect" class="active">CSS</a>
+        <a data-target="linux-sect" href="#linux">Linux</a>
+        <a data-target="go-sect" href="#go">Go</a>
+        <a data-target="powershell-sect" href="#powershell">Powershell</a>
+        <a data-target="css-sect" href="#css" class="active">CSS</a>
     </nav>
 
     <div id="linux-sect" class="content-section">
@@ -139,16 +140,16 @@ body {
             </div>
         </div><hr>
 
-    </div>
-    <script>
-        function openModal() {
-            document.getElementById("modal").classList.add("open");
-        }
+        <script>
+            function openModal() {
+                document.getElementById("modal").classList.add("open");
+            }
 
-        function closeModal() {
-            document.getElementById("modal").classList.remove("open");
-        }
-    </script>
+            function closeModal() {
+                document.getElementById("modal").classList.remove("open");
+            }
+        </script>
+    </div>
 
     <script>
         function showActiveSection() {
@@ -176,7 +177,7 @@ body {
             link.addEventListener('click', function() {
                 // Remove "active" class from all links
                 document.querySelectorAll('#prognav a').forEach(a => a.classList.remove('active'));
-                
+
                 // Add "active" class to the clicked link
                 this.classList.add('active');
 

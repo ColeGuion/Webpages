@@ -5,13 +5,11 @@
 body {
     background-color: #f4f4f9;
 }
-
 h1,h2,h3.h4,h5,h6 {
     width: 100%;
     text-align: center;
     align-content: center;
 }
-
 button {
     background-color: #4CAF50;
     color: white;
@@ -119,3 +117,4 @@ input[type="text"], #description-input {
     white-space: pre-wrap;
     display: none;
 }
+
