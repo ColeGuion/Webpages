@@ -66,12 +66,16 @@
                 <td class="description">Edit linux bash script for aliases</td>
             </tr>
             <tr>
+                <td class="commands"><span>$ </span>nvtop</td>
+                <td class="description">View GPU usage</td>
+            </tr>
+            <tr>
                 <td class="commands"><span>$ </span>df -h</td>
                 <td class="description">Available disk space</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>nvtop</td>
-                <td class="description">View GPU usage</td>
+                <td class="commands"><span>$ </span>sudo du -h --max-depth=1 /home/tech | sort -h -r</td>
+                <td class="description">List the sizes of the largest folders in `/home/tech`</td>
             </tr>
             <tr>
                 <td class="commands"><span>$ </span>ps -eo pid,comm,%cpu --sort=-%cpu | awk 'NR==1 || $3>0.5'</td>
