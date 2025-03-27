@@ -11,6 +11,9 @@
     <!-- Link to Prism JS for syntax highlighting functionality -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <style>
+        th, td {
+            padding: 15px 10px;
+        }
     </style>
 </head>
 
@@ -18,7 +21,7 @@
     <nav>
         <a href="home.html">Home</a>
         <a href="shortcuts.html">Shortcuts</a>
-        <a href="programs.html" class="active">Programming</a>
+        <a href="programs.html#Linux" class="active">Programming</a>
         <a href="playground.html">Playground</a>
         <a href="bootstrap.html">Bootstrap</a>
         <a href="todo.html">To Do List</a>
@@ -27,6 +30,7 @@
         <a data-target="linux-sect" href="#Linux">Linux</a>
         <a data-target="go-sect" href="#Go">Go</a>
         <a data-target="powershell-sect" href="#Powershell">Powershell</a>
+        <a data-target="python-sect" href="#Python">Python</a>
         <a data-target="css-sect" href="#CSS">CSS</a>
     </nav>
 
@@ -38,12 +42,44 @@
                 <th>Description</th>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>nano ~/.bashrc</td>
-                <td class="description">Edit linux bash profile</td>
+                <td class="commands"><span>$ </span>ps aux | head -n 5</td>
+                <td class="description">View the first 5 items from the command</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>source ~/.bashrc</td>
-                <td class="description">Apply changes made to bash profile</td>
+                <td class="commands"><span>$ </span>ls -l FILE</td>
+                <td class="description">View permissions of a file</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>pip list | grep tr</td>
+                <td class="description">List pip modules that contain "tr"</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>man ps<br><span>$ </span>ps --help<br><span>$ </span>ps --help all<br><span>$ </span>info ps</td>
+                <td class="description">Get Help for the Linux `ps` command</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>nano ~/.bashrc<br><span>$ </span>source ~/.bashrc</td>
+                <td class="description">Edit linux bash profile & Apply the changes</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>nano ~/.bash_aliases</td>
+                <td class="description">Edit linux bash script for aliases</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>df -h</td>
+                <td class="description">Available disk space</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>nvtop</td>
+                <td class="description">View GPU usage</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>ps -eo pid,comm,%cpu --sort=-%cpu | awk 'NR==1 || $3>0.5'</td>
+                <td class="description">Running processes using more than .5% of the CPU (`NR==1` displays headings)</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>$ </span>ps -eo %cpu,comm,cmd,pid --sort=-%cpu | head -n 8</td>
+                <td class="description">Display the first 8 running processes sorted by cpu usage</td>
             </tr>
             <tr>
                 <td class="commands"><span>$ </span>sudo apt upgrade -y</td>
@@ -69,34 +105,33 @@
                 <td class="commands"><span>$ </span>lsmod | grep nvidia</td>
                 <td class="description">List nvidia stuff (drivers? modules?)</td>
             </tr>
-            <tr>
-                <td class="commands"><span>$ </span>ls -l FILE</td>
-                <td class="description">View permissions of a file</td>
-            </tr>
-            <tr>
-                <td class="commands"><span>$ </span>pip list | grep tr</td>
-                <td class="description">List pip modules that contain "tr"</td>
-            </tr>
-            <tr>
-                <td class="commands"><span>$ </span>ps -eo pid,comm,pcpu --sort=-pcpu | awk '{if($3>0.0) print $0}'</td>
-                <td class="description">List running processes by CPU usage if the %CPU > 0.0</td>
-            </tr>
-            <tr>
-                <td class="commands"><span>$ </span>man ps<br><span>$ </span>ps --help<br><span>$ </span>ps --help all<br><span>$ </span>info ps</td>
-                <td class="description">Get Help for the Linux `ps` command</td>
-            </tr>
+            <!-- 
             <tr>
                 <td class="commands"><span>$ </span></td>
                 <td class="description"></td>
+            </tr> 
+            -->
+        </table>
+    </div>
+    <div id="powershell-sect" class="content-section">
+        <h1>Powershell</h1>
+    </div>
+    <div id="python-sect" class="content-section">
+        <h1>Python</h1>
+        <table>
+            <tr>
+                <th>Commands</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td class="commands">os.path.exists("/home/tech/Documents/GEC")</td>
+                <td class="description">Check if a path exists on your computer</td>
             </tr>
             <tr>
                 <td class="commands"><span>$ </span></td>
                 <td class="description"></td>
             </tr>
         </table>
-    </div>
-    <div id="powershell-sect" class="content-section">
-        <h1>Powershell</h1>
     </div>
     <div id="go-sect" class="content-section">
         <h1>Golang</h1> 

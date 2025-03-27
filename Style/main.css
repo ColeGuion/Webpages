@@ -166,7 +166,7 @@ tr:nth-child(even) {
     font-weight: bold;
     line-height: 1.5;
     white-space: pre-line; /* Ensures multi-line commands look correct */
-    width: 30%;
+    width: 35%;
 }
 
 /* Ensures the "$ " is not bold */
