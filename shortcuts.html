@@ -7,14 +7,7 @@
     <link rel="stylesheet" href="Style/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        h2 {
-            font-family: "Merriweather";
-            font-weight: bold;
-            font-size: 22pt;
-            text-decoration: underline;
-            margin: 2vh 0 1vh;
-            padding:0;
-        }
+
     </style>
 </head>
 
@@ -28,90 +21,117 @@
     </nav>
     <span class="todo"><u>TODO</u>: Add shortcut from <a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec">Windows Keys Shortcuts</a></span>
 
-    <h2>Google Chrome</h2>
-    <div class="cuts">
-        <div class="scTable">
-            <div class="tabName">Navigation</div>
-            <div>Open a New Window</div>
-            <div>CTRL <b>+</b> T</div>
-            <div>Go to Next Tab</div>
-            <div>CTRL <b>+</b> TAB</div>
-            <div>Go to Previous Tab</div>
-            <div>CTRL <b>+</b> SHIFT <b>+</b> TAB</div>
-            <div>Jump to a Specific Tab</div>
-            <div>CTRL <b>+</b> 1<b>-</b>8</div>
-            <div>Jump to Rightmost Tab</div>
-            <div>CTRL <b>+</b> 9</div>
-            <div>Close the Current Tab</div>
-            <div>CTRL <b>+</b> W</div>
-        </div>
+    <div class="shortcut-section">
+        <h2 onclick="toggleSection(this)">Google Chrome</h2>
+        <div class="cuts">
+            <div class="scTable">
+                <div class="tabName">Navigation</div>
+                <div>CTRL <b>+</b> T</div>
+                <div>Open a New Window</div>
+                <div>CTRL <b>+</b> TAB</div>
+                <div>Go to Next Tab</div>
+                <div>CTRL <b>+</b> SHIFT <b>+</b> TAB</div>
+                <div>Go to Previous Tab</div>
+                <div>CTRL <b>+</b> 1<b>-</b>8</div>
+                <div>Jump to a Specific Tab</div>
+                <div>CTRL <b>+</b> 9</div>
+                <div>Jump to Rightmost Tab</div>
+                <div>CTRL <b>+</b> W</div>
+                <div>Close the Current Tab</div>
+            </div>
 
-        <div class="scTable">
-            <div class="tabName">More</div>
-            <div>Normal Reload</div>
-            <div>CTRL <b>+</b> R</div>
-            <div>Hard Reload</div>
-            <div>CTRL <b>+</b> SHIFT <b>+</b> R</div>
-            <div>Open Task View</div>
-            <div>WIN <b>+</b> TAB</div>
-            <div>Duplicate Tab</div>
-            <div>CTRL <b>+</b> D</div>
-        </div>
+            <div class="scTable">
+                <div class="tabName">More</div>
+                <div>CTRL <b>+</b> R</div>
+                <div>Normal Reload</div>
+                <div>CTRL <b>+</b> SHIFT <b>+</b> R</div>
+                <div>Hard Reload</div>
+                <div>WIN <b>+</b> TAB</div>
+                <div>Open Task View</div>
+                <div>CTRL <b>+</b> D</div>
+                <div>Duplicate Tab</div>
+            </div>
 
-        <div class="scTable">
-            <div class="tabName">Editing</div>
-            <div>Undo Change</div>
-            <div>CTRL <b>+</b> Z</div>
-            <div>Redo Change</div>
-            <div>CTRL <b>+</b> Y</div>
+            <div class="scTable">
+                <div class="tabName">Editing</div>
+                <div>CTRL <b>+</b> Z</div>
+                <div>Undo Change</div>
+                <div>CTRL <b>+</b> Y</div>
+                <div>Redo Change</div>
+            </div>
         </div>
     </div>
     
-    <h2>Visual Studio Code</h2>
-    <div class="cuts">
-        <div class="scTable">
-            <div class="tabName">More</div>
-            <div>Insert Multi-Cursors</div>
-            <div>ALT <b>+</b> Click</div>
-            <div>Go To Definition</div>
-            <div>F12</div>
-            <div>Move a Line of Code</div>
-            <div>ALT <b>+</b> UP<b>/</b>DOWN</div>
-            <div>Left/Right Tab</div>
-            <div>ALT <b>+</b> <i class="fa-solid fa-arrow-left"></i><b>/</b><i class="fa-solid fa-arrow-right"></i></div>
-            <div>List All Files</div>
-            <div>CTRL <b>+</b> Z</div>
-            <div>Find All References</div>
-            <div>CTRL <b>+</b> SHIFT <b>+</b> R</div>
-            <div>Jump To Line</div>
-            <div>CTRL <b>+</b> G</div>
-        </div>
-        <div class="scTable">
-            <div class="tabName">Open Files & Tabs</div>
-            <div>Open Extensions Tab</div>
-            <div>CTRL <b>+</b> SHIFT <b>+</b> E</div>
-            <div>Open File Explorer Tab</div>
-            <div>CTRL <b>+</b> SHIFT <b>+</b> F</div>
-            <div>New File</div>
-            <div>CTRL <b>+</b> T</div>
-            <div>Open File</div>
-            <div>CTRL <b>+</b> O</div>
-            <div>Open Folder</div>
-            <div>CTRL <b>+</b> K <b>+</b> O</div>
-            <div>Close Current Tab</div>
-            <div>CTRL <b>+</b> W</div>
-        </div>
-        <div class="scTable">
-            <div class="tabName">Collapsing</div>
-            <div>Collapse All</div>
-            <div>CTRL <b>+</b> K <b>+</b> 0</div>
-            <div>Collapse Section</div>
-            <div>CTRL <b>+</b> SHIFT <b>+</b> [</div>
-            <div>Expand Section</div>
-            <div>CTRL <b>+</b> SHIFT <b>+</b> ]</div>
+    <div class="shortcut-section">
+        <h2 onclick="toggleSection(this)">Visual Studio Code</h2>
+        <div class="cuts">
+            <div class="scTable">
+                <div class="tabName">More</div>
+                <div>ALT <b>+</b> Click</div>
+                <div>Insert Multi-Cursors</div>
+                <div>F12</div>
+                <div>Go To Definition</div>
+                <div>ALT <b>+</b> UP<b>/</b>DOWN</div>
+                <div>Move a Line of Code</div>
+                <div>ALT <b>+</b> <i class="fa-solid fa-arrow-left"></i><b>/</b><i class="fa-solid fa-arrow-right"></i></div>
+                <div>Left/Right Tab</div>
+                <div>CTRL <b>+</b> Z</div>
+                <div>List All Files</div>
+                <div>CTRL <b>+</b> SHIFT <b>+</b> R</div>
+                <div>Find All References</div>
+                <div>CTRL <b>+</b> G</div>
+                <div>Jump To Line</div>
+            </div>
+            <div class="scTable">
+                <div class="tabName">Open Files & Tabs</div>
+                <div>CTRL <b>+</b> SHIFT <b>+</b> E</div>
+                <div>Open Extensions Tab</div>
+                <div>CTRL <b>+</b> SHIFT <b>+</b> F</div>
+                <div>Open File Explorer Tab</div>
+                <div>CTRL <b>+</b> T</div>
+                <div>New File</div>
+                <div>CTRL <b>+</b> O</div>
+                <div>Open File</div>
+                <div>CTRL <b>+</b> K <b>+</b> O</div>
+                <div>Open Folder</div>
+                <div>CTRL <b>+</b> W</div>
+                <div>Close Current Tab</div>
+            </div>
+            <div class="scTable">
+                <div class="tabName">Collapsing</div>
+                <div>CTRL <b>+</b> K <b>+</b> 0</div>
+                <div>Collapse All</div>
+                <div>CTRL <b>+</b> SHIFT <b>+</b> [</div>
+                <div>Collapse Section</div>
+                <div>CTRL <b>+</b> SHIFT <b>+</b> ]</div>
+                <div>Expand Section</div>
+            </div>
         </div>
     </div>
 
+    <div class="shortcut-section">
+        <h2 onclick="toggleSection(this)">Windows (PowerToys)</h2>
+        <div class="cuts" id="winTables">
+            <div class="scTable">
+                <div class="tabName">More</div>
+                <div>WIN <b>+</b> CTRL <b>+</b> T</div>
+                <div>Pin a Window</div>
+                <div>WIN <b>+</b> SHIFT <b>+</b> T</div>
+                <div>Text Extractor</div>
+                <div>WIN <b>+</b> SHIFT <b>+</b> C</div>
+                <div>Color Picker</div>
+                <div>WIN <b>+</b> SHIFT <b>+</b> V</div>
+                <div>Advanced Paste</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSection(header) {
+            let content = header.nextElementSibling;
+            content.classList.toggle("collapsed");
+        }
+    </script>
     <div style="margin-bottom: 200px;"></div>
 </body>
 </html>

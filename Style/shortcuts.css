@@ -4,7 +4,17 @@
 :root {
     --font-size-base: 12pt;
     --scTable-width: 5.6in;
-    --scTable-width: 22%;
+    --scTable-width: 25%;
+}
+
+h2 {
+    font-family: "Merriweather";
+    font-weight: bold;
+    font-size: 22pt;
+    text-decoration: underline;
+    margin: 2vh 0 1vh;
+    padding: 0;
+    cursor: pointer;
 }
 
 .cuts {
@@ -17,8 +27,13 @@
     padding:0;
     margin:0;
     box-sizing: border-box;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
 }
-
+.collapsed {
+    max-height: 0 !important;
+    opacity: 0;
+}
 .scTable {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -50,17 +65,22 @@
 }
 .scTable > :nth-child(2n+2) {
     border-left-width: 0;
-}
-.scTable > :nth-child(2n+3) {
     font-family: 'Source Code Pro', sans-serif;
     font-weight: bold;
     color: #cc0000;
+}
+.scTable > :nth-child(2n+3) {
     border-right-width: 0;
 }
-.scTable > :nth-child(2n+3) b {
+.scTable > :nth-child(2n+2) b {
     color: #000000;
 }
 
 .scTable > :nth-child(4n+2), .scTable > :nth-child(4n+3) {
     background-color: #f2f2f2;
+}
+
+#winTables .scTable {
+    grid-template-columns: 1fr 2fr;
+    width: 30%;
 }
