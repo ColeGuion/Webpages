@@ -54,7 +54,7 @@ body {
     text-align: right;
     padding-right: 20px;
 }
-#win-paths > .paths {
+.paths {
     font-family: "Source Code Pro", monospace;
     font-size: 11pt;
     font-weight: 600;
