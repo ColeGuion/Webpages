@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programming Languages</title>
-    <link rel="stylesheet" href="Style/main.css">
+    <!-- <link rel="stylesheet" href="Style/main.css"> -->
     <link rel="stylesheet" href="Style/programs.css">
     <!-- Link to Prism CSS for syntax highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
@@ -28,95 +28,96 @@
     </nav>
     <nav id="prognav">
         <a data-target="linux-sect" href="#Linux">Linux</a>
-        <a data-target="go-sect" href="#Go">Go</a>
         <a data-target="powershell-sect" href="#Powershell">Powershell</a>
         <a data-target="python-sect" href="#Python">Python</a>
+        <a data-target="go-sect" href="#Go">Go</a>
         <a data-target="css-sect" href="#CSS">CSS</a>
     </nav>
-    <span class="todo"><u>TODO</u>: Make commands in tables copyable in the same way as commands in the home page</span>
+    <!-- <span class="todo"><u>TODO</u>: Make commands in tables copyable in the same way as commands in the home page</span> -->
 
     <div id="linux-sect" class="content-section">
         <h1>Linux</h1>
         <table>
+            <tr><th>Commands</th><th>Description</th></tr>
             <tr>
-                <th>Commands</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td class="commands"><span>$ </span>ps aux | head -n 5</td>
+                <td class="commands">$ <span>ps aux | head -n 5</span></td>
                 <td class="description">View the first 5 items from the command</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>ls -l FILE</td>
+                <td class="commands">$ <span>ls -l FILE</span></td>
                 <td class="description">View permissions of a file</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>pip list | grep tr</td>
+                <td class="commands">$ <span>pip list | grep tr</span></td>
                 <td class="description">List pip modules that contain "tr"</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>man ps<br><span>$ </span>ps --help<br><span>$ </span>ps --help all<br><span>$ </span>info ps</td>
+                <td class="commands">$ <span>man ps</span><br>$ <span>ps --help</span><br>$ <span>ps --help all</span><br>$ <span>info ps</span></td>
                 <td class="description">Get Help for the Linux `ps` command</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>nano ~/.bashrc<br><span>$ </span>source ~/.bashrc</td>
+                <td class="commands">$ <span>nano ~/.bashrc</span><br>$ <span>source ~/.bashrc</span></td>
                 <td class="description">Edit linux bash profile & Apply the changes</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>nano ~/.bash_aliases</td>
+                <td class="commands">$ <span>nano ~/.bash_aliases</span></td>
                 <td class="description">Edit linux bash script for aliases</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>nvtop</td>
+                <td class="commands">$ <span>nvtop</span></td>
                 <td class="description">View GPU usage</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>du -sh /home/tech/Downloads/</td>
+                <td class="commands">$ <span>du -sh /home/tech/Downloads/</span></td>
                 <td class="description">Get the size of the Downloads folder</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>df -h</td>
+                <td class="commands">$ <span>ls -lh</span></td>
+                <td class="description">Get the size of every file in a folder</td>
+            </tr>
+            <tr>
+                <td class="commands">$ <span>df -h</span></td>
                 <td class="description">Available disk space</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>sudo du -h --max-depth=1 /home/tech | sort -h -r</td>
+                <td class="commands">$ <span>sudo du -h --max-depth=1 /home/tech | sort -h -r</span></td>
                 <td class="description">List the sizes of the largest folders in `/home/tech`</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>ps -eo pid,comm,%cpu --sort=-%cpu | awk 'NR==1 || $3>0.5'</td>
+                <td class="commands">$ <span>ps -eo pid,comm,%cpu --sort=-%cpu | awk 'NR==1 || $3>0.5'</span></td>
                 <td class="description">Running processes using more than .5% of the CPU (`NR==1` displays headings)</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>ps -eo %cpu,comm,cmd,pid --sort=-%cpu | head -n 8</td>
+                <td class="commands">$ <span>ps -eo %cpu,comm,cmd,pid --sort=-%cpu | head -n 8</span></td>
                 <td class="description">Display the first 8 running processes sorted by cpu usage</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>sudo apt upgrade -y</td>
+                <td class="commands">$ <span>sudo apt upgrade -y</span></td>
                 <td class="description">Upgrades all installed packages without asking for confirmation</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>mokutil --sb-state</td>
+                <td class="commands">$ <span>mokutil --sb-state</span></td>
                 <td class="description">Check if secure boot is enabled</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>sudo systemctl reboot --firmware-setup</td>
+                <td class="commands">$ <span>sudo systemctl reboot --firmware-setup</span></td>
                 <td class="description">Reboot directly into secure boot</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>uname -r</td>
+                <td class="commands">$ <span>uname -r</span></td>
                 <td class="description">Get the kernel version</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>lspci | grep -i vga</td>
+                <td class="commands">$ <span>lspci | grep -i vga</span></td>
                 <td class="description">List gpu driver (GeForce 2080)</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span>lsmod | grep nvidia</td>
+                <td class="commands">$ <span>lsmod | grep nvidia</span></td>
                 <td class="description">List nvidia stuff (drivers? modules?)</td>
             </tr>
             <!-- 
             <tr>
-                <td class="commands"><span>$ </span></td>
+                <td class="commands">$ <span></span></td>
                 <td class="description"></td>
             </tr> 
             -->
@@ -125,7 +126,7 @@
             <li>Python Global Import Path: <span class="paths">/home/tech/PyTool</span></li>
         </ul>
     </div>
-    
+
     <div id="powershell-sect" class="content-section">
         <h1>Powershell</h1>
     </div>
@@ -203,6 +204,42 @@ body {
     </div>
 
     <script>
+        // Add onclick attribute to every <td> element with class="commands"
+        const commandCells = document.querySelectorAll('#linux-sect table td.commands');
+        commandCells.forEach(function(td) {
+            td.setAttribute('onclick', 'copyText(this)');
+        });
+
+        function copyText(element) {
+            let text = "";
+            element.querySelectorAll('span').forEach(span => {
+                text += span.innerText + "\n";
+            });
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = "copied-tooltip";
+                    tooltip.textContent = 'Copied!';
+                    const rect = element.getBoundingClientRect();
+                    console.log(`Element Position - Top: ${rect.top}, Left: ${rect.left}`);
+                    console.log(`Element Offset - Top: ${element.offsetTop}, Left: ${element.offsetLeft}, Width: ${element.offsetWidth}`);
+                    tooltip.style.top = rect.top + 'px';
+                    tooltip.style.left = (element.offsetLeft + element.offsetWidth/2) + 'px';
+                    document.body.appendChild(tooltip);
+                    // Remove tooltip after 1 second
+                    setTimeout(() => {
+                        tooltip.style.opacity = '0';
+                        setTimeout(() => {
+                            document.body.removeChild(tooltip);
+                        }, 300); // Wait for fade out to complete
+                    }, 1000);
+                })
+                .catch((err) => {
+                    console.error('Failed to copy text: ', err);
+                });
+        }
+
+
         // Function to highlight and scroll to the section
         function highlightSection() {
             // Hide all sections

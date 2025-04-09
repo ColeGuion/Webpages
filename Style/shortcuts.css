@@ -7,15 +7,6 @@
     --scTable-width: 25%;
 }
 
-h2 {
-    font-family: "Merriweather";
-    font-weight: bold;
-    font-size: 22pt;
-    text-decoration: underline;
-    margin: 2vh 0 1vh;
-    padding: 0;
-    cursor: pointer;
-}
 
 .cuts {
     display: flex;
@@ -74,7 +65,6 @@ h2 {
 .scTable > :nth-child(2n+2) b {
     color: #000000;
 }
-
 .scTable > :nth-child(4n+2), .scTable > :nth-child(4n+3) {
     background-color: #f2f2f2;
 }

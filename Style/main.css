@@ -2,12 +2,36 @@
 @import url('shortcuts.css');
 @import url('navbar.css');
 
+:root {
+    --primary-color: #ff4500;
+    --secondary-color: #990000;
+    --dark-color: #6400a6;
+    --light-bg: #e9eaf2;
+    --hover-bg: #d0d1d9;
+    --font-lexend: 'Lexend', sans-serif;
+    --font-proza: 'Proza Libre', sans-serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-source-code: 'Source Code Pro', monospace;
+    --font-merriweather: 'Merriweather', serif;
+    --font-roboto-mono: 'Roboto Mono', monospace;
+}
+
 body {
     margin: 0 2vw 200px;
     font-family: Arial, Helvetica, sans-serif;
 }
 * {
     box-sizing: border-box;
+}
+
+h2 {
+    font-family: "Merriweather";
+    font-weight: bold;
+    font-size: 22pt;
+    text-decoration: underline;
+    margin: 2vh 0 1vh;
+    padding: 0;
+    cursor: pointer;
 }
 
 .todo {
@@ -133,7 +157,6 @@ th, td {
 }
 th {
     background-color: #f4f4f4;
-    background-color: #f4f4f4;
     background-color: #434343;
     color: #9ec38f;
     font-weight: bold;
@@ -151,15 +174,13 @@ tr:nth-child(even) {
 .commands {
     font-family: Consolas, monospace;
     font-size: 14pt;
-    font-weight: bold;
     line-height: 1.5;
     white-space: pre-line; /* Ensures multi-line commands look correct */
     width: 35%;
+    cursor: pointer;
 }
-
-/* Ensures the "$ " is not bold */
 .commands span {
-    font-weight: normal;
+    font-weight: bold;
 }
 
 /* Description column styling */
