@@ -47,14 +47,13 @@ h2 {
     font-size: var(--font-size-base);
     width: var(--scTable-width);
 }
-
 .scTable > * {
     border: 1pt solid black;
     padding: 0.1in;
     box-sizing: border-box;
 }
 
-.tabName {
+.tableName {
     border: 3pt solid #434343;
     background-color: #434343;
     color: #9ec38f;

@@ -75,30 +75,7 @@ body {
     font-family: "Montserrat", "Raleway", sans-serif;
 }
 
-#byteBlk {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 1fr 3fr;
-    border-collapse: collapse;
-    width: 26vw;
-    height: 10vh;
-    margin: 0 auto;
-    border: 1px solid black;
-    font-size: 14px;
-}
-#byteBlk > div {
-    border: 1px solid black;
-    text-align: center;
-    align-content: center;
-}
-.topBytes {
-    background-color: #add9e6;
-}
-.bottomBytes {
-    background-color: #90ee91;
-    font-weight: bold;
-    font-size: clamp(1vw, 1.5vw, 3vw); /* Clamp(min, preferred, max) */
-}
+
 
 .copyable-divs {
     display: flex;
@@ -119,7 +96,18 @@ body {
 .copyable-divs > div:hover {
     background-color: #d0d1d9; /* Slightly darker background on hover */
 }
-
+.copied-tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    user-select: none;
+    z-index: 1000;
+    /* transition: background-color 0.3s ease; */
+    transition: opacity 0.3s;
+}
 
 /* PROGRAMS.HTML */
 /* Hide all sections by default */

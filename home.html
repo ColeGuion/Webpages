@@ -24,6 +24,32 @@
             margin: 0;
             padding: 15px;
         }
+
+        /* BYTES BLOCK */
+        #byteBlk {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: 1fr 3fr;
+            border-collapse: collapse;
+            width: 26vw;
+            height: 10vh;
+            margin: 0 auto;
+            border: 1px solid black;
+            font-size: 14px;
+        }
+        #byteBlk > div {
+            border: 1px solid black;
+            text-align: center;
+            align-content: center;
+        }
+        .topBytes {
+            background-color: #add9e6;
+        }
+        .bottomBytes {
+            background-color: #90ee91;
+            font-weight: bold;
+            font-size: clamp(1vw, 1.5vw, 3vw); /* Clamp(min, preferred, max) */
+        }
     </style>
 </head>
 
@@ -54,6 +80,8 @@
     <div class="copyable-divs">
         <h2 style="margin: 0;">Copyable Commands</h2>
         <div onclick="copyText(this)">$ <span>ssh tech@172.21.188.179</span></div>
+        <div onclick="copyText(this)">$ <span>ssh -4NL 127.0.0.1:80:127.0.0.1:80 cole.guion@code.goldkey.com</span></div>
+        <div onclick="copyText(this)">$ <span>.\GoldKeyAssociator.exe</span></div>
     </div>
 
     <div class="notes">
@@ -76,6 +104,7 @@
     <script>
         //TODO: Highlight text like when the word "TODO" is at the start of a new line
         //TODO: Make sure you can add newlines and tabs
+        //TODO: Add underline and hyperlinks to NOTES section
         
         // Load notes from localStorage when the page loads
         document.addEventListener('DOMContentLoaded', () => {
@@ -107,13 +136,22 @@
             const text = element.querySelector('span').innerText;
             navigator.clipboard.writeText(text)
                 .then(() => {
-                element.innerText = 'Copied!'; // Change text to "Copied!"
-                setTimeout(() => {
-                    element.innerText = text; // Revert to original text after 2 seconds
-                }, 2000);
+                    const tooltip = document.createElement('div');
+                    tooltip.className = "copied-tooltip";
+                    tooltip.textContent = 'Copied!';
+                    tooltip.style.top = (element.offsetTop - 30) + 'px'; // Position above the element
+                    tooltip.style.left = element.offsetLeft + 'px';
+                    document.body.appendChild(tooltip);
+                    // Remove tooltip after 2 seconds
+                    setTimeout(() => {
+                        tooltip.style.opacity = '0';
+                        setTimeout(() => {
+                            document.body.removeChild(tooltip);
+                        }, 300); // Wait for fade out to complete
+                    }, 2000);
                 })
                 .catch((err) => {
-                console.error('Failed to copy text: ', err);
+                    console.error('Failed to copy text: ', err);
                 });
         }
     </script>
