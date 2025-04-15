@@ -60,8 +60,14 @@ h2 {
     width: fit-content;
     z-index: 1000;
 }
-
-
+td>span {
+    display: inline-block; /* Required for transform to work on inline elements */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+td > span:hover {
+    transform: scale(1.2); /* Scale up by 20% */
+    transform-origin: left center; /* Ensures text expands outward */
+}
 
 /* Tooltip container */
 .tooltip {
