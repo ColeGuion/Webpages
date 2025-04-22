@@ -84,8 +84,8 @@
                 <td class="description">Available disk space</td>
             </tr>
             <tr>
-                <td class="commands">$ <span>sudo du -h --max-depth=1 /home/tech | sort -h -r</span></td>
-                <td class="description">List the sizes of the largest folders in `/home/tech`</td>
+                <td class="commands">$ <span>du -h --max-depth=1 /home/tech | sort -hr</span></td>
+                <td class="description">List the sizes of the largest folders in `/home/tech`<br>Change to `du -ah` to list files too</td>
             </tr>
             <tr>
                 <td class="commands">$ <span>ps -eo pid,comm,%cpu --sort=-%cpu | awk 'NR==1 || $3>0.5'</span></td>
