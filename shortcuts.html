@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="Style/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-
     </style>
 </head>
 
@@ -43,6 +42,8 @@
                 <div>Jump To Line</div>
                 <div>CTRL + K + S</div>
                 <div>Keyboard Shortcuts</div>
+                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
+
             </div>
             <div class="scTable">
                 <div class="tableName">Open Files & Tabs</div>
@@ -60,6 +61,7 @@
                 <div>Open Folder</div>
                 <div>CTRL + W</div>
                 <div>Close Current Tab</div>
+                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
             </div>
             <div class="scTable">
                 <div class="tableName">Collapsing</div>
@@ -69,6 +71,7 @@
                 <div>Collapse Section</div>
                 <div>CTRL + SHIFT + ]</div>
                 <div>Expand Section</div>
+                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
             </div>
         </div>
     </div>
@@ -90,6 +93,7 @@
                 <div>Jump to Rightmost Tab</div>
                 <div>CTRL + W</div>
                 <div>Close the Current Tab</div>
+                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
             </div>
 
             <div class="scTable">
@@ -102,6 +106,7 @@
                 <div>Open Task View</div>
                 <div>CTRL + D</div>
                 <div>Duplicate Tab</div>
+                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
             </div>
 
             <div class="scTable">
@@ -110,6 +115,7 @@
                 <div>Undo Change</div>
                 <div>CTRL + Y</div>
                 <div>Redo Change</div>
+                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
             </div>
         </div>
     </div>
@@ -127,6 +133,7 @@
                 <div>Color Picker</div>
                 <div>WIN + SHIFT + V</div>
                 <div>Advanced Paste</div>
+                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
             </div>
         </div>
     </div>
@@ -145,6 +152,107 @@
                 div.innerHTML = div.innerHTML.replace(/\+/g, '<b>+</b>');    
             });
         });
+
+        // Save table data to localStorage
+        function saveTableData(table) {
+            const tableId = table.getAttribute('data-table-id');
+            const items = [];
+            const divs = table.querySelectorAll('div:not(.tableName):not(.editable-row input)');
+            
+            for (let i = 0; i < divs.length; i += 2) {
+                items.push({
+                    shortcut: divs[i].textContent,
+                    description: divs[i+1].textContent
+                });
+            }
+            
+            localStorage.setItem(`shortcutTable-${tableId}`, JSON.stringify(items));
+        }
+
+        // Load table data from localStorage
+        function loadTableData() {
+            const tables = document.querySelectorAll('.scTable');
+            tables.forEach(table => {
+                const tableId = table.getAttribute('data-table-id');
+                const savedData = localStorage.getItem(`shortcutTable-${tableId}`);
+                
+                if (savedData) {
+                    // Clear existing content (except table name and add button)
+                    const tableName = table.querySelector('.tableName').textContent;
+                    const addButton = table.querySelector('.add-row-btn');
+                    table.innerHTML = '';
+                    table.appendChild(document.createElement('div')).className = 'tableName';
+                    table.querySelector('.tableName').textContent = tableName;
+                    
+                    // Add saved items
+                    const items = JSON.parse(savedData);
+                    items.forEach(item => {
+                        const shortcutDiv = document.createElement('div');
+                        shortcutDiv.textContent = item.shortcut;
+                        
+                        const descriptionDiv = document.createElement('div');
+                        descriptionDiv.textContent = item.description;
+                        
+                        table.appendChild(shortcutDiv);
+                        table.appendChild(descriptionDiv);
+                    });
+                    
+                    // Re-add the add button
+                    table.appendChild(addButton);
+                    
+                    // Format the shortcuts
+                    formatShortcuts();
+                }
+            });
+        }
+
+        // Add editable row to a table
+        function addEditableRow(table) {
+            const d1 = document.createElement('div');
+            const d2 = document.createElement('div');
+            const btnDiv = document.createElement('div');
+            const saveBtn = document.createElement('button');
+            d1.contentEditable = true;
+            d2.contentEditable = true;
+            btnDiv.style.gridColumn = 'span 2';
+            saveBtn.innerHTML = '<i class="fas fa-check"></i>';
+            btnDiv.appendChild(saveBtn);
+            saveBtn.onclick = function() {
+                // Create new shortcut divs
+                const shortcutDiv = document.createElement('div');
+                shortcutDiv.textContent = d1.innerText;
+                
+                const descriptionDiv = document.createElement('div');
+                descriptionDiv.textContent = d2.innerText;
+                
+                // Insert before the add button
+                table.insertBefore(descriptionDiv, table.lastElementChild);
+                table.insertBefore(shortcutDiv, descriptionDiv);
+                
+                // Format the new content
+                shortcutDiv.textContent = shortcutDiv.textContent.toUpperCase();
+                shortcutDiv.innerHTML = shortcutDiv.innerHTML.replace(/\+/g, '<b>+</b>');
+                
+                // Remove the editable row
+                table.removeChild(btnDiv);
+                table.removeChild(d2);
+                table.removeChild(d1);
+                    
+                // Save the updated table
+                saveTableData(table);
+            };
+            table.insertBefore(d1, table.lastElementChild);
+            table.insertBefore(d2, table.lastElementChild);
+            table.insertBefore(btnDiv, table.lastElementChild);
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            formatShortcuts();
+            loadTableData();
+        });
+    </script>
+    <script>
     </script>
 </body>
 </html>

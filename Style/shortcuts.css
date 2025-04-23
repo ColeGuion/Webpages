@@ -73,3 +73,18 @@
     grid-template-columns: 1fr 2fr;
     width: 30%;
 }
+
+.add-row-btn {
+    display: none;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+    grid-column: span 2;
+}
+
+.scTable:hover .add-row-btn {
+    display: inline-block;
+}
