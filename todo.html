@@ -21,7 +21,8 @@
     <nav>
         <a href="home.html">Home</a>
         <a href="shortcuts.html">Shortcuts</a>
-        <a href="programs.html">Programming</a>
+        <a href="programs.html#Linux">Programming</a>
+        <a href="docs.html">Docs</a>
         <a href="playground.html">Playground</a>
         <a href="bootstrap.html">Bootstrap</a>
         <a href="todo.html" class="active">To Do List</a>
@@ -32,27 +33,25 @@
         <h1>To-Do List</h1>
         <div class="buttons">
             <button onclick="toggleBackground()">Toggle Background</button>
+            <button onclick="toggleOldTasks()">Toggle Old Tasks</button>
         </div>
 
         <!-- To-Do Input -->
         <div class="addBar">
             <button id="addBtn" onclick="AddToDo()"><i class="fa-solid fa-plus"></i></button>
             <input type="text" id="todo-input" placeholder="Enter a to-do item..." />
-            <button onclick="toggleDescription()" style="width:fit-content">Add Description</button>
+            <button id="descBtn" onclick="toggleDescription()" style="width:fit-content">Add Description</button>
         </div>
         
         <textarea id="description-input" placeholder="Enter description..."></textarea>
 
-        <ul id="todo-list" class="todo-list">
-            
-        </ul>
+        <ul id="todo-list" class="todo-list"></ul>
     </div>
 
     
 
     <script src="Scripts/todo.js"></script>
     <script>
-        //TODO: Save to local storage!!!
         /* TODO LIST WEBPAGE:
         - Input bar for adding todo items
             - Add button to add todo item
