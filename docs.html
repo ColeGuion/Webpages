@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation</title>
+    <link rel="stylesheet" href="Style/docs.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="shortcuts.html">Shortcuts</a>
+        <a href="programs.html#Linux">Programming</a>
+        <a href="docs.html" class="active">Docs</a>
+        <a href="playground.html">Playground</a>
+        <a href="bootstrap.html">Bootstrap</a>
+        <a href="todo.html">To Do List</a>
+    </nav>
+
+    <div class="top-bar">
+        <div class="toolbar">
+            <button onclick="execCommandSafely('undo')">Undo</button>
+            <button onclick="execCommandSafely('redo')">Redo</button>
+
+            <select onchange="execCommandSafely('formatBlock', false, this.value)">
+                <option value="P">Normal</option>
+                <option value="H1">Heading 1</option>
+                <option value="H2">Heading 2</option>
+                <option value="H3">Heading 3</option>
+            </select>
+
+            <select onchange="execCommandSafely('fontName', false, this.value)">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+            </select>
+
+            <!-- ! NEEDS FIXED -->
+            <input type="number" min="8" max="72" value="14" onchange="document.execCommand('fontSize', true, this.value)">
+            <!-- <input type="number" min="8" max="72" value="14"> -->
+
+            <button onclick="execCommandSafely('bold')"><b>B</b></button>
+            <button onclick="execCommandSafely('italic')"><i>I</i></button>
+            <button onclick="execCommandSafely('underline')"><u>U</u></button>
+ 
+            <button onclick="execCommandSafely('insertOrderedList')">OL</button>
+            <button onclick="execCommandSafely('insertUnorderedList')">UL</button>
+            <button onclick="execCommandSafely('justifyLeft')">Left</button>
+            <button onclick="execCommandSafely('justifyCenter')">Center</button>
+            <button onclick="execCommandSafely('justifyRight')">Right</button>
+        </div>
+    </div>
+
+    <div class="editor" contenteditable="true">
+        Start typing your notes here...
+    </div>
+
+    
+    <script>
+        //TODO: Saved notes as typed
+        //TODO: Fix font size changing
+
+        let savedSelection;
+      
+        function saveSelection() {
+          const sel = window.getSelection();
+          if (sel.rangeCount > 0) {
+            savedSelection = sel.getRangeAt(0);
+          }
+        }
+      
+        function restoreSelection() {
+          const sel = window.getSelection();
+          if (savedSelection) {
+            sel.removeAllRanges();
+            sel.addRange(savedSelection);
+          }
+        }
+      
+        function execCommandSafely(command, value = null) {
+          restoreSelection(); // Bring cursor back
+          document.execCommand(command, false, value);
+          saveSelection();    // Save new position after command
+        }
+      
+        // Automatically save selection when clicking or typing in the editor
+        const editor = document.querySelector('.editor');
+        editor.addEventListener('keyup', saveSelection);
+        editor.addEventListener('mouseup', saveSelection);
+        editor.addEventListener('focus', saveSelection);
+
+        // Set font size using fontSize and a mapping from size number to px
+        /* document.querySelector('input[type="number"]').addEventListener('change', function () {
+            const size = parseInt(this.value);
+            const mapping = {
+                1: '10px', 2: '13px', 3: '16px', 4: '18px', 5: '24px', 6: '32px', 7: '48px'
+            };
+            let commandSize = 3;
+            for (const [key, val] of Object.entries(mapping)) {
+                if (parseInt(val) >= size) {
+                    commandSize = key;
+                    break;
+                }
+            }
+            console.log(`Changing Font Size to ${mapping[commandSize]}`);
+            //document.execCommand('fontSize', false, commandSize);
+            execCommandSafely('fontSize', false, mapping[commandSize]);
+        }); */
+    </script>
+</body>
+
+</html>
