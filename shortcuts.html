@@ -11,14 +11,6 @@
 </head>
 
 <body>
-    <nav>
-        <a href="home.html">Home</a>
-        <a href="shortcuts.html" class="active">Shortcuts</a>
-        <a href="programs.html#Linux">Programming</a>
-        <a href="docs.html">Docs</a>
-        <a href="playground.html">Playground</a>
-        <a href="todo.html">To Do List</a>
-    </nav>
     <span class="todo"><u>TODO</u>: Add shortcut from <a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec">Windows Keys Shortcuts</a></span>
     
     <div class="shortcut-section">
@@ -43,7 +35,6 @@
                 <div>CTRL + K + S</div>
                 <div>Keyboard Shortcuts</div>
                 <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
-
             </div>
             <div class="scTable">
                 <div class="tableName">Open Files & Tabs</div>
@@ -252,7 +243,6 @@
             loadTableData();
         });
     </script>
-    <script>
-    </script>
+    <script src="Scripts/navigation.js"></script>
 </body>
 </html>

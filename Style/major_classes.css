@@ -1,2 +1,26 @@
 /* For broad classes that could apply to lots of things; Sort of like bootstrap */
 
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: lightcoral;
+}
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.blk {
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
