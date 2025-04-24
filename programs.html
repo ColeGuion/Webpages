@@ -32,16 +32,24 @@
         <table>
             <tr><th>Commands</th><th>Description</th></tr>
             <tr>
-                <td class="commands">$ <span>ps aux | head -n 5</span></td>
-                <td class="description">View the first 5 items from the command</td>
-            </tr>
-            <tr>
                 <td class="commands">$ <span>ls -l FILE</span></td>
                 <td class="description">View permissions of a file</td>
             </tr>
             <tr>
+                <td class="commands">$ <span>ps aux | head -n 5</span></td>
+                <td class="description">View the first 5 items from the command</td>
+            </tr>
+            <tr>
                 <td class="commands">$ <span>pip list | grep tr</span></td>
                 <td class="description">List pip modules that contain "tr"</td>
+            </tr>
+            <tr>
+                <td class="commands">$ <span>mv f1.txt dir</span></td>
+                <td class="description">Move `f1.txt` to the specified directory</td>
+            </tr>
+            <tr>
+                <td class="commands">$ <span>mv f1.txt newFile.txt</span></td>
+                <td class="description">Rename `f1.txt` to `newFile.txt` </td>
             </tr>
             <tr>
                 <td class="commands">$ <span>man ps</span><br>$ <span>ps --help</span><br>$ <span>ps --help all</span><br>$ <span>info ps</span></td>
@@ -119,6 +127,8 @@
             -->
         </table>
         <ul>
+            <li><span class="paths">/usr/local/bin/get_folder_description.sh</span> Bash function to GET a folders description</li>
+            <li><span class="paths">/usr/local/bin/set_folder_description.sh</span> Bash function to SET a folders description</li>
             <li>Python Global Import Path: <span class="paths">/home/tech/PyTool</span></li>
             <li>Jump to end of Nano file: <span class="paths">ALT + /</span></li>
         </ul>

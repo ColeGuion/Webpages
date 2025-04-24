@@ -1,5 +1,19 @@
 /* For broad classes that could apply to lots of things; Sort of like bootstrap */
 
+.path {
+    font-family: "Source Code Pro", monospace;
+    font-weight: 600;
+}
+.paths {
+    font-family: "Source Code Pro", monospace;
+    font-size: 11pt;
+    font-weight: 600;
+    text-overflow: ellipsis; /* Add an ellipsis (...) if the text overflows */
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+}
+
 .flex-col {
     display: flex;
     flex-direction: column;

@@ -65,7 +65,7 @@ td>span {
     transition: transform 0.3s ease; /* Smooth transition */
 }
 td > span:hover {
-    transform: scale(1.2); /* Scale up by 20% */
+    transform: scale(1.1); /* Scale up by 20% */
     transform-origin: left center; /* Ensures text expands outward */
 }
 
