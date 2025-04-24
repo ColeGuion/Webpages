@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function AddNavBar(currentPage) {
+    //* Add other nav bar if programs.html
     const nav = document.createElement('nav');
 
     // Create links and add them to the nav element

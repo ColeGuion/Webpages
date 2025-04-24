@@ -11,11 +11,17 @@ h1 {
     text-align: center;
     border: 3px solid black;
     border-radius: 10px;
+    cursor: pointer;
 }
 h2 {
     font-family: var(--font-lexend);
     font-size: 24pt;
     font-weight: 500;
+}
+
+th,
+td {
+    padding: 15px 10px;
 }
 
 .modal {

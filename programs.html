@@ -10,11 +10,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
     <!-- Link to Prism JS for syntax highlighting functionality -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <style>
-        th, td {
-            padding: 15px 10px;
-        }
-    </style>
 </head>
 
 <body>
@@ -28,7 +23,7 @@
     <!-- <span class="todo"><u>TODO</u>: Make commands in tables copyable in the same way as commands in the home page</span> -->
 
     <div id="linux-sect" class="content-section">
-        <h1>Linux</h1>
+        <h1 onclick="toggleSection(this)">Linux</h1>
         <table>
             <tr><th>Commands</th><th>Description</th></tr>
             <tr>
@@ -126,6 +121,26 @@
             </tr> 
             -->
         </table>
+
+        <br><br>
+        <h1 onclick="toggleSection(this)">Nano</h1>
+        <table>
+            <tr><th>Commands</th><th>Description</th></tr>
+            <tr>
+                <td class="commands"><span>ALT + /</span></td>
+                <td class="description">Jump to end of file</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>CTRL + W</span></td>
+                <td class="description">Search for word (Press again to find next match) (ALT + C makes it case-sensitive)</td>
+            </tr> 
+            <!-- 
+            <tr>
+                <td class="commands">$ <span></span></td>
+                <td class="description"></td>
+            </tr> 
+            -->
+        </table>
         <ul>
             <li><span class="paths">/usr/local/bin/get_folder_description.sh</span> Bash function to GET a folders description</li>
             <li><span class="paths">/usr/local/bin/set_folder_description.sh</span> Bash function to SET a folders description</li>
@@ -173,8 +188,6 @@
             </tr> 
             -->
         </table>
-
-
     </div>
 
     <div id="python-sect" class="content-section">
@@ -250,6 +263,13 @@ body {
     </div>
 
     <script>
+        
+        // Collapse/Expand Sections
+        function toggleSection(header) {
+            let content = header.nextElementSibling;
+            content.style.display = content.style.display === "table" ? "none" : "table";
+        }
+
         // Add onclick attribute to every <td> element with class="commands"
         const commandCells = document.querySelectorAll('#linux-sect table td.commands');
         commandCells.forEach(function(td) {
