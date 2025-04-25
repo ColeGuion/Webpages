@@ -45,7 +45,6 @@
     </div>
 
     <div class="editor" contenteditable="true">
-        <!-- Start typing your notes here... -->
     </div>
     <div style="margin-bottom: 100px;"></div>
     
@@ -82,7 +81,7 @@
         const debouncedSave = debounce(() => saveNotes());
 
         // Load notes immediately once the page loads
-        document.addEventListener("DOMContentLoaded", function () {
+        /* document.addEventListener("DOMContentLoaded", function () {
             LoadNotes();
         });
 
@@ -95,7 +94,7 @@
         function saveNotes() {
             const notes = document.querySelector('.editor').innerHTML;
             localStorage.setItem('documentation_notes', JSON.stringify(notes));
-        }
+        } */
       
         function saveSelection() {
           const sel = window.getSelection();
@@ -119,10 +118,20 @@
         }
       
         // Automatically save selection when clicking or typing in the editor
-        editor.addEventListener('keyup', saveSelection);
+        // Automatically save selection when clicking or typing in the editor
+        editor.addEventListener('keyup', (e) => {
+            saveSelection();
+            debouncedSave();
+        });
+        editor.addEventListener('paste', (e) => {
+            saveSelection();
+            // Delay slightly to allow paste to complete
+            setTimeout(saveNotes, 10);
+        });
+        //editor.addEventListener('keyup', saveSelection);
         editor.addEventListener('mouseup', saveSelection);
         editor.addEventListener('focus', saveSelection);
-        editor.addEventListener('change', saveNotes);
+        //editor.addEventListener('change', saveNotes);
 
         // Load notes when page loads
         document.addEventListener('DOMContentLoaded', loadNotes);

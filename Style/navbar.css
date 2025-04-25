@@ -42,6 +42,7 @@ nav .icon {
 
 /* 2nd Navigation bar for programming languages */
 #prognav {
+    height: auto;
     background-color: #929292;
     top:52px;
     margin: -2vh -2vw 2vh;
