@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,14 +45,41 @@
     </div>
 
     <div class="editor" contenteditable="true">
-        Start typing your notes here...
+        <!-- Start typing your notes here... -->
     </div>
-
+    <div style="margin-bottom: 100px;"></div>
     
     <script>
         //TODO: Saved notes as typed
         //TODO: Fix font size changing
         let savedSelection;
+        const editor = document.querySelector('.editor');
+        const LOCAL_STORAGE_KEY = 'documentation_notes';
+
+        // Load saved notes when page loads
+        function loadNotes() {
+            console.log("Loading notes from local storage...");
+            const savedNotes = localStorage.getItem(LOCAL_STORAGE_KEY);
+            if (savedNotes) {
+                editor.innerHTML = savedNotes;
+            }
+        }
+
+        // Save notes to local storage
+        function saveNotes() {
+            localStorage.setItem(LOCAL_STORAGE_KEY, editor.innerHTML);
+        }
+
+        // Debounce function to prevent too frequent saves
+        function debounce(func, timeout = 300) {
+            let timer;
+            return (...args) => {
+                clearTimeout(timer);
+                timer = setTimeout(() => { func.apply(this, args); }, timeout);
+            };
+        }
+
+        const debouncedSave = debounce(() => saveNotes());
 
         // Load notes immediately once the page loads
         document.addEventListener("DOMContentLoaded", function () {
@@ -67,8 +93,7 @@
 
         // Save the current notes to localStorage
         function saveNotes() {
-            const editorNotes = document.querySelector('.editor');
-            const notes = editorNotes.innerHTML;
+            const notes = document.querySelector('.editor').innerHTML;
             localStorage.setItem('documentation_notes', JSON.stringify(notes));
         }
       
@@ -94,12 +119,13 @@
         }
       
         // Automatically save selection when clicking or typing in the editor
-        const editor = document.querySelector('.editor');
         editor.addEventListener('keyup', saveSelection);
         editor.addEventListener('mouseup', saveSelection);
         editor.addEventListener('focus', saveSelection);
         editor.addEventListener('change', saveNotes);
-        
+
+        // Load notes when page loads
+        document.addEventListener('DOMContentLoaded', loadNotes);
 
         // Set font size using fontSize and a mapping from size number to px
         /* document.querySelector('input[type="number"]').addEventListener('change', function () {
@@ -121,5 +147,4 @@
     </script>
     <script src="Scripts/navigation.js"></script>
 </body>
-
 </html>
