@@ -53,8 +53,25 @@
     <script>
         //TODO: Saved notes as typed
         //TODO: Fix font size changing
-
         let savedSelection;
+
+        // Load notes immediately once the page loads
+        document.addEventListener("DOMContentLoaded", function () {
+            LoadNotes();
+            document.querySelector('.editor').addEventListener('change', saveToLocalStorage);
+        });
+
+        function LoadNotes() {
+            const savedNotes = JSON.parse(localStorage.getItem('documentation_notes')) || "";
+            document.querySelector('.editor').innerHTML = savedNotes;
+        }
+
+        // Save the current notes to localStorage
+        function saveNotes() {
+            const editorNotes = document.querySelector('.editor');
+            const notes = editorNotes.innerHTML;
+            localStorage.setItem('documentation_notes', JSON.stringify(notes));
+        }
       
         function saveSelection() {
           const sel = window.getSelection();
@@ -82,6 +99,7 @@
         editor.addEventListener('keyup', saveSelection);
         editor.addEventListener('mouseup', saveSelection);
         editor.addEventListener('focus', saveSelection);
+        
 
         // Set font size using fontSize and a mapping from size number to px
         /* document.querySelector('input[type="number"]').addEventListener('change', function () {
