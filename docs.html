@@ -49,8 +49,8 @@
     <div style="margin-bottom: 100px;"></div>
     
     <script>
-        //TODO: Saved notes as typed
         //TODO: Fix font size changing
+        // NOTE: does not save font family
         let savedSelection;
         const editor = document.querySelector('.editor');
         const LOCAL_STORAGE_KEY = 'documentation_notes';
@@ -77,24 +77,7 @@
                 timer = setTimeout(() => { func.apply(this, args); }, timeout);
             };
         }
-
         const debouncedSave = debounce(() => saveNotes());
-
-        // Load notes immediately once the page loads
-        /* document.addEventListener("DOMContentLoaded", function () {
-            LoadNotes();
-        });
-
-        function LoadNotes() {
-            const savedNotes = JSON.parse(localStorage.getItem('documentation_notes')) || "";
-            document.querySelector('.editor').innerHTML = savedNotes;
-        }
-
-        // Save the current notes to localStorage
-        function saveNotes() {
-            const notes = document.querySelector('.editor').innerHTML;
-            localStorage.setItem('documentation_notes', JSON.stringify(notes));
-        } */
       
         function saveSelection() {
           const sel = window.getSelection();
@@ -112,9 +95,9 @@
         }
       
         function execCommandSafely(command, value = null) {
-          restoreSelection(); // Bring cursor back
-          document.execCommand(command, false, value);
-          saveSelection();    // Save new position after command
+            restoreSelection(); // Bring cursor back
+            document.execCommand(command, false, value);
+            saveSelection();    // Save new position after command
         }
       
         // Automatically save selection when clicking or typing in the editor
@@ -125,13 +108,10 @@
         });
         editor.addEventListener('paste', (e) => {
             saveSelection();
-            // Delay slightly to allow paste to complete
-            setTimeout(saveNotes, 10);
+            setTimeout(saveNotes, 10);  // Delay slightly to allow paste to complete
         });
-        //editor.addEventListener('keyup', saveSelection);
         editor.addEventListener('mouseup', saveSelection);
         editor.addEventListener('focus', saveSelection);
-        //editor.addEventListener('change', saveNotes);
 
         // Load notes when page loads
         document.addEventListener('DOMContentLoaded', loadNotes);
