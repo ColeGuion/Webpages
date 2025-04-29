@@ -23,6 +23,51 @@ th,
 td {
     padding: 15px 10px;
 }
+td>span {
+    display: inline-block; /* Required for transform to work on inline elements */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+a > span:hover {
+    transform: scale(1.1); /* Scale up by 20% */
+    transform-origin: left center; /* Ensures text expands outward */
+}
+td>span:active {
+    transform: scale(1.2);
+    /* Scale up by 20% */
+    transform-origin: left center;
+    /* Ensures text expands outward */
+    transition: transform 0.3s ease;
+    /* Smooth transition */
+}
+
+.commands {
+    font-family: Consolas, monospace;
+    font-size: 14pt;
+    line-height: 1.5;
+    white-space: pre-line;
+    /* Ensures multi-line commands look correct */
+    width: 35%;
+    cursor: pointer;
+}
+
+.commands span {
+    font-weight: bold;
+}
+
+.description {
+    font-family: 'Merriweather', serif;
+    line-height: 1.5;
+    font-size: 12pt;
+}
+
+.tabSect {
+    text-align: center;
+    font-family: var(--font-lexend);
+    font-size: 24pt;
+    font-weight: 500;
+    border: 3px solid #ddd;
+}
+
 
 .modal {
     position: fixed;
@@ -65,14 +110,6 @@ td {
     width: 100%;
     width: fit-content;
     z-index: 1000;
-}
-td>span {
-    display: inline-block; /* Required for transform to work on inline elements */
-    transition: transform 0.3s ease; /* Smooth transition */
-}
-td > span:hover {
-    transform: scale(1.1); /* Scale up by 20% */
-    transform-origin: left center; /* Ensures text expands outward */
 }
 
 /* Tooltip container */

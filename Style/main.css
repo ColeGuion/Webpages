@@ -26,7 +26,7 @@ body {
 }
 
 h2 {
-    font-family: "Merriweather";
+    font-family: var(--font-merriweather);
     font-weight: bold;
     font-size: 22pt;
     text-decoration: underline;
@@ -36,7 +36,7 @@ h2 {
 }
 
 .todo {
-    font-family: Lexend, sans-serif;
+    font-family: var(--font-lexend);
     font-size: 14pt;
     color: #ff4500;
     font-weight: 700;
@@ -100,7 +100,7 @@ h2 {
     gap: 10px;
     margin: 0 0 3vh;
     padding: 0;
-    font-family: 'Roboto Mono', monospace;
+    font-family: var(--font-roboto-mono);
 }
 .copyable-divs > div {
     background-color: #e9eaf2;
@@ -125,6 +125,7 @@ h2 {
     /* transition: background-color 0.3s ease; */
     transition: opacity 0.3s;
 }
+
 
 /* PROGRAMS.HTML */
 /* Hide all sections by default */
@@ -163,23 +164,3 @@ tr:nth-child(even) {
     background-color: #f0f0f0;
 }
 
-/* Commands column styling */
-.commands {
-    font-family: Consolas, monospace;
-    font-size: 14pt;
-    line-height: 1.5;
-    white-space: pre-line; /* Ensures multi-line commands look correct */
-    width: 35%;
-    cursor: pointer;
-}
-.commands span {
-    font-weight: bold;
-}
-
-/* Description column styling */
-.description {
-    
-    font-family: 'Merriweather', serif;
-    line-height: 1.5;
-    font-size: 12pt;
-}
