@@ -27,18 +27,11 @@ td>span {
     display: inline-block; /* Required for transform to work on inline elements */
     transition: transform 0.3s ease; /* Smooth transition */
 }
-a > span:hover {
-    transform: scale(1.1); /* Scale up by 20% */
+td > span:hover {
+    transform: scale(1.05);
     transform-origin: left center; /* Ensures text expands outward */
 }
-td>span:active {
-    transform: scale(1.2);
-    /* Scale up by 20% */
-    transform-origin: left center;
-    /* Ensures text expands outward */
-    transition: transform 0.3s ease;
-    /* Smooth transition */
-}
+
 
 .commands {
     font-family: Consolas, monospace;
