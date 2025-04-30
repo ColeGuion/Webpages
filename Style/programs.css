@@ -43,10 +43,16 @@ td > span:hover {
     /* Ensures multi-line commands look correct */
     width: 35%;
     cursor: pointer;
+    white-space: normal;
+    white-space: nowrap;
 }
-
+.commands::before {
+    content: "$ ";
+    /* white-space: nowrap; */
+}
 .commands span {
     font-weight: bold;
+    /* display: inline; */
 }
 
 .description {
