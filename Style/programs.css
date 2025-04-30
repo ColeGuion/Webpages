@@ -19,6 +19,9 @@ h2 {
     font-weight: 500;
 }
 
+table {
+    border: none;
+}
 th,
 td {
     padding: 15px 10px;
@@ -31,7 +34,6 @@ td > span:hover {
     transform: scale(1.05);
     transform-origin: left center; /* Ensures text expands outward */
 }
-
 
 .commands {
     font-family: Consolas, monospace;
@@ -60,6 +62,34 @@ td > span:hover {
     font-weight: 500;
     border: 3px solid #ddd;
 }
+
+.rowAdder {
+    border: 0px solid #ddd;
+    border-top-width: 1px;
+    padding: 0px;
+    padding-top: 10px;
+    /* display: flex;
+    width: 100%;
+    justify-content: center; */
+    
+}
+
+.addRowBtn {
+    background-color: #2ea44f;
+    color: #fff;
+    border: 0 solid black;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-lexend);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 34px;
+    padding: 2px 20px;
+    width: 20%;
+    margin-left: 40%;
+
+}
+
 
 
 .modal {
