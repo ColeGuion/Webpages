@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Proza+Libre:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Lexend:wght@100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Proza+Libre:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 @import url('shortcuts.css');
 @import url('navbar.css');
 @import url('major_classes.css');
@@ -9,12 +10,13 @@
     --dark-color: #6400a6;
     --light-bg: #e9eaf2;
     --hover-bg: #d0d1d9;
-    --font-lexend: 'Lexend', sans-serif;
-    --font-proza: 'Proza Libre', sans-serif;
-    --font-montserrat: 'Montserrat', sans-serif;
-    --font-source-code: 'Source Code Pro', monospace;
-    --font-merriweather: 'Merriweather', serif;
-    --font-roboto-mono: 'Roboto Mono', monospace;
+    --font-lexend: "Lexend", sans-serif;
+    --font-proza: "Proza Libre", sans-serif;
+    --font-montserrat: "Montserrat", sans-serif;
+    --font-source-code: "Source Code Pro", monospace;
+    --font-merriweather: "Merriweather", serif;
+    --font-roboto-mono: "Roboto Mono", monospace;
+    --font-jetbrains: "JetBrains Mono", serif;
 }
 
 body {
@@ -50,6 +52,93 @@ h2 {
 }
 
 
+#d5 {
+    background-color: rgb(255, 244, 223);
+    justify-content: space-around;
+    gap: 0;
+}
+/* BEST COLORS */
+#BestColors {
+    width: 50%;
+    border: 2px solid black;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    margin: 0;
+    background-color: white;
+}
+.best-colors {
+    width: 50%;
+    border: 0 solid red;
+    min-height: 300px;
+    padding: 10px 5%;
+    padding: 0 5%;
+    font-family: var(--font-jetbrains);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-start;
+    margin: 0;
+}
+
+.best-colors > div {
+    display: flex;
+    justify-content: center;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    margin: 10px 0;
+    gap: 20px;
+    /* background-color: #d0d1d9;
+    background-color: #e9eaf2; */
+    
+    width: 100%;
+    height: 100%;
+}
+.colorBlk {
+    border: 3px solid black;
+    border-radius: 20%;
+    height: 35px;
+    width: 35px;
+    height: 45px;
+    width: 45px;
+    transition: all 0.2s ease-in-out;
+}
+.colorBlk:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+/* Add a little tooltip effect */
+.colorBlk::after {
+    content: 'Copy';
+    position: absolute;
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 25px;
+    top: -30px;
+    left: -25px;
+    width: 95px;
+}
+
+.colorBlk:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* HOME.HTML */
 #win-paths {

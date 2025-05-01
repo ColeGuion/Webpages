@@ -32,6 +32,13 @@
     align-items: center;
     gap: 10px;
 }
+.flex-center-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 .blk {
     width: 50px;
     height: 50px;
