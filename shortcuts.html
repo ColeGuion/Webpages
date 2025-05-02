@@ -16,7 +16,7 @@
     
     <div class="shortcut-section">
         <h2 onclick="toggleSection(this)">Visual Studio Code</h2>
-        <div class="cuts">
+        <div class="cuts collapsed">
             <div class="scTable">
                 <div class="tableName">More</div>
                 <div>ALT + Click</div>
@@ -70,7 +70,7 @@
 
     <div class="shortcut-section">
         <h2 onclick="toggleSection(this)">Google Chrome</h2>
-        <div class="cuts">
+        <div class="cuts collapsed">
             <div class="scTable">
                 <div class="tableName">Navigation</div>
                 <div>CTRL + T</div>
@@ -114,7 +114,7 @@
 
     <div class="shortcut-section">
         <h2 onclick="toggleSection(this)">Windows (PowerToys)</h2>
-        <div class="cuts" id="winTables">
+        <div class="cuts collapsed" id="winTables">
             <div class="scTable">
                 <div class="tableName">More</div>
                 <div>WIN + CTRL + T</div>
@@ -125,6 +125,31 @@
                 <div>Color Picker</div>
                 <div>WIN + SHIFT + V</div>
                 <div>Advanced Paste</div>
+                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="shortcut-section">
+        <h2 onclick="toggleSection(this)">Nano</h2>
+        <div class="cuts" id="winTables">
+            <div class="scTable">
+                <div class="tableName">Navigation</div>
+                <div>CTRL + E</div>
+                <div>Jump to end of line</div>
+                <div>CTRL + W</div>
+                <div>Search for word(Press again to find next match) (ALT + C makes it case-sensitive)</div>
+                <div>CTRL + K</div>
+                <div>Delete a line</div>
+                <div>ALT + 6</div>
+                <div>Copy current line</div>
+                <div>ALT + /</div>
+                <div>Jump to end of file</div>
+                <div>ALT + U</div>
+                <div>Undo</div>
+                <div>ALT + E</div>
+                <div>Redo</div>
+                <!-- <div>CTRL + </div><div></div> -->
                 <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
             </div>
         </div>
