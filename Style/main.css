@@ -146,6 +146,7 @@ h2 {
     min-height: 300px;
     max-width: 50%;
     width: 40%;
+    background-color: white;
 }
 /* All children except heading */
 #win-paths > *:not(.grid-title) {
