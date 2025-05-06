@@ -1,6 +1,7 @@
 // Navigation Links
 const pages = [
     { href: 'home.html', text: 'Home' },
+    { href: 'colors.html', text: 'Colors' },
     { href: 'shortcuts.html', text: 'Shortcuts' },
     { href: 'programs.html#Linux', text: 'Programming' },
     { href: 'docs.html', text: 'Docs' },
