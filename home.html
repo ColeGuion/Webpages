@@ -184,7 +184,7 @@
         }
 
         function copyColorToClipboard(colorHex) {
-            alert(`Copying: ${colorHex}`);
+            //alert(`Copying: ${colorHex}`);
             navigator.clipboard.writeText(colorHex).then(() => {
                 // Visual feedback
                 const originalBg = event.target.style.backgroundColor;

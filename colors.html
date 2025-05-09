@@ -51,25 +51,34 @@
         <div><input type="text" value="#e48026"></div> -->
     </div>
     <div class="flex">
-        <input type="range" id="volume" name="volume" min="0" max="100" class="block self-center">
+        <input type="range" id="volume-inp" name="volume" min="0" max="100" class="block self-center">
         <span style="width:90px;" class="self-center text-xl font-bold px-3 py-2 bg-gray-100 border text-center rounded ml-3">60%</span>
     </div>
+
+    <!-- Add result grid with hex code and color block -->
     
 
     <script>
         let colorInput = document.getElementById("color-inp");
         let colorBlock = document.getElementById("color-block");
-        colorInput.addEventListener('input', function() {
+        let volumeInput = document.getElementById("volume-inp");
+
+        updateColorBlk();
+        colorInput.addEventListener('input', updateColorBlk);
+        
+        let volumeSpan = volumeInput.nextElementSibling;
+        volumeInput.addEventListener('input', function() {
+            volumeSpan.textContent = `${volumeInput.value}%`;
+        });
+
+        function updateColorBlk() {
             let colorValue = colorInput.value;
             if (/^#[0-9A-F]{6}$/i.test(colorValue)) {
                 colorBlock.style.backgroundColor = colorValue;
             }
-        });
+        }
         // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            //formatShortcuts();
-            //loadTableData();
-        });
+        //document.addEventListener('DOMContentLoaded', function() {});
 
         // Converts a hex color string to an RGB object
         function hexToRgb(hex) {
