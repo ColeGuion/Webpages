@@ -308,7 +308,7 @@ body {
         }
 
         // Add onclick attribute to every <td> element with class="commands"
-        const commandCells = document.querySelectorAll('#linux-sect table td.commands');
+        const commandCells = document.querySelectorAll('table td.commands');
         commandCells.forEach(function(td) {
             td.setAttribute('onclick', 'copyText(this)');
         });
