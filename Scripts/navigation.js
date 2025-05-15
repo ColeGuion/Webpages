@@ -36,6 +36,7 @@ function AddNavBar(currentPage) {
         const a = document.createElement('a');
         a.href = page.href;
         a.textContent = page.text;
+        a.rel = "prefetch";
         
         // Add 'active' class if the link matches the current page
         if (page.href === currentPage || (page.href.startsWith('programs.html') && currentPage.startsWith('programs.html'))) {
