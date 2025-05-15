@@ -11,11 +11,21 @@ const pages = [
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Fill the <head> element with base details and page icon
+    FillHead();
+
     // Get the current page's filename
     const currentPage = window.location.pathname.split('/').pop() || 'home.html';
     console.log(`Current Page: "${currentPage}"`);
     AddNavBar(currentPage); 
 });
+
+function FillHead() {
+    const hd = document.querySelector("head");
+    hd.innerHTML = `<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icons/pinned.png" type="image/png">` + hd.innerHTML;
+}
 
 function AddNavBar(currentPage) {
     //* Add other nav bar if programs.html
