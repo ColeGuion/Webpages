@@ -251,6 +251,17 @@
                 <td class="description">Check if a path exists on your computer</td>
             </tr>
             <tr>
+                <td class="code">from collections import Counter<br>type_counts = Counter(obj["type"] for obj in x)
+
+<span class="codeComment"># Print the results</span>
+for type_name, count in type_counts.items():<br>    print(f"{type_name}: {count}")</td>
+                <td class="description">Count the number of unique "type" values in a list of object</td>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="tabSect">Dictionaries</td>
+            </tr> 
+            <tr>
                 <td class="code">my_dict = {'a': 1, 'b': 2, 'c': 3}
 new_dict = {k: v * 2 for k, v in my_dict.items()}
 print(new_dict) <span class="codeComment"># {'a': 2, 'b': 4, 'c': 6}</span></td>
@@ -269,15 +280,12 @@ print(new_dict) <span class="codeComment"># {'a': 2, 'b': 4, 'c': 6}</span></td>
 <span class="codeComment"># Sort by Value</span><br>sorted_by_value = dict(sorted(my_dict.items(), key=lambda x: x[1]))</td>
                 <td class="description">Sorting Dictionaries</td>
             </tr>
+            <!-- 
             <tr>
-                <td class="code">from collections import Counter
-type_counts = Counter(obj["type"] for obj in x)
-
-<span class="codeComment"># Print the results</span>
-for type_name, count in type_counts.items():
-    print(f"{type_name}: {count}")</td>
-                <td class="description">Count the number of unique "type" values in a list of object</td>
+                <td class="code"><span class="codeComment"></span></td>
+                <td class="description"></td>
             </tr>
+             -->
         </table>
     </div>
 
