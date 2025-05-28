@@ -7,6 +7,20 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
     <!-- Link to Prism JS for syntax highlighting functionality -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <style>
+        #python-sect .code {
+            font-family: "Source Code Pro", monospace;
+            font-weight: 500;
+            font-size: 12pt;
+            line-height: 1.5;
+            width: 50%;
+            white-space: pre;
+        }
+        #python-sect .code > .codeComment {
+            color: green;
+            font-weight: 600;
+        }
+    </style>
 </head>
 
 <body>
@@ -233,12 +247,36 @@
                 <th>Description</th>
             </tr>
             <tr>
-                <td class="commands">os.path.exists("/home/tech/Documents/GEC")</td>
+                <td class="code">os.path.exists("/home/tech/Documents/GEC")</td>
                 <td class="description">Check if a path exists on your computer</td>
             </tr>
             <tr>
-                <td class="commands"><span>$ </span></td>
-                <td class="description"></td>
+                <td class="code">my_dict = {'a': 1, 'b': 2, 'c': 3}
+new_dict = {k: v * 2 for k, v in my_dict.items()}
+print(new_dict) <span class="codeComment"># {'a': 2, 'b': 4, 'c': 6}</span></td>
+                <td class="description">Dict Comprehension</td>
+            </tr>
+            <tr>
+                <td class="code">val = my_dict.get('x', 0) <span class="codeComment"># Returns 0 if 'x' not found</span></td>
+                <td class="description">Get with default value</td>
+            </tr>
+            <tr>
+                <td class="code">popped = my_dict.pop('a') <span class="codeComment"># Returns 99, removes 'a'</span></td>
+                <td class="description">Remove and return a key</td>
+            </tr>
+            <tr>
+                <td class="code"><span class="codeComment"># Sort by Key</span><br>sorted_by_key = {k: my_dict[k] for k in sorted(my_dict)}<br>
+<span class="codeComment"># Sort by Value</span><br>sorted_by_value = dict(sorted(my_dict.items(), key=lambda x: x[1]))</td>
+                <td class="description">Sorting Dictionaries</td>
+            </tr>
+            <tr>
+                <td class="code">from collections import Counter
+type_counts = Counter(obj["type"] for obj in x)
+
+<span class="codeComment"># Print the results</span>
+for type_name, count in type_counts.items():
+    print(f"{type_name}: {count}")</td>
+                <td class="description">Count the number of unique "type" values in a list of object</td>
             </tr>
         </table>
     </div>
