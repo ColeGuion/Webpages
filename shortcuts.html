@@ -9,7 +9,7 @@
     <span class="todo"><u>TODO</u>: Add shortcut from <a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec">Windows Keys Shortcuts</a></span>
     <br><span class="todo"><u>TODO</u>: Save added shortcut in table once its added</span> 
     
-    <div class="shortcut-section">
+    <div class="shortcut-section" name="visual_studio_code">
         <h2 onclick="toggleSection(this)">Visual Studio Code</h2>
         <div class="cuts collapsed">
             <div class="scTable">
@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <div class="shortcut-section">
+    <div class="shortcut-section" name="google_chrome">
         <h2 onclick="toggleSection(this)">Google Chrome</h2>
         <div class="cuts collapsed">
             <div class="scTable">
@@ -107,9 +107,20 @@
         </div>
     </div>
 
-    <div class="shortcut-section">
+    <div class="shortcut-section" name="windows_powertoys">
         <h2 onclick="toggleSection(this)">Windows (PowerToys)</h2>
-        <div class="cuts collapsed" id="winTables">
+        <div class="cuts" id="winTables">
+            <div class="scTable" style="width: 30%; grid-template-columns: 1fr 1fr;">
+                <div class="tableName">Advanced Paste</div>
+                <div>WIN + SHIFT + V</div>
+                <div>Open Advanced Paste window</div>
+                <div>WIN + CTRL + ALT + V</div>
+                <div>Paste as plain text</div>
+                <div>WIN + CTRL + ALT + J</div>
+                <div>Paste as JSON</div>
+                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
+            </div>
+
             <div class="scTable">
                 <div class="tableName">More</div>
                 <div>WIN + CTRL + T</div>
@@ -125,7 +136,7 @@
         </div>
     </div>
 
-    <div class="shortcut-section">
+    <div class="shortcut-section" name="nano">
         <h2 onclick="toggleSection(this)">Nano</h2>
         <div class="cuts" id="winTables">
             <div class="scTable">
