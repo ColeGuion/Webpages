@@ -4,7 +4,8 @@ const pages = [
     { href: 'colors.html', text: 'Colors' },
     { href: 'shortcuts.html', text: 'Shortcuts' },
     { href: 'programs.html#Linux', text: 'Programming' },
-    { href: 'docs.html', text: 'Docs' },
+    { href: 'css_grids.html', text: 'Grids' },
+    //{ href: 'docs.html', text: 'Docs' },
     { href: 'playground.html', text: 'Playground' },
     { href: 'bootstrap.html', text: 'Bootstrap' },
     { href: 'todo.html', text: 'To Do List' }

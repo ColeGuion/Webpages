@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Cheat Sheet</title>
+    <link rel="stylesheet" href="Style/css_grids.css">
+    <!-- <link rel="stylesheet" href="Style/navbar.css"> -->
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>CSS Grid Cheat Sheet</h1>
+            <p class="intro">Master CSS Grid with practical examples and live previews. Your complete reference for
+                modern web layouts.</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#basic-grid">Basic Grid</a></li>
+                <li><a href="#grid-areas">Grid Areas</a></li>
+                <li><a href="#implicit-grid">Implicit Grid</a></li>
+                <li><a href="#complex-layout">Complex Layout</a></li>
+            </ul>
+        </nav>
+
+        <section class="section" id="basic-grid">
+            <h2><span class="section-number">1</span>Basic Grid Layout</h2>
+
+            <div class="example">
+                <p>A simple grid with fixed columns and rows. Perfect for equal-sized card layouts and basic structures.</p>
+
+                <div class="code-section">
+                    <div class="code-block">
+                        <div class="code-header">
+                            📄 HTML Structure
+                        </div>
+                        <pre><code><span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-basic"</span><span class="html-tag">&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Item 1<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Item 2<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Item 3<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Item 4<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Item 5<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Item 6<span class="html-tag">&lt;/div&gt;</span>
+<span class="html-tag">&lt;/div&gt;</span></code></pre>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header css">
+                            🎨 CSS Styling
+                        </div>
+                        <pre><code><span class="css-property">.grid-basic</span> {
+  <span class="css-property">display:</span> <span class="css-value">grid</span>;
+  <span class="comment">/* Create 3 equal columns */</span>
+  <span class="css-property">grid-template-columns:</span> <span class="css-value">repeat(3, 1fr)</span>;
+  <span class="comment">/* Create 2 rows of 100px height */</span>
+  <span class="css-property">grid-template-rows:</span> <span class="css-value">repeat(2, 100px)</span>;
+  <span class="comment">/* Add spacing between grid items */</span>
+  <span class="css-property">gap:</span> <span class="css-value">10px</span>;
+}
+
+<span class="css-property">.grid-item</span> {
+  <span class="css-property">background:</span> <span class="css-value">#667eea</span>;
+  <span class="css-property">display:</span> <span class="css-value">flex</span>;
+  <span class="css-property">align-items:</span> <span class="css-value">center</span>;
+  <span class="css-property">justify-content:</span> <span class="css-value">center</span>;
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="preview">
+                    <h4><span class="preview-icon">👀</span>Live Preview</h4>
+                    <div class="grid-basic">
+                        <div class="grid-item">Item 1</div>
+                        <div class="grid-item">Item 2</div>
+                        <div class="grid-item">Item 3</div>
+                        <div class="grid-item">Item 4</div>
+                        <div class="grid-item">Item 5</div>
+                        <div class="grid-item">Item 6</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="grid-areas">
+            <h2><span class="section-number">2</span>Grid Template Areas</h2>
+
+            <div class="example">
+                <p>Named grid areas make complex layouts intuitive and responsive. Perfect for traditional webpage
+                    structures.</p>
+
+                <div class="code-section">
+                    <div class="code-block">
+                        <div class="code-header">
+                            📄 HTML Structure
+                        </div>
+                        <pre><code><span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-areas"</span><span class="html-tag">&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"header"</span><span class="html-tag">&gt;</span>Header<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"sidebar"</span><span class="html-tag">&gt;</span>Sidebar<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"main"</span><span class="html-tag">&gt;</span>Main Content<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"aside"</span><span class="html-tag">&gt;</span>Aside<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"footer"</span><span class="html-tag">&gt;</span>Footer<span class="html-tag">&lt;/div&gt;</span>
+<span class="html-tag">&lt;/div&gt;</span></code></pre>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header css">
+                            🎨 CSS Styling
+                        </div>
+                        <pre><code><span class="css-property">.grid-areas</span> {
+  <span class="css-property">display:</span> <span class="css-value">grid</span>;
+  <span class="css-property">grid-template-columns:</span> <span class="css-value">1fr 2fr 1fr</span>;
+  <span class="css-property">grid-template-rows:</span> <span class="css-value">auto 1fr auto</span>;
+  <span class="comment">/* Define named grid areas */</span>
+  <span class="css-property">grid-template-areas:</span> 
+    <span class="css-value">"header header header"</span>
+    <span class="css-value">"sidebar main aside"</span>
+    <span class="css-value">"footer footer footer"</span>;
+  <span class="css-property">gap:</span> <span class="css-value">15px</span>;
+  <span class="css-property">height:</span> <span class="css-value">300px</span>;
+}
+
+<span class="comment">/* Assign elements to named areas */</span>
+<span class="css-property">.header</span> { <span class="css-property">grid-area:</span> <span class="css-value">header</span>; }
+<span class="css-property">.sidebar</span> { <span class="css-property">grid-area:</span> <span class="css-value">sidebar</span>; }
+<span class="css-property">.main</span> { <span class="css-property">grid-area:</span> <span class="css-value">main</span>; }
+<span class="css-property">.aside</span> { <span class="css-property">grid-area:</span> <span class="css-value">aside</span>; }
+<span class="css-property">.footer</span> { <span class="css-property">grid-area:</span> <span class="css-value">footer</span>; }</code></pre>
+                    </div>
+                </div>
+
+                <div class="preview">
+                    <h4><span class="preview-icon">👀</span>Live Preview</h4>
+                    <div class="grid-areas">
+                        <div class="grid-item header">Header</div>
+                        <div class="grid-item sidebar">Sidebar</div>
+                        <div class="grid-item main">Main Content</div>
+                        <div class="grid-item aside">Aside</div>
+                        <div class="grid-item footer">Footer</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="implicit-grid">
+            <h2><span class="section-number">3</span>Implicit Grid with Auto-Fit</h2>
+
+            <div class="example">
+                <p>Responsive grids that automatically adjust to content and screen size. Great for image galleries and
+                    card layouts.</p>
+
+                <div class="code-section">
+                    <div class="code-block">
+                        <div class="code-header">
+                            📄 HTML Structure
+                        </div>
+                        <pre><code><span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-implicit"</span><span class="html-tag">&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Auto 1<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Auto 2<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Auto 3<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Auto 4<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Auto 5<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Auto 6<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Auto 7<span class="html-tag">&lt;/div&gt;</span>
+<span class="html-tag">&lt;/div&gt;</span></code></pre>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header css">
+                            🎨 CSS Styling
+                        </div>
+                        <pre><code><span class="css-property">.grid-implicit</span> {
+  <span class="css-property">display:</span> <span class="css-value">grid</span>;
+  <span class="comment">/* Auto-fit creates responsive columns */</span>
+  <span class="css-property">grid-template-columns:</span> 
+    <span class="css-value">repeat(auto-fit, minmax(120px, 1fr))</span>;
+  <span class="css-property">gap:</span> <span class="css-value">15px</span>;
+}
+
+<span class="comment">/* 
+auto-fit: Fits columns to available space
+minmax(120px, 1fr): Min 120px, grows to fill space
+Items automatically wrap to new rows
+*/</span>
+
+<span class="css-property">.grid-item</span> {
+  <span class="css-property">min-height:</span> <span class="css-value">80px</span>;
+  <span class="css-property">display:</span> <span class="css-value">flex</span>;
+  <span class="css-property">align-items:</span> <span class="css-value">center</span>;
+  <span class="css-property">justify-content:</span> <span class="css-value">center</span>;
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="preview">
+                    <h4><span class="preview-icon">👀</span>Live Preview</h4>
+                    <div class="grid-implicit">
+                        <div class="grid-item">Auto 1</div>
+                        <div class="grid-item">Auto 2</div>
+                        <div class="grid-item">Auto 3</div>
+                        <div class="grid-item">Auto 4</div>
+                        <div class="grid-item">Auto 5</div>
+                        <div class="grid-item">Auto 6</div>
+                        <div class="grid-item">Auto 7</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="complex-layout">
+            <h2><span class="section-number">4</span>Complex Layout with Spanning</h2>
+
+            <div class="example">
+                <p>Advanced grid with items spanning multiple rows and columns. Perfect for magazine-style layouts and
+                    dashboards.</p>
+
+                <div class="code-section">
+                    <div class="code-block">
+                        <div class="code-header">
+                            📄 HTML Structure
+                        </div>
+                        <pre><code><span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-complex"</span><span class="html-tag">&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item big-item"</span><span class="html-tag">&gt;</span>
+    Big Item
+  <span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Item 2<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Item 3<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item span-2"</span><span class="html-tag">&gt;</span>
+    Wide Item
+  <span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item"</span><span class="html-tag">&gt;</span>Item 5<span class="html-tag">&lt;/div&gt;</span>
+  <span class="html-tag">&lt;div</span> <span class="css-property">class=</span><span class="css-value">"grid-item span-3"</span><span class="html-tag">&gt;</span>
+    Extra Wide
+  <span class="html-tag">&lt;/div&gt;</span>
+<span class="html-tag">&lt;/div&gt;</span></code></pre>
+                    </div>
+
+                    <div class="code-block">
+                        <div class="code-header css">
+                            🎨 CSS Styling
+                        </div>
+                        <pre><code><span class="css-property">.grid-complex</span> {
+  <span class="css-property">display:</span> <span class="css-value">grid</span>;
+  <span class="css-property">grid-template-columns:</span> <span class="css-value">repeat(4, 1fr)</span>;
+  <span class="css-property">grid-template-rows:</span> <span class="css-value">repeat(3, 100px)</span>;
+  <span class="css-property">gap:</span> <span class="css-value">15px</span>;
+}
+
+<span class="comment">/* Span multiple columns */</span>
+<span class="css-property">.span-2</span> { 
+  <span class="css-property">grid-column:</span> <span class="css-value">span 2</span>; 
+}
+
+<span class="css-property">.span-3</span> { 
+  <span class="css-property">grid-column:</span> <span class="css-value">span 3</span>; 
+}
+
+<span class="comment">/* Span both rows and columns */</span>
+<span class="css-property">.big-item</span> { 
+  <span class="css-property">grid-column:</span> <span class="css-value">span 2</span>; 
+  <span class="css-property">grid-row:</span> <span class="css-value">span 2</span>; 
+}
+
+<span class="comment">/* Alternative syntax:
+grid-column: 1 / 3; (start/end lines)
+grid-row: 1 / 3;
+*/</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="preview">
+                    <h4><span class="preview-icon">👀</span>Live Preview</h4>
+                    <div class="grid-complex">
+                        <div class="grid-item big-item">Big Item</div>
+                        <div class="grid-item">Item 2</div>
+                        <div class="grid-item">Item 3</div>
+                        <div class="grid-item span-2">Wide Item</div>
+                        <div class="grid-item">Item 5</div>
+                        <div class="grid-item span-3">Extra Wide</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="bonus-tips">
+            <h2><span class="section-number">💡</span>Pro Tips & Quick Reference</h2>
+
+            <div class="example">
+                <h3 style="color: #667eea; margin-bottom: 20px;">Essential Grid Properties</h3>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 30px 0;">
+                    <div
+                        style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);">
+                        <h4 style="margin-bottom: 15px; font-size: 1.3rem;">🏗️ Container Properties</h4>
+                        <ul style="list-style: none; line-height: 2;">
+                            <li><strong>display:</strong> grid</li>
+                            <li><strong>grid-template-columns:</strong> 200px 1fr auto</li>
+                            <li><strong>grid-template-rows:</strong> 100px auto</li>
+                            <li><strong>gap:</strong> 20px (row + column gap)</li>
+                            <li><strong>grid-template-areas:</strong> "header main"</li>
+                            <li><strong>justify-items:</strong> start | center | end</li>
+                            <li><strong>align-items:</strong> start | center | end</li>
+                        </ul>
+                    </div>
+
+                    <div
+                        style="background: linear-gradient(135deg, #4ecdc4, #44a08d); color: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);">
+                        <h4 style="margin-bottom: 15px; font-size: 1.3rem;">📦 Item Properties</h4>
+                        <ul style="list-style: none; line-height: 2;">
+                            <li><strong>grid-column:</strong> 1 / 3 or span 2</li>
+                            <li><strong>grid-row:</strong> 2 / 4 or span 2</li>
+                            <li><strong>grid-area:</strong> header</li>
+                            <li><strong>justify-self:</strong> start | center | end</li>
+                            <li><strong>align-self:</strong> start | center | end</li>
+                            <li><strong>place-self:</strong> center (align + justify)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    style="background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; padding: 25px; border-radius: 15px; margin: 30px 0; box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);">
+                    <h4 style="margin-bottom: 15px; font-size: 1.3rem;">🚀 Responsive Grid Patterns</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                        <div>
+                            <strong>Auto-fit columns:</strong><br>
+                            <code
+                                style="background: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.9rem;">
+                                repeat(auto-fit, minmax(200px, 1fr))
+                            </code>
+                        </div>
+                        <div>
+                            <strong>Fractional units:</strong><br>
+                            <code
+                                style="background: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.9rem;">
+                                1fr 2fr 1fr (25% 50% 25%)
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="background: white; border: 2px solid #667eea; padding: 25px; border-radius: 15px; margin: 30px 0;">
+                    <h4 style="color: #667eea; margin-bottom: 15px; font-size: 1.3rem;">📱 Media Query Example</h4>
+                    <div class="code-block">
+                        <pre
+                            style="background: #1e1e1e; color: #f8f8f2; padding: 20px; border-radius: 10px; overflow-x: auto;"><code><span class="comment">/* Desktop: 3 columns */</span>
+<span class="css-property">.grid</span> {
+  <span class="css-property">grid-template-columns:</span> <span class="css-value">repeat(3, 1fr)</span>;
+}
+
+<span class="comment">/* Tablet: 2 columns */</span>
+<span class="css-property">@media (max-width: 768px)</span> {
+  <span class="css-property">.grid</span> {
+    <span class="css-property">grid-template-columns:</span> <span class="css-value">repeat(2, 1fr)</span>;
+  }
+}
+
+<span class="comment">/* Mobile: 1 column */</span>
+<span class="css-property">@media (max-width: 480px)</span> {
+  <span class="css-property">.grid</span> {
+    <span class="css-property">grid-template-columns:</span> <span class="css-value">1fr</span>;
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer
+            style="text-align: center; padding: 40px 0; background: linear-gradient(45deg, #667eea, #764ba2); color: white; border-radius: 15px; margin-top: 60px;">
+            <h3 style="margin-bottom: 15px; font-size: 1.5rem;">🎯 Master CSS Grid</h3>
+            <p style="font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+                CSS Grid is incredibly powerful for creating complex, responsive layouts. Practice with these examples
+                and experiment with different combinations to build amazing web interfaces!
+            </p>
+            <div style="margin-top: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <span
+                    style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">🔥
+                    Modern Layout</span>
+                <span
+                    style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">📱
+                    Responsive Design</span>
+                <span
+                    style="background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem;">⚡
+                    High Performance</span>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.subnav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effects to grid items
+        document.querySelectorAll('.grid-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'scale(1.05) translateZ(0)';
+                this.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.4)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'scale(1) translateZ(0)';
+                this.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
+            });
+        });
+
+        // Add copy functionality to code blocks
+        document.querySelectorAll('.code-block').forEach(block => {
+            const button = document.createElement('button');
+            button.innerHTML = '📋 Copy';
+            button.style.cssText = `
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                background: rgba(255,255,255,0.2);
+                border: none;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 0.8rem;
+                transition: all 0.2s ease;
+            `;
+
+            block.style.position = 'relative';
+            block.appendChild(button);
+
+            button.addEventListener('click', () => {
+                const code = block.querySelector('code').textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    button.innerHTML = '✅ Copied!';
+                    setTimeout(() => {
+                        button.innerHTML = '📋 Copy';
+                    }, 2000);
+                });
+            });
+
+            button.addEventListener('mouseenter', () => {
+                button.style.background = 'rgba(255,255,255,0.3)';
+            });
+
+            button.addEventListener('mouseleave', () => {
+                button.style.background = 'rgba(255,255,255,0.2)';
+            });
+        });
+    </script>
+
+    <script src="Scripts/navigation.js"></script>
+</body>
+
+</html>
