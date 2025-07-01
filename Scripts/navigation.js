@@ -5,6 +5,7 @@ const pages = [
     { href: 'shortcuts.html', text: 'Shortcuts' },
     { href: 'programs.html#Linux', text: 'Programming' },
     { href: 'css_grids.html', text: 'Grids' },
+    { href: 'editor.html', text: 'Text Editor' },
     //{ href: 'docs.html', text: 'Docs' },
     { href: 'playground.html', text: 'Playground' },
     { href: 'bootstrap.html', text: 'Bootstrap' },

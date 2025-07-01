@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Editor</title>
+    <!-- <link rel="stylesheet" href="Style/main.css"> -->
+    <link rel="stylesheet" href="Style/editor.css">
+</head>
+<body>
+    <div class="main-content">
+        <div class="container">
+            <h1>✨ Text Cleaner</h1>
+            <div class="textarea-container">
+                <textarea 
+                    id="textInput" 
+                    placeholder="Paste your text here... Empty lines will be automatically removed!"
+                    spellcheck="false"
+                ></textarea>
+            </div>
+            <div class="button-container">
+                <button id="copyBtn" onclick="copyToClipboard()">
+                    📋 Copy to Clipboard
+                </button>
+                <button id="clearBtn" onclick="clearText()">
+                    🗑️ Clear Text
+                </button>
+            </div>
+            <div class="stats" id="stats">
+                Lines: 0 | Characters: 0
+            </div>
+        </div>
+    </div>
+
+    <div class="copy-feedback" id="copyFeedback">
+        ✅ Copied to clipboard!
+    </div>
+
+    <script>
+        const textInput = document.getElementById('textInput');
+        const copyBtn = document.getElementById('copyBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const copyFeedback = document.getElementById('copyFeedback');
+        const stats = document.getElementById('stats');
+
+        function removeEmptyLines(text) {
+            return text.split('\n')
+                      .filter(line => line.trim() !== '')
+                      .join('\n');
+        }
+
+        function updateStats(text) {
+            const lines = text ? text.split('\n').length : 0;
+            const chars = text.length;
+            stats.textContent = `Lines: ${lines} | Characters: ${chars}`;
+        }
+
+        function processText() {
+            const cleanedText = removeEmptyLines(textInput.value);
+            if (cleanedText !== textInput.value) {
+                const cursorPos = textInput.selectionStart;
+                textInput.value = cleanedText;
+                // Try to maintain cursor position
+                textInput.setSelectionRange(Math.min(cursorPos, cleanedText.length), Math.min(cursorPos, cleanedText.length));
+            }
+            updateStats(cleanedText);
+        }
+
+        // Auto-clean on paste
+        textInput.addEventListener('paste', function(e) {
+            setTimeout(processText, 10);
+        });
+
+        // Update stats on input
+        textInput.addEventListener('input', function() {
+            processText();
+            copyToClipboard();
+        });
+
+        async function copyToClipboard() {
+            try {
+                await navigator.clipboard.writeText(textInput.value);
+                showCopyFeedback();
+            } catch (err) {
+                // Fallback for older browsers
+                textInput.select();
+                document.execCommand('copy');
+                showCopyFeedback();
+            }
+        }
+
+        function showCopyFeedback() {
+            copyFeedback.classList.add('show');
+            setTimeout(() => {
+                copyFeedback.classList.remove('show');
+            }, 2000);
+        }
+
+        function clearText() {
+            textInput.value = '';
+            updateStats('');
+            textInput.focus();
+        }
+
+        // Initialize stats
+        updateStats('');
+    </script>
+    <script src="Scripts/navigation.js"></script>
+</body>
+</html>
