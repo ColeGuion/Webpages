@@ -68,7 +68,7 @@
         // Auto-clean on paste
         textInput.addEventListener('paste', function(e) {
             setTimeout(processText, 10);
-            copyToClipboard();
+            setTimeout(copyToClipboard, 12);
         });
 
         // Update stats on input
