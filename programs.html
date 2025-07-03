@@ -114,6 +114,7 @@
                 <td class="description">Get Help for the Linux `ps` command</td>
             </tr>
 
+            <!--***** File Size Management *****-->
             <tr>
                 <td colspan="2" class="tabSect">File Size Management</td>
             </tr> 
@@ -138,6 +139,40 @@
                 <td class="description">Check large files in home directory</td>
             </tr>
 
+            <!--***** SCREEN *****-->
+            <tr>
+                <td colspan="2" class="tabSect">Screen</td>
+            </tr> 
+            <tr>
+                <td class="commands"><span>screen</span></td>
+                <td class="description">Start a new screen session</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>screen -ls</span></td>
+                <td class="description">List available screens</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>screen -s &lt;name&gt;</span></td>
+                <td class="description">Start a new named screen session</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>screen -r &lt;ID or name&gt;</span></td>
+                <td class="description">Reattach a detached screen</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>screen -d &lt;ID or name&gt;</span></td>
+                <td class="description">Detach a running screen session remotely</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>screen -X -S &lt;ID or name&gt; quit</span></td>
+                <td class="description">Kill a specific screen session</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>screen -wipe</span></td>
+                <td class="description">Remove dead (terminated screen sessions)</td>
+            </tr>
+
+            <!--***** Advanced & GPU *****-->
             <tr>
                 <td colspan="2" class="tabSect">Advanced & GPU</td>
             </tr> 
@@ -163,7 +198,7 @@
             </tr>
             <tr>
                 <td colspan="2" class="rowAdder"><button class="addRowBtn">Add Row</button></td>
-                <!-- Make this add a row to edit and then save it for next time -->
+                <!-- TODO: Make this add a row to edit and then save it for next time -->
             </tr>
             <!-- 
             <tr>
@@ -363,7 +398,10 @@ body {
         function copyText(element) {
             let text = "";
             element.querySelectorAll('span').forEach(span => {
-                text += span.innerText + "\n";
+                // Remove text in angle brackets <>
+                const cleanedText = span.innerText.replace(/<.*?>/g, '');
+                text += cleanedText + "\n";
+                //text += span.innerText + "\n";
             });
             navigator.clipboard.writeText(text)
                 .then(() => {
