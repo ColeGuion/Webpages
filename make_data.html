@@ -74,6 +74,9 @@
         </div>
 
         <div class="button-container">
+            <button class="action-btn remove-numbers" onclick="removeNumbers()">
+                Remove Numbers
+            </button>
             <button class="action-btn remove-quotes" onclick="removeQuotes()">
                 Remove Quotes
             </button>
@@ -97,12 +100,7 @@
     </div>
 
     <script>
-        /* document.getElementById('textbox1').innerHTML = `I spent hours poring over the script with my co-stars to memorize my lines.
-He pored over his notes the night before the exam.
-Pieces of food keep getting caught in the sponge's pores.`;
-        document.getElementById('textbox2').innerHTML = `I spent hours poring over the script with my co-stars to memorize my lines.
-He pored over his notes the night before the exam.
-Pieces of food keep getting caught in the sponge's pores.`; */
+        
         function clearInput(inputId) {
             document.getElementById(inputId).value = '';
             // If clearing dtype, hide phones section
@@ -146,6 +144,29 @@ Pieces of food keep getting caught in the sponge's pores.`; */
             } catch (err) {
                 console.error('Failed to copy text: ', err);
             }
+        }
+
+        function removeNumbers() {
+            const textbox1 = document.getElementById('textbox1');
+            const textbox2 = document.getElementById('textbox2');
+            
+            // Process textbox1
+            const lines1 = textbox1.value.split('\n');
+            const processedLines1 = lines1.map(line => {
+                // Remove numbers (optionally followed by '.' or ')') at starts of lines
+                line = line.replace(/^\d+([.)]| )\s*/, '');
+                return line;
+            });
+            textbox1.value = processedLines1.join('\n');
+
+            // Process textbox1
+            const lines2 = textbox1.value.split('\n');
+            const processedLines2 = lines2.map(line => { 
+                // Remove numbers (optionally followed by '.' or ')') at starts of lines
+                line = line.replace(/^\d+([.)]| )\s*/, '');
+                return line;
+            });
+            textbox2.value = processedLines2.join('\n');
         }
 
         function removeQuotes() {

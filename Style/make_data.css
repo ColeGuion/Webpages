@@ -125,6 +125,7 @@ textarea {
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.9);
     line-height: 1.5;
+    line-height: 20px;
 }
 
 textarea:focus {
@@ -139,6 +140,16 @@ textarea:focus {
 }
 
 .remove-quotes:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+}
+
+.remove-numbers {
+    background: linear-gradient(45deg, #b71c1c, #880808);
+    color: white;
+}
+
+.remove-numbers:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
 }
