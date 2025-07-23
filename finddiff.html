@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Diff Checker</title>
+    <link rel="stylesheet" href="Style/diff.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Text Diff Checker</h1>
+            <p>Compare two texts and highlight the differences</p>
+        </div>
+
+        <div class="diff-container">
+            <div class="text-panel">
+                <div class="panel-header">
+                    <div class="panel-icon original-icon"></div>
+                    <div class="panel-title">Original Text</div>
+                </div>
+                <textarea id="originalText" class="text-area" placeholder="Enter your original text here..."></textarea>
+            </div>
+
+            <div class="text-panel">
+                <div class="panel-header">
+                    <div class="panel-icon modified-icon"></div>
+                    <div class="panel-title">Modified Text</div>
+                </div>
+                <textarea id="modifiedText" class="text-area" placeholder="Enter your modified text here..."></textarea>
+            </div>
+        </div>
+
+        <div class="submit-container">
+            <button id="submitBtn" class="submit-btn">Compare Texts</button>
+        </div>
+
+        <div class="loading" id="loadingIndicator">
+            <div class="loading-spinner"></div>
+            <p>Analyzing differences...</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="results-header">Analysis Results</div>
+            <div class="diff-summary" id="diffSummary"></div>
+        </div>
+    </div>
+
+    <script>
+        let originalDifferences = [];
+        let modifiedDifferences = [];
+
+        document.getElementById('submitBtn').addEventListener('click', async function() {
+            const originalText = document.getElementById('originalText').value;
+            const modifiedText = document.getElementById('modifiedText').value;
+            
+            if (!originalText.trim() || !modifiedText.trim()) {
+                showError('Please enter text in both fields');
+                return;
+            }
+
+            hideError();
+            showLoading(true);
+            
+            try {
+                // Call your local API service
+                const response = await fetch('http://localhost:8080/compare', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text1: originalText,
+                        text2: modifiedText
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const differences = await response.json();
+                
+                // Process and highlight differences
+                highlightDifferences(differences);
+                showResults(differences);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showError('Failed to analyze differences. Please check your API service.');
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        function highlightDifferences(differences) {
+            const originalTextArea = document.getElementById('originalText');
+            const modifiedTextArea = document.getElementById('modifiedText');
+            
+            // Store original text values
+            const originalText = originalTextArea.value;
+            const modifiedText = modifiedTextArea.value;
+            
+            // Create highlighted versions
+            const originalHighlighted = createHighlightedText(originalText, differences);
+            const modifiedHighlighted = createHighlightedText(modifiedText, differences);
+            
+            // Replace textareas with highlighted divs
+            replaceTextAreaWithHighlighted(originalTextArea, originalHighlighted);
+            replaceTextAreaWithHighlighted(modifiedTextArea, modifiedHighlighted);
+        }
+
+        function createHighlightedText(text, differences) {
+            let highlightedText = '';
+            let lastIndex = 0;
+            
+            // Sort differences by index to process them in order
+            const sortedDiffs = [...differences].sort((a, b) => a.index - b.index);
+            
+            sortedDiffs.forEach(diff => {
+                // Add text before the difference
+                highlightedText += escapeHtml(text.substring(lastIndex, diff.index));
+                
+                // Add the highlighted difference
+                const diffText = text.substring(diff.index, diff.index + diff.length);
+                highlightedText += `<span class="diff-highlight">${escapeHtml(diffText)}<span class="diff-tooltip">${escapeHtml(diff.message)}</span></span>`;
+                
+                lastIndex = diff.index + diff.length;
+            });
+            
+            // Add remaining text
+            highlightedText += escapeHtml(text.substring(lastIndex));
+            
+            return highlightedText;
+        }
+
+        function replaceTextAreaWithHighlighted(textArea, highlightedContent) {
+            const wrapper = document.createElement('div');
+            wrapper.style.cssText = `
+                width: 100%;
+                height: 400px;
+                font-family: 'Consolas', 'Monaco', monospace;
+                font-size: 14px;
+                line-height: 1.6;
+                padding: 15px;
+                background: #fff;
+                border-radius: 10px;
+                overflow-y: auto;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                border: 2px solid #e9ecef;
+            `;
+            wrapper.innerHTML = highlightedContent;
+            
+            textArea.parentNode.replaceChild(wrapper, textArea);
+        }
+
+        function showResults(differences) {
+            const resultsSection = document.getElementById('resultsSection');
+            const diffSummary = document.getElementById('diffSummary');
+            
+            diffSummary.innerHTML = `
+                <div class="summary-card">
+                    <div class="summary-number">${differences.length}</div>
+                    <div class="summary-label">Differences Found</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-number">${differences.filter(d => d.message.toLowerCase().includes('remove')).length}</div>
+                    <div class="summary-label">Removals</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-number">${differences.filter(d => d.message.toLowerCase().includes('add')).length}</div>
+                    <div class="summary-label">Additions</div>
+                </div>
+            `;
+            
+            resultsSection.style.display = 'block';
+        }
+
+        function showLoading(show) {
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (show) {
+                loadingIndicator.style.display = 'block';
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Analyzing...';
+            } else {
+                loadingIndicator.style.display = 'none';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Compare Texts';
+            }
+        }
+
+        function showError(message) {
+            const errorElement = document.getElementById('errorMessage');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function hideError() {
+            const errorElement = document.getElementById('errorMessage');
+            errorElement.style.display = 'none';
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Add a reset button functionality
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'r') {
+                e.preventDefault();
+                location.reload();
+            }
+        });
+    </script>
+    <script src="Scripts/navigation.js"></script>
+</body>
+</html>

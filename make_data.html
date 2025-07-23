@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual Text Processor</title>
+    <link rel="stylesheet" href="Style/make_data.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- <h1>Dual Text Processor</h1> -->
+        <div class="input-row">
+            <div class="input-group">
+                <label for="source">Source</label>
+                <div class="input-wrapper">
+                    <input type="text" id="source" placeholder="Enter source...">
+                    <button class="clear-btn" onclick="clearInput('source')" title="Clear source">×</button>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="dtype">DType</label>
+                <div class="input-wrapper">
+                    <input type="text" id="dtype" placeholder="Enter dtype..." oninput="togglePhonesSection()">
+                    <button class="clear-btn" onclick="clearInput('dtype')" title="Clear dtype">×</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="phones-section" class="input-row" style="display: none;">
+            <div class="input-group">
+                <label for="phone1">Phones</label>
+                <div class="input-wrapper">
+                    <input type="text" id="phone1" placeholder="Enter phone 1...">
+                    <button class="clear-btn" onclick="clearInput('phone1')" title="Clear phone 1">×</button>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="phone2">&nbsp;</label>
+                <div class="input-wrapper">
+                    <input type="text" id="phone2" placeholder="Enter phone 2...">
+                    <button class="clear-btn" onclick="clearInput('phone2')" title="Clear phone 2">×</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="textbox-container">
+            <div class="textbox-group">
+                <div class="textbox-header">
+                    <label for="textbox1">Text Box 1</label>
+                    <div class="textbox-buttons">
+                        <button class="textarea-copy-btn" onclick="copyTextarea('textbox1')" title="Copy text">📋 Copy</button>
+                        <button class="textarea-clear-btn" onclick="clearTextarea('textbox1')" title="Clear text">× Clear</button>
+                    </div>
+                </div>
+                <div class="textbox-wrapper">
+                    <textarea id="textbox1" placeholder="Enter your text here..."></textarea>
+                </div>
+            </div>
+            <div class="textbox-group">
+                <div class="textbox-header">
+                    <label for="textbox2">Text Box 2</label>
+                    <div class="textbox-buttons">
+                        <button class="textarea-copy-btn" onclick="copyTextarea('textbox2')" title="Copy text">📋 Copy</button>
+                        <button class="textarea-clear-btn" onclick="clearTextarea('textbox2')" title="Clear text">× Clear</button>
+                    </div>
+                </div>
+                <div class="textbox-wrapper">
+                    <textarea id="textbox2" placeholder="Enter your text here..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button class="action-btn remove-quotes" onclick="removeQuotes()">
+                Remove Quotes
+            </button>
+            <button class="action-btn replace-apostrophe" onclick="replaceApostrophes()">
+                Replace Apostrophes
+            </button>
+            <button class="action-btn submit-btn" onclick="submitData()">
+                Submit Data
+            </button>
+        </div>
+
+        <div id="result-container" style="display: none; margin-top: 30px;">
+            <h2 style="color: #333; margin-bottom: 15px; text-align: center;">Generated JSON Objects</h2>
+            <div style="position: relative;">
+                <pre id="result-display" style="background: rgba(0, 0, 0, 0.05); padding: 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; max-height: 400px; overflow-y: auto; border: 2px solid #e0e0e0;"></pre>
+                <button class="action-btn" onclick="copyResult()" style="position: absolute; top: 10px; right: 10px; padding: 8px 16px; font-size: 12px; min-width: auto; background: linear-gradient(45deg, #667eea, #764ba2);">
+                    📋 Copy JSON
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('textbox1').innerHTML = `I spent hours poring over the script with my co-stars to memorize my lines.
+He pored over his notes the night before the exam.
+Pieces of food keep getting caught in the sponge's pores.`;
+        document.getElementById('textbox2').innerHTML = `I spent hours poring over the script with my co-stars to memorize my lines.
+He pored over his notes the night before the exam.
+Pieces of food keep getting caught in the sponge's pores.`;
+        function clearInput(inputId) {
+            document.getElementById(inputId).value = '';
+            // If clearing dtype, hide phones section
+            if (inputId === 'dtype') {
+                togglePhonesSection();
+            }
+        }
+
+        function togglePhonesSection() {
+            const dtypeInput = document.getElementById('dtype');
+            const phonesSection = document.getElementById('phones-section');
+            
+            if (dtypeInput.value.trim().toLowerCase() === 'homophones') {
+                phonesSection.style.display = 'flex';
+            } else {
+                phonesSection.style.display = 'none';
+                // Clear phones inputs when hiding
+                document.getElementById('phone1').value = '';
+                document.getElementById('phone2').value = '';
+            }
+        }
+
+        function clearTextarea(textareaId) {
+            document.getElementById(textareaId).value = '';
+        }
+
+        function copyTextarea(textareaId) {
+            const textarea = document.getElementById(textareaId);
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // For mobile devices
+            
+            try {
+                document.execCommand('copy');
+                // Brief visual feedback
+                const button = event.target;
+                const originalText = button.innerHTML;
+                button.innerHTML = '✓ Copied!';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 1000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            }
+        }
+
+        function removeQuotes() {
+            const textbox1 = document.getElementById('textbox1');
+            const textbox2 = document.getElementById('textbox2');
+            
+            // Process textbox1
+            const lines1 = textbox1.value.split('\n');
+            const processedLines1 = lines1.map(line => {
+                if (line.startsWith('"') && line.endsWith('"') && line.length > 1) {
+                    return line.slice(1, -1);
+                }
+                return line;
+            });
+            textbox1.value = processedLines1.join('\n');
+            
+            // Process textbox2
+            const lines2 = textbox2.value.split('\n');
+            const processedLines2 = lines2.map(line => {
+                if (line.startsWith('"') && line.endsWith('"') && line.length > 1) {
+                    return line.slice(1, -1);
+                }
+                return line;
+            });
+            textbox2.value = processedLines2.join('\n');
+        }
+
+        function replaceApostrophes() {
+            const textbox1 = document.getElementById('textbox1');
+            const textbox2 = document.getElementById('textbox2');
+            
+            // Replace backtick apostrophes with normal apostrophes
+            textbox1.value = textbox1.value.replace(/’/g, "'");
+            textbox2.value = textbox2.value.replace(/’/g, "'");
+        }
+
+        function submitData() {
+            const textbox1 = document.getElementById('textbox1');
+            const textbox2 = document.getElementById('textbox2');
+            
+            // Split text into arrays by lines
+            const orig = textbox1.value.split('\n');
+            const correcteds = textbox2.value.split('\n');
+            
+           // Call the make_data_samples function
+            make_data_samples(orig, correcteds);
+        }
+
+        function make_data_samples(orig, correcteds) {
+            let dtype = document.getElementById('dtype').value;
+            let src = document.getElementById('source').value;
+            let phone1 = document.getElementById('phone1').value;
+            let phone2 = document.getElementById('phone2').value;
+            //console.log(`Source: ${JSON.stringify(src)}\nDtype: ${JSON.stringify(dtype)}\nPhone #1: ${JSON.stringify(phone1)}\nPhone #2: ${JSON.stringify(phone2)}`);
+
+            // Strip whitespace from all strings
+            const trimmedOrig = orig.map(str => str.trim());
+            const trimmedCorrecteds = correcteds.map(str => str.trim());
+            
+            // Create JSON objects
+            const jsonObjects = [];
+            const maxLength = Math.max(trimmedOrig.length, trimmedCorrecteds.length);
+            
+            for (let i = 0; i < maxLength; i++) {
+                const text = trimmedOrig[i] || '';
+                const correct = trimmedCorrecteds[i] || '';
+                
+                // Skip empty pairs
+                if (text.trim() === '' && correct.trim() === '') {
+                    continue;
+                }
+                
+                jsonObjects.push({
+                    ...(dtype !== "" ? { type: dtype } : {}),   // Add "type" field if dtype does not equal ""
+                    ...(phone1 !== "" ? { phones: [phone1, phone2] } : {}),   // Add "phones" field if phone1 does not equal ""
+                    text: text,
+                    correct: correct,
+                    ...(src !== "" ? { source: src } : {}),   // Add "source" field if src does not equal ""
+                });
+
+            }
+            
+            // Display the result
+            displayResult(jsonObjects);
+        }
+
+        function displayResult(jsonObjects) {
+            const resultContainer = document.getElementById('result-container');
+            const resultDisplay = document.getElementById('result-display');
+            
+            // Format as individual JSON objects (not as an array)
+            const formattedResult = jsonObjects.map(obj => {
+                //JSON.stringify(obj, null, 4)
+                // Custom JSON formatting to keep arrays on single line
+                let jsonStr = JSON.stringify(obj, null, 4);
+
+                // Replace multi-line array formatting with single-line
+                jsonStr = jsonStr.replace(/(\[\s+)"([^"]+)",\s+"([^"]+)"\s+\]/g, '["$2", "$3"]');
+
+                return jsonStr;
+            }).join(',\n');
+            
+            resultDisplay.textContent = formattedResult;
+            resultContainer.style.display = 'block';
+            
+            // Store the result for copying
+            window.currentResult = formattedResult;
+            
+            // Scroll to result
+            resultContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyResult() {
+            const textToCopy = window.currentResult || '';
+            
+            // Create a temporary textarea to copy the text
+            const tempTextarea = document.createElement('textarea');
+            tempTextarea.value = textToCopy;
+            document.body.appendChild(tempTextarea);
+            tempTextarea.select();
+            tempTextarea.setSelectionRange(0, 99999);
+            
+            try {
+                document.execCommand('copy');
+                const button = event.target;
+                const originalText = button.innerHTML;
+                button.innerHTML = '✓ Copied!';
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                }, 1000);
+            } catch (err) {
+                console.error('Failed to copy result: ', err);
+            }
+            
+            document.body.removeChild(tempTextarea);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            // ALT+X - Clear both text boxes
+            if (event.altKey && event.key.toLowerCase() === 'x') {
+                event.preventDefault();
+                clearTextarea('textbox1');
+                clearTextarea('textbox2');
+            }
+            
+            // ALT+C - Copy JSON objects
+            if (event.altKey && event.key.toLowerCase() === 'c') {
+                event.preventDefault();
+                if (window.currentResult) {
+                    copyResult();
+                }
+            }
+        });
+    </script>
+    <script src="Scripts/navigation.js"></script>
+</body>
+</html>

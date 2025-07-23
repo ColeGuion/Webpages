@@ -9,7 +9,9 @@ const pages = [
     //{ href: 'docs.html', text: 'Docs' },
     { href: 'playground.html', text: 'Playground' },
     { href: 'bootstrap.html', text: 'Bootstrap' },
-    { href: 'todo.html', text: 'To Do List' }
+    { href: 'todo.html', text: 'To Do' },
+    { href: 'finddiff.html', text: 'FindDiff' },
+    { href: 'make_data.html', text: 'Make Data' },
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
