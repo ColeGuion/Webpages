@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div class="textbox-wrapper">
-                    <textarea id="textbox1" placeholder="Enter your text here..."></textarea>
+                    <textarea id="textbox1" onpaste="handlePaste('textbox1')"></textarea>
                 </div>
             </div>
             <div class="textbox-group">
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="textbox-wrapper">
-                    <textarea id="textbox2" placeholder="Enter your text here..."></textarea>
+                    <textarea id="textbox2" onpaste="handlePaste('textbox2')"></textarea>
                 </div>
             </div>
         </div>
@@ -100,6 +100,28 @@
     </div>
 
     <script>
+        document.getElementById('textbox1').innerHTML = `I spent hours poring over the script with my co-stars to memorize my lines.
+He pored over his notes the night before the exam.
+Pieces of food keep getting caught in the sponge's pores.
+
+It's time for retailers to help people find products in their precise moment of need—and perhaps before they even perceive that need—whether or not they're logged in or ready to click a 'buy' button on a screen.
+I wonder whether the Earth is really flat.
+
+She wants to discuss whether your story is accurate.
+I can't decide whether to go to the party or stay home.
+Please let me know whether you'll be able to attend the meeting.
+The success of the project depends on whether we secure funding.`;
+        document.getElementById('textbox2').innerHTML = `I spent hours poring over the script with my co-stars to memorize my lines.
+He pored over his notes the night before the exam.
+Pieces of food keep getting caught in the sponge's pores.
+
+I wonder whether the Earth is really flat.
+It's time for retailers to help people find products in their precise moment of need—and perhaps before they even perceive that need—whether or not they're logged in or ready to click a 'buy' button on a screen.
+
+She wants to discuss whether your story is accurate.
+I can't decide whether to go to the party or stay home.
+Please let me know whether you'll be able to attend the meeting.
+The success of the project depends on whether we secure funding.`;
         function clearInput(inputId) {
             document.getElementById(inputId).value = '';
             // If clearing dtype, hide phones section
@@ -124,6 +146,15 @@
 
         function clearTextarea(textareaId) {
             document.getElementById(textareaId).value = '';
+        }
+
+        function handlePaste(textareaId) {
+            // Use setTimeout to allow the paste to complete first
+            setTimeout(function() {
+                const textarea = document.getElementById(textareaId);
+                // Replace backtick apostrophes with normal apostrophes
+                textarea.value = textarea.value.replace(/’/g, "'");
+            }, 0);
         }
 
         function copyTextarea(textareaId) {
