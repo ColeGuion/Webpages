@@ -100,7 +100,6 @@
     </div>
 
     <script>
-        
         function clearInput(inputId) {
             document.getElementById(inputId).value = '';
             // If clearing dtype, hide phones section
@@ -160,7 +159,7 @@
             textbox1.value = processedLines1.join('\n');
 
             // Process textbox1
-            const lines2 = textbox1.value.split('\n');
+            const lines2 = textbox2.value.split('\n');
             const processedLines2 = lines2.map(line => { 
                 // Remove numbers (optionally followed by '.' or ')') at starts of lines
                 line = line.replace(/^\d+([.)]| )\s*/, '');
