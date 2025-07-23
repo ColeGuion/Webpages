@@ -56,7 +56,11 @@
                     </div>
                 </div>
                 <div class="textbox-wrapper">
-                    <textarea id="textbox1" onpaste="handlePaste('textbox1')"></textarea>
+                    <!-- <textarea id="textbox1" onpaste="handlePaste('textbox1')"></textarea> -->
+                    <div class="textarea-container">
+                        <div class="line-numbers" id="line-numbers-1"></div>
+                        <textarea id="textbox1" oninput="updateLineNumbers('textbox1', 'line-numbers-1')" onscroll="syncScroll('textbox1', 'line-numbers-1')" onpaste="handlePaste('textbox1')"></textarea>
+                    </div>
                 </div>
             </div>
             <div class="textbox-group">
@@ -68,7 +72,11 @@
                     </div>
                 </div>
                 <div class="textbox-wrapper">
-                    <textarea id="textbox2" onpaste="handlePaste('textbox2')"></textarea>
+                    <!-- <textarea id="textbox2" onpaste="handlePaste('textbox2')"></textarea> -->
+                    <div class="textarea-container">
+                        <div class="line-numbers" id="line-numbers-2"></div>
+                        <textarea id="textbox2" oninput="updateLineNumbers('textbox2', 'line-numbers-2')" onscroll="syncScroll('textbox2', 'line-numbers-2')" onpaste="handlePaste('textbox2')"></textarea>
+                    </div> 
                 </div>
             </div>
         </div>
@@ -100,6 +108,29 @@
     </div>
 
     <script>
+        document.getElementById('textbox1').innerHTML = `I spent hours poring over the script with my co-stars to memorize my lines.
+He pored over his notes the night before the exam.
+Pieces of food keep getting caught in the sponge's pores.
+
+It's time for retailers to help people find products in their precise moment of need—and perhaps before they even perceive that need—whether or not they're logged in or ready to click a 'buy' button on a screen.
+I wonder whether the Earth is really flat.
+
+She wants to discuss whether your story is accurate.
+I can't decide whether to go to the party or stay home.
+Please let me know whether you'll be able to attend the meeting.
+The success of the project depends on whether we secure funding.`;
+        document.getElementById('textbox2').innerHTML = `I spent hours poring over the script with my co-stars to memorize my lines.
+He pored over his notes the night before the exam.
+Pieces of food keep getting caught in the sponge's pores.
+
+I wonder whether the Earth is really flat.
+It's time for retailers to help people find products in their precise moment of need—and perhaps before they even perceive that need—whether or not they're logged in or ready to click a 'buy' button on a screen.
+
+She wants to discuss whether your story is accurate.
+I can't decide whether to go to the party or stay home.
+Please let me know whether you'll be able to attend the meeting.
+The success of the project depends on whether we secure funding.`;
+        
         function clearInput(inputId) {
             document.getElementById(inputId).value = '';
             // If clearing dtype, hide phones section
@@ -124,7 +155,58 @@
 
         function clearTextarea(textareaId) {
             document.getElementById(textareaId).value = '';
+            // Update line numbers when clearing
+            const lineNumberId = textareaId === 'textbox1' ? 'line-numbers-1' : 'line-numbers-2';
+            updateLineNumbers(textareaId, lineNumberId);
         }
+
+        function updateLineNumbers(textareaId, lineNumbersId) {
+            const textarea = document.getElementById(textareaId);
+            const lineNumbers = document.getElementById(lineNumbersId);
+            
+            const lines = textarea.value.split('\n');
+            const lineHeight = parseFloat(getComputedStyle(textarea).lineHeight);
+            const textareaStyles = getComputedStyle(textarea);
+            const textareaWidth = textarea.clientWidth - parseFloat(textareaStyles.paddingLeft) - parseFloat(textareaStyles.paddingRight);
+
+            // Create a temporary canvas to measure text width
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.font = textareaStyles.fontSize + ' ' + textareaStyles.fontFamily;
+            
+            // Clear existing line numbers
+            lineNumbers.innerHTML = '';
+            
+            lines.forEach((line, index) => {
+                // Calculate how many visual lines this logical line takes
+                let visualLines = 1;
+                if (line.length > 0) {
+                    const textWidth = ctx.measureText(line).width;
+                    visualLines = Math.max(1, Math.ceil(textWidth / textareaWidth));
+                }
+                
+                const lineNumberDiv = document.createElement('div');
+                lineNumberDiv.textContent = index + 1;
+                lineNumberDiv.style.height = (lineHeight * visualLines) + 'px';
+                lineNumberDiv.style.lineHeight = lineHeight + 'px';
+                lineNumberDiv.style.display = 'flex';
+                lineNumberDiv.style.alignItems = 'flex-start';
+                lineNumbers.appendChild(lineNumberDiv);
+            });
+        }
+
+        function syncScroll(textareaId, lineNumberId) {
+            const textarea = document.getElementById(textareaId);
+            const lineNumbers = document.getElementById(lineNumberId);
+            
+            lineNumbers.scrollTop = textarea.scrollTop;
+        }
+
+        // Initialize line numbers on page load
+        window.addEventListener('load', function() {
+            updateLineNumbers('textbox1', 'line-numbers-1');
+            updateLineNumbers('textbox2', 'line-numbers-2');
+        });
 
         function handlePaste(textareaId) {
             // Use setTimeout to allow the paste to complete first
@@ -132,6 +214,10 @@
                 const textarea = document.getElementById(textareaId);
                 // Replace backtick apostrophes with normal apostrophes
                 textarea.value = textarea.value.replace(/’/g, "'");
+                
+                // Update line numbers after paste and replacement
+                const lineNumberId = textareaId === 'textbox1' ? 'line-numbers-1' : 'line-numbers-2';
+                updateLineNumbers(textareaId, lineNumberId);
             }, 0);
         }
 
