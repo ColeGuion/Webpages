@@ -94,6 +94,14 @@ h1 {
     margin-bottom: 10px;
 }
 
+.textbox-footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
 .textbox-group label {
     font-weight: 600;
     color: #555;
@@ -223,7 +231,8 @@ textarea:focus {
     font-size: 12px;
     font-weight: bold;
     transition: all 0.3s ease;
-    width: 50%;
+    width: 32%;
+    font-size: 16px;
 }
 
 .textarea-clear-btn {
@@ -232,7 +241,7 @@ textarea:focus {
 
 .textarea-copy-btn {
     right: 80px;
-    background: #4ecdc4;
+    background: #6B8E23;
 }
 
 .textarea-clear-btn:hover {
