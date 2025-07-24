@@ -106,7 +106,7 @@
             <h2 style="color: #333; margin-bottom: 15px; text-align: center;">Generated JSON Objects</h2>
             <div style="position: relative;">
                 <pre id="result-display" style="background: rgba(0, 0, 0, 0.05); padding: 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; max-height: 400px; overflow-y: auto; border: 2px solid #e0e0e0;"></pre>
-                <button class="action-btn" onclick="copyResult()" style="position: absolute; top: 10px; right: 10px; padding: 8px 16px; font-size: 12px; min-width: auto; background: linear-gradient(45deg, #667eea, #764ba2);">
+                <button class="action-btn" onclick="copyResult()" style="position: absolute; top: 10px; right: 30px; padding: 8px 16px; font-size: 12px; min-width: auto; background: linear-gradient(45deg, #667eea, #764ba2);">
                     📋 Copy JSON
                 </button>
             </div>
@@ -114,7 +114,6 @@
     </div>
 
     <script>
-        
         function clearInput(inputId) {
             document.getElementById(inputId).value = '';
             // If clearing dtype, hide phones section
@@ -359,7 +358,7 @@
 
         function copyResult() {
             const textToCopy = window.currentResult || '';
-            
+
             // Create a temporary textarea to copy the text
             const tempTextarea = document.createElement('textarea');
             tempTextarea.value = textToCopy;
