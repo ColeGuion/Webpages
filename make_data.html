@@ -14,16 +14,16 @@
         <!-- <h1>Dual Text Processor</h1> -->
         <div class="input-row">
             <div class="input-group">
-                <label for="source">Source</label>
+                <!-- <label for="source">Source</label> -->
                 <div class="input-wrapper">
-                    <input type="text" id="source" placeholder="Enter source...">
+                    <input type="text" id="source" placeholder="SOURCE">
                     <button class="clear-btn" onclick="clearInput('source')" title="Clear source">×</button>
                 </div>
             </div>
             <div class="input-group">
-                <label for="dtype">DType</label>
+                <!-- <label for="dtype">DType</label> -->
                 <div class="input-wrapper">
-                    <input type="text" id="dtype" placeholder="Enter dtype..." oninput="togglePhonesSection()">
+                    <input type="text" id="dtype" placeholder="DTYPE" oninput="togglePhonesSection()">
                     <button class="clear-btn" onclick="clearInput('dtype')" title="Clear dtype">×</button>
                 </div>
             </div>
@@ -113,8 +113,11 @@
         </div>
     </div>
 
+    <!-- TODO: Fix line number issues. (When mulit-line string ends with one word sometimes the alignment doesn't align properly) -->
+    <!-- TODO: Add bigger space between different lines, but not the same line that is wrapped -->
+    <!-- TODO: Make source and dtype inputs smaller; Make text boxes wider (line numbers smaller) -->
+    <!-- TODO: Remove empty lines -->
     <script>
-        
         function clearInput(inputId) {
             document.getElementById(inputId).value = '';
             // If clearing dtype, hide phones section
