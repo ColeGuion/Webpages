@@ -166,6 +166,67 @@ function replaceApostrophes() {
     textbox2.value = textbox2.value.replace(/‘/g, "'").replace(/’/g, "'").replace(/“/g, '"').replace(/”/g, '"');
 }
 
+function removeEmptyLines() {
+    const textbox1 = document.getElementById('textbox1');
+    const textbox2 = document.getElementById('textbox2');
+    
+    // Remove empty lines from phones textarea
+    textbox1.value = textbox1.value
+        .split('\n')
+        .filter(line => line.trim() !== '')
+        .join('\n');
+        
+    // Remove empty lines from emails textarea
+    textbox2.value = textbox2.value
+        .split('\n')
+        .filter(line => line.trim() !== '')
+        .join('\n');
+    
+    updateLineNumbers('textbox1', 'line-numbers-1');
+    updateLineNumbers('textbox2', 'line-numbers-2');
+}
+
+function combineToSentences() {
+    const textbox1 = document.getElementById('textbox1');
+    const textbox2 = document.getElementById('textbox2');
+
+    textbox1.value = combineSentences(textbox1.value);
+    textbox2.value = combineSentences(textbox2.value);
+    updateLineNumbers('textbox1', 'line-numbers-1');
+    updateLineNumbers('textbox2', 'line-numbers-2');
+}
+
+function combineSentences(input) {
+    // Split input into lines and trim whitespace
+    const lines = input.split("\n").map((line) => line.trim());
+
+    // Initialize result array and current sentence
+    let sentences = [];
+    let currentSentence = [];
+
+    // Process each line
+    for (let line of lines) {
+        if (line) {
+            currentSentence.push(line);
+            // If line ends with any of `.!?` then combine current sentence and reset
+            if (line.endsWith(".") || line.endsWith("!") || line.endsWith("?")) {
+                let sentence = currentSentence.join(" ").replace(/\s+([;,.])/g, "$1");
+                sentences.push(sentence);
+                currentSentence = [];
+            }
+        }
+    }
+
+    // Handle any remaining lines that don't end with a period
+    if (currentSentence.length > 0) {
+        let sentence = currentSentence.join(" ").replace(/\s+([;,.])/g, "$1");
+        sentences.push(sentence);
+    }
+
+    // Join sentences with newlines
+    return sentences.join("\n");
+}
+
 function submitData() {
     const textbox1 = document.getElementById('textbox1');
     const textbox2 = document.getElementById('textbox2');
@@ -274,23 +335,23 @@ function load_test_texts() {
 He pored over his notes the night before the exam.
 Pieces of food keep getting caught in the sponge's pores.
 
-It's time for retailers to help people find products in their precise moment of need—and perhaps before they even perceive that need—whether or not they're logged in or ready to click a 'buy' button on a screen.
-I wonder whether the Earth is really flat.
+In this narrative analysis, I chose research participants whose work aligned with the
+theories previously described; yet these participants didn’t always express views that
+aligned with those theories during our interviews.
 
-She wants to discuss whether your story is accurate.
-I can't decide whether to go to the party or stay home.
-Please let me know whether you'll be able to attend the meeting.
+
 The success of the project depends on whether we secure funding.`;
     document.getElementById('textbox2').innerHTML = `I spent hours poring over the script with my co-stars to memorize my lines.
 He pored over his notes the night before the exam.
 Pieces of food keep getting caught in the sponge's pores.
 
-I wonder whether the Earth is really flat.
-It's time for retailers to help people find products in their precise moment of need—and perhaps before they even perceive that need—whether or not they're logged in or ready to click a 'buy' button on a screen.
+Hello
+World!
 
-She wants to discuss whether your story is accurate.
-I can't decide whether to go to the party or stay home.
-Please let me know whether you'll be able to attend the meeting.
+Therefore, it is inaccurate to characterise the socialist realist art of the 1930s as simply
+the product of uniformly oppressive Stalinist policy; socialist realism was also driven
+from below by some artists and by the public.
+
 The success of the project depends on whether we secure funding.`;
 
 }
