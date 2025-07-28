@@ -114,6 +114,7 @@
     </div>
 
     <script>
+        
         function clearInput(inputId) {
             document.getElementById(inputId).value = '';
             // If clearing dtype, hide phones section
@@ -196,7 +197,7 @@
             setTimeout(function() {
                 const textarea = document.getElementById(textareaId);
                 // Replace backtick apostrophes with normal apostrophes
-                textarea.value = textarea.value.replace(/’/g, "'");
+                textarea.value = textarea.value.replace(/‘/g, "'").replace(/’/g, "'").replace(/“/g, '"').replace(/”/g, '"');
                 
                 // Update line numbers after paste and replacement
                 const lineNumberId = textareaId === 'textbox1' ? 'line-numbers-1' : 'line-numbers-2';
@@ -275,9 +276,9 @@
             const textbox1 = document.getElementById('textbox1');
             const textbox2 = document.getElementById('textbox2');
             
-            // Replace backtick apostrophes with normal apostrophes
-            textbox1.value = textbox1.value.replace(/’/g, "'");
-            textbox2.value = textbox2.value.replace(/’/g, "'");
+            // Replace weird single and double quotes (‘’ “”) with normal quotes
+            textbox1.value = textbox1.value.replace(/‘/g, "'").replace(/’/g, "'").replace(/“/g, '"').replace(/”/g, '"');
+            textbox2.value = textbox2.value.replace(/‘/g, "'").replace(/’/g, "'").replace(/“/g, '"').replace(/”/g, '"');
         }
 
         function submitData() {
