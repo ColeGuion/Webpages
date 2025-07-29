@@ -62,9 +62,23 @@
 
 .button-container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.button-row {
+    display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
+    width: 100%;
+}
+
+.submit-row {
+    display: flex;
+    justify-content: center;
+    width: 50%;
 }
 
 .action-btn {
@@ -76,9 +90,10 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    min-width: 200px;
     color: white;
+    flex: 1;
 }
+
 .action-btn:hover {
     transform: translateY(-3px);
 }

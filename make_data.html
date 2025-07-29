@@ -85,12 +85,16 @@
         </div>
 
         <div class="button-container">
-            <button class="action-btn remove-numbers" onclick="removeNumbers()">Remove Numbers</button>
-            <button class="action-btn remove-quotes" onclick="removeQuotes()">Remove Quotes</button>
-            <button class="action-btn replace-apostrophe" onclick="replaceApostrophes()">Replace Apostrophes</button>
-            <button class="action-btn remove-empties" onclick="removeEmptyLines()">Remove Empty Lines</button>
-            <button class="action-btn combine-sents" onclick="combineToSentences()">Combine To Sentences</button>
-            <button class="action-btn submit-btn" onclick="submitData()">Submit Data</button>
+            <div class="button-row">
+                <button class="action-btn remove-numbers" onclick="removeNumbers()">Remove Numbers</button>
+                <button class="action-btn remove-quotes" onclick="removeQuotes()">Remove Quotes</button>
+                <button class="action-btn replace-apostrophe" onclick="replaceApostrophes()">Replace Apostrophes</button>
+                <button class="action-btn remove-empties" onclick="removeEmptyLines()">Remove Empty Lines</button>
+                <button class="action-btn combine-sents" onclick="combineToSentences()">Combine To Sentences</button>
+            </div>
+            <div class="button-row submit-row">
+                <button class="action-btn submit-btn" onclick="submitData()">Submit Data</button>
+            </div>
         </div>
 
         <div id="result-container" style="display: none; margin-top: 30px;">

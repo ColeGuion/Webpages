@@ -162,6 +162,7 @@ function replaceApostrophes() {
     textbox2.value = textbox2.value.replace(/‘/g, "'").replace(/’/g, "'").replace(/“/g, '"').replace(/”/g, '"');
 }
 
+// Remove empty/blank lines in both textboxes
 function removeEmptyLines() {
     const textbox1 = document.getElementById('textbox1');
     const textbox2 = document.getElementById('textbox2');
@@ -224,17 +225,25 @@ function combineSentences(input) {
 }
 
 function submitData() {
-    // removeEmptyLines() for formatting and text matchings
-    removeEmptyLines();
     const textbox1 = document.getElementById('textbox1');
     const textbox2 = document.getElementById('textbox2');
     
     // Split text into arrays by lines
-    const orig = textbox1.value.split('\n');
-    const correcteds = textbox2.value.split('\n');
-    
-    // Call the make_data_samples function
-    make_data_samples(orig, correcteds);
+    // Filter out any empty lines for formatting and text matchings
+    const orig = textbox1.value.split('\n').filter(line => line.trim() !== '');
+    const correcteds = textbox2.value.split('\n').filter(line => line.trim() !== '');
+
+    console.log(`Orig Length: ${orig.length}\nCorrecteds Length: ${correcteds.length}`);
+    if (orig.length == correcteds.length) {
+        // Call the make_data_samples function
+        make_data_samples(orig, correcteds);
+    } else {
+        // Throw error
+        const resultContainer = document.getElementById('result-container');
+        const resultDisplay = document.getElementById('result-display');
+        resultContainer.style.display = 'block';
+        resultDisplay.textContent = `ERROR: Mismatched number of texts!\nTextBox #1 = ${orig.length}\nTextBox #2 = ${correcteds.length}`;
+    }
 }
 
 function make_data_samples(orig, correcteds) {
@@ -278,16 +287,20 @@ function make_data_samples(orig, correcteds) {
 function displayResult(jsonObjects) {
     const resultContainer = document.getElementById('result-container');
     const resultDisplay = document.getElementById('result-display');
-    const resultHeader = document.getElementById('result-objects-header');
     
-    resultHeader.innerText = `Generated JSON Objects (${jsonObjects.length})`;
+    // Update header with number of objects made
+    document.getElementById('result-objects-header').innerText = `Generated JSON Objects (${jsonObjects.length})`;
+    
+    // Throw error if any objects have any empty value in their "text" or "correct" fields
+    const hasEmptyField = jsonObjects.some(obj => 
+        obj.text === "" || obj.correct === ""
+    );
+    if (hasEmptyField) {
+        alert("A generated JSON object contains an empty string field");
+    }
+
     // Format as individual JSON objects (not as an array)
     const formattedResult = jsonObjects.map(obj => {
-        // Throw error is generated object has empty string value
-        if (obj.text === "" || obj.correct === "") {
-            alert("A generated JSON object contains an empty string field");
-        }
-        //JSON.stringify(obj, null, 4)
         // Custom JSON formatting to keep arrays on single line
         let jsonStr = JSON.stringify(obj, null, 4);
 
