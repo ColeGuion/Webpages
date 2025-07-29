@@ -283,6 +283,10 @@ function displayResult(jsonObjects) {
     resultHeader.innerText = `Generated JSON Objects (${jsonObjects.length})`;
     // Format as individual JSON objects (not as an array)
     const formattedResult = jsonObjects.map(obj => {
+        // Throw error is generated object has empty string value
+        if (obj.text === "" || obj.correct === "") {
+            alert("A generated JSON object contains an empty string field");
+        }
         //JSON.stringify(obj, null, 4)
         // Custom JSON formatting to keep arrays on single line
         let jsonStr = JSON.stringify(obj, null, 4);
