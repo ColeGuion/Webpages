@@ -85,28 +85,16 @@
         </div>
 
         <div class="button-container">
-            <button class="action-btn remove-numbers" onclick="removeNumbers()">
-                Remove Numbers
-            </button>
-            <button class="action-btn remove-quotes" onclick="removeQuotes()">
-                Remove Quotes
-            </button>
-            <button class="action-btn replace-apostrophe" onclick="replaceApostrophes()">
-                Replace Apostrophes
-            </button>
-            <button class="action-btn remove-empties" onclick="removeEmptyLines()">
-                Remove Empty Lines
-            </button>
-            <button class="action-btn combine-sents" onclick="combineToSentences()">
-                Combine To Sentences
-            </button>
-            <button class="action-btn submit-btn" onclick="submitData()">
-                Submit Data
-            </button>
+            <button class="action-btn remove-numbers" onclick="removeNumbers()">Remove Numbers</button>
+            <button class="action-btn remove-quotes" onclick="removeQuotes()">Remove Quotes</button>
+            <button class="action-btn replace-apostrophe" onclick="replaceApostrophes()">Replace Apostrophes</button>
+            <button class="action-btn remove-empties" onclick="removeEmptyLines()">Remove Empty Lines</button>
+            <button class="action-btn combine-sents" onclick="combineToSentences()">Combine To Sentences</button>
+            <button class="action-btn submit-btn" onclick="submitData()">Submit Data</button>
         </div>
 
         <div id="result-container" style="display: none; margin-top: 30px;">
-            <h2 style="color: #333; margin-bottom: 15px; text-align: center;">Generated JSON Objects</h2>
+            <h2 id="result-objects-header" style="color: #333; margin-bottom: 15px; text-align: center;">Generated JSON Objects</h2>
             <div style="position: relative;">
                 <pre id="result-display" style="background: rgba(0, 0, 0, 0.05); padding: 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; max-height: 400px; overflow-y: auto; border: 2px solid #e0e0e0;"></pre>
                 <button class="action-btn" onclick="copyResult()" style="position: absolute; top: 10px; right: 30px; padding: 8px 16px; font-size: 12px; min-width: auto; background: linear-gradient(45deg, #667eea, #764ba2);">
@@ -116,6 +104,7 @@
         </div>
     </div>
 
+    <!-- TODO: Throw error if # of texts don't match up -->
     <!-- TODO: Fix line number issues. (When mulit-line string ends with one word sometimes the alignment doesn't align properly) -->
     <!-- TODO: Add bigger space between different lines, but not the same line that is wrapped -->
     <!-- TODO: Make source and dtype inputs smaller; Make text boxes wider (line numbers smaller) -->

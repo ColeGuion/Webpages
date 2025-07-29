@@ -32,7 +32,6 @@ function clearTextarea(textareaId) {
 }
 
 function updateLineNumbers(textareaId, lineNumbersId) {
-    console.log(`Updating line numbers for '${textareaId}'`);
     const textarea = document.getElementById(textareaId);
     const lineNumbers = document.getElementById(lineNumbersId);
     
@@ -225,6 +224,8 @@ function combineSentences(input) {
 }
 
 function submitData() {
+    // removeEmptyLines() for formatting and text matchings
+    removeEmptyLines();
     const textbox1 = document.getElementById('textbox1');
     const textbox2 = document.getElementById('textbox2');
     
@@ -277,7 +278,9 @@ function make_data_samples(orig, correcteds) {
 function displayResult(jsonObjects) {
     const resultContainer = document.getElementById('result-container');
     const resultDisplay = document.getElementById('result-display');
+    const resultHeader = document.getElementById('result-objects-header');
     
+    resultHeader.innerText = `Generated JSON Objects (${jsonObjects.length})`;
     // Format as individual JSON objects (not as an array)
     const formattedResult = jsonObjects.map(obj => {
         //JSON.stringify(obj, null, 4)
