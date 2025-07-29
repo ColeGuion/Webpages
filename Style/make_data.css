@@ -1,4 +1,5 @@
 @import url('main.css');
+@import url('make_data_buttons.css');
 
 * {
     margin: 0;
@@ -129,7 +130,7 @@ h1 {
     border: 2px solid #e0e0e0;
     border-right: 1px solid #ccc;
     border-radius: 15px 0 0 15px;
-    padding: 20px 5px 20px 10px;
+    padding: 20px 5px 20px 10px; /* top | right | bottom | left */
     font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
     font-size: 14px;
     line-height: 1.5;
@@ -148,6 +149,7 @@ textarea {
     border-radius: 15px;
     /* font-size: 1rem; */
     /* font-family: 'Courier New', monospace; */
+
     font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
     font-size: 14px;
     line-height: 1.5;
@@ -161,135 +163,6 @@ textarea:focus {
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
-
-.remove-quotes {
-    background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
-    color: white;
-}
-
-.remove-quotes:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
-}
-
-.remove-numbers {
-    background: linear-gradient(45deg, #b71c1c, #880808);
-    color: white;
-}
-
-.remove-numbers:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
-}
-
-.replace-apostrophe {
-    background: linear-gradient(45deg, #4ecdc4, #44a08d);
-    color: white;
-}
-
-.replace-apostrophe:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
-}
-
-/*** BUTTONS ***/
-.clear-btn {
-    position: absolute;
-    right: 10px;
-    background: #ff6b6b;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.clear-btn:hover {
-    background: #ff5252;
-    transform: scale(1.1);
-}
-
-.textbox-buttons {
-    display: flex;
-    gap: 10px;
-    min-width: 36%;
-}
-
-.textarea-clear-btn, .textarea-copy-btn {
-    background: #ff6b6b;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    width: 32%;
-    font-size: 16px;
-}
-
-.textarea-clear-btn {
-    right: 10px;
-}
-
-.textarea-copy-btn {
-    right: 80px;
-    background: #6B8E23;
-}
-
-.textarea-clear-btn:hover {
-    background: #ff5252;
-    transform: translateY(-2px);
-}
-
-.textarea-copy-btn:hover {
-    background: #44a08d;
-    transform: translateY(-2px);
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.action-btn {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    min-width: 200px;
-    color: white;
-}
-
-.submit-btn {
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    color: white;
-}
-
-.submit-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-}
-
-.action-btn:active {
-    transform: translateY(-1px);
-}
-
-
 
 @media (max-width: 768px) {
     .input-row, .textbox-container {
