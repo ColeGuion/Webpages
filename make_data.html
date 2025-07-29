@@ -120,6 +120,11 @@
     <!-- TODO: Make source and dtype inputs smaller; Make text boxes wider (line numbers smaller) -->
     <script src="Scripts/data_maker.js"></script>
     <script> 
+        window.addEventListener('load', function() {
+            // Initialize line numbers on page load
+            updateLineNumbers('textbox1', 'line-numbers-1');
+            updateLineNumbers('textbox2', 'line-numbers-2');
+        });
         // Keyboard shortcuts
         document.addEventListener('keydown', function(event) {
             // ALT+X - Clear both text boxes

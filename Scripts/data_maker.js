@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     //load_test_texts();
-
-    // Initialize line numbers on page load
-    updateLineNumbers('textbox1', 'line-numbers-1');
-    updateLineNumbers('textbox2', 'line-numbers-2');
 });
 
 function clearInput(inputId) {
@@ -36,6 +32,7 @@ function clearTextarea(textareaId) {
 }
 
 function updateLineNumbers(textareaId, lineNumbersId) {
+    console.log(`Updating line numbers for '${textareaId}'`);
     const textarea = document.getElementById(textareaId);
     const lineNumbers = document.getElementById(lineNumbersId);
     
