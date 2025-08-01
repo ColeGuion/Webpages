@@ -119,6 +119,15 @@
             updateLineNumbers('textbox1', 'line-numbers-1');
             updateLineNumbers('textbox2', 'line-numbers-2');
         });
+        // Auto capitalize text in homophones input boxes
+        document.getElementById('phone1').addEventListener('input', function(e) {
+            e.target.value = e.target.value.toUpperCase();
+        });
+        document.getElementById('phone2').addEventListener('input', function(e) {
+            e.target.value = e.target.value.toUpperCase();
+        });
+
+
         // Keyboard shortcuts
         document.addEventListener('keydown', function(event) {
             // ALT+X - Clear both text boxes

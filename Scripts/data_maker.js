@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    //load_test_texts();
 });
 
 function clearInput(inputId) {
@@ -252,6 +251,15 @@ function make_data_samples(orig, correcteds) {
     let phone1 = document.getElementById('phone1').value;
     let phone2 = document.getElementById('phone2').value;
     //console.log(`Source: ${JSON.stringify(src)}\nDtype: ${JSON.stringify(dtype)}\nPhone #1: ${JSON.stringify(phone1)}\nPhone #2: ${JSON.stringify(phone2)}`);
+
+    // Format homophone inputs (Capital letter followed by all lowercase)
+    if (phone1.length > 0) {
+        phone1 = phone1.charAt(0).toUpperCase() + phone1.slice(1).toLowerCase();
+    }
+    if (phone2.length > 0) {
+        phone2 = phone2.charAt(0).toUpperCase() + phone2.slice(1).toLowerCase();
+    }
+
 
     // Strip whitespace from all strings
     const trimmedOrig = orig.map(str => str.trim());
