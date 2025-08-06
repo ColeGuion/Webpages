@@ -8,30 +8,42 @@
 <body>
     <span class="todo"><u>TODO</u>: Add shortcut from <a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec">Windows Keys Shortcuts</a></span>
     <br><span class="todo"><u>TODO</u>: Save added shortcut in table once its added</span> 
+    <br><span class="todo"><u>TODO</u>: Add navbar to scroll to that table</span> 
+    <!-- <nav>
+        <a href="#vscode">Visual Studio Code</a>
+        <a href="#chrome">Google Chrome</a>
+        <a href="#powertoys">Windows PowerToys</a>
+        <a href="#nano">Nano</a>
+    </nav> -->
     
-    <div class="shortcut-section" name="visual_studio_code">
+    <div class="shortcut-section" id="vscode" name="visual_studio_code">
         <h2 onclick="toggleSection(this)">Visual Studio Code</h2>
-        <div class="cuts collapsed">
+        <div class="cuts">
+            <div class="scTable">
+                <div class="tableName">Navigation</div>
+                <div>ALT + UP<b>/</b>DOWN</div>
+                <div>Move a Line of Code</div>
+                <div>ALT + <i class="fa-solid fa-arrow-left"></i><b>/</b><i class="fa-solid fa-arrow-right"></i></div>
+                <div>Left/Right Tab</div>
+                <div>CTRL + G</div>
+                <div>Jump To Line</div>
+                <div>CTRL + SHIFT + M</div>
+                <div>Find line containing error</div>
+                <div>ALT + F8</div>
+                <div>Go To Next Error</div>
+            </div>
             <div class="scTable">
                 <div class="tableName">More</div>
                 <div>ALT + Click</div>
                 <div>Insert Multi-Cursors</div>
                 <div>F12</div>
                 <div>Go To Definition</div>
-                <div>ALT + UP<b>/</b>DOWN</div>
-                <div>Move a Line of Code</div>
-                <div>ALT + <i class="fa-solid fa-arrow-left"></i><b>/</b><i class="fa-solid fa-arrow-right"></i></div>
-                <div>Left/Right Tab</div>
                 <div>CTRL + P</div>
                 <div>List All Files</div>
                 <div>CTRL + SHIFT + R</div>
                 <div>Find All References</div>
-                <div>CTRL + G</div>
-                <div>Jump To Line</div>
                 <div>CTRL + K + S</div>
                 <div>Keyboard Shortcuts</div>
-                <div>CTRL + SHIFT + M</div>
-                <div>Find line containing error</div>
                 <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
             </div>
             <div class="scTable">
@@ -65,7 +77,7 @@
         </div>
     </div>
 
-    <div class="shortcut-section" name="google_chrome">
+    <div class="shortcut-section" id="chrome" name="google_chrome">
         <h2 onclick="toggleSection(this)">Google Chrome</h2>
         <div class="cuts collapsed">
             <div class="scTable">
@@ -109,7 +121,7 @@
         </div>
     </div>
 
-    <div class="shortcut-section" name="windows_powertoys">
+    <div class="shortcut-section" id="powertoys" name="windows_powertoys">
         <h2 onclick="toggleSection(this)">Windows (PowerToys)</h2>
         <div class="cuts" id="winTables">
             <div class="scTable" style="width: 30%; grid-template-columns: 1fr 1fr;">
@@ -140,7 +152,7 @@
         </div>
     </div>
 
-    <div class="shortcut-section" name="nano">
+    <div class="shortcut-section" id="nano" name="nano">
         <h2 onclick="toggleSection(this)">Nano</h2>
         <div class="cuts" id="winTables">
             <div class="scTable">
