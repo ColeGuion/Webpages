@@ -314,9 +314,14 @@ for type_name, count in type_counts.items():<br>    print(f"{type_name}: {count}
                 <td colspan="2" class="tabSect">Dictionaries</td>
             </tr> 
             <tr>
+                <td class="code">default_dict = {}.fromkeys(['a', 'b', 'c'], 0)
+<span class="codeComment"># → {'a': 0, 'b': 0, 'c': 0}</span></td>
+                <td class="description">Initialize with default values</td>
+            </tr>
+            <tr>
                 <td class="code">my_dict = {'a': 1, 'b': 2, 'c': 3}
 new_dict = {k: v * 2 for k, v in my_dict.items()}
-print(new_dict) <span class="codeComment"># {'a': 2, 'b': 4, 'c': 6}</span></td>
+<span class="codeComment"># {'a': 2, 'b': 4, 'c': 6}</span></td>
                 <td class="description">Dict Comprehension</td>
             </tr>
             <tr>

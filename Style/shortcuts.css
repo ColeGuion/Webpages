@@ -4,7 +4,7 @@
 :root {
     --font-size-base: 12pt;
     --scTable-width: 5.6in;
-    --scTable-width: 25%;
+    --scTable-width: 23%;
 }
 
 
@@ -13,7 +13,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:start;
-    gap: 4%;
+    gap: 2%;
     width: 100%;
     padding:0;
     margin:0;
@@ -87,4 +87,9 @@
 
 .scTable:hover .add-row-btn {
     display: inline-block;
+}
+
+.shortcut-section h2:hover {
+    font-weight: bolder;
+    color: rgb(173, 6, 6);
 }

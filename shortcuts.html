@@ -8,13 +8,21 @@
 <body>
     <span class="todo"><u>TODO</u>: Add shortcut from <a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec">Windows Keys Shortcuts</a></span>
     <br><span class="todo"><u>TODO</u>: Save added shortcut in table once its added</span> 
-    <br><span class="todo"><u>TODO</u>: Add navbar to scroll to that table</span> 
+    <br><span class="todo"><u>TODO</u>: Add navbar that scrolls to the selected table</span> 
     <!-- <nav>
         <a href="#vscode">Visual Studio Code</a>
         <a href="#chrome">Google Chrome</a>
         <a href="#powertoys">Windows PowerToys</a>
         <a href="#nano">Nano</a>
     </nav> -->
+    
+    <nav class="scNav">
+        <button onclick="scrollToSection('vscode')">VS Code</button>
+        <button onclick="scrollToSection('ditto')">Ditto</button>
+        <button onclick="scrollToSection('powertoys')">PowerToys</button>
+        <button onclick="scrollToSection('chrome')">Chrome</button>
+        <button onclick="scrollToSection('nano')">Nano</button>
+    </nav>
     
     <div class="shortcut-section" id="vscode" name="visual_studio_code">
         <h2 onclick="toggleSection(this)">Visual Studio Code</h2>
@@ -44,7 +52,7 @@
                 <div>Find All References</div>
                 <div>CTRL + K + S</div>
                 <div>Keyboard Shortcuts</div>
-                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
+                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
             </div>
             <div class="scTable">
                 <div class="tableName">Open Files & Tabs</div>
@@ -62,7 +70,7 @@
                 <div>Open Folder</div>
                 <div>CTRL + W</div>
                 <div>Close Current Tab</div>
-                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
+                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
             </div>
             <div class="scTable">
                 <div class="tableName">Collapsing</div>
@@ -72,14 +80,32 @@
                 <div>Collapse Section</div>
                 <div>CTRL + SHIFT + ]</div>
                 <div>Expand Section</div>
-                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
+                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="shortcut-section" id="ditto" name="ditto">
+        <h2 onclick="toggleSection(this)">Ditto</h2>
+        <div class="cuts" id="winTables">
+            <div class="scTable">
+                <div class="tableName">Ditto</div>
+                <div>CTRL + ALT + `</div>
+                <div>Open Ditto</div>
+                <div>CTRL + ALT + T</div>
+                <div>"Create 10 grammatically correct sentences using the phrase"</div>
+                <div>CTRL + ALT + G</div>
+                <div>"Delete"</div>
+                <div>CTRL + ALT + C</div>
+                <div>"Delete"</div>
+                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
             </div>
         </div>
     </div>
 
     <div class="shortcut-section" id="chrome" name="google_chrome">
         <h2 onclick="toggleSection(this)">Google Chrome</h2>
-        <div class="cuts collapsed">
+        <div class="cuts"> <!-- <div class="cuts collapsed"> -->
             <div class="scTable">
                 <div class="tableName">Navigation</div>
                 <div>CTRL + T</div>
@@ -94,7 +120,7 @@
                 <div>Jump to Rightmost Tab</div>
                 <div>CTRL + W</div>
                 <div>Close the Current Tab</div>
-                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
+                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
             </div>
 
             <div class="scTable">
@@ -107,7 +133,7 @@
                 <div>Open Task View</div>
                 <div>CTRL + D</div>
                 <div>Duplicate Tab</div>
-                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
+                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
             </div>
 
             <div class="scTable">
@@ -116,7 +142,7 @@
                 <div>Undo Change</div>
                 <div>CTRL + Y</div>
                 <div>Redo Change</div>
-                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
+                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
             </div>
         </div>
     </div>
@@ -132,7 +158,7 @@
                 <div>Paste as plain text</div>
                 <div>WIN + CTRL + ALT + J</div>
                 <div>Paste as JSON</div>
-                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
+                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
             </div>
 
             <div class="scTable">
@@ -147,7 +173,7 @@
                 <div>Advanced Paste</div>
                 <div>CTRL + ALT + `</div>
                 <div>Open Ditto</div>
-                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
+                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
             </div>
         </div>
     </div>
@@ -172,7 +198,7 @@
                 <div>ALT + E</div>
                 <div>Redo</div>
                 <!-- <div>CTRL + </div><div></div> -->
-                <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button>
+                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
             </div>
         </div>
     </div>
@@ -182,6 +208,13 @@
         function toggleSection(header) {
             let content = header.nextElementSibling;
             content.classList.toggle("collapsed");
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         // Change all '+' characters in .scTable element to be wrapped in <b></b>

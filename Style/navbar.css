@@ -56,6 +56,32 @@ nav .icon {
     background-color: #2a50cf;
     color: white;
 }
+
+.scNav {
+    display: flex;
+    height: auto;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.scNav button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.scNav button:hover {
+    background-color: #0056b3;
+}
+
 /* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 600px) {
     nav a:not(:first-child) {
