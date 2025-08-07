@@ -20,6 +20,9 @@
             color: green;
             font-weight: 600;
         }
+        #python-sect .code > .idx {
+            color: rgb(212, 7, 7);
+        }
     </style>
 </head>
 
@@ -280,6 +283,20 @@
             <tr>
                 <th>Commands</th>
                 <th>Description</th>
+            </tr>
+            <tr>
+                <td class="code">  x = [1,2,3,4,5,6,7,8,9,10]
+  x[:<b class="idx">3</b>]   <span class="codeComment"># [1, 2, 3]</span>
+  x[<b class="idx">3</b>:]   <span class="codeComment"># [4, 5, 6, 7, 8, 9, 10]</span>
+
+  x[<b class="idx">3:6</b>]  <span class="codeComment"># [4, 5, 6]</span>
+  x[<b class="idx">-3</b>:]  <span class="codeComment"># [8, 9, 10]</span>
+  x[:<b class="idx">-3</b>]  <span class="codeComment"># [1, 2, 3, 4, 5, 6, 7]</span>
+
+  x[::<b class="idx">2</b>]  <span class="codeComment"># [1, 3, 5, 7, 9]</span>
+  x[::<b class="idx">3</b>]  <span class="codeComment"># [1, 4, 7, 10]</span>
+</td>
+                <td class="description">List Indexing</td>
             </tr>
             <tr>
                 <td class="code">os.path.exists("/home/tech/Documents/GEC")</td>
