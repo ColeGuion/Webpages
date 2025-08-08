@@ -6,16 +6,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <span class="todo"><u>TODO</u>: Add shortcut from <a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec">Windows Keys Shortcuts</a></span>
-    <br><span class="todo"><u>TODO</u>: Save added shortcut in table once its added</span> 
-    <br><span class="todo"><u>TODO</u>: Add navbar that scrolls to the selected table</span> 
-    <!-- <nav>
-        <a href="#vscode">Visual Studio Code</a>
-        <a href="#chrome">Google Chrome</a>
-        <a href="#powertoys">Windows PowerToys</a>
-        <a href="#nano">Nano</a>
-    </nav> -->
-    
     <nav class="scNav">
         <button onclick="scrollToSection('vscode')">VS Code</button>
         <button onclick="scrollToSection('ditto')">Ditto</button>
@@ -23,63 +13,100 @@
         <button onclick="scrollToSection('chrome')">Chrome</button>
         <button onclick="scrollToSection('nano')">Nano</button>
     </nav>
+
+    <span class="todo"><u>TODO</u>: Add shortcut from <a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec">Windows Keys Shortcuts</a></span>
+    <br><span class="todo"><u>TODO</u>: Save added shortcut in table once its added</span> 
+    <br><span class="todo"><u>TODO</u>: Improve navbar that scrolls to the selected table</span> 
     
     <div class="shortcut-section" id="vscode" name="visual_studio_code">
         <h2 onclick="toggleSection(this)">Visual Studio Code</h2>
-        <div class="cuts" style="gap: 2%;">
-            <div class="scTable" style="width: 23%;">
+        <div class="cuts">
+            <div class="scTable" name="vsc-Navigation">
                 <div class="tableName">Navigation</div>
                 <div>ALT + UP<b>/</b>DOWN</div>
                 <div>Move a Line of Code</div>
+
                 <div>ALT + <i class="fa-solid fa-arrow-left"></i><b>/</b><i class="fa-solid fa-arrow-right"></i></div>
                 <div>Left/Right Tab</div>
+
                 <div>CTRL + G</div>
                 <div>Jump To Line</div>
+
                 <div>CTRL + SHIFT + M</div>
                 <div>Find line containing error</div>
+
                 <div>ALT + F8</div>
                 <div>Go To Next Error</div>
             </div>
-            <div class="scTable" style="width: 23%;">
-                <div class="tableName">More</div>
+            <div class="scTable" name="vsc-Jupyter">
+                <div class="tableName">Jupyter Notebooks</div>
+                <div>CTRL + N</div>
+                <div>New cell below</div>
+
+                <div>CTRL + ALT + N</div>
+                <div>Fold cell <em><b>Code</b></em></div>
+
+                <div>CTRL + ALT + M</div>
+                <div>Fold cell <em><b>Output</b></em></div>
+
+                <div>SHIFT + L</div>
+                <div>Toggle line numbers</div>
+            </div>
+            <div class="scTable" name="vsc-Collapsing">
+                <div class="tableName">Collapsing</div>
+                <div>CTRL + K + 0</div>
+                <div>Collapse All</div>
+
+                <div>CTRL + SHIFT + [</div>
+                <div>Collapse Section</div>
+
+                <div>CTRL + SHIFT + ]</div>
+                <div>Expand Section</div>
+                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
+            </div>
+            <div class="scTable" name="vsc-VSCode">
+                <div class="tableName">VS Code</div>
                 <div>ALT + Click</div>
                 <div>Insert Multi-Cursors</div>
+
                 <div>F12</div>
                 <div>Go To Definition</div>
+
+                <div>CTRL + ALT + P</div>
+                <div>Peek Definition</div>
+
                 <div>CTRL + P</div>
                 <div>List All Files</div>
+
                 <div>CTRL + SHIFT + R</div>
                 <div>Find All References</div>
+
+                <div>CTRL + K + S</div>
+                <div>Keyboard Shortcuts</div>
+
                 <div>CTRL + K + S</div>
                 <div>Keyboard Shortcuts</div>
                 <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
             </div>
-            <div class="scTable" style="width: 23%;">
+            <div class="scTable" name="vsc-Files">
                 <div class="tableName">Open Files & Tabs</div>
                 <div>CTRL + SHIFT + E</div>
                 <div>Open Extensions Tab</div>
-                <div>ALT + Click</div>
-                <div>Insert Multi-Cursors</div>
+
                 <div>CTRL + SHIFT + F</div>
                 <div>Open File Explorer Tab</div>
+
                 <div>CTRL + T</div>
                 <div>New File</div>
+
                 <div>CTRL + O</div>
                 <div>Open File</div>
+
                 <div>CTRL + K + O</div>
                 <div>Open Folder</div>
+
                 <div>CTRL + W</div>
                 <div>Close Current Tab</div>
-                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
-            </div>
-            <div class="scTable" style="width: 23%;">
-                <div class="tableName">Collapsing</div>
-                <div>CTRL + K + 0</div>
-                <div>Collapse All</div>
-                <div>CTRL + SHIFT + [</div>
-                <div>Collapse Section</div>
-                <div>CTRL + SHIFT + ]</div>
-                <div>Expand Section</div>
                 <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
             </div>
         </div>

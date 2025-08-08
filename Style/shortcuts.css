@@ -5,8 +5,10 @@
     --font-size-base: 12pt;
     --scTable-width: 5.6in;
     /* --scTable-width: 23%; */
-    --scTable-width: 26%;
-    --scTable-gaps: 4%;
+    /* --scTable-width: 26%; */
+    /* --scTable-gaps: 4%; */
+    --scTable-width: 30%;
+    --scTable-gaps: 5%;
 }
 
 
@@ -42,8 +44,9 @@
 }
 .scTable > * {
     border: 1pt solid black;
-    padding: 0.1in;
+    padding: 0.15in 0.1in;
     box-sizing: border-box;
+    height: auto;
 }
 
 .tableName {
@@ -54,7 +57,9 @@
     font-size: 18pt;
     font-weight: bold;
     text-align: center;
+    padding: 0.1in;
 }
+
 .scTable > :nth-child(2n+2) {
     border-left-width: 0;
     font-family: 'Source Code Pro', sans-serif;
