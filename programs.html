@@ -20,8 +20,17 @@
             color: green;
             font-weight: 600;
         }
+        #python-sect .code > .pystring {
+            color: #b93d0fe5;
+            color: #a73107e5;
+            font-weight: 600;
+        }
         #python-sect .code > .idx {
             color: rgb(212, 7, 7);
+        }
+        #python-sect .code > b {
+            color : #1962a1;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -338,13 +347,79 @@ new_dict = {k: v * 2 for k, v in my_dict.items()}
                 <td class="description">Sorting Dictionaries</td>
             </tr>
 
+
             <tr>
                 <td colspan="2" class="tabSect">Regex</td>
             </tr> 
+            <tr>
+<td class="code">x = <span class="pystring">"This happened over a Decade ago."</span>
+y = <span class="pystring">"This happened three DECADES ago."</span>
+
+re.search(<b>r</b><span class="pystring">"decade"</span>, x, re.IGNORECASE) <span class="codeComment"># &lt;re.Match object; span=(21, 27), match='Decade'&gt;</span>
+re.search(<b>r</b><span class="pystring">"decade"</span>, y, re.I) <span class="codeComment"># &lt;re.Match object; span=(20, 26), match='DECADE'&gt;</span>
+</td>
+                <td class="description">Check if the word "decade" is in the string.</td>
+            </tr>
+            <tr>
+<td class="code">x = <span class="pystring">"This happened over a Decade ago."</span>
+y = <span class="pystring">"This happened three DECADES ago."</span>
+
+re.search(<b>r</b><span class="pystring">"\bdecade\b"</span>, x, re.I) <span class="codeComment"># &lt;re.Match object; span=(21, 27), match='Decade'&gt;</span>
+re.search(<b>r</b><span class="pystring">"\bdecade\b"</span>, y, re.I) <span class="codeComment"># None</span>
+</td>
+                <td class="description">Check if the EXACT word "decade" is in the string.</td>
+            </tr>
+
+            <tr>
+                <td class="code">text = <span class="pystring">"Cats and dogs are friends."</span>
+pattern = <b>r</b><span class="pystring">"\b(cat|dog)s?\b"</span>
+re.findall(pattern, text, re.I) <span class="codeComment"># ['Cat', 'dog']</span></td>
+                <td class="description">Match Multiple Options</td>
+            </tr>
+
+            <tr>
+                <td class="code">text = <span class="pystring">"Order #123 cost $45 and took 7 days."</span>
+re.findall(<b>r</b><span class="pystring">"\d+"</span>, text) <span class="codeComment"># ['123', '45', '7']</span></td>
+                <td class="description">Extract All Numbers</td>
+            </tr>
+
+            <tr>
+                <td class="code">text = <span class="pystring">"My phone is 123-456-7890."</span>
+masked = re.sub(<b>r</b><span class="pystring">"\d"</span>, <span class="pystring">"#"</span>, text)
+print(masked) <span class="codeComment"># "My phone is ###-###-####."</span></td>
+                <td class="description">Replace All Digits With #</td>
+            </tr>
+
+            <tr>
+                <td class="code">text = <span class="pystring">"abc123"</span>
+match = re.search(<b>r</b><span class="pystring">"abc(?=\d{3})"</span>, text)
+print(bool(match)) <span class="codeComment"> # True, 'abc' is followed by 3 digits</span></td>
+                <td class="description"><b>Positive Lookahead</b>: Match this position only if it is followed by this pattern.</td>
+            </tr>
+
+            <tr>
+                <td class="code">text = <span class="pystring">"dog cat"</span>
+match = re.search(<b>r</b><span class="pystring">"dog(?!s)"</span>, text)
+print(bool(match)) <span class="codeComment"> # True — matches 'dog' not followed by 's'</span></td>
+                </td>
+                <td class="description"><b>Negative Lookahead</b>: Match this position only if it is NOT followed by this pattern.</td>
+            </tr>
+
+            <tr>
+                <td class="code">text = <span class="pystring">'He said "hello" and then "bye".'</span>
+quotes = re.findall(<b>r</b><span class="pystring">'"(.*?)"'</span>, text)
+print(quotes) <span class="codeComment"> # ['hello', 'bye']</span></td>
+                </td>
+                <td class="description">Extract Text Inside Quotes</td>
+            </tr>
             <!-- 
             <tr>
-                <td class="code"><span class="codeComment"></span></td>
-                <td class="description"></td>
+                <td class="code">
+                    <span class="codeComment"></span>
+                    <span class="pystring">""</span>
+                    <b>r</b>
+                </td>
+                <td class="description">Extract Text Inside Quotes</td>
             </tr>
              -->
         </table>
