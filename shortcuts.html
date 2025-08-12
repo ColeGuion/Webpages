@@ -6,17 +6,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <nav class="scNav">
-        <button onclick="scrollToSection('vscode')">VS Code</button>
-        <button onclick="scrollToSection('ditto')">Ditto</button>
-        <button onclick="scrollToSection('powertoys')">PowerToys</button>
-        <button onclick="scrollToSection('chrome')">Chrome</button>
-        <button onclick="scrollToSection('nano')">Nano</button>
+    <nav id="prognav">
+        <a onclick="scrollToSection('vscode')">VS Code</a>
+        <a onclick="scrollToSection('ditto')">Ditto</a>
+        <a onclick="scrollToSection('powertoys')">PowerToys</a>
+        <a onclick="scrollToSection('chrome')">Chrome</a>
+        <a onclick="scrollToSection('nano')">Nano</a>
     </nav>
 
     <span class="todo"><u>TODO</u>: Add shortcut from <a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec">Windows Keys Shortcuts</a></span>
     <br><span class="todo"><u>TODO</u>: Save added shortcut in table once its added</span> 
-    <br><span class="todo"><u>TODO</u>: Improve navbar that scrolls to the selected table</span> 
     
     <div class="shortcut-section" id="vscode" name="visual_studio_code">
         <h2 onclick="toggleSection(this)">Visual Studio Code</h2>
