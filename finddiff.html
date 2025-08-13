@@ -121,9 +121,12 @@
             let lastIndex = 0;
             
             // Sort differences by index to process them in order
-            const sortedDiffs = [...differences].sort((a, b) => a.index - b.index);
+            const sortedDiffs = [...differences].sort((a, b) => a.Index - b.Index);
+            console.log('Sorted Differences:', sortedDiffs);
             
             sortedDiffs.forEach(diff => {
+                console.log(`Diff Index: ${diff.index}`);
+                console.log(`Diff Index: ${diff.Index}`);
                 // Add text before the difference
                 highlightedText += escapeHtml(text.substring(lastIndex, diff.index));
                 
@@ -171,11 +174,11 @@
                     <div class="summary-label">Differences Found</div>
                 </div>
                 <div class="summary-card">
-                    <div class="summary-number">${differences.filter(d => d.message.toLowerCase().includes('remove')).length}</div>
+                    <div class="summary-number">${differences.filter(d => d.Message.toLowerCase().includes('remove')).length}</div>
                     <div class="summary-label">Removals</div>
                 </div>
                 <div class="summary-card">
-                    <div class="summary-number">${differences.filter(d => d.message.toLowerCase().includes('add')).length}</div>
+                    <div class="summary-number">${differences.filter(d => d.Message.toLowerCase().includes('add')).length}</div>
                     <div class="summary-label">Additions</div>
                 </div>
             `;
