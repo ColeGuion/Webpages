@@ -87,6 +87,7 @@
                 const differences = await response.json();
                 
                 // Process and highlight differences
+                console.log('Differences:', differences);
                 highlightDifferences(differences);
                 showResults(differences);
                 
