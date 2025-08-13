@@ -122,24 +122,20 @@
             
             // Sort differences by index to process them in order
             const sortedDiffs = [...differences].sort((a, b) => a.Index - b.Index);
-            console.log('Sorted Differences:', sortedDiffs);
             
             sortedDiffs.forEach(diff => {
-                console.log(`Diff Index: ${diff.index}`);
-                console.log(`Diff Index: ${diff.Index}`);
                 // Add text before the difference
-                highlightedText += escapeHtml(text.substring(lastIndex, diff.index));
+                highlightedText += escapeHtml(text.substring(lastIndex, diff.Index));
                 
                 // Add the highlighted difference
-                const diffText = text.substring(diff.index, diff.index + diff.length);
-                highlightedText += `<span class="diff-highlight">${escapeHtml(diffText)}<span class="diff-tooltip">${escapeHtml(diff.message)}</span></span>`;
+                const diffText = text.substring(diff.Index, diff.Index + diff.Length);
+                highlightedText += `<span class="diff-highlight">${escapeHtml(diffText)}<span class="diff-tooltip">${escapeHtml(diff.Message)}</span></span>`;
                 
-                lastIndex = diff.index + diff.length;
+                lastIndex = diff.Index + diff.Length;
             });
             
             // Add remaining text
             highlightedText += escapeHtml(text.substring(lastIndex));
-            
             return highlightedText;
         }
 
@@ -170,7 +166,7 @@
             
             diffSummary.innerHTML = `
                 <div class="summary-card">
-                    <div class="summary-number">${differences.length}</div>
+                    <div class="summary-number">${differences.Length}</div>
                     <div class="summary-label">Differences Found</div>
                 </div>
                 <div class="summary-card">
