@@ -135,12 +135,12 @@ function removeQuotes() {
     // Process textbox1
     const lines1 = textbox1.value.split('\n');
     const processedLines1 = lines1.map(line => {
-        if (line.startsWith("•")) {
+        if (line.trim().startsWith("•")) {
             // Remove bullet point at start of line
-            line = line.slice(1).trim();
+            line = line.trim().slice(1).trim();
         }
-        if (line.startsWith('"') && line.endsWith('"') && line.length > 1) {
-            return line.slice(1, -1);
+        if (line.trim().startsWith('"') && line.trim().endsWith('"')) {
+            return line.trim().slice(1, -1).trim();
         }
         return line;
     });
