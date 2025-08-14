@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    //load_test_texts();
 });
 
 function clearInput(inputId) {
