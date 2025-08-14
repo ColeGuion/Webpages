@@ -135,6 +135,10 @@ function removeQuotes() {
     // Process textbox1
     const lines1 = textbox1.value.split('\n');
     const processedLines1 = lines1.map(line => {
+        if (line.startsWith("•")) {
+            // Remove bullet point at start of line
+            line = line.slice(1).trim();
+        }
         if (line.startsWith('"') && line.endsWith('"') && line.length > 1) {
             return line.slice(1, -1);
         }
@@ -145,6 +149,10 @@ function removeQuotes() {
     // Process textbox2
     const lines2 = textbox2.value.split('\n');
     const processedLines2 = lines2.map(line => {
+        if (line.startsWith("•")) {
+            // Remove bullet point at start of line
+            line = line.slice(1).trim();
+        }
         if (line.startsWith('"') && line.endsWith('"') && line.length > 1) {
             return line.slice(1, -1);
         }
