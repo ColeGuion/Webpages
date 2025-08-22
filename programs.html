@@ -268,7 +268,7 @@ new_dict = {k: v * 2 for k, v in my_dict.items()}
                 <td class="description">Sorting Dictionaries</td>
             </tr>
 
-
+            <!--***** Regex *****-->
             <tr>
                 <td colspan="2" class="tabSect">Regex</td>
             </tr> 
@@ -290,34 +290,29 @@ re.search(<b>r</b><span class="pystring">"\bdecade\b"</span>, y, re.I) <span cla
 </td>
                 <td class="description">Check if the EXACT word "decade" is in the string.</td>
             </tr>
-
             <tr>
                 <td class="code">text = <span class="pystring">"Cats and dogs are friends."</span>
 pattern = <b>r</b><span class="pystring">"\b(cat|dog)s?\b"</span>
 re.findall(pattern, text, re.I) <span class="codeComment"># ['Cat', 'dog']</span></td>
                 <td class="description">Match Multiple Options</td>
             </tr>
-
             <tr>
                 <td class="code">text = <span class="pystring">"Order #123 cost $45 and took 7 days."</span>
 re.findall(<b>r</b><span class="pystring">"\d+"</span>, text) <span class="codeComment"># ['123', '45', '7']</span></td>
                 <td class="description">Extract All Numbers</td>
             </tr>
-
             <tr>
                 <td class="code">text = <span class="pystring">"My phone is 123-456-7890."</span>
 masked = re.sub(<b>r</b><span class="pystring">"\d"</span>, <span class="pystring">"#"</span>, text)
 print(masked) <span class="codeComment"># "My phone is ###-###-####."</span></td>
                 <td class="description">Replace All Digits With #</td>
             </tr>
-
             <tr>
                 <td class="code">text = <span class="pystring">"abc123"</span>
 match = re.search(<b>r</b><span class="pystring">"abc(?=\d{3})"</span>, text)
 print(bool(match)) <span class="codeComment"> # True, 'abc' is followed by 3 digits</span></td>
                 <td class="description"><b>Positive Lookahead</b>: Match this position only if it is followed by this pattern.</td>
             </tr>
-
             <tr>
                 <td class="code">text = <span class="pystring">"dog cat"</span>
 match = re.search(<b>r</b><span class="pystring">"dog(?!s)"</span>, text)
@@ -325,13 +320,55 @@ print(bool(match)) <span class="codeComment"> # True — matches 'dog' not follo
                 </td>
                 <td class="description"><b>Negative Lookahead</b>: Match this position only if it is NOT followed by this pattern.</td>
             </tr>
-
             <tr>
                 <td class="code">text = <span class="pystring">'He said "hello" and then "bye".'</span>
 quotes = re.findall(<b>r</b><span class="pystring">'"(.*?)"'</span>, text)
 print(quotes) <span class="codeComment"> # ['hello', 'bye']</span></td>
                 </td>
                 <td class="description">Extract Text Inside Quotes</td>
+            </tr>
+
+            <!--***** Pathlib *****-->
+            <tr>
+                <td colspan="2" class="tabSect">Pathlib</td>
+            </tr> 
+            <tr>
+                <td class="code">Path()      <span class="codeComment"># Current directory</span>
+Path.home() <span class="codeComment"># Home directory</span>
+Path.cwd()  <span class="codeComment"># Current working directory</span>
+Path('/')   <span class="codeComment"># Root directory</span>
+</td>
+                <td class="description">Basic Directories</td>
+            </tr>
+            <tr>
+                <td class="code"><span class="codeComment"># /home/tech/.config/myapp/settings.ini</span>
+Path.home().joinpath('.config', 'myapp', 'settings.ini')</td>
+                <td class="description">Create a path</td>
+            </tr>
+            <tr>
+                <td class="code">path.exists()   <span class="codeComment"># Check if path exists</span>
+path.is_file()  <span class="codeComment"># Check if path is a file</span>
+path.is_dir()   <span class="codeComment"># Check if path is to a directory</span>
+
+# File Information
+if path.exists():
+    path.stat().st_size         <span class="codeComment"># File size in bytes</span>
+    path.stat().st_mtime        <span class="codeComment"># Last modified time (epoch)</span>
+    path.suffix                 <span class="codeComment"># File extension</span>
+</td>
+                <td class="description">Common Path Operations</td>
+            </tr>
+            <tr>
+<td class="code">from pathlib import Path
+path = Path(<span class="pystring">'/home/Documents/GEC/train.py'</span>)
+
+path.name       <span class="codeComment"># train.py</span>
+path.stem       <span class="codeComment"># train</span>
+path.suffix     <span class="codeComment"># .py</span>
+path.parent     <span class="codeComment"># /home/Documents/GEC</span>
+path.parts      <span class="codeComment"># ('/', 'home', 'Documents', 'GEC', 'train.py')</span>
+</td>
+                <td class="description"></td>
             </tr>
             <!-- 
             <tr>
