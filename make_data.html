@@ -46,21 +46,31 @@
             </div>
         </div>
 
+        <div class="button-container" style="margin-bottom: 16px;">
+            <div class="button-row">
+                <button class="action-btn remove-numbers" onclick="removeNumbers()">Remove Numbers</button>
+                <button class="action-btn remove-quotes" onclick="removeQuotes()">Remove Quotes</button>
+                <button class="action-btn replace-apostrophe" onclick="replaceApostrophes()">Replace Apostrophes</button>
+                <button class="action-btn remove-empties" onclick="removeEmptyLines()">Remove Empty Lines</button>
+                <button class="action-btn combine-sents" onclick="combineToSentences()">Combine To Sentences</button>
+            </div>
+        </div>
+
         <div class="textbox-container">
             <div class="textbox-group">
                 <!-- <div class="textbox-header">
                     <label for="textbox1">Text Box 1</label>
                     <div class="textbox-buttons"><button class="textarea-copy-btn" onclick="copyTextarea('textbox1')" title="Copy text">📋 Copy</button> <button class="textarea-clear-btn" onclick="clearTextarea('textbox1')" title="Clear text">× Clear</button></div>
                 </div> -->
-                <div class="textbox-footer">
-                    <button class="textarea-copy-btn" onclick="copyTextarea('textbox1')" title="Copy text">📋 Copy</button>
-                    <button class="textarea-clear-btn" onclick="clearTextarea('textbox1')" title="Clear text">× Clear</button>
-                </div>
                 <div class="textbox-wrapper">
                     <div class="textarea-container">
                         <div class="line-numbers" id="line-numbers-1"></div>
                         <textarea id="textbox1" oninput="updateLineNumbers('textbox1', 'line-numbers-1')" onscroll="syncScroll('textbox1', 'line-numbers-1')" onpaste="handlePaste('textbox1')"></textarea>
                     </div>
+                </div>
+                <div class="textbox-footer">
+                    <button class="textarea-copy-btn" onclick="copyTextarea('textbox1')" title="Copy text">📋 Copy</button>
+                    <button class="textarea-clear-btn" onclick="clearTextarea('textbox1')" title="Clear text">× Clear</button>
                 </div>
             </div>
             <div class="textbox-group">
@@ -71,27 +81,20 @@
                         <button class="textarea-clear-btn" onclick="clearTextarea('textbox2')" title="Clear text">× Clear</button>
                     </div>
                 </div> -->
-                <div class="textbox-footer">
-                    <button class="textarea-copy-btn" onclick="copyTextarea('textbox2')" title="Copy text">📋 Copy</button>
-                    <button class="textarea-clear-btn" onclick="clearTextarea('textbox2')" title="Clear text">× Clear</button>
-                </div>
                 <div class="textbox-wrapper">
                     <div class="textarea-container">
                         <div class="line-numbers" id="line-numbers-2"></div>
                         <textarea id="textbox2" oninput="updateLineNumbers('textbox2', 'line-numbers-2')" onscroll="syncScroll('textbox2', 'line-numbers-2')" onpaste="handlePaste('textbox2')"></textarea>
                     </div> 
                 </div>
+                <div class="textbox-footer">
+                    <button class="textarea-copy-btn" onclick="copyTextarea('textbox2')" title="Copy text">📋 Copy</button>
+                    <button class="textarea-clear-btn" onclick="clearTextarea('textbox2')" title="Clear text">× Clear</button>
+                </div>
             </div>
         </div>
 
         <div class="button-container">
-            <div class="button-row">
-                <button class="action-btn remove-numbers" onclick="removeNumbers()">Remove Numbers</button>
-                <button class="action-btn remove-quotes" onclick="removeQuotes()">Remove Quotes</button>
-                <button class="action-btn replace-apostrophe" onclick="replaceApostrophes()">Replace Apostrophes</button>
-                <button class="action-btn remove-empties" onclick="removeEmptyLines()">Remove Empty Lines</button>
-                <button class="action-btn combine-sents" onclick="combineToSentences()">Combine To Sentences</button>
-            </div>
             <div class="button-row submit-row">
                 <button class="action-btn submit-btn" onclick="submitData()">Submit Data</button>
             </div>
