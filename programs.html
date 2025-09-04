@@ -447,6 +447,11 @@ body {
     <script>
         linux_commands = [
             //["COMMAND", "DESCRIPTION"],
+            //["chmod +x script.sh", "Make a script executable"],
+            //["./script.sh", "Run a script in the current directory"],
+            //["bash script.sh", "Run a bash script in the current directory"],
+            //["source script.sh", "Run a bash script in the current shell (keeps any changes to env variables)"],
+            ["alias ll='ls -lh'", "Create a bash alias `ll` that runs `ls -lh`"],
             ["!$", "Last argument of previous command"],
             ["!!", "Repeat last command"],
             ["wget URL", "Download a file"],
@@ -465,6 +470,8 @@ body {
             ["pip list | grep -E '^(tr|opt)|onnx'", "List pip modules that start with <em>\"tr\"</em> or <em>\"opt\"</em> OR contain the string <em>\"onnx\"</em>"],
             ["pip list | grep tr", "List pip modules that contain <em>\"tr\"</em>"],
             ["ls -l FILE", "View file permissions"],
+            ["pip install -r requirements.txt", "Install pip modules from requirements.txt file"],
+            ["pip list --format=freeze > requirements.txt", "Create requirements.txt file from current pip modules"],
             ["source ~/.bashrc", "Apply the changes to ~/.bashrc",],
             ["nano ~/.bash_aliases", "Edit linux bash script for aliases",],
             ["nano ~/.bashrc", "Edit linux bash profile"],
