@@ -116,6 +116,14 @@
                 <td colspan="2" class="tabSect">Advanced & GPU</td>
             </tr> 
             <tr>
+                <td class="commands"><span>nvtop</span></td>
+                <td class="description">GPU Usage</td>
+            </tr>
+            <tr>
+                <td class="commands"><span>htop</span></td>
+                <td class="description">CPU Usage</td>
+            </tr>
+            <tr>
                 <td class="commands"><span>mokutil --sb-state</span></td>
                 <td class="description">Check if secure boot is enabled</td>
             </tr>
@@ -463,8 +471,8 @@ body {
             ["mv f1.txt dir", "Move `f1.txt` to the specified directory"],
             ["cd ~", "Home Directory"],
             ["cd -", "Previous Directory"],
-            ["htop", "CPU Usage"],
-            ["nvtop", "GPU Usage"],
+            //["htop", "CPU Usage"],
+            //["nvtop", "GPU Usage"],
             ["hostname -I", "IP Address"],
             ["ps aux | head -n 5", "View the first 5 running processes"],
             ["pip list | grep -E '^(tr|opt)|onnx'", "List pip modules that start with <em>\"tr\"</em> or <em>\"opt\"</em> OR contain the string <em>\"onnx\"</em>"],
