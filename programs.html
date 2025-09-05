@@ -16,11 +16,11 @@
             width: 50%;
             white-space: pre;
         }
-        #python-sect .code > .codeComment {
+        #python-sect .code > .comment {
             color: green;
             font-weight: 600;
         }
-        #python-sect .code > .pyStr {
+        #python-sect .code > .str {
             color: #b93d0fe5;
             color: #a73107e5;
             font-weight: 600;
@@ -38,8 +38,8 @@
 <body>
     <nav id="prognav">
         <a data-target="linux-sect" href="#Linux">Linux</a>
-        <a data-target="powershell-sect" href="#Powershell">Powershell</a>
         <a data-target="python-sect" href="#Python">Python</a>
+        <a data-target="powershell-sect" href="#Powershell">Powershell</a>
         <a data-target="go-sect" href="#Go">Go</a>
         <a data-target="css-sect" href="#CSS">CSS</a>
     </nav>
@@ -224,62 +224,62 @@
             </tr>
             <tr>
                 <td class="code">  x = [1,2,3,4,5,6,7,8,9,10]
-  x[:<b class="idx">3</b>]   <span class="codeComment"># [1, 2, 3]</span>
-  x[<b class="idx">3</b>:]   <span class="codeComment"># [4, 5, 6, 7, 8, 9, 10]</span>
+  x[:<b class="idx">3</b>]   <span class="comment"># [1, 2, 3]</span>
+  x[<b class="idx">3</b>:]   <span class="comment"># [4, 5, 6, 7, 8, 9, 10]</span>
 
-  x[<b class="idx">3:6</b>]  <span class="codeComment"># [4, 5, 6]</span>
-  x[<b class="idx">-3</b>:]  <span class="codeComment"># [8, 9, 10]</span>
-  x[:<b class="idx">-3</b>]  <span class="codeComment"># [1, 2, 3, 4, 5, 6, 7]</span>
+  x[<b class="idx">3:6</b>]  <span class="comment"># [4, 5, 6]</span>
+  x[<b class="idx">-3</b>:]  <span class="comment"># [8, 9, 10]</span>
+  x[:<b class="idx">-3</b>]  <span class="comment"># [1, 2, 3, 4, 5, 6, 7]</span>
 
-  x[::<b class="idx">2</b>]  <span class="codeComment"># [1, 3, 5, 7, 9]</span>
-  x[::<b class="idx">3</b>]  <span class="codeComment"># [1, 4, 7, 10]</span>
+  x[::<b class="idx">2</b>]  <span class="comment"># [1, 3, 5, 7, 9]</span>
+  x[::<b class="idx">3</b>]  <span class="comment"># [1, 4, 7, 10]</span>
 </td>
                 <td class="description">List Indexing</td>
             </tr>
             <tr>
-                <td class="code">x = <span class="pyStr">"I Love Cake"</span>
-x.center(20, <span class="pyStr">'_'</span>) <span class="codeComment"># "____I Love Cake_____"</span>
-x.ljust(20, <span class="pyStr">'_'</span>) <span class="codeComment"># "I Love Cake_________"</span>
-x.rjust(20, <span class="pyStr">'_'</span>) <span class="codeComment"># "_________I Love Cake"</span></td>
+                <td class="code">x = <span class="str">"I Love Cake"</span>
+x.center(20, <span class="str">'_'</span>) <span class="comment"># "____I Love Cake_____"</span>
+x.ljust(20, <span class="str">'_'</span>) <span class="comment"># "I Love Cake_________"</span>
+x.rjust(20, <span class="str">'_'</span>) <span class="comment"># "_________I Love Cake"</span></td>
                 <td class="description">Print Formatting</td>
             </tr>
             <tr>
-                <td class="code">os.path.exists(<span class="pyStr">"/home/tech/Documents/GEC"</span>)</td>
+                <td class="code">os.path.exists(<span class="str">"/home/tech/Documents/GEC"</span>)</td>
                 <td class="description">Check if a path exists on your computer</td>
             </tr>
             <tr>
-                <td class="code">from collections import Counter<br>type_counts = Counter(obj[<span class="pyStr">"type"</span>] for obj in x)
+                <td class="code">from collections import Counter<br>type_counts = Counter(obj[<span class="str">"type"</span>] for obj in x)
 
-<span class="codeComment"># Print the results</span>
-for type_name, count in type_counts.items():<br>    print(<b>f</b><span class="pyStr">"{type_name}: {count}"</span>)</td>
+<span class="comment"># Print the results</span>
+for type_name, count in type_counts.items():<br>    print(<b>f</b><span class="str">"{type_name}: {count}"</span>)</td>
                 <td class="description">Count the number of unique "type" values in a list of object</td>
             </tr>
-
+            
             <tr>
                 <td colspan="2" class="tabSect">Dictionaries</td>
             </tr> 
             <tr>
-                <td class="code">default_dict = {}.fromkeys([<span class="pyStr">'a'</span>, <span class="pyStr">'b'</span>, <span class="pyStr">'c'</span>], 0)
-<span class="codeComment"># → {'a': 0, 'b': 0, 'c': 0}</span></td>
+                <td class="code">default_dict = {}.fromkeys([<span class="str">'a'</span>, <span class="str">'b'</span>, <span class="str">'c'</span>], 0)
+<span class="comment"># → {'a': 0, 'b': 0, 'c': 0}</span></td>
                 <td class="description">Initialize with default values</td>
             </tr>
             <tr>
-                <td class="code">my_dict = {<span class="pyStr">'a'</span>: 1, <span class="pyStr">'b'</span>: 2, <span class="pyStr">'c'</span>: 3}
+                <td class="code">my_dict = {<span class="str">'a'</span>: 1, <span class="str">'b'</span>: 2, <span class="str">'c'</span>: 3}
 new_dict = {k: v * 2 for k, v in my_dict.items()}
-<span class="codeComment"># {'a': 2, 'b': 4, 'c': 6}</span></td>
+<span class="comment"># {'a': 2, 'b': 4, 'c': 6}</span></td>
                 <td class="description">Dict Comprehension</td>
             </tr>
             <tr>
-                <td class="code">val = my_dict.get(<span class="pyStr">'x'</span>, 0) <span class="codeComment"># Returns 0 if 'x' not found</span></td>
+                <td class="code">val = my_dict.get(<span class="str">'x'</span>, 0) <span class="comment"># Returns 0 if 'x' not found</span></td>
                 <td class="description">Get with default value</td>
             </tr>
             <tr>
-                <td class="code">popped = my_dict.pop(<span class="pyStr">'a'</span>) <span class="codeComment"># Returns 99, removes 'a'</span></td>
+                <td class="code">popped = my_dict.pop(<span class="str">'a'</span>) <span class="comment"># Returns 99, removes 'a'</span></td>
                 <td class="description">Remove and return a key</td>
             </tr>
             <tr>
-                <td class="code"><span class="codeComment"># Sort by Key</span><br>sorted_by_key = {k: my_dict[k] for k in sorted(my_dict)}<br>
-<span class="codeComment"># Sort by Value</span><br>sorted_by_value = dict(sorted(my_dict.items(), key=lambda x: x[1]))</td>
+                <td class="code"><span class="comment"># Sort by Key</span><br>sorted_by_key = {k: my_dict[k] for k in sorted(my_dict)}<br>
+<span class="comment"># Sort by Value</span><br>sorted_by_value = dict(sorted(my_dict.items(), key=lambda x: x[1]))</td>
                 <td class="description">Sorting Dictionaries</td>
             </tr>
 
@@ -288,57 +288,52 @@ new_dict = {k: v * 2 for k, v in my_dict.items()}
                 <td colspan="2" class="tabSect">Regex</td>
             </tr> 
             <tr>
-<td class="code">x = <span class="pyStr">"This happened over a Decade ago."</span>
-y = <span class="pyStr">"This happened three DECADES ago."</span>
+<td class="code">x = <span class="str">"This happened over a Decade ago."</span>
+y = <span class="str">"This happened three DECADES ago."</span>
 
-re.search(<b>r</b><span class="pyStr">"decade"</span>, x, re.IGNORECASE) <span class="codeComment"># &lt;re.Match object; span=(21, 27), match='Decade'&gt;</span>
-re.search(<b>r</b><span class="pyStr">"decade"</span>, y, re.I) <span class="codeComment"># &lt;re.Match object; span=(20, 26), match='DECADE'&gt;</span>
+re.search(<b>r</b><span class="str">"decade"</span>, x, re.IGNORECASE) <span class="comment"># &lt;re.Match object; span=(21, 27), match='Decade'&gt;</span>
+re.search(<b>r</b><span class="str">"decade"</span>, y, re.I) <span class="comment"># &lt;re.Match object; span=(20, 26), match='DECADE'&gt;</span>
+
+<span class="comment"># Exact Word Match:</span>
+re.search(<b>r</b><span class="str">"\bdecade\b"</span>, x, re.I) <span class="comment"># &lt;re.Match object; span=(21, 27), match='Decade'&gt;</span>
+re.search(<b>r</b><span class="str">"\bdecade\b"</span>, y, re.I) <span class="comment"># None</span>
 </td>
                 <td class="description">Check if the word "decade" is in the string.</td>
             </tr>
             <tr>
-<td class="code">x = <span class="pyStr">"This happened over a Decade ago."</span>
-y = <span class="pyStr">"This happened three DECADES ago."</span>
-
-re.search(<b>r</b><span class="pyStr">"\bdecade\b"</span>, x, re.I) <span class="codeComment"># &lt;re.Match object; span=(21, 27), match='Decade'&gt;</span>
-re.search(<b>r</b><span class="pyStr">"\bdecade\b"</span>, y, re.I) <span class="codeComment"># None</span>
-</td>
-                <td class="description">Check if the EXACT word "decade" is in the string.</td>
-            </tr>
-            <tr>
-                <td class="code">text = <span class="pyStr">"Cats and dogs are friends."</span>
-pattern = <b>r</b><span class="pyStr">"\b(cat|dog)s?\b"</span>
-re.findall(pattern, text, re.I) <span class="codeComment"># ['Cat', 'dog']</span></td>
+                <td class="code">text = <span class="str">"Cats and dogs are friends."</span>
+pattern = <b>r</b><span class="str">"\b(cat|dog)s?\b"</span>
+re.findall(pattern, text, re.I) <span class="comment"># ['Cat', 'dog']</span></td>
                 <td class="description">Match Multiple Options</td>
             </tr>
             <tr>
-                <td class="code">text = <span class="pyStr">"Order #123 cost $45 and took 7 days."</span>
-re.findall(<b>r</b><span class="pyStr">"\d+"</span>, text) <span class="codeComment"># ['123', '45', '7']</span></td>
+                <td class="code">text = <span class="str">"Order #123 cost $45 and took 7 days."</span>
+re.findall(<b>r</b><span class="str">"\d+"</span>, text) <span class="comment"># ['123', '45', '7']</span></td>
                 <td class="description">Extract All Numbers</td>
             </tr>
             <tr>
-                <td class="code">text = <span class="pyStr">"My phone is 123-456-7890."</span>
-masked = re.sub(<b>r</b><span class="pyStr">"\d"</span>, <span class="pyStr">"#"</span>, text)
-print(masked) <span class="codeComment"># "My phone is ###-###-####."</span></td>
+                <td class="code">text = <span class="str">"My phone is 123-456-7890."</span>
+masked = re.sub(<b>r</b><span class="str">"\d"</span>, <span class="str">"#"</span>, text)
+print(masked) <span class="comment"># "My phone is ###-###-####."</span></td>
                 <td class="description">Replace All Digits With #</td>
             </tr>
             <tr>
-                <td class="code">text = <span class="pyStr">"abc123"</span>
-match = re.search(<b>r</b><span class="pyStr">"abc(?=\d{3})"</span>, text)
-print(bool(match)) <span class="codeComment"> # True, 'abc' is followed by 3 digits</span></td>
+                <td class="code">text = <span class="str">"abc123"</span>
+match = re.search(<b>r</b><span class="str">"abc(?=\d{3})"</span>, text)
+print(bool(match)) <span class="comment"> # True, 'abc' is followed by 3 digits</span></td>
                 <td class="description"><b>Positive Lookahead</b>: Match this position only if it is followed by this pattern.</td>
             </tr>
             <tr>
-                <td class="code">text = <span class="pyStr">"dog cat"</span>
-match = re.search(<b>r</b><span class="pyStr">"dog(?!s)"</span>, text)
-print(bool(match)) <span class="codeComment"> # True — matches 'dog' not followed by 's'</span></td>
+                <td class="code">text = <span class="str">"dog cat"</span>
+match = re.search(<b>r</b><span class="str">"dog(?!s)"</span>, text)
+print(bool(match)) <span class="comment"> # True — matches 'dog' not followed by 's'</span></td>
                 </td>
                 <td class="description"><b>Negative Lookahead</b>: Match this position only if it is NOT followed by this pattern.</td>
             </tr>
             <tr>
-                <td class="code">text = <span class="pyStr">'He said "hello" and then "bye".'</span>
-quotes = re.findall(<b>r</b><span class="pyStr">'"(.*?)"'</span>, text)
-print(quotes) <span class="codeComment"> # ['hello', 'bye']</span></td>
+                <td class="code">text = <span class="str">'He said "hello" and then "bye".'</span>
+quotes = re.findall(<b>r</b><span class="str">'"(.*?)"'</span>, text)
+print(quotes) <span class="comment"> # ['hello', 'bye']</span></td>
                 </td>
                 <td class="description">Extract Text Inside Quotes</td>
             </tr>
@@ -348,48 +343,48 @@ print(quotes) <span class="codeComment"> # ['hello', 'bye']</span></td>
                 <td colspan="2" class="tabSect">Pathlib</td>
             </tr> 
             <tr>
-                <td class="code">Path()      <span class="codeComment"># Current directory</span>
-Path.home() <span class="codeComment"># Home directory</span>
-Path.cwd()  <span class="codeComment"># Current working directory</span>
-Path(<span class="pyStr">'/'</span>)   <span class="codeComment"># Root directory</span>
+                <td class="code">Path()      <span class="comment"># Current directory</span>
+Path.home() <span class="comment"># Home directory</span>
+Path.cwd()  <span class="comment"># Current working directory</span>
+Path(<span class="str">'/'</span>)   <span class="comment"># Root directory</span>
 </td>
                 <td class="description">Basic Directories</td>
             </tr>
             <tr>
-                <td class="code"><span class="codeComment"># /home/tech/.config/myapp/settings.ini</span>
-Path.home().joinpath(<span class="pyStr">'.config'</span>, <span class="pyStr">'myapp'</span>, <span class="pyStr">'settings.ini'</span>)</td>
+                <td class="code"><span class="comment"># /home/tech/.config/myapp/settings.ini</span>
+Path.home().joinpath(<span class="str">'.config'</span>, <span class="str">'myapp'</span>, <span class="str">'settings.ini'</span>)</td>
                 <td class="description">Create a path</td>
             </tr>
             <tr>
-                <td class="code">path.exists()   <span class="codeComment"># Check if path exists</span>
-path.is_file()  <span class="codeComment"># Check if path is a file</span>
-path.is_dir()   <span class="codeComment"># Check if path is to a directory</span>
+                <td class="code">path.exists()   <span class="comment"># Check if path exists</span>
+path.is_file()  <span class="comment"># Check if path is a file</span>
+path.is_dir()   <span class="comment"># Check if path is to a directory</span>
 
 # File Information
 if path.exists():
-    path.stat().st_size         <span class="codeComment"># File size in bytes</span>
-    path.stat().st_mtime        <span class="codeComment"># Last modified time (epoch)</span>
-    path.suffix                 <span class="codeComment"># File extension</span>
+    path.stat().st_size         <span class="comment"># File size in bytes</span>
+    path.stat().st_mtime        <span class="comment"># Last modified time (epoch)</span>
+    path.suffix                 <span class="comment"># File extension</span>
 </td>
                 <td class="description">Common Path Operations</td>
             </tr>
             <tr>
 <td class="code">from pathlib import Path
-path = Path(<span class="pyStr">'/home/Documents/GEC/train.py'</span>)
+path = Path(<span class="str">'/home/Documents/GEC/train.py'</span>)
 
-path.name       <span class="codeComment"># train.py</span>
-path.stem       <span class="codeComment"># train</span>
-path.suffix     <span class="codeComment"># .py</span>
-path.parent     <span class="codeComment"># /home/Documents/GEC</span>
-path.parts      <span class="codeComment"># ('/', 'home', 'Documents', 'GEC', 'train.py')</span>
+path.name       <span class="comment"># train.py</span>
+path.stem       <span class="comment"># train</span>
+path.suffix     <span class="comment"># .py</span>
+path.parent     <span class="comment"># /home/Documents/GEC</span>
+path.parts      <span class="comment"># ('/', 'home', 'Documents', 'GEC', 'train.py')</span>
 </td>
                 <td class="description"></td>
             </tr>
             <!-- 
             <tr>
                 <td class="code">
-                    <span class="codeComment"></span>
-                    <span class="pyStr">""</span>
+                    <span class="comment"></span>
+                    <span class="str">""</span>
                     <b>r</b>
                 </td>
                 <td class="description">Extract Text Inside Quotes</td>
