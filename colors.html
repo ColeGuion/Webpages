@@ -10,39 +10,62 @@
 </head>
 
 <body> 
-    <div class="colorPicker" id="cp1">
+    <div class="container">
+        <!-- <div style="background-color: lightcoral;"> -->
         <div>
-            <label for="color-inp" class="headFont">Lighten Color</label>
-            <input type="text" id="color-inp" value="#e48026">
-        </div>
-        <div><div id="color-block"></div></div>
-    </div>
-    <div class="flex">
-        <input type="range" id="volume-inp" name="volume" min="0" max="100" class="block self-center">
-        <span style="width:90px;" class="self-center text-xl font-bold px-3 py-2 bg-gray-100 border text-center rounded ml-3">60%</span>
-    </div>
-    <br><br>
+            <div class="colorPicker" id="cp1">
+                <div>
+                    <label for="color-inp" class="headFont">Lighten Color</label>
+                    <input type="text" id="color-inp" value="#e48026">
+                </div>
+                <div><div id="color-block"></div></div>
+            </div>
+            <div class="flex">
+                <input type="range" id="volume-inp" name="volume" min="0" max="100" class="block self-center">
+                <span style="width:90px;" class="self-center text-xl font-bold px-3 py-2 bg-gray-100 border text-center rounded ml-3">60%</span>
+            </div>
+            <br><br>
 
-    <div class="newColor">
-        <div class="newColor-header">
-            <h1 class="headFont">New Color</h1>
+            <div class="newColor">
+                <div class="newColor-header">
+                    <h1 class="headFont">New Color</h1>
+                </div>
+                
+                <div class="form-group">
+                    <label for="hex" class="headFont">HEX</label>
+                    <input type="text" id="hex">
+                </div>
+                
+                <div class="form-group">
+                    <label for="rgb" class="headFont">RGB</label>
+                    <input type="text" id="rgb">
+                </div>
+                
+                <div id="newColor-block"></div>
+            </div>
         </div>
-        
-        <div class="form-group">
-            <label for="hex" class="headFont">HEX</label>
-            <input type="text" id="hex">
+
+        <div>
+            <div id="BestColors">
+                <div class="best-colors">
+                    <div style="color: #df6900;"><div class="colorBlk" style="background-color: #DF6900;"></div><span>Orange</span></div>
+                    <div style="color: #E20000;"><div class="colorBlk" style="background-color: #E20000;"></div><span>Red</span></div>
+                    <div style="color: #2F650C;"><div class="colorBlk" style="background-color: #2F650C;"></div><span>Green</span></div>
+                    <div style="color: #9900FF;"><div class="colorBlk" style="background-color: #9900FF;"></div><span>Purple #1</span></div>
+                    <div style="color: #800080;"><div class="colorBlk" style="background-color: #800080;"></div><span>Purple #3</span></div>
+                </div>
+                <div class="best-colors">
+                    <div style="color: #FF4500;"><div class="colorBlk" style="background-color: #FF4500;"></div><span>Red-Orange</span></div>
+                    <div style="color: #b8860b;"><div class="colorBlk" style="background-color: #B8860B;"></div><span>Yellow</span></div>
+                    <div style="color: #188038;"><div class="colorBlk" style="background-color: #188038;"></div><span>Green</span></div>
+                    <div style="color: #8300DC;"><div class="colorBlk" style="background-color: #8300DC;"></div><span>Purple #2</span></div>
+                    <div style="color: #B200B2;"><div class="colorBlk" style="background-color: #B200B2;"></div><span>Pink</span></div>
+                </div>
+            </div>
         </div>
-        
-        <div class="form-group">
-            <label for="rgb" class="headFont">RGB</label>
-            <input type="text" id="rgb">
-        </div>
-        
-        <div id="newColor-block"></div>
     </div>
     
-    <!-- <div id="tmp"></div> -->
-
+    
     <script>
         let colorInput = document.getElementById("color-inp");
         let colorBlock = document.getElementById("color-block");
@@ -58,6 +81,21 @@
         colorInput.addEventListener('input', updateColors);
         volumeInput.addEventListener('input', updateColors);
 
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll(".best-colors div.colorBlk").forEach(colorDiv => {
+                const bgColor = colorDiv.style.backgroundColor;
+                // Convert to hex if it's in rgb format
+                let hexColor;
+                if (bgColor.startsWith('rgb')) {
+                    console.log(`Convert rgb to hex for color: "${bgColor}"`);
+                    hexColor = rgbStringToHex(bgColor);
+                } else {
+                    hexColor = bgColor; // Assume it's already in hex format
+                }
+                colorDiv.onclick = () => copyColorToClipboard(hexColor, colorDiv);
+                //console.log(`Add onclick event for color: "${hexColor}"`);
+            });
+        });
 
         function updateColors() {
             let colorValue = colorInput.value;
@@ -91,13 +129,24 @@
             };
         }
 
+        function rgbStringToHex(colorStr) {
+            // Expected Format: colorStr = "rgb(255, 0, 0)"            
+            const rgbRegex = /rgb\((\d+),\s*(\d+),\s*(\d+)\)/;
+            const match = colorStr.match(rgbRegex);
+
+            if (match) {
+                return rgbToHex(parseInt(match[1]), parseInt(match[2]), parseInt(match[3]));
+            }
+            return null; // Invalid format
+        }
+
         // Converts an RGB object to a hex color string
         function rgbToHex(r, g, b) {
             const toHex = (c) => {
                 const hex = Math.round(c).toString(16);
                 return hex.length === 1 ? '0' + hex : hex;
             };
-            return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+            return `#${toHex(r)}${toHex(g)}${toHex(b)}`.toUpperCase();
         }
 
         // Lightens a hex color by a percentage (0–100)
@@ -109,7 +158,15 @@
             const b = lighten(rgb.b);
             return rgbToHex(r, g, b);
         }
-        
+
+        function copyColorToClipboard(colorHex, element) {
+            //alert(`Copying: ${colorHex}`);
+            navigator.clipboard.writeText(colorHex).then(() => {
+            }).catch(err => {
+                console.error('Failed to copy color: ', err);
+                alert('Failed to copy color: ', err);
+            });
+        }
     </script>
     <script src="Scripts/navigation.js"></script>
 </body>

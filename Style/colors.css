@@ -2,6 +2,16 @@ body {
     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+.container {
+    display: flex;
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 1fr 1fr;
+
+    width: 100%;
+    /* background-color: wheat; */
+}
 .headFont {
     font-size: 21px;
     font-weight: 700;

@@ -60,6 +60,7 @@ h2 {
 /* BEST COLORS */
 #BestColors {
     width: 50%;
+    width: 100%;
     border: 2px solid black;
     padding: 0;
     display: flex;

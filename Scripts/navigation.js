@@ -7,9 +7,9 @@ const pages = [
     { href: 'css_grids.html', text: 'Grids' },
     { href: 'editor.html', text: 'Text Editor' },
     //{ href: 'docs.html', text: 'Docs' },
-    { href: 'playground.html', text: 'Playground' },
+    //{ href: 'playground.html', text: 'Playground' },
     { href: 'bootstrap.html', text: 'Bootstrap' },
-    { href: 'todo.html', text: 'To Do' },
+    //{ href: 'todo.html', text: 'To Do' },
     { href: 'finddiff.html', text: 'FindDiff' },
     { href: 'make_data.html', text: 'Make Data' },
 ];
