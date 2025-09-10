@@ -8,7 +8,7 @@
     <!-- Link to Prism JS for syntax highlighting functionality -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <style>
-        #python-sect .code {
+        table .code {
             font-family: "Source Code Pro", monospace;
             font-weight: 500;
             font-size: 12pt;
@@ -16,19 +16,19 @@
             width: 50%;
             white-space: pre;
         }
-        #python-sect .code > .comment {
+        table .code > .comment {
             color: green;
             font-weight: 600;
         }
-        #python-sect .code > .str {
+        table .code > .str {
             color: #b93d0fe5;
             color: #a73107e5;
             font-weight: 600;
         }
-        #python-sect .code > .idx {
+        table .code > .idx {
             color: rgb(212, 7, 7);
         }
-        #python-sect .code > b {
+        table .code > b {
             color : #1962a1;
             font-weight: 600;
         }
@@ -67,6 +67,10 @@
         .py-highlight {
             background-color: #ffe066 !important;
             transition: background-color 0.5s;
+        }
+
+        #css-table .code > .comment {
+            font-style: italic;
         }
     </style>
 </head>
@@ -255,11 +259,12 @@
         <h1>Python</h1>
         <div id="py-btn-bar" style="margin-bottom: 12px;">
             <button type="button" onclick="scrollToPySection('py-dictionaries')">Dictionaries</button>
+            <button type="button" onclick="scrollToPySection('py-pandas')">Pandas</button>
             <button type="button" onclick="scrollToPySection('py-regex')">Regex</button>
             <button type="button" onclick="scrollToPySection('py-pathlib')">Pathlib</button>
         </div>
     
-        <table>
+        <table id="python-table">
             <tr>
                 <th>Commands</th>
                 <th>Description</th>
@@ -290,7 +295,8 @@ x.rjust(20, <span class="str">'_'</span>) <span class="comment"># "_________I Lo
                 <td class="description">Check if a path exists on your computer</td>
             </tr>
             <tr>
-                <td class="code">from collections import Counter<br>type_counts = Counter(obj[<span class="str">"type"</span>] for obj in x)
+                <td class="code">from collections import Counter
+type_counts = Counter(obj[<span class="str">"type"</span>] for obj in x)
 
 <span class="comment"># Print the results</span>
 for type_name, count in type_counts.items():<br>    print(<b>f</b><span class="str">"{type_name}: {count}"</span>)</td>
@@ -324,6 +330,36 @@ new_dict = {k: v * 2 for k, v in my_dict.items()}
                 <td class="code"><span class="comment"># Sort by Key</span><br>sorted_by_key = {k: my_dict[k] for k in sorted(my_dict)}<br>
 <span class="comment"># Sort by Value</span><br>sorted_by_value = dict(sorted(my_dict.items(), key=lambda x: x[1]))</td>
                 <td class="description">Sorting Dictionaries</td>
+            </tr>
+            
+            <!--***** Pandas *****-->
+            <tr id="py-pandas">
+                <td colspan="2" class="tabSect">Pandas</td>
+            </tr> 
+            <tr>
+<td class="code">x = <span class="str">"This happened over a Decade ago."</span>
+y = <span class="str">"This happened three DECADES ago."</span>
+
+re.search(<b>r</b><span class="str">"decade"</span>, x, re.IGNORECASE) <span class="comment"># &lt;re.Match object; span=(21, 27), match='Decade'&gt;</span>
+re.search(<b>r</b><span class="str">"decade"</span>, y, re.I) <span class="comment"># &lt;re.Match object; span=(20, 26), match='DECADE'&gt;</span>
+
+<span class="comment"># Exact Word Match:</span>
+re.search(<b>r</b><span class="str">"\bdecade\b"</span>, x, re.I) <span class="comment"># &lt;re.Match object; span=(21, 27), match='Decade'&gt;</span>
+re.search(<b>r</b><span class="str">"\bdecade\b"</span>, y, re.I) <span class="comment"># None</span>
+</td>
+                <td class="description">Check if the word "decade" is in the string.</td>
+            </tr>
+            <tr>
+                <td class="code"></td>
+                <td class="description">DESCRIPTION</td>
+            </tr>
+            <tr>
+                <td class="code"></td>
+                <td class="description">DESCRIPTION</td>
+            </tr>
+            <tr>
+                <td class="code"></td>
+                <td class="description">DESCRIPTION</td>
             </tr>
 
             <!--***** Regex *****-->
@@ -442,6 +478,51 @@ path.parts      <span class="comment"># ('/', 'home', 'Documents', 'GEC', 'train
 
     <div id="css-sect" class="content-section">
         <h1>CSS</h1>
+        
+        <table id="css-table">
+            <tr><th>CSS Code</th><th>Description</th></tr>
+            <tr>
+                <td class="description"><b>:has() — Parent Selector</b><br><br>Style an element if it contains certain child/descendant elements.</td>
+                <td class="code"><span class="comment">/* Select divs that contain an image */</span>
+div:has(img) {
+  border: 2px solid blue;
+  padding: 10px;
+}
+
+<span class="comment">/* Select list items that contain a link */</span>
+li:has(a) {
+  font-weight: bold;
+}
+
+<span class="comment">/* Select h2 if the card has an image */</span>
+.card:has(img) > h2 {
+  color: red;
+}
+
+<span class="comment">/* Select form groups that contain invalid inputs */</span>
+.form-group:has(input:invalid) {
+  border-left: 3px solid red;
+}</td>
+            </tr>
+            
+            <tr>
+                <td class="description"><b>:is() — Simplify Complex Selectors</b><br><br>Takes a list of selectors and matches any of them, reducing repetition.</td>
+                <td class="code"><span class="comment">/* Applies styling to headings, paragraphs, and .active list items */</span>
+:is(h1, h2, h3, p, li.active) {
+  color: blue;
+}</td>
+            </tr>
+
+            <tr>
+                <td class="description"><b>:not() — Exclude Elements</b><br><br>Excludes elements from a selector.</td>
+                <td class="code"><span class="comment">/* Style all list items except .highlight */</span>
+li:not(.highlight) {
+  color: gray;
+}</td>
+            </tr>
+        </table>
+
+
         <div class="sect">
             <h2>Positions</h2>
         </div>

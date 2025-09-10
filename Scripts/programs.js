@@ -31,6 +31,83 @@ const Linux_Commands = [
     ["nano ~/.bashrc", "Edit linux bash profile"],
 ];
 
+
+
+const Python_Commmands = [
+    {
+        Description: "List Indexing",
+        Code: `
+            x = [1,2,3,4,5,6,7,8,9,10]
+            x[:<b class="idx">3</b>]   # [1, 2, 3]
+            x[<b class="idx">3</b>:]   # [4, 5, 6, 7, 8, 9, 10]
+
+            x[<b class="idx">3:6</b>]  # [4, 5, 6]
+            x[<b class="idx">-3</b>:]  # [8, 9, 10]
+            x[:<b class="idx">-3</b>]  # [1, 2, 3, 4, 5, 6, 7]
+
+            x[::<b class="idx">2</b>]  # [1, 3, 5, 7, 9]
+            x[::<b class="idx">3</b>]  # [1, 4, 7, 10]
+        `
+    },
+    {
+        Description: "Print Formatting",
+        Code: `
+            x = <span class="str">"I Love Cake"</span>
+            x.center(20, <span class="str">'_'</span>) # "____I Love Cake_____"
+            x.ljust(20, <span class="str">'_'</span>) # "I Love Cake_________"
+            x.rjust(20, <span class="str">'_'</span>) # "_________I Love Cake"
+        `
+    },
+    {
+        Description: "Check if a path exists on your computer",
+        Code: `
+            os.path.exists(<span class="str">"/home/tech/Documents/GEC"</span>)
+        `
+    },
+    {
+        Description: "Count the number of unique \"type\" values in a list of object",
+        Code: `
+            from collections import Counter
+            type_counts = Counter(obj[<span class="str">"type"</span>] for obj in x)
+
+            # Print the results
+            for type_name, count in type_counts.items():
+                print(<b>f</b><span class="str">"{type_name}: {count}"</span>)
+        `
+    },
+
+    //***** Dictionaries *****
+    {
+        Description: "",
+        Code: `
+            CODE
+        `
+    },
+    {
+        Description: "",
+        Code: `
+            CODE
+        `
+    },
+]
+
+function Fill_PyTable() {
+    const pyTable = document.getElementById('python-table');
+
+    Python_Commmands.forEach(item => {
+        // Strip whitespace and remove first 8 characters from each line
+        const codeStr = item.Code
+            .trim()
+            .split('\n')
+            .map(line => line.replace(/^\s{0,12}/, '')) // Remove up to 12 leading spaces
+            .map(line => line.includes('#') ? line.replace('#', '<span class="comment">#') + '</span>' : line) // Wrap comments in span
+            .join('\n');
+        
+        pyTable.innerHTML += `<tr><td class="code">${codeStr}</td><td class="description">${item.Description}</td></tr>`;
+        
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     // Initialize the page
     addCommands();
@@ -47,6 +124,8 @@ document.addEventListener("DOMContentLoaded", function () {
     //window.addEventListener('load', highlightSection);
     // Also handle hash changes (e.g., when user clicks a link)
     window.addEventListener('hashchange', highlightSection);
+
+    //Fill_PyTable(); //* Works, but haven't extended past Dictionaries yet
 });
 
 // Click on and copy the code block
