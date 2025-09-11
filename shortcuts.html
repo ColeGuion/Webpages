@@ -6,21 +6,62 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <nav id="prognav">
+    <nav id="prognav" style="margin: -2vh -2vw 0vh;">
+        <a onclick="scrollToSection('windows')">Windows</a>
         <a onclick="scrollToSection('vscode')">VS Code</a>
         <a onclick="scrollToSection('ditto')">Ditto</a>
-        <a onclick="scrollToSection('powertoys')">PowerToys</a>
         <a onclick="scrollToSection('chrome')">Chrome</a>
         <a onclick="scrollToSection('nano')">Nano</a>
     </nav>
-
-    <span class="todo"><u>TODO</u>: Add shortcut from <a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec">Windows Keys Shortcuts</a></span>
-    <br><span class="todo"><u>TODO</u>: Add shortcut from <a href="https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop#zippy=%2Ctab-window-shortcuts%2Cgoogle-chrome-feature-shortcuts">Chrome Keyboard Shortcuts</a></span>
     <br><span class="todo"><u>TODO</u>: Save added shortcut in table once its added</span> 
     
+    
+    <div class="shortcut-section" id="windows" name="windows">
+        <h2 onclick="toggleSection(this)">Windows</h2>
+        <div class="cuts collapsed">
+            <div class="helper-link">
+                <a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec">Windows Keys Shortcuts</a>
+            </div>
+            <div class="scTable" name="windows-shortcuts">
+                <div class="tableName">Shortcuts</div>
+                <div>WIN + E</div><div>Open File Explorer</div>
+
+                <div>WIN + I</div><div>Open Settings</div>
+
+                <div>WIN + V</div><div>Open Clipboard History</div>
+
+                <div>WIN + M</div><div>Minimize Windows</div>
+            </div>
+
+            <div class="scTable">
+                <div class="tableName">PowerToys - Advanced Paste</div>
+                <div>WIN + SHIFT + V</div>
+                <div>Open Advanced Paste window</div>
+                <div>WIN + CTRL + ALT + V</div>
+                <div>Paste as plain text</div>
+                <div>WIN + CTRL + ALT + J</div>
+                <div>Paste as JSON</div>
+            </div>
+
+            <div class="scTable">
+                <div class="tableName">PowerToys</div>
+                <div>WIN + CTRL + T</div>
+                <div>Pin a Window</div>
+                <div>WIN + SHIFT + T</div>
+                <div>Text Extractor</div>
+                <div>WIN + SHIFT + C</div>
+                <div>Color Picker</div>
+                <div>WIN + SHIFT + V</div>
+                <div>Advanced Paste</div>
+                <div>CTRL + ALT + `</div>
+                <div>Open Ditto</div>
+            </div>
+        </div>
+    </div>
+
     <div class="shortcut-section" id="vscode" name="visual_studio_code">
         <h2 onclick="toggleSection(this)">Visual Studio Code</h2>
-        <div class="cuts">
+        <div class="cuts collapsed">
             <div class="scTable" name="vsc-Navigation">
                 <div class="tableName">Navigation</div>
                 <div>CTRL + H</div>
@@ -120,7 +161,7 @@
 
     <div class="shortcut-section" id="ditto" name="ditto">
         <h2 onclick="toggleSection(this)">Ditto</h2>
-        <div class="cuts" id="winTables">
+        <div class="cuts collapsed" id="winTables">
             <div class="scTable" style="width: 50%;">
                 <div class="tableName">Ditto</div>
                 <div>CTRL + ALT + `</div>
@@ -138,7 +179,10 @@
 
     <div class="shortcut-section" id="chrome" name="google_chrome">
         <h2 onclick="toggleSection(this)">Google Chrome</h2>
-        <div class="cuts"> <!-- <div class="cuts collapsed"> -->
+        <div class="cuts collapsed">
+            <div class="helper-link">
+                <a href="https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop#zippy=%2Ctab-window-shortcuts%2Cgoogle-chrome-feature-shortcuts">Chrome Keyboard Shortcuts</a>
+            </div>
             <div class="scTable">
                 <div class="tableName">Navigation</div>
                 <div>CTRL + T</div>
@@ -198,40 +242,9 @@
         </div>
     </div>
 
-    <div class="shortcut-section" id="powertoys" name="windows_powertoys">
-        <h2 onclick="toggleSection(this)">Windows (PowerToys)</h2>
-        <div class="cuts" id="winTables">
-            <div class="scTable" style="width: 30%; grid-template-columns: 1fr 1fr;">
-                <div class="tableName">Advanced Paste</div>
-                <div>WIN + SHIFT + V</div>
-                <div>Open Advanced Paste window</div>
-                <div>WIN + CTRL + ALT + V</div>
-                <div>Paste as plain text</div>
-                <div>WIN + CTRL + ALT + J</div>
-                <div>Paste as JSON</div>
-                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
-            </div>
-
-            <div class="scTable">
-                <div class="tableName">More</div>
-                <div>WIN + CTRL + T</div>
-                <div>Pin a Window</div>
-                <div>WIN + SHIFT + T</div>
-                <div>Text Extractor</div>
-                <div>WIN + SHIFT + C</div>
-                <div>Color Picker</div>
-                <div>WIN + SHIFT + V</div>
-                <div>Advanced Paste</div>
-                <div>CTRL + ALT + `</div>
-                <div>Open Ditto</div>
-                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
-            </div>
-        </div>
-    </div>
-
     <div class="shortcut-section" id="nano" name="nano">
         <h2 onclick="toggleSection(this)">Nano</h2>
-        <div class="cuts" id="winTables">
+        <div class="cuts collapsed" id="winTables">
             <div class="scTable">
                 <div class="tableName">Navigation</div>
                 <div>CTRL + E</div>
@@ -268,14 +281,6 @@
             }
         }
 
-        // Change all '+' characters in .scTable element to be wrapped in <b></b>
-        document.addEventListener('DOMContentLoaded', function() {
-            const allDivs = document.querySelectorAll('.scTable div');
-            allDivs.forEach(div => {
-                div.innerHTML = div.innerHTML.replace(/\+/g, '<b>+</b>');    
-            });
-        });
-
         // Save table data to localStorage
         function saveTableData(table) {
             const tableId = table.getAttribute('data-table-id');
@@ -302,7 +307,7 @@
                 if (savedData) {
                     // Clear existing content (except table name and add button)
                     const tableName = table.querySelector('.tableName').textContent;
-                    const addButton = table.querySelector('.add-row-btn');
+                    //const addButton = table.querySelector('.add-row-btn');
                     table.innerHTML = '';
                     table.appendChild(document.createElement('div')).className = 'tableName';
                     table.querySelector('.tableName').textContent = tableName;
@@ -321,10 +326,10 @@
                     });
                     
                     // Re-add the add button
-                    table.appendChild(addButton);
+                    //table.appendChild(addButton);
                     
                     // Format the shortcuts
-                    formatShortcuts();
+                    //formatShortcuts();
                 }
             });
         }
@@ -371,8 +376,23 @@
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
-            formatShortcuts();
-            loadTableData();
+            // Change all '+' characters in .scTable element to be wrapped in <b></b>
+            const allDivs = document.querySelectorAll('.scTable div');
+            allDivs.forEach(div => {
+                div.innerHTML = div.innerHTML.replace(/\+/g, '<b>+</b>');    
+            });
+
+            //formatShortcuts();
+            //loadTableData();
+
+            // Replace "WIN" with Windows icon in all child divs of .scTable
+            document.querySelectorAll('.scTable').forEach(table => {
+                table.querySelectorAll('div').forEach(div => {
+                    let repl = '&#x229E; WIN';  // Windows Unicode Logo
+                    repl = '<i class="fa-brands fa-windows"></i> WIN';  // Windows Icon
+                    div.innerHTML = div.innerHTML.replace(/WIN/g, repl);
+                });
+            });
         });
     </script>
     <script src="Scripts/navigation.js"></script>
