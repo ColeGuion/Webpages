@@ -110,17 +110,11 @@
         </div>
     </div>
 
-    <!-- TODO: Throw error if # of texts don't match up -->
     <!-- TODO: Fix line number issues. (When mulit-line string ends with one word sometimes the alignment doesn't align properly) -->
     <!-- TODO: Add bigger space between different lines, but not the same line that is wrapped -->
     <!-- TODO: Make source and dtype inputs smaller; Make text boxes wider (line numbers smaller) -->
     <script src="Scripts/data_maker.js"></script>
     <script> 
-        window.addEventListener('load', function() {
-            // Initialize line numbers on page load
-            updateLineNumbers('textbox1', 'line-numbers-1');
-            updateLineNumbers('textbox2', 'line-numbers-2');
-        });
         // Auto capitalize text in homophones input boxes
         document.getElementById('phone1').addEventListener('input', function(e) {
             e.target.value = e.target.value.toUpperCase();

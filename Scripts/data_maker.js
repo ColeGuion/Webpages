@@ -1,3 +1,13 @@
+// Visual Loading Timeline
+//   1. DOM Parsing Starts
+//   2. DOMContentLoaded
+//       - HTML is loaded and parsed, DOM is built
+//       - Does NOT wait for stylesheets, images, and subframes to finish loading
+//   3. Resources Loading
+//   4. Window.load
+//       - The entire page has loaded, including all dependent resources
+
+
 document.addEventListener("DOMContentLoaded", function () {
     add_textbox_shortcuts();
     load_test_texts();
@@ -19,6 +29,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
+});
+
+// Initialize line numbers on page load
+window.addEventListener('load', function() {
+    updateLineNumbers('textbox1', 'line-numbers-1');
+    updateLineNumbers('textbox2', 'line-numbers-2');
 });
 
 // Add keyboard shortcuts for textareas
