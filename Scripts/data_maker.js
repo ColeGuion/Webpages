@@ -10,25 +10,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     add_textbox_shortcuts();
-    load_test_texts();
-
-    // Add event listeners for textareas
-    document.addEventListener('keydown', function(event) {
-        //* ALT+X - Clear both text boxes
-        if (event.altKey && event.key.toLowerCase() === 'x') {
-            event.preventDefault();
-            clearTextarea('textbox1');
-            clearTextarea('textbox2');
-        }
-        
-        //* ALT+C - Copy JSON objects
-        if (event.altKey && event.key.toLowerCase() === 'c') {
-            event.preventDefault();
-            if (window.currentResult) {
-                copyResult();
-            }
-        }
-    });
+    //load_test_texts();
 });
 
 // Initialize line numbers on page load
@@ -40,6 +22,8 @@ window.addEventListener('load', function() {
 // Add keyboard shortcuts for textareas
 //*   CTRL + X        ->  Delete Line
 //*    ALT + Up/Down  ->  Move Line Up/Down
+//*    ALT + X        ->  Clear both text boxes
+//*    ALT + C        ->  Copies JSON objects
 function add_textbox_shortcuts() {
     const textbox1 = document.getElementById('textbox1');
     const textbox2 = document.getElementById('textbox2');
@@ -128,6 +112,24 @@ function add_textbox_shortcuts() {
                 moveLine(textarea, e.key === 'ArrowUp' ? 'up' : 'down');
             }
         });
+    });
+
+    // Add event listeners for textareas
+    document.addEventListener('keydown', function(event) {
+        //* ALT+X - Clear both text boxes
+        //if (event.altKey && event.key.toLowerCase() === 'x') {
+        //    event.preventDefault();
+        //    clearTextarea('textbox1');
+        //    clearTextarea('textbox2');
+        //}
+        
+        //* ALT+C - Copy JSON objects
+        if (event.altKey && event.key.toLowerCase() === 'c') {
+            event.preventDefault();
+            if (window.currentResult) {
+                copyResult();
+            }
+        }
     });
 }
 
