@@ -128,27 +128,22 @@
         document.getElementById('phone2').addEventListener('input', function(e) {
             e.target.value = e.target.value.toUpperCase();
         });
-
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(event) {
-            // ALT+X - Clear both text boxes
-            if (event.altKey && event.key.toLowerCase() === 'x') {
-                event.preventDefault();
-                clearTextarea('textbox1');
-                clearTextarea('textbox2');
-            }
-            
-            // ALT+C - Copy JSON objects
-            if (event.altKey && event.key.toLowerCase() === 'c') {
-                event.preventDefault();
-                if (window.currentResult) {
-                    copyResult();
-                }
-            }
-        });
+        // Custom double-click selection for textareas
+        function selectWordNoSpace(e) {
+            const textarea = e.target;
+            const value = textarea.value;
+            const pos = textarea.selectionStart;
+            // Find word boundaries
+            let start = pos, end = pos;
+            while (start > 0 && /\w/.test(value[start - 1])) start--;
+            while (end < value.length && /\w/.test(value[end])) end++;
+            // Set selection range to just the word
+            textarea.setSelectionRange(start, end);
+            e.preventDefault();
+        }
+        document.getElementById('textbox1').addEventListener('dblclick', selectWordNoSpace);
+        document.getElementById('textbox2').addEventListener('dblclick', selectWordNoSpace);
     </script>
     <script src="Scripts/navigation.js"></script>
-    <script src="Scripts/make_data.js"></script>
 </body>
 </html>

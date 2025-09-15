@@ -1,6 +1,119 @@
 document.addEventListener("DOMContentLoaded", function () {
-    //load_test_texts();
+    add_textbox_shortcuts();
+    load_test_texts();
+
+    // Add event listeners for textareas
+    document.addEventListener('keydown', function(event) {
+        //* ALT+X - Clear both text boxes
+        if (event.altKey && event.key.toLowerCase() === 'x') {
+            event.preventDefault();
+            clearTextarea('textbox1');
+            clearTextarea('textbox2');
+        }
+        
+        //* ALT+C - Copy JSON objects
+        if (event.altKey && event.key.toLowerCase() === 'c') {
+            event.preventDefault();
+            if (window.currentResult) {
+                copyResult();
+            }
+        }
+    });
 });
+
+// Add keyboard shortcuts for textareas
+//*   CTRL + X        ->  Delete Line
+//*    ALT + Up/Down  ->  Move Line Up/Down
+function add_textbox_shortcuts() {
+    const textbox1 = document.getElementById('textbox1');
+    const textbox2 = document.getElementById('textbox2');
+
+    // Function to handle line deletion (CTRL+X)
+    function deleteLine(textarea) {
+        const cursorPos = textarea.selectionStart;
+        const text = textarea.value;
+        const lines = text.split('\n');
+        
+        // Find the current line
+        let currentLine = 0;
+        let charCount = 0;
+        for (let i = 0; i < lines.length; i++) {
+            charCount += lines[i].length + 1; // +1 for newline
+            if (charCount > cursorPos) {
+                currentLine = i;
+                break;
+            }
+        }
+
+        // Remove the current line
+        lines.splice(currentLine, 1);
+        textarea.value = lines.join('\n');
+
+        // Adjust cursor position
+        let newPos = 0;
+        if (currentLine > 0) {
+            newPos = lines.slice(0, currentLine).join('\n').length + 1;
+        }
+        textarea.setSelectionRange(newPos, newPos);
+    }
+
+    // Function to move line up or down
+    function moveLine(textarea, direction) {
+        const cursorPos = textarea.selectionStart;
+        const text = textarea.value;
+        const lines = text.split('\n');
+        
+        // Find the current line
+        let currentLine = 0;
+        let charCount = 0;
+        for (let i = 0; i < lines.length; i++) {
+            charCount += lines[i].length + 1;
+            if (charCount > cursorPos) {
+                currentLine = i;
+                break;
+            }
+        }
+
+        // Check if move is possible
+        if (direction === 'up' && currentLine === 0) return;
+        if (direction === 'down' && currentLine === lines.length - 1) return;
+
+        // Swap lines
+        const targetLine = direction === 'up' ? currentLine - 1 : currentLine + 1;
+        [lines[currentLine], lines[targetLine]] = [lines[targetLine], lines[currentLine]];
+        textarea.value = lines.join('\n');
+
+        // Adjust cursor position
+        let newPos = 0;
+        if (direction === 'up') {
+            newPos = lines.slice(0, currentLine - 1).join('\n').length;
+            if (currentLine > 1) newPos += 1;
+            //newPos += lines[currentLine - 1].length + 1;
+        } else {
+            //console.log(`Moving DOWN\nCurrent Line: ${currentLine}\nTarget Line: ${targetLine}`);
+            newPos = lines.slice(0, currentLine + 1).join('\n').length;
+            //console.log(`New Position: ${newPos}`);
+            if (currentLine < lines.length - 1) newPos += 1;
+        }
+        textarea.setSelectionRange(newPos, newPos);
+    }
+
+    // Add event listeners to both textareas
+    [textbox1, textbox2].forEach(textarea => {
+        textarea.addEventListener('keydown', function(e) {
+            // CTRL+X for deleting line
+            if (e.ctrlKey && e.key === 'x') {
+                e.preventDefault();
+                deleteLine(textarea);
+            }
+            // ALT+Up/Down Arrow for moving line
+            if (e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+                e.preventDefault();
+                moveLine(textarea, e.key === 'ArrowUp' ? 'up' : 'down');
+            }
+        });
+    });
+}
 
 function clearInput(inputId) {
     document.getElementById(inputId).value = '';
@@ -365,7 +478,7 @@ function copyResult() {
 
 
 function load_test_texts() {
-    document.getElementById('textbox1').innerHTML = `I spent hours poring over the script with my co-stars to memorize my lines.
+    let content1 = `I spent hours poring over the script with my co-stars to memorize my lines.
 He pored over his notes the night before the exam.
 Pieces of food keep getting caught in the sponge's pores.
 
@@ -375,7 +488,7 @@ aligned with those theories during our interviews.
 
 
 The success of the project depends on whether we secure funding.`;
-    document.getElementById('textbox2').innerHTML = `I spent hours poring over the script with my co-stars to memorize my lines.
+    let content2 = `I spent hours poring over the script with my co-stars to memorize my lines.
 He pored over his notes the night before the exam.
 Pieces of food keep getting caught in the sponge's pores.
 
@@ -388,4 +501,23 @@ from below by some artists and by the public.
 
 The success of the project depends on whether we secure funding.`;
 
+    content1 = `The new roller coaster is an exciting addition to the amusement park.
+She has an exciting career as a journalist.
+
+The final moments of the game were truly exciting.
+
+Moving to a new city can be an exciting adventure.
+
+We listened to his exciting stories about traveling the world.
+The discovery of a new planet is an exciting scientific breakthrough.
+It was an exciting challenge to learn how to code.
+
+The kids were talking about their exciting summer plans.
+
+This is a very exciting opportunity for our company.
+The news of their engagement was very exciting.`;
+
+
+    document.getElementById('textbox1').innerHTML = content1;
+    document.getElementById('textbox2').innerHTML = content2;
 }
