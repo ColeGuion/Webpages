@@ -1,0 +1,5 @@
+# Ignore all files within the "./Practice" folder & the folder itself
+Practice/
+
+# Ignore any files ending in .ipynb
+*.ipynb
