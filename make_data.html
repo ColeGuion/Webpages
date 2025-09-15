@@ -15,7 +15,25 @@
             <div class="input-group">
                 <!-- <label for="dtype">DType</label> -->
                 <div class="input-wrapper">
-                    <input type="text" id="dtype" placeholder="DTYPE" oninput="togglePhonesSection()">
+                    <input type="text" id="dtype" list="dtype-list" placeholder="DTYPE" oninput="togglePhonesSection()">
+                    <datalist id="dtype-list">
+                        <option value="Abbreviations">Abbreviations</option>
+                        <option value="Adjective & Adverbs">Adjective & Adverbs</option>
+                        <option value="Apostrophes">Apostrophes</option>
+                        <option value="Capitalization">Capitalization</option>
+                        <option value="Commas">Commas</option>
+                        <option value="Comparatives & Superlatives">Comparatives & Superlatives</option>
+                        <option value="Homophones">Homophones</option>
+                        <option value="Hyphens">Hyphens</option>
+                        <option value="More">More</option>
+                        <option value="Plurality">Plurality</option>
+                        <option value="Preposition">Preposition</option>
+                        <option value="Pronouns">Pronouns</option>
+                        <option value="Semicolons">Semicolons</option>
+                        <option value="Subject-Verb Agreement">Subject-Verb Agreement</option>
+                        <option value="Verb Tense & Form">Verb Tense & Form</option>
+                        <option value="Writing Decades & Centuries">Writing Decades & Centuries</option>
+                    </datalist>
                     <button class="clear-btn" onclick="clearInput('dtype')" title="Clear dtype">×</button>
                 </div>
             </div>
