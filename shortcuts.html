@@ -61,7 +61,7 @@
 
     <div class="shortcut-section" id="vscode" name="visual_studio_code">
         <h2 onclick="toggleSection(this)">Visual Studio Code</h2>
-        <div class="cuts collapsed">
+        <div class="cuts"><!-- <div class="cuts collapsed"> -->
             <div class="scTable" name="vsc-Navigation">
                 <div class="tableName">Navigation</div>
                 <div>CTRL + H</div>
@@ -95,6 +95,9 @@
 
                 <div>SHIFT + L</div>
                 <div>Toggle line numbers</div>
+
+                <div>SHIFT + K + A</div>
+                <div>Fold all cell inputs</div>
             </div>
             <div class="scTable" name="vsc-Collapsing">
                 <div class="tableName">Collapsing</div>
@@ -149,12 +152,29 @@
                 <div>CTRL + O</div>
                 <div>Open File</div>
 
-                <div>CTRL + K + O</div>
+                <div>ctrl + k + o</div>
                 <div>Open Folder</div>
 
-                <div>CTRL + W</div>
+                <div>Ctrl + W</div>
                 <div>Close Current Tab</div>
                 <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
+            </div>
+            <div class="scTable" name="vsc-Shortcuts">
+                <div class="tableName">Shortcuts</div>
+                <div>F1</div>
+                <div>Show all commands</div>
+
+                <div>F2</div>
+                <div>Rename Symbol</div>
+
+                <div>F3</div>
+                <div>Collapse/Expand Notebook Cell</div>
+                
+                <div>F4</div>
+                <div>Go to Definition</div>
+                
+                <div>F7</div>
+                <div>Go to next symbol highlight</div>
             </div>
         </div>
     </div>

@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Proza+Libre:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
-
 :root {
     --font-size-base: 12pt;
     --scTable-width: 5.6in;
@@ -10,7 +9,6 @@
     --scTable-width: 32%;
     --scTable-gaps: 2%;
 }
-
 
 .cuts {
     display: flex;
@@ -47,6 +45,10 @@
     padding: 0.15in 0.1in;
     box-sizing: border-box;
     height: auto;
+}
+/* Capitalize every even-numbered div */
+.scTable div:nth-child(even) {
+    text-transform: uppercase;
 }
 
 .tableName {
