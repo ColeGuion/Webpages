@@ -46,6 +46,13 @@
     box-sizing: border-box;
     height: auto;
 }
+#vscode .scTable {
+    grid-template-columns: 2fr 3fr;
+}
+#vscode .scTable div:nth-child(even) {
+    text-align: center;
+}
+
 /* Capitalize every even-numbered div */
 .scTable div:nth-child(even) {
     text-transform: uppercase;
