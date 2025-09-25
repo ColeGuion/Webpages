@@ -10,7 +10,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     add_textbox_shortcuts();
-    //load_test_texts();
+    load_test_texts();
 });
 
 // Initialize line numbers on page load
@@ -519,23 +519,10 @@ from below by some artists and by the public.
 
 The success of the project depends on whether we secure funding.`;
 
-    content1 = `The new roller coaster is an exciting addition to the amusement park.
-She has an exciting career as a journalist.
-
-The final moments of the game were truly exciting.
-
-Moving to a new city can be an exciting adventure.
-
-We listened to his exciting stories about traveling the world.
-The discovery of a new planet is an exciting scientific breakthrough.
-It was an exciting challenge to learn how to code.
-
-The kids were talking about their exciting summer plans.
-
-This is a very exciting opportunity for our company.
-The news of their engagement was very exciting.`;
-
-
+    content1 = "\n\n\n\n\n";
+    content2 = "\n\n\n\n\n";
     document.getElementById('textbox1').innerHTML = content1;
     document.getElementById('textbox2').innerHTML = content2;
+    updateLineNumbers('textbox1', 'line-numbers-1');
+    updateLineNumbers('textbox2', 'line-numbers-2');
 }
