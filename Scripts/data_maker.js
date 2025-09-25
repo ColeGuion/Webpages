@@ -204,12 +204,53 @@ function syncScroll(textareaId, lineNumberId) {
     lineNumbers.scrollTop = textarea.scrollTop;
 }
 
-function handlePaste(textareaId) {
+/* function handlePaste(textareaId) {
     // Use setTimeout to allow the paste to complete first
     setTimeout(function() {
         const textarea = document.getElementById(textareaId);
-        // Replace backtick apostrophes with normal apostrophes
+        // Replace weird quotes with normal quotes
         textarea.value = textarea.value.replace(/‘/g, "'").replace(/’/g, "'").replace(/“/g, '"').replace(/”/g, '"');
+        // Remove empty/blank lines (lines that are only whitespace)
+        //textarea.value = textarea.value
+        //    .split('\n')
+        //    .filter(line => line.trim() !== '')
+        //    .join('\n');
+        // Update line numbers after paste and replacement
+        const lineNumberId = textareaId === 'textbox1' ? 'line-numbers-1' : 'line-numbers-2';
+        updateLineNumbers(textareaId, lineNumberId);
+    }, 0);
+} */
+
+function handlePaste(textareaId) {
+    const textarea = document.getElementById(textareaId);
+    
+    // Store the current selection/cursor position and existing content
+    const startPos = textarea.selectionStart;
+    const endPos = textarea.selectionEnd;
+    const existingContent = textarea.value;
+    
+    // Use setTimeout to allow the paste to complete first
+    setTimeout(function() {
+        // Get the new content after paste
+        const newContent = textarea.value;
+        
+        // Extract only the pasted portion
+        const beforePaste = existingContent.substring(0, startPos);
+        const afterPaste = existingContent.substring(endPos);
+        const pastedText = newContent.substring(startPos, newContent.length - afterPaste.length);
+        
+        // Process only the pasted text
+        let processedPastedText = pastedText;
+        // Replace weird quotes with normal quotes in pasted text
+        processedPastedText = processedPastedText.replace(/'/g, "'").replace(/'/g, "'").replace(/"/g, '"').replace(/"/g, '"');
+        // Remove empty/blank lines from pasted text only
+        processedPastedText = processedPastedText
+            .split('\n')
+            .filter(line => line.trim() !== '')
+            .join('\n');
+        
+        // Reconstruct the textarea content with processed pasted text
+        textarea.value = beforePaste + processedPastedText + afterPaste;
         
         // Update line numbers after paste and replacement
         const lineNumberId = textareaId === 'textbox1' ? 'line-numbers-1' : 'line-numbers-2';
