@@ -308,6 +308,20 @@ for type_name, count in type_counts.items():<br>    print(<b>f</b><span class="s
                 <td colspan="2" class="tabSect">Dictionaries</td>
             </tr> 
             <tr>
+                <td class="code">obj = {
+   <span class="str">"type"</span>: <span class="str">"Adjective & Adverbs"</span>,
+   <span class="str">"text"</span>: <span class="str">"Driving fastly can be very dangerous."</span>,
+   <span class="str">"correct"</span>: <span class="str">"Driving fast can be very dangerous."</span>,
+   <span class="str">"more_correct"</span>: null,
+   <span class="str">"description"</span>: null,
+   <span class="str">"source"</span>: null,
+   <span class="str">"phones"</span>: null
+}
+
+obj = {key: val <b>for</b> key, val <b>in</b> obj.items() <b>if</b> val <b>is not</b> None}</td>
+                <td class="description">Remove keys with a NULL value</td>
+            </tr>
+            <tr>
                 <td class="code">default_dict = {}.fromkeys([<span class="str">'a'</span>, <span class="str">'b'</span>, <span class="str">'c'</span>], 0)
 <span class="comment"># → {'a': 0, 'b': 0, 'c': 0}</span></td>
                 <td class="description">Initialize with default values</td>
