@@ -255,8 +255,8 @@ function handlePaste(textareaId) {
         // Update line numbers after paste and replacement
         const lineNumberId = textareaId === 'textbox1' ? 'line-numbers-1' : 'line-numbers-2';
         updateLineNumbers(textareaId, lineNumberId);
+        replaceApostrophes();
     }, 0);
-    replaceApostrophes();
 }
 
 function copyTextarea(textareaId) {
