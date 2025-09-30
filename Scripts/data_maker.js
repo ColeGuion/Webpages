@@ -256,6 +256,7 @@ function handlePaste(textareaId) {
         const lineNumberId = textareaId === 'textbox1' ? 'line-numbers-1' : 'line-numbers-2';
         updateLineNumbers(textareaId, lineNumberId);
     }, 0);
+    replaceApostrophes();
 }
 
 function copyTextarea(textareaId) {
