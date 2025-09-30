@@ -335,6 +335,7 @@ function removeQuotes() {
 }
 
 function replaceApostrophes() {
+    console.log("Replacing apostrophes");
     const textbox1 = document.getElementById('textbox1');
     const textbox2 = document.getElementById('textbox2');
     
