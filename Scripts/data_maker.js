@@ -459,10 +459,36 @@ function make_data_samples(orig, correcteds) {
         if (text.trim() === '' && correct.trim() === '') {
             continue;
         }
+
+        phone_list = [phone1, phone2];
+        if (dtype.toLowerCase() === 'homophones') {
+            // Ensure both phone fields are filled for homophones
+            if (phone1 === '' || phone2 === '') {
+                alert("For 'Homophones' dtype, both Phone #1 and Phone #2 fields must be filled.");
+                return;
+            }
+
+            text_has_phone1 = text.toLowerCase().includes(phone1.toLowerCase());
+            text_has_phone2 = text.toLowerCase().includes(phone2.toLowerCase());
+            correct_has_phone1 = correct.toLowerCase().includes(phone1.toLowerCase());
+            correct_has_phone2 = correct.toLowerCase().includes(phone2.toLowerCase());
+            if (text_has_phone1 && correct_has_phone2) {
+                phone_list = [phone1, phone2];
+            } else if (text_has_phone2 && correct_has_phone1) {
+                phone_list = [phone2, phone1];
+            } else if (text_has_phone1 && correct_has_phone1) {
+                phone_list = [phone1, phone1];
+            } else if (text_has_phone2 && correct_has_phone2) {
+                phone_list = [phone2, phone2];
+            } else {
+                phone_list = ["???", "????"];
+            }
+        }
         
         jsonObjects.push({
             ...(dtype !== "" ? { type: dtype } : {}),   // Add "type" field if dtype does not equal ""
-            ...(phone1 !== "" ? { phones: [phone1, phone2] } : {}),   // Add "phones" field if phone1 does not equal ""
+            //...(phone1 !== "" ? { phones: [phone1, phone2] } : {}),   // Add "phones" field if phone1 does not equal ""
+            ...(phone1 !== "" ? { phones: phone_list } : {}),   // Add "phones" field if phone1 does not equal ""
             text: text,
             correct: correct,
             ...(src !== "" ? { source: src } : {}),   // Add "source" field if src does not equal ""
