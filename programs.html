@@ -7,6 +7,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
     <!-- Link to Prism JS for syntax highlighting functionality -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         table .code {
             font-family: "Source Code Pro", monospace;
@@ -244,7 +246,11 @@
             </tr>
             <tr>
                 <td class="commands"><span>scp tech@172.21.188.179:/home/tech/f1.txt C:\Users\Cole\Docs</span></td>
-                <td class="description">Copy file from Linux machine to Windows machine</td>
+                <td class="description">Copy file from Linux <i class="fas fa-arrow-right"></i> Windows machine</td>
+            </tr> 
+            <tr>
+                <td class="commands"><span>scp C:\Users\Cole\Docs\f1.txt tech@172.21.188.179:/home/tech/Documents</span></td>
+                <td class="description">Copy file from Windows <i class="fas fa-arrow-right"></i> Linux machine</td>
             </tr> 
             <!-- 
             <tr>
