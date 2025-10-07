@@ -262,7 +262,7 @@
     </div>
 
     <div id="python-sect" class="content-section">
-        <h1>Python</h1>
+        <h1>Python</h1> 
         <div id="py-btn-bar" style="margin-bottom: 12px;">
             <button type="button" onclick="scrollToPySection('py-dictionaries')">Dictionaries</button>
             <button type="button" onclick="scrollToPySection('py-pandas')">Pandas</button>
@@ -271,6 +271,7 @@
         </div>
     
         <table id="python-table">
+            <!-- TODO: Python code formatting/coloring -->
             <tr>
                 <th>Commands</th>
                 <th>Description</th>
@@ -337,6 +338,36 @@ obj = {key: val <b>for</b> key, val <b>in</b> obj.items() <b>if</b> val <b>is no
 new_dict = {k: v * 2 for k, v in my_dict.items()}
 <span class="comment"># {'a': 2, 'b': 4, 'c': 6}</span></td>
                 <td class="description">Dict Comprehension</td>
+            </tr>
+            <tr>
+                <td class="code">keys = [<span class="str">'a'</span>, <span class="str">'b'</span>, <span class="str">'c'</span>]
+values = [1, 2, 3]
+d = {k: v for k, v in zip(keys, values)}
+<span class="comment"># {'a': 1, 'b': 2, 'c': 3}</span>
+
+<span class="comment"># Square Numbers</span>
+squares = {x: x*x for x in range(1, 6)}
+<span class="comment"># {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}</span>
+
+<span class="comment"># Filter existing dict</span>
+original = {<span class="str">'a'</span>: 1, <span class="str">'b'</span>: 2, <span class="str">'c'</span>: 3, <span class="str">'d'</span>: 4}
+filtered = {k: v for k, v in original.items() if v > 2}
+<span class="comment"># {'c': 3, 'd': 4}</span></td>
+                <td class="description">Dict Comprehension</td>
+            </tr>
+            <tr>
+                <td class="code">d1 = {<span class="str">'a'</span>: 1, <span class="str">'b'</span>: 2}
+d2 = {<span class="str">'c'</span>: 3, <span class="str">'d'</span>: 4}
+d3 = {<span class="str">'b'</span>: 99, <span class="str">'e'</span>: 5}  <span class="comment"># Note duplicate key 'b'</span>
+
+<span class="comment"># Method 1: ** unpacking (latest values win)</span>
+merged = {**d1, **d2, **d3}
+print(merged)  <span class="comment"># {'a': 1, 'b': 99, 'c': 3, 'd': 4, 'e': 5}</span>
+
+<span class="comment"># Method 2: | operator</span>
+merged = d1 | d2 | d3
+print(merged)  <span class="comment"># Same result</span></td>
+                <td class="description">Merging Dictionaries</td>
             </tr>
             <tr>
                 <td class="code">val = my_dict.get(<span class="str">'x'</span>, 0) <span class="comment"># Returns 0 if 'x' not found</span></td>
