@@ -22,7 +22,8 @@ const shortcut_tables = {
             ["CTRL + Z", "Undo Change"],
             ["CTRL + Y", "Redo Change"],
         ]
-    }
+    },
+    //TODO: Add more tables here
 }
 
 function FillTables() {
