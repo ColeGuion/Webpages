@@ -62,7 +62,7 @@
 
     <div class="shortcut-section" id="vscode" name="visual_studio_code">
         <h2 onclick="toggleSection(this)">Visual Studio Code</h2>
-        <div class="cuts"><!-- <div class="cuts collapsed"> -->
+        <div class="cuts collapsed">
             <div class="scTable" name="vsc-Navigation">
                 <div class="tableName">Navigation</div>
                 <div>CTRL + H</div>
@@ -169,31 +169,14 @@
         </div>
     </div>
 
-    <div class="shortcut-section" id="ditto" name="ditto">
-        <h2 onclick="toggleSection(this)">Ditto</h2>
-        <div class="cuts collapsed" id="winTables">
-            <div class="scTable" style="width: 50%;">
-                <div class="tableName">Ditto</div>
-                <div>CTRL + ALT + `</div>
-                <div>Open Ditto</div>
-                <div>CTRL + ALT + T</div>
-                <div>"Create 10 grammatically correct sentences using the phrase"</div>
-                <div>CTRL + ALT + G</div>
-                <div>"Is this text grammatically correct? """</div>
-                <div>CTRL + ALT + C</div>
-                <div>"Which text has better English grammar? A) B) "</div>
-                <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
-            </div>
-        </div>
-    </div>
-
     <div class="shortcut-section" id="chrome" name="google_chrome">
         <h2 onclick="toggleSection(this)">Google Chrome</h2>
-        <div class="cuts collapsed">
+        <div class="cuts">
             <div class="helper-link">
                 <a href="https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop#zippy=%2Ctab-window-shortcuts%2Cgoogle-chrome-feature-shortcuts">Chrome Keyboard Shortcuts</a>
             </div>
-            <div class="scTable">
+
+            <!-- <div class="scTable">
                 <div class="tableName">Navigation</div>
                 <div>CTRL + T</div>
                 <div>Open a New Tab</div>
@@ -237,6 +220,9 @@
 
                 <div>ALT + F</div>
                 <div>Select & print html element in console</div>
+
+                <div>ALT + G</div>
+                <div>Open Gemini</div>
             </div>
 
             <div class="scTable">
@@ -246,7 +232,24 @@
 
                 <div>CTRL + Y</div>
                 <div>Redo Change</div>
+            </div> -->
+        </div>
+    </div>
+    
 
+    <div class="shortcut-section" id="ditto" name="ditto">
+        <h2 onclick="toggleSection(this)">Ditto</h2>
+        <div class="cuts collapsed" id="winTables">
+            <div class="scTable" style="width: 50%;">
+                <div class="tableName">Ditto</div>
+                <div>CTRL + ALT + `</div>
+                <div>Open Ditto</div>
+                <div>CTRL + ALT + T</div>
+                <div>"Create 10 grammatically correct sentences using the phrase"</div>
+                <div>CTRL + ALT + G</div>
+                <div>"Is this text grammatically correct? """</div>
+                <div>CTRL + ALT + C</div>
+                <div>"Which text has better English grammar? A) B) "</div>
                 <!-- <button class="add-row-btn" onclick="addEditableRow(this.parentNode)"><i class="fas fa-plus"></i> Add Shortcut</button> -->
             </div>
         </div>
@@ -277,6 +280,7 @@
         </div>
     </div>
 
+    <script src="Scripts/shortcuts.js"></script>
     <script>
         // Collapse/Expand Sections
         function toggleSection(header) {
@@ -286,6 +290,7 @@
 
         function scrollToSection(id) {
             const element = document.getElementById(id);
+            toggleSection(element.firstElementChild); // Expand the section if it's collapsed
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
