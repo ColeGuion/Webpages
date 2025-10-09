@@ -7,6 +7,7 @@ const Linux_Commands = [
     ["nano ~/.bashrc", "Edit linux bash profile"],
     ["nano ~/.bash_aliases", "Edit linux bash script for aliases",],
     ["source ~/.bashrc", "Apply the changes to ~/.bashrc",],
+    ["<span>realpath /Models/GibbOnnx/<br><span style=\"color: green; font-weight: normal\">/home/tech/Documents/Models/GibbOnnx</span></span>", "Get full path from any spot"],
     ["ls -l FILE", "View file permissions"],
     ["pip list | grep tr", "List pip modules that contain <em>\"tr\"</em>"],
     ["pip list | grep -E '^(tr|opt)|onnx'", "List pip modules that start with <em>\"tr\"</em> or <em>\"opt\"</em> OR contain the string <em>\"onnx\"</em>"],
