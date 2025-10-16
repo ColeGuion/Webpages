@@ -243,9 +243,9 @@ function scrollToPySection(trId) {
     var el = document.getElementById(trId);
     if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        el.classList.add('py-highlight');
+        el.classList.add('sect-highlight');
         setTimeout(function() {
-            el.classList.remove('py-highlight');
+            el.classList.remove('sect-highlight');
         }, 1200);
     }
 }

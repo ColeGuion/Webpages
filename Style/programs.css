@@ -33,7 +33,6 @@ td > span:hover {
     transform: scale(1.05);
     transform-origin: left center;
 } */
-
 tr:nth-child(odd):hover {
     background-color: #f5f5f5;
 }
@@ -72,6 +71,38 @@ tr:nth-child(even):hover {
     border: 3px solid #ddd;
 }
 
+
+/* Sections Button Bar Styling */
+.sect-btn-bar {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin: 18px 0 12px 0;
+}
+.sect-btn-bar button {
+    background: linear-gradient(90deg, #1962a1 60%, #3fa7d6 100%);
+    color: #fff;
+    border: none;
+    border-radius: 22px;
+    padding: 8px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(25,98,161,0.12);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.sect-btn-bar button:hover {
+    background: linear-gradient(90deg, #3fa7d6 60%, #1962a1 100%);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 16px rgba(25,98,161,0.18);
+}
+/* Highlight effect for section scroll */
+.sect-highlight {
+    background-color: #ffe066 !important;
+    transition: background-color 0.5s;
+}
+
+
 .rowAdder {
     border: 0px solid #ddd;
     border-top-width: 1px;
@@ -80,7 +111,6 @@ tr:nth-child(even):hover {
     /* display: flex;
     width: 100%;
     justify-content: center; */
-    
 }
 
 .addRowBtn {
@@ -96,7 +126,6 @@ tr:nth-child(even):hover {
     padding: 2px 20px;
     width: 20%;
     margin-left: 40%;
-
 }
 
 
