@@ -69,6 +69,12 @@
         #css-table .code > .comment {
             font-style: italic;
         }
+
+        td span .comment {
+            color: green;
+            font-weight: 600;
+
+        }
     </style>
 </head>
 
@@ -124,6 +130,14 @@
         <table>
             <tr><th>Commands</th><th>Description</th></tr>
             <tr>
+                <td class="commands"><span>scp tech@172.21.188.179:/home/tech/f1.txt C:\Users\Cole\Docs</span></td>
+                <td class="description">Copy file from Linux <i class="fas fa-arrow-right"></i> Windows machine</td>
+            </tr> 
+            <tr>
+                <td class="commands"><span>scp C:\Users\Cole\Docs\f1.txt tech@172.21.188.179:/home/tech/Documents</span></td>
+                <td class="description">Copy file from Windows <i class="fas fa-arrow-right"></i> Linux machine</td>
+            </tr> 
+            <tr>
                 <td class="commands"><span>ps -Name ssh | select Id, Name, CPU, StartTime</span></td>
                 <td class="description">Get details from running processes with the name "ssh"</td>
             </tr>
@@ -152,13 +166,9 @@
                 <td class="description">Find IP address directly by only returning line starting with "IPv4"</td>
             </tr>
             <tr>
-                <td class="commands"><span>scp tech@172.21.188.179:/home/tech/f1.txt C:\Users\Cole\Docs</span></td>
-                <td class="description">Copy file from Linux <i class="fas fa-arrow-right"></i> Windows machine</td>
-            </tr> 
-            <tr>
-                <td class="commands"><span>scp C:\Users\Cole\Docs\f1.txt tech@172.21.188.179:/home/tech/Documents</span></td>
-                <td class="description">Copy file from Windows <i class="fas fa-arrow-right"></i> Linux machine</td>
-            </tr> 
+                <td class="commands"><span>Get-ChildItem | ForEach-Object { "### $($_.Name)" }</span></td>
+                <td class="description">Print all files with "### " in front of the file name</td>
+            </tr>
             <!-- 
             <tr>
                 <td class="commands">$ <span></span></td>
