@@ -69,7 +69,12 @@
         #css-table .code > .comment {
             font-style: italic;
         }
-
+        #powershell-table pre {
+            color: green; 
+            font-weight: normal;
+            margin:0;
+            margin-left:12px;
+        }
     </style>
 </head>
 
@@ -122,7 +127,7 @@
 
     <div id="powershell-sect" class="content-section">
         <h1>Powershell</h1>
-        <table>
+        <table id="powershell-table">
             <tr><th>Commands</th><th>Description</th></tr>
             <tr>
                 <td class="commands"><span>scp tech@172.21.188.179:/home/tech/f1.txt C:\Users\Cole\Docs</span></td>
@@ -131,6 +136,21 @@
             <tr>
                 <td class="commands"><span>scp C:\Users\Cole\Docs\f1.txt tech@172.21.188.179:/home/tech/Documents</span></td>
                 <td class="description">Copy file from Windows <i class="fas fa-arrow-right"></i> Linux machine</td>
+            </tr> 
+            <tr>
+                <td class="commands">
+                    <span>$size = (Get-ChildItem "C:\Users\Cole\Documents\Data" -Recurse | Measure-Object -Property Length -Sum).Sum</span>
+                    <pre>5501150314</pre>
+                    <span><span style="font-weight: normal">$</span> Write-Host "Folder size: $([math]::Round($size/1MB, 2)) MB"</span>
+                    <pre>Folder size: 5246.31 MB</pre>
+                    <span><span style="font-weight: normal">$</span> Write-Host "Folder size: $([math]::Round($size/1GB, 2)) GB"</span>
+                    <pre>Folder size: 5.12 GB</pre>
+                </td>
+                <td class="description">Get folder size and print it in MB / GB</td>
+            </tr> 
+            <tr>
+                <td class="commands"><span>Get-ChildItem -Path . -Recurse -Include *repetition*</span></td>
+                <td class="description">Find file or folder with the word "repetition" in it</td>
             </tr> 
             <tr>
                 <td class="commands"><span>ps -Name ssh | select Id, Name, CPU, StartTime</span></td>
@@ -166,7 +186,7 @@
             </tr>
             <!-- 
             <tr>
-                <td class="commands">$ <span></span></td>
+                <td class="commands"><span></span></td>
                 <td class="description"></td>
             </tr> 
             -->
