@@ -62,8 +62,65 @@ const Linux_Commands = [
     ["lsmod | grep nvidia", "List nvidia stuff (drivers? modules?)"],
 ];
 
+const Powershell_Commands = [
+    [
+        "scp tech@172.21.188.179:/home/tech/f1.txt C:\Users\Cole\Docs", 
+        "Copy file from Linux <i class=\"fas fa-arrow-right\"></i> Windows machine"
+    ],
+    [
+        "scp C:\Users\Cole\Docs\f1.txt tech@172.21.188.179:/home/tech/Documents", 
+        "Copy file from Windows <i class=\"fas fa-arrow-right\"></i> Linux machine"
+    ],
+    [
+        [
+            "<span>$size = (Get-ChildItem \"C:\Users\Cole\Documents\Data\" -Recurse | Measure-Object -Property Length -Sum).Sum</span>",
+            "<pre>5501150314</pre>",
+            "<span><span style=\"font-weight: normal\">$</span> Write-Host \"Folder size: $([math]::Round($size/1MB, 2)) MB\"</span>",
+            "<pre>Folder size: 5246.31 MB</pre>",
+            "<span><span style=\"font-weight: normal\">$</span> Write-Host \"Folder size: $([math]::Round($size/1GB, 2)) GB\"</span>",
+            "<pre>Folder size: 5.12 GB</pre>"
+        ], 
+        "Get folder size and print it in MB / GB"
+    ],
+    [
+        "Get-ChildItem -Path . -Recurse -Include *repetition*",
+        "Find file or folder with the word <em>\"repetition\"</em> in it",
+    ],
+    [
+        "ps -Name ssh | select Id, Name, CPU, StartTime",
+        "Get details from running processes with the name \"ssh\""
+    ],
+    [
+        "Stop-Process -Id 28488",
+        "Stop a running process by PID"
+    ],
+    [
+        "pip list | Select-String \"tr\"",
+        "List pip modules that contain \"tr\""
+    ],
+    [
+        "ps | sort cpu -d | select -Property id,name,cpu",
+        "List running processes by CPU usage. Show the ID, Name, & CPU level"
+    ],
+    [
+        "ps | sort cpu -d | where {$_.cpu -gt 100}",
+        "List running processes by CPU usage. Only show those with a CPU level > 100"
+    ],
+    [
+        "tasklist | findstr pyth",
+        "List running processes and show only those that contain the word \"pyth\""
+    ],
+    [
+        "ipconfig | findstr /R \"IPv4.*\"",
+        "Find IP address directly by only returning line starting with \"IPv4\""
+    ],
+    [
+        "Get-ChildItem | ForEach-Object { \"### $($_.Name)\" }",
+        "Print all files with \"### \" in front of the file name"
+    ]
 
-let cole=true;
+];
+
 const Python_Commmands = [
     {
         Description: "List Indexing",
@@ -141,7 +198,8 @@ function Fill_PyTable() {
 
 document.addEventListener("DOMContentLoaded", function () {
     // Initialize the page
-    addCommands();
+    addCommands('linux-table');
+    addCommands('powershell-table');
     highlightSection();
 
     // Add onclick attribute to every <td> element with class="commands"
@@ -149,7 +207,6 @@ document.addEventListener("DOMContentLoaded", function () {
     commandCells.forEach(function(td) {
         td.setAttribute('onclick', 'copyText(this)');
     });
-    
 
     // Handle the hash when the page loads
     //window.addEventListener('load', highlightSection);
@@ -196,9 +253,8 @@ function copyText(element) {
         });
 }
 
-// Fill out tables
-function addCommands() {
-    const table = document.getElementById('linux-table');
+function addCommands(tableId='powershell-table') {
+    const table = document.getElementById(tableId);//'powershell-table');
     if (!table || table.rows.length < 1) return; // Ensure table exists
 
     // Get the header row (first row)
@@ -207,8 +263,12 @@ function addCommands() {
     console.log(headerRow.parentNode.parentNode);
     console.log(headerRow.nextSibling);
     
-    Linux_Commands.reverse();
-    Linux_Commands.forEach(command => {
+    CommandList = Powershell_Commands;
+    if (tableId == 'linux-table') {
+        CommandList = Linux_Commands;
+    }
+    CommandList.reverse();
+    CommandList.forEach(command => {
         const row = document.createElement('tr');
 
         if (command[0] === "HEADER") {
@@ -218,7 +278,11 @@ function addCommands() {
         } else {
             const commandCell = document.createElement('td');
             commandCell.className = 'commands';
-            if (command[0].startsWith("<span>")) {
+            if (typeof command[0] == 'object') {
+                command[0].forEach(line => {
+                    commandCell.innerHTML += line;
+                });
+            } else if (command[0].startsWith("<span>")) {
                 commandCell.innerHTML = command[0];
             } else {
                 const commandSpan = document.createElement('span');

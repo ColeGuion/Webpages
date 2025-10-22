@@ -129,67 +129,7 @@
         <h1>Powershell</h1>
         <table id="powershell-table">
             <tr><th>Commands</th><th>Description</th></tr>
-            <tr>
-                <td class="commands"><span>scp tech@172.21.188.179:/home/tech/f1.txt C:\Users\Cole\Docs</span></td>
-                <td class="description">Copy file from Linux <i class="fas fa-arrow-right"></i> Windows machine</td>
-            </tr> 
-            <tr>
-                <td class="commands"><span>scp C:\Users\Cole\Docs\f1.txt tech@172.21.188.179:/home/tech/Documents</span></td>
-                <td class="description">Copy file from Windows <i class="fas fa-arrow-right"></i> Linux machine</td>
-            </tr> 
-            <tr>
-                <td class="commands">
-                    <span>$size = (Get-ChildItem "C:\Users\Cole\Documents\Data" -Recurse | Measure-Object -Property Length -Sum).Sum</span>
-                    <pre>5501150314</pre>
-                    <span><span style="font-weight: normal">$</span> Write-Host "Folder size: $([math]::Round($size/1MB, 2)) MB"</span>
-                    <pre>Folder size: 5246.31 MB</pre>
-                    <span><span style="font-weight: normal">$</span> Write-Host "Folder size: $([math]::Round($size/1GB, 2)) GB"</span>
-                    <pre>Folder size: 5.12 GB</pre>
-                </td>
-                <td class="description">Get folder size and print it in MB / GB</td>
-            </tr> 
-            <tr>
-                <td class="commands"><span>Get-ChildItem -Path . -Recurse -Include *repetition*</span></td>
-                <td class="description">Find file or folder with the word "repetition" in it</td>
-            </tr> 
-            <tr>
-                <td class="commands"><span>ps -Name ssh | select Id, Name, CPU, StartTime</span></td>
-                <td class="description">Get details from running processes with the name "ssh"</td>
-            </tr>
-            <tr>
-                <td class="commands"><span>Stop-Process -Id 28488</span></td>
-                <td class="description">Stop a running process by PID</td>
-            </tr>
-            <tr>
-                <td class="commands"><span>pip list | Select-String "tr"</span></td>
-                <td class="description">List pip modules that contain "tr"</td>
-            </tr>
-            <tr>
-                <td class="commands"><span>ps | sort cpu -d | select -Property id,name,cpu</span></td>
-                <td class="description">List running processes by CPU usage. Show the ID, Name, & CPU level</td>
-            </tr>
-            <tr>
-                <td class="commands"><span>ps | sort cpu -d | where {$_.cpu -gt 100}</span></td>
-                <td class="description">List running processes by CPU usage. Only show those with a CPU level > 100</td>
-            </tr>
-            <tr>
-                <td class="commands"><span>tasklist | findstr pyth</span></td>
-                <td class="description">List running processes and show only those that contain the word "pyth"</td>
-            </tr>
-            <tr>
-                <td class="commands"><span>ipconfig | findstr /R "IPv4.*"</span></td>
-                <td class="description">Find IP address directly by only returning line starting with "IPv4"</td>
-            </tr>
-            <tr>
-                <td class="commands"><span>Get-ChildItem | ForEach-Object { "### $($_.Name)" }</span></td>
-                <td class="description">Print all files with "### " in front of the file name</td>
-            </tr>
-            <!-- 
-            <tr>
-                <td class="commands"><span></span></td>
-                <td class="description"></td>
-            </tr> 
-            -->
+            <tr></tr>
         </table>
     </div>
 
