@@ -141,13 +141,14 @@
             <button type="button" onclick="scrollToPySection('py-regex')">Regex</button>
             <button type="button" onclick="scrollToPySection('py-pathlib')">Pathlib</button>
         </div>
-    
+        
         <table id="python-table">
             <!-- TODO: Automate making all numbers red (except those in a comment) -->
-            <tr>
-                <th>Commands</th>
-                <th>Description</th>
-            </tr>
+            <tr><th>Commands</th><th>Description</th></tr>
+            <!-- <tr>
+                <td class="codes"><pre><code class="language-python">CODE_HERE</code></pre></td>
+                <td class="description"></td>
+            </tr> -->
             <tr>
                 <td class="codes"><pre><code class="language-python"># %%</code></pre></td>
                 <td class="description">Wraps the following code in a cell like jupyter notebook in python file</td>
@@ -190,6 +191,22 @@ for type_name, count in type_counts.items():
             <tr id="py-dictionaries">
                 <td colspan="2" class="tabSect">Dictionaries</td>
             </tr> 
+            <tr>
+                <td class="codes"><pre><code class="language-python"># Sort by Key
+sorted_by_key = {k: my_dict[k] for k in sorted(my_dict)}
+
+# Sort by Value
+sorted_by_value = dict(sorted(my_dict.items(), key=lambda x: x[1]))</code></pre></td>
+                <td class="description">Sorting Dictionaries</td>
+            </tr>
+            <tr>
+                <td class="codes"><pre><code class="language-python">val = my_dict.get('x', 0) # Returns 0 if 'x' not found</code></pre></td>
+                <td class="description">Get with default value</td>
+            </tr>
+            <tr>
+                <td class="codes"><pre><code class="language-python">popped = my_dict.pop('a') # Returns 99, removes 'a'</code></pre></td>
+                <td class="description">Remove and return a key</td>
+            </tr>
             <tr>
                 <td class="codes"><pre><code class="language-python">obj = {
    "type": "Adjective & Adverbs",
@@ -244,19 +261,6 @@ print(merged)  <span class="comment"># {'a': 1, 'b': 99, 'c': 3, 'd': 4, 'e': 5}
 merged = d1 | d2 | d3
 print(merged)  <span class="comment"># Same result</span></td>
                 <td class="description">Merging Dictionaries</td>
-            </tr>
-            <tr>
-                <td class="code">val = my_dict.get(<span class="str">'x'</span>, 0) <span class="comment"># Returns 0 if 'x' not found</span></td>
-                <td class="description">Get with default value</td>
-            </tr>
-            <tr>
-                <td class="code">popped = my_dict.pop(<span class="str">'a'</span>) <span class="comment"># Returns 99, removes 'a'</span></td>
-                <td class="description">Remove and return a key</td>
-            </tr>
-            <tr>
-                <td class="code"><span class="comment"># Sort by Key</span><br>sorted_by_key = {k: my_dict[k] for k in sorted(my_dict)}<br>
-<span class="comment"># Sort by Value</span><br>sorted_by_value = dict(sorted(my_dict.items(), key=lambda x: x[1]))</td>
-                <td class="description">Sorting Dictionaries</td>
             </tr>
             
             <!--***** Pandas *****-->
