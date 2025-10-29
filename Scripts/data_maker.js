@@ -9,6 +9,7 @@
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    fill_dtype_list();
     add_textbox_shortcuts();
     load_test_texts();
 });
@@ -130,6 +131,24 @@ function add_textbox_shortcuts() {
                 copyResult();
             }
         }
+    });
+}
+
+function fill_dtype_list() {
+    let dtypeList = document.getElementById("dtype-list");
+    const dtype_values = [
+        "Abbreviations", "Adjective & Adverbs", "Affect vs. Effect", "Apostrophes", "Articles", 
+        "Capitalization", "Capitalization - Directions", "Capitalization - Family Titles", "Colons", "Commas",
+        "Comparatives & Superlatives", "Date Formatting", "Good vs Well", "Homophones", "Hyphens",
+        "Irregular Verbs", "Its vs. It's", "Me vs I", "More", "Periods",
+        "Plurality", "Preposition", "Pronouns", "Quotation Marks", "Semicolons",
+        "Subject-Verb Agreement", "Their, There, They're", "Then vs. Than", "Times", "To, Too, Two",
+        "Verb Tense & Form", "Who vs. Whom", "Writing Decades & Centuries", "You, Your, You're",
+    ];
+    // Sort values alphabetically
+    dtype_values.sort();
+    dtype_values.forEach(val => {
+        dtypeList.innerHTML += `<option value="${val}">${val}</option>`;
     });
 }
 
