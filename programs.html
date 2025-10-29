@@ -280,18 +280,6 @@ re.search(<b>r</b><span class="str">"\bdecade\b"</span>, y, re.I) <span class="c
 </td>
                 <td class="description">Check if the word "decade" is in the string.</td>
             </tr>
-            <tr>
-                <td class="code"></td>
-                <td class="description">DESCRIPTION</td>
-            </tr>
-            <tr>
-                <td class="code"></td>
-                <td class="description">DESCRIPTION</td>
-            </tr>
-            <tr>
-                <td class="code"></td>
-                <td class="description">DESCRIPTION</td>
-            </tr>
 
             <!--***** Regex *****-->
             <tr id="py-regex">
@@ -311,9 +299,9 @@ re.search(<b>r</b><span class="str">"\bdecade\b"</span>, y, re.I) <span class="c
                 <td class="description">Check if the word "decade" is in the string.</td>
             </tr>
             <tr>
-                <td class="code">text = <span class="str">"Cats and dogs are friends."</span>
-pattern = <b>r</b><span class="str">"\b(cat|dog)s?\b"</span>
-re.findall(pattern, text, re.I) <span class="comment"># ['Cat', 'dog']</span></td>
+                <td class="codes"><pre><code class="language-python">text = "Cats and dogs are friends. My grey cat loves playing with my doggy."
+pattern = r"\b(cat|dog)s?\b"
+re.findall(pattern, text, re.I) # ['Cat', 'dog', 'cat']</code></pre></td>
                 <td class="description">Match Multiple Options</td>
             </tr>
             <tr>
