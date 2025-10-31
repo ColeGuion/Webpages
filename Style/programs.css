@@ -1,5 +1,6 @@
 @import url('main.css');
 
+
 h1 {
     width: 50%;
     max-width: 100%;
@@ -42,6 +43,7 @@ tr:nth-child(even):hover {
 
 .commands {
     font-family: Consolas, monospace;
+    font-family: "Google Sans Code", monospace;
     font-size: 14pt;
     line-height: 1.5;
     white-space: pre-line; /* Ensures multi-line commands look correct */
