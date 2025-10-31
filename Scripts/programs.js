@@ -9,7 +9,15 @@ const Linux_Commands = [
     ["source ~/.bashrc", "Apply the changes to ~/.bashrc",],
     ["<span>realpath /Models/GibbOnnx/<br><span style=\"color: green; font-weight: normal\">/home/tech/Documents/Models/GibbOnnx</span></span>", "Get full path from any spot"],
     ["mv -i /path/to/src/* /path/to/destination/", "Move all files from one directory to another<br>Use `<b>-i</b>` to prompt before overwriting any existing files."],
-    ["find . -name \"*repetition*\"", "Find file or folder with the word <em>\"repetition\"</em> in it"],
+    [
+        [
+            "<span>find . -name \"*Word*\"</span><br>",
+            "<span class=\"comment\">// Case insensitive search</span><br>",
+            "$ <span>find . -iname \"*Word*\"</span><br>",
+            "<span class=\"comment\">// Search only for directories</span><br>",
+            "$ <span>find . -type d -name \"*Word*\"</span>",
+        ], "Find file or folder with the word <em>\"Word\"</em> in it"
+    ],
     ["ls -l FILE", "View file permissions"],
     ["pip list | grep tr", "List pip modules that contain <em>\"tr\"</em>"],
     ["pip list | grep -E '^(tr|opt)|onnx'", "List pip modules that start with <em>\"tr\"</em> or <em>\"opt\"</em> OR contain the string <em>\"onnx\"</em>"],
@@ -64,16 +72,16 @@ const Linux_Commands = [
 
 const Powershell_Commands = [
     [
-        "scp tech@172.21.188.179:/home/tech/f1.txt C:\Users\Cole\Docs", 
+        "scp tech@172.21.188.179:/home/tech/f1.txt C:\\Users\\Cole\\Docs", 
         "Copy file from Linux <i class=\"fas fa-arrow-right\"></i> Windows machine"
     ],
     [
-        "scp C:\Users\Cole\Docs\f1.txt tech@172.21.188.179:/home/tech/Documents", 
+        "scp C:\\Users\\Cole\\Docs\\f1.txt tech@172.21.188.179:/home/tech/Documents", 
         "Copy file from Windows <i class=\"fas fa-arrow-right\"></i> Linux machine"
     ],
     [
         [
-            "<span>$size = (Get-ChildItem \"C:\Users\Cole\Documents\Data\" -Recurse | Measure-Object -Property Length -Sum).Sum</span>",
+            "<span>$size = (Get-ChildItem \"C:\\Users\\Cole\\Documents\\Data\" -Recurse | Measure-Object -Property Length -Sum).Sum</span>",
             "<pre>5501150314</pre>",
             "<span><span style=\"font-weight: normal\">$</span> Write-Host \"Folder size: $([math]::Round($size/1MB, 2)) MB\"</span>",
             "<pre>Folder size: 5246.31 MB</pre>",
