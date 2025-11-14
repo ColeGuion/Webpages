@@ -2,8 +2,9 @@ package main
 
 import (
     "encoding/json"
-    //"fmt"
+    "fmt"
     //"net/http"
+    "time"
     "github.com/aws/aws-lambda-go/events"
     "github.com/aws/aws-lambda-go/lambda"
 )
@@ -72,6 +73,11 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
         response.Result = nil
         response.Error = err.Error()
     }
+
+    // SLEEP
+    fmt.Print("Sleeping for 2 seconds...")
+    time.Sleep(2 * time.Second)
+    fmt.Print("Done!")
 
     // Convert response to JSON
     jsonResponse, err := json.Marshal(response)

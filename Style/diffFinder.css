@@ -19,6 +19,7 @@ body {
 
 .container {
     max-width: 800px;
+    max-width: 90vw;
     margin: 0 auto;
     background: white;
     border-radius: 15px;
@@ -117,18 +118,15 @@ button:disabled {
     border-radius: 10px;
     border-left: 5px solid #667eea;
 }
-
 .result-title {
     font-weight: 600;
     margin-bottom: 15px;
     color: #555;
     font-size: 1.2em;
 }
-
 .result-list {
     list-style: none;
 }
-
 .result-item {
     padding: 12px 15px;
     margin-bottom: 8px;
@@ -136,6 +134,84 @@ button:disabled {
     border-radius: 8px;
     border-left: 4px solid #667eea;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+
+
+.markup-container {
+    display: flex;
+    margin-top: 30px;
+    gap: 30px;
+    background-color: wheat;
+    /* padding-bottom: 25px; */
+    padding: 0 20px 25px;
+    flex-direction: column;
+
+}
+.markup-item {
+    /* margin-top: 30px; */
+    padding: 25px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 5px solid #667eea;
+
+}
+.markup-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 1.2em;
+}
+.marked-text {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.textSpan {
+    display: block;
+    white-space: pre-wrap;
+}
+
+.markTxt {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+    position: relative;
+}
+.markTxt:hover {
+    color: black;
+}
+/* Tool Tip popup */
+.markTxt:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 100;
+}
+.markTxt:hover::before {
+    content: "";
+    position: absolute;
+    bottom: calc(100% - 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #333;
+    z-index: 101;
 }
 
 .loading {
