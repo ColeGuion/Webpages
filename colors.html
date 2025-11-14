@@ -11,8 +11,9 @@
 
 <body> 
     <div class="container">
-        <!-- <div style="background-color: lightcoral;"> -->
-        <div>
+        <div class="lighten-color-tool">
+            <!-- <h1 class="headFont">Color Lightener</h1> -->
+            <h1 class="colHeader">Color Lightener</h1>
             <div class="colorPicker" id="cp1">
                 <div>
                     <label for="color-inp" class="headFont">Lighten Color</label>
@@ -20,28 +21,26 @@
                 </div>
                 <div><div id="color-block"></div></div>
             </div>
-            <div class="flex">
-                <input type="range" id="volume-inp" name="volume" min="0" max="100" class="block self-center">
+            <div class="flex" style="width:100%; display: flex; align-items: center; gap: 10px; font-size: 20px; margin: 16px 0;">
+                <input type="range" id="volume-inp" name="volume" min="0" max="100" class="block self-center" style="width:50%;">
                 <span style="width:90px;" class="self-center text-xl font-bold px-3 py-2 bg-gray-100 border text-center rounded ml-3">60%</span>
             </div>
-            <br><br>
 
+            <h1 class="colHeader" style="margin: 50px 0 20px;">New Color</h1>
             <div class="newColor">
-                <div class="newColor-header">
-                    <h1 class="headFont">New Color</h1>
+                <div>
+                    <div class="form-group">
+                        <label for="hex" class="headFont">HEX</label>
+                        <input type="text" id="hex">
+                    </div>
+                    <div class="form-group">
+                        <label for="rgb" class="headFont">RGB</label>
+                        <input type="text" id="rgb">
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="hex" class="headFont">HEX</label>
-                    <input type="text" id="hex">
+                <div>
+                    <div id="newColor-block"></div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="rgb" class="headFont">RGB</label>
-                    <input type="text" id="rgb">
-                </div>
-                
-                <div id="newColor-block"></div>
             </div>
         </div>
 
@@ -53,6 +52,7 @@
                     <div style="color: #2F650C;"><div class="colorBlk" style="background-color: #2F650C;"></div><span>Green</span></div>
                     <div style="color: #9900FF;"><div class="colorBlk" style="background-color: #9900FF;"></div><span>Purple #1</span></div>
                     <div style="color: #800080;"><div class="colorBlk" style="background-color: #800080;"></div><span>Purple #3</span></div>
+                    <!-- <div style="color: #C6086E;"><div class="colorBlk" style="background-color: #C6086E;"></div><span>Deep Pink</span></div> -->
                 </div>
                 <div class="best-colors">
                     <div style="color: #FF4500;"><div class="colorBlk" style="background-color: #FF4500;"></div><span>Red-Orange</span></div>
@@ -62,112 +62,145 @@
                     <div style="color: #B200B2;"><div class="colorBlk" style="background-color: #B200B2;"></div><span>Pink</span></div>
                 </div>
             </div>
+            <div style="display: flex; justify-content: center; align-items: center; padding: 15px;">
+                <button class="btn-add-color">Add Color</button>
+            </div>
         </div>
     </div>
-    
-    
-    <script>
-        let colorInput = document.getElementById("color-inp");
-        let colorBlock = document.getElementById("color-block");
-        let newColorBlock = document.getElementById("newColor-block");
-        let volumeInput = document.getElementById("volume-inp");
-        
-        let volumeSpan = volumeInput.nextElementSibling;
-        volumeInput.addEventListener('input', function() {
-            volumeSpan.textContent = `${volumeInput.value}%`;
-        });
 
-        updateColors();
-        colorInput.addEventListener('input', updateColors);
-        volumeInput.addEventListener('input', updateColors);
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll(".best-colors div.colorBlk").forEach(colorDiv => {
-                const bgColor = colorDiv.style.backgroundColor;
-                // Convert to hex if it's in rgb format
-                let hexColor;
-                if (bgColor.startsWith('rgb')) {
-                    console.log(`Convert rgb to hex for color: "${bgColor}"`);
-                    hexColor = rgbStringToHex(bgColor);
-                } else {
-                    hexColor = bgColor; // Assume it's already in hex format
-                }
-                colorDiv.onclick = () => copyColorToClipboard(hexColor, colorDiv);
-                //console.log(`Add onclick event for color: "${hexColor}"`);
-            });
-        });
-
-        function updateColors() {
-            let colorValue = colorInput.value;
-            let lightenPercent = volumeInput.value;
+    <!-- Add Color Popup -->
+    <div id="addColorModal">
+        <div style="background:white; padding:20px; border-radius:10px; width:300px;">
+            <h2>Add a Color</h2>
+            <label>Hex Code</label>
+            <input id="modal-hex" placeholder="#C6086E" style="width:100%; margin-bottom:10px;">
             
-            // Check if valid color input value
-            if (/^#[0-9A-F]{6}$/i.test(colorValue)) {
-                colorBlock.style.backgroundColor = colorValue;
-                let newColor = lightenColor(colorValue, lightenPercent);
-                let rgbVal = hexToRgb(newColor);
-                
-                newColorBlock.style.backgroundColor = newColor;
-                document.getElementById("hex").value = newColor;
-                document.getElementById("rgb").value = `rgb(${rgbVal.r}, ${rgbVal.g}, ${rgbVal.b})`;
-            } else {
-                console.log("INVALID COLOR VALUE");
-            }
-        }
+            <label>Name</label>
+            <input id="modal-name" placeholder="Deep Pink" style="width:100%; margin-bottom:15px;">
+            
+            <button id="saveColorBtn">Save</button>
+            <button onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
 
-        // Converts a hex color string to an RGB object
-        function hexToRgb(hex) { 
-            hex = hex.replace(/^#/, '');
-            if (hex.length === 3) {
-                hex = hex.split('').map(c => c + c).join('');
-            }
-            const bigint = parseInt(hex, 16);
-            return {
-                r: (bigint >> 16) & 255,
-                g: (bigint >> 8) & 255,
-                b: bigint & 255
-            };
-        }
-
-        function rgbStringToHex(colorStr) {
-            // Expected Format: colorStr = "rgb(255, 0, 0)"            
-            const rgbRegex = /rgb\((\d+),\s*(\d+),\s*(\d+)\)/;
-            const match = colorStr.match(rgbRegex);
-
-            if (match) {
-                return rgbToHex(parseInt(match[1]), parseInt(match[2]), parseInt(match[3]));
-            }
-            return null; // Invalid format
-        }
-
-        // Converts an RGB object to a hex color string
-        function rgbToHex(r, g, b) {
-            const toHex = (c) => {
-                const hex = Math.round(c).toString(16);
-                return hex.length === 1 ? '0' + hex : hex;
-            };
-            return `#${toHex(r)}${toHex(g)}${toHex(b)}`.toUpperCase();
-        }
-
-        // Lightens a hex color by a percentage (0–100)
-        function lightenColor(hex, percent) {
-            const rgb = hexToRgb(hex);
-            const lighten = (channel) => channel + (255 - channel) * (percent / 100);
-            const r = lighten(rgb.r);
-            const g = lighten(rgb.g);
-            const b = lighten(rgb.b);
-            return rgbToHex(r, g, b);
-        }
-
-        function copyColorToClipboard(colorHex, element) {
-            //alert(`Copying: ${colorHex}`);
-            navigator.clipboard.writeText(colorHex).then(() => {
-            }).catch(err => {
-                console.error('Failed to copy color: ', err);
-                alert('Failed to copy color: ', err);
-            });
-        }
-    </script>
+    <script src="Scripts/color.js"></script>
     <script src="Scripts/navigation.js"></script>
+
+    
+
+<script>
+/* ------------------------------------------------------------
+   IndexedDB Setup
+------------------------------------------------------------ */
+let db;
+const request = indexedDB.open("ColorDatabase", 1);
+
+request.onupgradeneeded = function(event) {
+    db = event.target.result;
+    const store = db.createObjectStore("colors", { keyPath: "id", autoIncrement: true });
+    store.createIndex("hex", "hex", { unique: false });
+    store.createIndex("name", "name", { unique: false });
+};
+
+request.onsuccess = function(event) {
+    db = event.target.result;
+    loadSavedColors(); // load user-added colors on startup
+};
+
+request.onerror = function(event) {
+    console.log("IndexedDB error:", event.target.error);
+};
+
+
+/* ------------------------------------------------------------
+   Modal Controls
+------------------------------------------------------------ */
+document.querySelector(".btn-add-color").onclick = () => {
+    document.getElementById("addColorModal").style.display = "flex";
+};
+
+function closeModal() {
+    document.getElementById("addColorModal").style.display = "none";
+}
+
+
+/* ------------------------------------------------------------
+   Save Color to IndexedDB
+------------------------------------------------------------ */
+document.getElementById("saveColorBtn").onclick = function() {
+    const hex = document.getElementById("modal-hex").value.trim();
+    const name = document.getElementById("modal-name").value.trim();
+
+    if (!/^#[0-9A-F]{6}$/i.test(hex)) {
+        alert("Invalid HEX code!");
+        return;
+    }
+    if (name.length < 1) {
+        alert("Please enter a color name.");
+        return;
+    }
+
+    const tx = db.transaction("colors", "readwrite");
+    const store = tx.objectStore("colors");
+
+    store.add({ hex, name });
+
+    tx.oncomplete = () => {
+        addColorToDOM(hex, name);
+        closeModal();
+        document.getElementById("modal-hex").value = "";
+        document.getElementById("modal-name").value = "";
+    };
+};
+
+
+/* ------------------------------------------------------------
+   Load All Saved Colors From DB
+------------------------------------------------------------ */
+function loadSavedColors() {
+    const tx = db.transaction("colors", "readonly");
+    const store = tx.objectStore("colors");
+
+    store.openCursor().onsuccess = function(event) {
+        const cursor = event.target.result;
+        if (cursor) {
+            addColorToDOM(cursor.value.hex, cursor.value.name);
+            cursor.continue();
+        }
+    };
+}
+
+
+/* ------------------------------------------------------------
+   Insert New Color Block Into The Page
+------------------------------------------------------------ */
+function addColorToDOM(hex, name) {
+    // Create div as requested
+    const div = document.createElement("div");
+    div.style.color = hex;
+    div.innerHTML = `
+        <div class="colorBlk" style="background-color: ${hex};"></div>
+        <span>${name}</span>
+    `;
+
+    // Add to one of your existing ".best-colors" sections
+    const containers = document.querySelectorAll("#BestColors .best-colors");
+
+    // Add to the container with the LEAST children
+    let smallest = containers[0];
+    containers.forEach(cont => {
+        if (cont.children.length < smallest.children.length) {
+            smallest = cont;
+        }
+    });
+
+    smallest.appendChild(div);
+
+    // Make clicking copy the color (matches your existing behavior)
+    const blk = div.querySelector(".colorBlk");
+    blk.onclick = () => navigator.clipboard.writeText(hex);
+}
+</script>
+
 </body>
 </html>

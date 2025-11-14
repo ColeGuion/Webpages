@@ -1,14 +1,12 @@
 body {
     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-
 .container {
     display: flex;
     flex-direction: row;
     display: grid;
     grid-template-columns: 2fr 3fr;
     grid-template-columns: 1fr 1fr;
-
     width: 100%;
     /* background-color: wheat; */
 }
@@ -18,13 +16,29 @@ body {
     margin: 0;
     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+.colHeader {
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    font-size: 26px;
+    /* margin-bottom: 20px; */
+}
 
 input {
+    font-size: 36px;
     font-size: 24px;
     line-height: 32px;
     padding: 8px 6px;
     border: 1px solid rgb(196, 205, 213);
     border-radius: 5px;
+}
+
+.lighten-color-tool {
+    background-color: wheat;
+    background-color: white;
+    padding: 0 2vw;
+    border: 0px solid black;
+
 }
 
 .colorPicker {
@@ -53,21 +67,25 @@ input {
     width: 100px;
 }
 
-
 .newColor {
-    display: grid;
-    grid-template-columns: 20vw 10vw;
-    grid-template-rows: auto repeat(2, 1fr);
-    gap: 10px;
-}
-
-.newColor-header {
-    grid-column: 1 / -1;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+    justify-content: space-between;
 }
-
+.newColor > div {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: coral; */
+}
+#newColor-block {
+    width: 10vw;
+    border: 5px solid black;
+    border-radius: 8px;
+    height: 10vw;
+}
 .form-group {
     display: flex;
     align-items: center;
@@ -79,12 +97,11 @@ input {
     padding: 8px 12px;
     width: 12vw;
 }
-
 .form-group label {
     min-width: 40px;
 }
 
-#newColor-block {
+#newColor-block-old {
     grid-column: 2;
     grid-row: 2 / span 2;
     border: 5px solid black;
@@ -92,17 +109,118 @@ input {
     height: 10vw;
 }
 
-
-
-#tmp {
-    background-color: wheat;
-    min-width: 200px;
-    min-height: 100px;
-    border: 2px solid black;
-    padding: 10px;
-    white-space: pre;
-    font-family: monospace;
-    font-weight: 500;
-    font-size: 18px;
-    margin: 100px 0;
+/* Add Color Popup */
+#addColorModal {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    justify-content:center;
+    align-items:center;
 }
+
+
+/* BEST COLORS */
+#BestColors {
+    width: 100%;
+    height: 100%;
+    border: 3px solid black;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    margin: 0;
+    background-color: white;
+}
+.best-colors {
+    width: 50%;
+    border: 0 solid red;
+    min-height: 300px;
+    padding: 10px 5%;
+    padding: 0 5%;
+    font-family: var(--font-jetbrains);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-start;
+    margin: 0;
+}
+.best-colors > div {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    margin: 15px 0;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+}
+.colorBlk {
+    border: 2px solid black;
+    border-radius: 20%;
+    height: 35px;
+    width: 35px;
+    height: 45px;
+    width: 45px;
+    transition: all 0.2s ease-in-out;
+}
+.colorBlk:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+/* Add a little tooltip effect */
+.colorBlk::after {
+    content: 'Copy';
+    position: absolute;
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    line-height: 25px;
+    top: -30px;
+    left: -25px;
+    width: 95px;
+}
+.colorBlk:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.btn-add-color {
+    background: white;
+    color: #333;
+    border: 3px solid black;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    /* margin-top: 20px; */
+    width: 40%;
+}
+
+.btn-add-color:hover {
+    background: black;
+    color: white;
+}
+
