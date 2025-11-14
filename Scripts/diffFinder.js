@@ -43,9 +43,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let markupList = [];
             let resp = data.result;
+            console.log("Data Result:", resp);
             if (resp != null) {
                 markupList = resp.map(item => {
-                    return [item.length, item.offset, item.message];
+                    return [item.length, item.index, item.message];
                 });
             }
             console.log('Markups:', markupList);
@@ -57,8 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="marked-text"><span class="textSpan">${markedText}</span></div>
             </div>\n`;
             markupContainer.innerHTML = newMarkup + markupContainer.innerHTML;
-
-
         } catch (error) {
             showError(error.message);
         } finally {
@@ -115,9 +114,6 @@ document.addEventListener('DOMContentLoaded', function() {
     //string1Input.value = "Hello World!";
     //string2Input.value = "Hello Netlify!";
 });
-
-
-
 
 /**
  * Markup the text given an array of markups.
