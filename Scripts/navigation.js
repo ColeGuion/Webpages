@@ -16,6 +16,14 @@ const pages = [
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener("load", () => {
+        const timing = performance.getEntriesByType("navigation")[0];
+        
+        console.log("Page Load Time:", timing.loadEventEnd.toFixed(2), "ms");
+        console.log("DOM Load:", timing.domContentLoadedEventEnd.toFixed(2), "ms");
+        console.log("First Paint:", performance.getEntriesByName("first-paint")[0]?.startTime);
+    });
+
     // Fill the <head> element with base details and page icon
     FillHead();
 
