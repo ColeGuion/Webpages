@@ -71,6 +71,7 @@ const Linux_Commands = [
 ];
 
 const Powershell_Commands = [
+    //TODO: Make certain parts of command not copyable (like the C:\\Users\\Cole\\Docs path)
     [
         "scp tech@172.21.188.179:/home/tech/f1.txt C:\\Users\\Cole\\Docs", 
         "Copy file from Linux <i class=\"fas fa-arrow-right\"></i> Windows machine"
