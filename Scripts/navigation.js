@@ -12,6 +12,7 @@ const pages = [
     { href: 'bootstrap.html', text: 'Bootstrap' },
     //{ href: 'todo.html', text: 'To Do' },
     { href: 'finddiff.html', text: 'FindDiff' },
+    { href: 'diffFinder.html', text: 'Diff Finder' },
     { href: 'make_data.html', text: 'Make Data' },
 ];
 

@@ -1,0 +1,11 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/finddiff"
+  to = "/finddiff.html"
+  status = 200
+
+# Go functions configuration
+[functions]
+  directory = "netlify/functions"
