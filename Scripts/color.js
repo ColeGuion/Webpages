@@ -1,6 +1,9 @@
 // color.js
-
 document.addEventListener("DOMContentLoaded", function () {
+    MakeColorLightener();
+});
+
+function MakeColorLightener() {
     const volumeInput = document.getElementById("volume-inp");
     const volumeSpan = volumeInput.nextElementSibling;
     volumeInput.addEventListener('input', function() {
@@ -15,18 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add click event to color blocks for copying color value
     document.querySelectorAll(".best-colors div.colorBlk").forEach(colorDiv => {
         const bgColor = colorDiv.style.backgroundColor;
+
         // Convert to hex if it's in rgb format
-        let hexColor;
-        if (bgColor.startsWith('rgb')) {
-            console.log(`Convert rgb to hex for color: "${bgColor}"`);
-            hexColor = rgbStringToHex(bgColor);
-        } else {
-            hexColor = bgColor; // Assume it's already in hex format
-        }
+        let hexColor = (bgColor.startsWith('rgb')) ? rgbStringToHex(bgColor) : bgColor; 
         colorDiv.onclick = () => copyColorToClipboard(hexColor, colorDiv);
     });
-});
-
+}
 function updateColors() {
     let colorValue = document.getElementById("color-inp").value;
     let lightenPercent = document.getElementById("volume-inp").value;

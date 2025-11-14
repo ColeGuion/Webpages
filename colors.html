@@ -86,121 +86,118 @@
     <script src="Scripts/color.js"></script>
     <script src="Scripts/navigation.js"></script>
 
-    
+    <script>
+    /* ------------------------------------------------------------
+    IndexedDB Setup
+    ------------------------------------------------------------ */
+    let db;
+    const request = indexedDB.open("ColorDatabase", 1);
 
-<script>
-/* ------------------------------------------------------------
-   IndexedDB Setup
------------------------------------------------------------- */
-let db;
-const request = indexedDB.open("ColorDatabase", 1);
+    request.onupgradeneeded = function(event) {
+        db = event.target.result;
+        const store = db.createObjectStore("colors", { keyPath: "id", autoIncrement: true });
+        store.createIndex("hex", "hex", { unique: false });
+        store.createIndex("name", "name", { unique: false });
+    };
 
-request.onupgradeneeded = function(event) {
-    db = event.target.result;
-    const store = db.createObjectStore("colors", { keyPath: "id", autoIncrement: true });
-    store.createIndex("hex", "hex", { unique: false });
-    store.createIndex("name", "name", { unique: false });
-};
+    request.onsuccess = function(event) {
+        db = event.target.result;
+        loadSavedColors(); // load user-added colors on startup
+    };
 
-request.onsuccess = function(event) {
-    db = event.target.result;
-    loadSavedColors(); // load user-added colors on startup
-};
-
-request.onerror = function(event) {
-    console.log("IndexedDB error:", event.target.error);
-};
+    request.onerror = function(event) {
+        console.log("IndexedDB error:", event.target.error);
+    };
 
 
-/* ------------------------------------------------------------
-   Modal Controls
------------------------------------------------------------- */
-document.querySelector(".btn-add-color").onclick = () => {
-    document.getElementById("addColorModal").style.display = "flex";
-};
+    /* ------------------------------------------------------------
+    Modal Controls
+    ------------------------------------------------------------ */
+    document.querySelector(".btn-add-color").onclick = () => {
+        document.getElementById("addColorModal").style.display = "flex";
+    };
 
-function closeModal() {
-    document.getElementById("addColorModal").style.display = "none";
-}
-
-
-/* ------------------------------------------------------------
-   Save Color to IndexedDB
------------------------------------------------------------- */
-document.getElementById("saveColorBtn").onclick = function() {
-    const hex = document.getElementById("modal-hex").value.trim();
-    const name = document.getElementById("modal-name").value.trim();
-
-    if (!/^#[0-9A-F]{6}$/i.test(hex)) {
-        alert("Invalid HEX code!");
-        return;
-    }
-    if (name.length < 1) {
-        alert("Please enter a color name.");
-        return;
+    function closeModal() {
+        document.getElementById("addColorModal").style.display = "none";
     }
 
-    const tx = db.transaction("colors", "readwrite");
-    const store = tx.objectStore("colors");
 
-    store.add({ hex, name });
+    /* ------------------------------------------------------------
+    Save Color to IndexedDB
+    ------------------------------------------------------------ */
+    document.getElementById("saveColorBtn").onclick = function() {
+        const hex = document.getElementById("modal-hex").value.trim();
+        const name = document.getElementById("modal-name").value.trim();
 
-    tx.oncomplete = () => {
-        addColorToDOM(hex, name);
-        closeModal();
-        document.getElementById("modal-hex").value = "";
-        document.getElementById("modal-name").value = "";
-    };
-};
-
-
-/* ------------------------------------------------------------
-   Load All Saved Colors From DB
------------------------------------------------------------- */
-function loadSavedColors() {
-    const tx = db.transaction("colors", "readonly");
-    const store = tx.objectStore("colors");
-
-    store.openCursor().onsuccess = function(event) {
-        const cursor = event.target.result;
-        if (cursor) {
-            addColorToDOM(cursor.value.hex, cursor.value.name);
-            cursor.continue();
+        if (!/^#[0-9A-F]{6}$/i.test(hex)) {
+            alert("Invalid HEX code!");
+            return;
         }
-    };
-}
-
-
-/* ------------------------------------------------------------
-   Insert New Color Block Into The Page
------------------------------------------------------------- */
-function addColorToDOM(hex, name) {
-    // Create div as requested
-    const div = document.createElement("div");
-    div.style.color = hex;
-    div.innerHTML = `
-        <div class="colorBlk" style="background-color: ${hex};"></div>
-        <span>${name}</span>
-    `;
-
-    // Add to one of your existing ".best-colors" sections
-    const containers = document.querySelectorAll("#BestColors .best-colors");
-
-    // Add to the container with the LEAST children
-    let smallest = containers[0];
-    containers.forEach(cont => {
-        if (cont.children.length < smallest.children.length) {
-            smallest = cont;
+        if (name.length < 1) {
+            alert("Please enter a color name.");
+            return;
         }
-    });
 
-    smallest.appendChild(div);
+        const tx = db.transaction("colors", "readwrite");
+        const store = tx.objectStore("colors");
 
-    // Make clicking copy the color (matches your existing behavior)
-    const blk = div.querySelector(".colorBlk");
-    blk.onclick = () => navigator.clipboard.writeText(hex);
-}
-</script>
+        store.add({ hex, name });
 
+        tx.oncomplete = () => {
+            addColorToDOM(hex, name);
+            closeModal();
+            document.getElementById("modal-hex").value = "";
+            document.getElementById("modal-name").value = "";
+        };
+    };
+
+
+    /* ------------------------------------------------------------
+    Load All Saved Colors From DB
+    ------------------------------------------------------------ */
+    function loadSavedColors() {
+        const tx = db.transaction("colors", "readonly");
+        const store = tx.objectStore("colors");
+
+        store.openCursor().onsuccess = function(event) {
+            const cursor = event.target.result;
+            if (cursor) {
+                addColorToDOM(cursor.value.hex, cursor.value.name);
+                cursor.continue();
+            }
+        };
+    }
+
+
+    /* ------------------------------------------------------------
+    Insert New Color Block Into The Page
+    ------------------------------------------------------------ */
+    function addColorToDOM(hex, name) {
+        // Create div as requested
+        const div = document.createElement("div");
+        div.style.color = hex;
+        div.innerHTML = `
+            <div class="colorBlk" style="background-color: ${hex};"></div>
+            <span>${name}</span>
+        `;
+
+        // Add to one of your existing ".best-colors" sections
+        const containers = document.querySelectorAll("#BestColors .best-colors");
+
+        // Add to the container with the LEAST children
+        let smallest = containers[0];
+        containers.forEach(cont => {
+            if (cont.children.length < smallest.children.length) {
+                smallest = cont;
+            }
+        });
+
+        smallest.appendChild(div);
+
+        // Make clicking copy the color (matches your existing behavior)
+        const blk = div.querySelector(".colorBlk");
+        blk.onclick = () => navigator.clipboard.writeText(hex);
+    }
+    </script>
 </body>
 </html>
