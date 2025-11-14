@@ -2,8 +2,6 @@ package main
 
 import (
     "encoding/json"
-    "fmt"
-    //"net/http"
     "time"
     "github.com/aws/aws-lambda-go/events"
     "github.com/aws/aws-lambda-go/lambda"
@@ -42,7 +40,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
         return events.APIGatewayProxyResponse{
             StatusCode: 400,
             Headers:    headers,
-            Body:       `{"error": "Invalid JSON"}`,
+            Body:       `{"error": "Invalid JSON in request body"}`,
         }, nil
     }
 
@@ -70,16 +68,16 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
         Result: result,
     }
     if err != nil {
-        response.Result = nil
         response.Error = err.Error()
     }
 
     // SLEEP
-    fmt.Print("Sleeping for 2 seconds...")
+    Debug("Sleeping for 2 seconds...")
     time.Sleep(2 * time.Second)
-    fmt.Print("Done!")
+    Debug("Done sleeping!")
 
     // Convert response to JSON
+    Info("Convert response to JSON")
     jsonResponse, err := json.Marshal(response)
     if err != nil {
         return events.APIGatewayProxyResponse{
@@ -90,6 +88,7 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
     }
 
     // Return successful response
+    Info("Returning successful response")
     return events.APIGatewayProxyResponse{
         StatusCode: 200,
         Headers:    headers,

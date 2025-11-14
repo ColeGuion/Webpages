@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"regexp"
 	"sort"
-	"fmt"
 	"strings"
 	"unicode/utf8"
 	"github.com/sergi/go-diff/diffmatchpatch"
@@ -43,7 +42,7 @@ func FindDifference(t1, t2 string, Misspells []Misspell) ([]Response, error) {
 	linesOne := strings.Split(t1, "\n")
 	linesTwo := strings.Split(t2, "\n")
 	if len(linesOne) > len(linesTwo) {
-		fmt.Printf("ERROR: Original and Connected text split into lines of uneven in length (%v vs %v)\n", len(linesOne), len(linesTwo))
+		Warning("ERROR: Original and Connected text split into lines of uneven in length (%v vs %v)\n", len(linesOne), len(linesTwo))
 	}
 
 	for i, l1 := range linesOne {
@@ -108,9 +107,7 @@ func DiffFinder(t1, t2 string, Misspells []Misspell, Differences *[]Response) {
 				continue
 			}
 
-			if strings.HasPrefix(matches[0], "0m") {
-				matches[0] = strings.TrimPrefix(matches[0], "0m")
-			}
+			matches[0] = strings.TrimPrefix(matches[0], "0m")
 			runCase(Differences, &buffStr, matches[0], Misspells)
 		}
 	}

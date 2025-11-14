@@ -41,23 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(data.error || 'Something went wrong');
             }
 
-            let markupList = [];
-            let resp = data.result;
-            console.log("Data Result:", resp);
-            if (resp != null) {
-                markupList = resp.map(item => {
-                    return [item.length, item.index, item.message];
-                });
-            }
-            console.log('Markups:', markupList);
-            let markedText = markupText(string1, markupList);
-
-            // Append result to start of markup container
-            let newMarkup = `<div id="markupItem" class="markup-item">
-                <div class="markup-title">Marked Text:</div>
-                <div class="marked-text"><span class="textSpan">${markedText}</span></div>
-            </div>\n`;
-            markupContainer.innerHTML = newMarkup + markupContainer.innerHTML;
+            displayResult(string1, data.result);
         } catch (error) {
             showError(error.message);
         } finally {
@@ -84,6 +68,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function hideError() {
         errorElement.classList.add('hidden');
+    }
+
+    function displayResult(prompt, data_result) {
+        let markupList = [];
+        if (data_result != null) {
+            markupList = data_result.map(item => {
+                return [item.length, item.index, item.message];
+            });
+        }
+        console.log('Markups:', markupList);
+        let markedText = markupText(prompt, markupList);
+
+        // Append result to start of markup container
+        let newMarkup = `<div id="markupItem" class="markup-item">
+            <div class="markup-title">Marked Text:</div>
+            <div class="marked-text">
+                <span class="textSpan">${markedText}</span>
+            </div>
+        </div>\n`;
+        markupContainer.innerHTML = newMarkup + markupContainer.innerHTML;
+        markupContainer.classList.remove('hidden');
     }
 
     function displayResults(differences) {
