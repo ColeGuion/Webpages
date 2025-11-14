@@ -6,22 +6,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="Style/main.css">
     <link rel="stylesheet" href="Style/colors.css">
-
 </head>
 
 <body> 
     <div class="container">
         <div class="lighten-color-tool">
-            <!-- <h1 class="headFont">Color Lightener</h1> -->
             <h1 class="colHeader">Color Lightener</h1>
-            <div class="colorPicker" id="cp1">
+            <div class="colorPicker">
                 <div>
-                    <label for="color-inp" class="headFont">Lighten Color</label>
-                    <input type="text" id="color-inp" value="#e48026">
+                    <div class="form-group">
+                        <label for="color-inp" class="headFont">Color</label>
+                        <input type="text" id="color-inp" value="#e48026">
+                    </div>  
                 </div>
                 <div><div id="color-block"></div></div>
             </div>
-            <div class="flex" style="width:100%; display: flex; align-items: center; gap: 10px; font-size: 20px; margin: 16px 0;">
+            <div class="flex" id="color-scale">
                 <input type="range" id="volume-inp" name="volume" min="0" max="100" class="block self-center" style="width:50%;">
                 <span style="width:90px;" class="self-center text-xl font-bold px-3 py-2 bg-gray-100 border text-center rounded ml-3">60%</span>
             </div>
