@@ -59,6 +59,22 @@ const Linux_Commands = [
     ["screen -X -S <ID or name> quit", "Kill a specific screen session"],
     ["screen -wipe", "Remove dead (terminated screen sessions)"],
 
+    // "Processes" Section
+    ["HEADER", "Processes", "lx-processes"], 
+    ["ps", "Show processes for current shell"],
+    ["ps aux", "Show all processes for all users"],
+    ["ps -p PID", "Show specific process by PID"],
+    ["top", "Interactive process viewer"],
+    ["pgrep process_name", "Find PIDs by process name"],
+    ["ps aux | grep process_name", "Classic grep search"],
+    ["kill PID", "Graceful termination"],
+    ["kill -9 PID", "Forceful kill"],
+    ["killall process_name", "Kill all processes by name"],
+    ["kill -STOP PID", "Pause process"],
+    ["ps -o pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head", "Top CPU processes"],
+    ["ps -o pid,ppid,cmd,%mem,%cpu --sort=-%mem | head", "Top memory processes"],
+    ["<span>ps aux --sort=-%cpu | head -10</span><br>$ <span>ps aux --sort=-%mem | head -10</span>", "Top 10 cpu / memory using processes"],
+
     // "Advanced & GPU" Section
     ["HEADER", "Advanced & GPU", "lx-gpu"], 
     ["nvtop", "GPU Usage"],
