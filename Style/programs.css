@@ -57,6 +57,7 @@ tr:nth-child(even):hover {
 }
 .commands span {
     font-weight: bold;
+    font-weight: 500;
 }
 
 .description {
