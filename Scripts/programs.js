@@ -142,6 +142,14 @@ const Powershell_Commands = [
     [
         "Get-ChildItem | ForEach-Object { \"### $($_.Name)\" }",
         "Print all files with \"### \" in front of the file name"
+    ],
+    [
+        "Get-ChildItem -Path .\\Documents -Filter *.ps1 -Recurse -File",
+        "Find all .ps1 files in the Documents folder."
+    ],
+    [
+        "Get-ChildItem -Path C:\\Users\\Cole\\Documents -Name *Profile* -Recurse",
+        "Find all files and folders with the word <em>\"Profile\"</em> in them."
     ]
 
 ];
