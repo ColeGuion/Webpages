@@ -1,25 +1,26 @@
 // Navigation Links
 const pages = [
     { href: 'home.html', text: 'Home' },
-    { href: 'colors.html', text: 'Colors' },
-    { href: 'shortcuts.html', text: 'Shortcuts' },
+    { href: 'Key_Links.html', text: 'Key Links' },
+    { href: 'ShortCuts.html', text: 'Shortcuts' },
     { href: 'programs.html#Linux', text: 'Programming' },
     { href: 'css_grids.html', text: 'Grids' },
     { href: 'editor.html', text: 'Text Editor' },
+    
     //{ href: 'progs.html', text: 'PROG' },
     //{ href: 'docs.html', text: 'Docs' },
     //{ href: 'playground.html', text: 'Playground' },
     { href: 'bootstrap.html', text: 'Bootstrap' },
     //{ href: 'todo.html', text: 'To Do' },
-    { href: 'finddiff.html', text: 'FindDiff' },
     { href: 'diffFinder.html', text: 'Diff Finder' },
     { href: 'make_data.html', text: 'Make Data' },
+    { href: 'finddiff.html', text: 'FindDiff' },
+    { href: 'colors.html', text: 'Colors' },
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener("load", () => {
         const timing = performance.getEntriesByType("navigation")[0];
-        
         console.log("Page Load Time:", timing.loadEventEnd.toFixed(2), "ms");
         console.log("DOM Load:", timing.domContentLoadedEventEnd.toFixed(2), "ms");
         console.log("First Paint:", performance.getEntriesByName("first-paint")[0]?.startTime);
@@ -44,6 +45,7 @@ function FillHead() {
 function AddNavBar(currentPage) {
     //* Add other nav bar if programs.html
     const nav = document.createElement('nav');
+    nav.className = 'nav-design-2';
 
     // Create links and add them to the nav element
     pages.forEach(page => {
