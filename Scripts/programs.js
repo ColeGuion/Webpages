@@ -236,17 +236,40 @@ document.addEventListener("DOMContentLoaded", function () {
     highlightSection();
 
     // Add onclick attribute to every <td> element with class="commands"
-    const commandCells = document.querySelectorAll('table td.commands');
-    commandCells.forEach(function(td) {
+    /* document.querySelectorAll('table td.commands').forEach(function(td) {
         td.setAttribute('onclick', 'copyText(this)');
-    });
+    }); */
 
     // Handle the hash when the page loads
     //window.addEventListener('load', highlightSection);
     // Also handle hash changes (e.g., when user clicks a link)
     window.addEventListener('hashchange', highlightSection);
 
+
     //Fill_PyTable(); //* Works, but haven't extended past Dictionaries yet
+    document.addEventListener("click", function (event) {
+        const cmd_cell = event.target.closest("td.commands");
+        let tt_text = "";
+        cmd_cell.querySelectorAll('span').forEach(span => {
+            // Remove text in angle brackets <>
+            const cleanedText = span.innerText.replace(/<.*?>/g, '');
+            tt_text += cleanedText + "\n";
+        });
+        navigator.clipboard.writeText(tt_text.trim()).then(() => {
+            const tooltip = document.createElement("div");
+            tooltip.className = "tooltipss";
+            tooltip.textContent = "Copied!";
+            tooltip.style.top = `${event.clientY + window.scrollY - 30}px`;
+            tooltip.style.left = `${event.clientX + window.scrollX}px`;
+
+            document.body.appendChild(tooltip);
+
+            setTimeout(() => {
+                tooltip.style.opacity = "0";
+                setTimeout(() => tooltip.remove(), 300);
+            }, 1000);
+        }).catch(err => console.error("Failed to copy:", err));
+    });
 });
 
 // Click on and copy the code block
@@ -257,11 +280,12 @@ function copyText(element) {
         const cleanedText = span.innerText.replace(/<.*?>/g, '');
         text += cleanedText + "\n";
     });
+    //document.addEventListener("click", function (event) {
     navigator.clipboard.writeText(text)
         .then(() => {
             const tooltip = document.createElement('div');
-            tooltip.className = "copied-tooltip";
             tooltip.textContent = 'Copied!';
+            tooltip.className = "copied-tooltip";
             const rect = element.getBoundingClientRect();
             
             console.log(`Element Position - Top: ${rect.top}, Left: ${rect.left}`);
@@ -271,6 +295,18 @@ function copyText(element) {
             //tooltip.style.left = (element.offsetLeft + element.offsetWidth/2) + 'px';
             tooltip.style.top = element.offsetTop + 190 + 'px';
             tooltip.style.left = (element.offsetLeft + element.offsetWidth/2) + 'px';
+            /* tooltip.style.position = "absolute";
+            tooltip.style.backgroundColor = "#222";
+            tooltip.style.color = "#fff";
+            tooltip.style.padding = "5px 10px";
+            tooltip.style.borderRadius = "5px";
+            tooltip.style.fontSize = "12px";
+            tooltip.style.top = `${element.clientY + window.scrollY - 30}px`;
+            tooltip.style.left = `${element.clientX + window.scrollX}px`;
+            tooltip.style.zIndex = "1000";
+            tooltip.style.transition = "opacity 0.3s ease-out";
+            console.log("Coping Text!"); */
+
             document.body.appendChild(tooltip);
             
             // Remove tooltip after 1 second
