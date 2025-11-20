@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         navigator.clipboard.writeText(tt_text.trim()).then(() => {
             const tooltip = document.createElement("div");
-            tooltip.className = "tooltipss";
+            tooltip.className = "tooltips";
             tooltip.textContent = "Copied!";
             tooltip.style.top = `${event.clientY + window.scrollY - 30}px`;
             tooltip.style.left = `${event.clientX + window.scrollX}px`;

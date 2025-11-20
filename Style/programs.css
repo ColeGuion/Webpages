@@ -223,15 +223,13 @@ tr:nth-child(even):hover {
     opacity: 1;
 }
 
-.tooltipss {
+.tooltips {
     position: absolute;
     background-color: #222;
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 12px;
-    /* top: `${event.clientY + window.scrollY - 30}px`;
-    left: `${event.clientX + window.scrollX}px`; */
     z-index: 1000;
     transition: opacity 0.3s ease-out;
 }
