@@ -1,4 +1,9 @@
 const Linux_Commands = [
+    //TODO: Make certain parts of command not copyable (like the C:\\Users\\Cole\\Docs path)
+    [
+        "scp tech@172.21.188.179:/home/tech/f1.txt C:\\Users\\Cole\\Docs", 
+        "Copy file from Linux <i class=\"fas fa-arrow-right\"></i> Windows machine"
+    ],
     //["COMMAND", "DESCRIPTION"],
     //["chmod +x script.sh", "Make a script executable"],
     //["./script.sh", "Run a script in the current directory"],
