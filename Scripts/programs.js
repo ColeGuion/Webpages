@@ -1,9 +1,11 @@
 const Linux_Commands = [
     //TODO: Make certain parts of command not copyable (like the C:\\Users\\Cole\\Docs path)
-    [
-        "scp tech@172.21.188.179:/home/tech/f1.txt C:\\Users\\Cole\\Docs", 
+    /* [
+        //"<span>scp tech@172.21.188.179:<div class='ignore'>/home/tech/f1.txt C:\\Users\\Cole\\Docs</div></span>", 
+        //"<span>scp tech@172.21.188.179:</span><div class='ignore'>/home/tech/f1.txt C:\\Users\\Cole\\Docs</div>", 
+        "<span>scp tech@172.21.188.179:</span>/home/tech/f1.txt C:\\Users\\Cole\\Docs", 
         "Copy file from Linux <i class=\"fas fa-arrow-right\"></i> Windows machine"
-    ],
+    ], */
     //["COMMAND", "DESCRIPTION"],
     //["chmod +x script.sh", "Make a script executable"],
     //["./script.sh", "Run a script in the current directory"],
@@ -255,9 +257,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("click", function (event) {
         const cmd_cell = event.target.closest("td.commands");
         let tt_text = "";
+        console.log("Copy Element:", cmd_cell);
         cmd_cell.querySelectorAll('span').forEach(span => {
             // Remove text in angle brackets <>
-            const cleanedText = span.innerText.replace(/<.*?>/g, '');
+            let cleanedText = span.innerText.replace(/<.*?>/g, '');
+            cleanedText = removeIgnoreTags(cleanedText);
+            console.log(`Cleaned Text: "${cleanedText}"`);
             tt_text += cleanedText + "\n";
         });
         navigator.clipboard.writeText(tt_text.trim()).then(() => {
@@ -277,12 +282,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
 // Click on and copy the code block
 function copyText(element) {
     let text = "";
+    console.log("Copy Element:", element);
     element.querySelectorAll('span').forEach(span => {
         // Remove text in angle brackets <>
-        const cleanedText = span.innerText.replace(/<.*?>/g, '');
+        let cleanedText = span.innerText.replace(/<.*?>/g, '');
+        cleanedText = removeIgnoreTags(cleanedText);
+        console.log(`Cleaned Text: "${cleanedText}"`);
         text += cleanedText + "\n";
     });
     //document.addEventListener("click", function (event) {
@@ -291,26 +300,9 @@ function copyText(element) {
             const tooltip = document.createElement('div');
             tooltip.textContent = 'Copied!';
             tooltip.className = "copied-tooltip";
-            const rect = element.getBoundingClientRect();
-            
-            console.log(`Element Position - Top: ${rect.top}, Left: ${rect.left}`);
             console.log(`Element Offset - Top: ${element.offsetTop}, Left: ${element.offsetLeft}, Width: ${element.offsetWidth}`);
-            console.log(element);
-            //tooltip.style.top = rect.top + 'px';
-            //tooltip.style.left = (element.offsetLeft + element.offsetWidth/2) + 'px';
             tooltip.style.top = element.offsetTop + 190 + 'px';
             tooltip.style.left = (element.offsetLeft + element.offsetWidth/2) + 'px';
-            /* tooltip.style.position = "absolute";
-            tooltip.style.backgroundColor = "#222";
-            tooltip.style.color = "#fff";
-            tooltip.style.padding = "5px 10px";
-            tooltip.style.borderRadius = "5px";
-            tooltip.style.fontSize = "12px";
-            tooltip.style.top = `${element.clientY + window.scrollY - 30}px`;
-            tooltip.style.left = `${element.clientX + window.scrollX}px`;
-            tooltip.style.zIndex = "1000";
-            tooltip.style.transition = "opacity 0.3s ease-out";
-            console.log("Coping Text!"); */
 
             document.body.appendChild(tooltip);
             
@@ -325,6 +317,15 @@ function copyText(element) {
         .catch((err) => {
             console.error('Failed to copy text: ', err);
         });
+}
+
+function removeIgnoreTags(input) {
+    //Example:
+    //  Input: "This is an<IGNORE>ignore all of this text</IGNORE> example string<IGNORE>!!!? ??!?What?</IGNORE>."
+    //  Output: "This is an example string."
+    //<span class='ignore'>
+    //return input.replace(/<IGNORE>.*?<\/IGNORE>/g, '');
+    return input.replace(/<div class='ignore'>.*?<\/div>/g, '');
 }
 
 function addCommands(tableId='powershell-table') {

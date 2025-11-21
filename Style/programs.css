@@ -233,3 +233,7 @@ tr:nth-child(even):hover {
     z-index: 1000;
     transition: opacity 0.3s ease-out;
 }
+
+.ignore {
+    display: inline;
+}
