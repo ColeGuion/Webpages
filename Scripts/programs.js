@@ -380,7 +380,7 @@ function addCommands(tableId='powershell-table') {
 }
 
 // Python section button bar scroll
-function scrollToPySection(trId) {
+function scrollToSection(trId) {
     var el = document.getElementById(trId);
     if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'center' });

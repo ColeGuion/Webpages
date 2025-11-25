@@ -9,6 +9,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <!-- Include Python language support -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <!-- Include Go language support for Prism -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-go.min.js"></script>
+
     <link rel="stylesheet" href="Style/programs.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -32,6 +35,12 @@
             color: #a73107e5;
             font-weight: 600;
         }
+        .token.operator {
+            background: transparent !important;
+            font-weight: 500;
+            color: black;
+        }
+
 
 
         table .codes {
@@ -93,12 +102,12 @@
     </nav>
 
     <div id="linux-sect" class="content-section">
-        <h1 onclick="toggleSection(this)">Linux</h1>
+        <h1 onclick="toggleSection(this)">Linux</h1><!--TODO: Fix this button -->
         <div class="sect-btn-bar" style="margin-bottom: 12px;">
-            <button type="button" onclick="scrollToPySection('lx-memory')">Memory Management</button>
-            <button type="button" onclick="scrollToPySection('lx-screen')">Screen</button>
-            <button type="button" onclick="scrollToPySection('lx-processes')">Processes</button>
-            <button type="button" onclick="scrollToPySection('lx-gpu')">Advanced & GPU</button>
+            <button type="button" onclick="scrollToSection('lx-memory')">Memory Management</button>
+            <button type="button" onclick="scrollToSection('lx-screen')">Screen</button>
+            <button type="button" onclick="scrollToSection('lx-processes')">Processes</button>
+            <button type="button" onclick="scrollToSection('lx-gpu')">Advanced & GPU</button>
         </div>
 
         <table id="linux-table">
@@ -150,10 +159,10 @@
     <div id="python-sect" class="content-section">
         <h1>Python</h1> 
         <div class="sect-btn-bar">
-            <button type="button" onclick="scrollToPySection('py-dictionaries')">Dictionaries</button>
-            <button type="button" onclick="scrollToPySection('py-pandas')">Pandas</button>
-            <button type="button" onclick="scrollToPySection('py-regex')">Regex</button>
-            <button type="button" onclick="scrollToPySection('py-pathlib')">Pathlib</button>
+            <button type="button" onclick="scrollToSection('py-dictionaries')">Dictionaries</button>
+            <button type="button" onclick="scrollToSection('py-pandas')">Pandas</button>
+            <button type="button" onclick="scrollToSection('py-regex')">Regex</button>
+            <button type="button" onclick="scrollToSection('py-pathlib')">Pathlib</button>
         </div>
         
         <table id="python-table">
@@ -407,6 +416,29 @@ path.parts      <span class="comment"># ('/', 'home', 'Documents', 'GEC', 'train
 
     <div id="go-sect" class="content-section">
         <h1>Golang</h1> 
+        <div class="sect-btn-bar">
+            <button type="button" onclick="scrollToSection('go-printing')">Printing</button>
+        </div>
+
+        <table id="go-table">
+            <tr><th>Commands</th><th>Description</th></tr>
+
+            <!--***** Printing *****-->
+            <tr id="go-printing">
+                <td colspan="2" class="tabSect">Printing</td>
+            </tr> 
+            
+            <tr>
+                <td class="codes"><pre><code class="language-go">myName := "Alice"
+// Left Justify
+fmt.Printf("|%-12s|\n", myName) // |Alice       |
+
+// Right Justify
+fmt.Printf("|%12s|\n", myName) // |       Alice|</code></pre></td>
+                <td class="description">Formatting strings left or right</td>
+            </tr>
+        </table>
+        <br><br>
     </div>
 
     <div id="css-sect" class="content-section">
