@@ -68,6 +68,7 @@ const Linux_Commands = [
 
     // "Processes" Section
     ["HEADER", "Processes", "lx-processes"], 
+    ["lsof -i :8010", "Find processes running on port 8010"],
     ["ps", "Show processes for current shell"],
     ["ps aux", "Show all processes for all users"],
     ["ps -p PID", "Show specific process by PID"],
