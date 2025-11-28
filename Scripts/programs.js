@@ -104,6 +104,10 @@ const Powershell_Commands = [
         "Copy file from Windows <i class=\"fas fa-arrow-right\"></i> Linux machine"
     ],
     [
+        "Get-NetTCPConnection -LocalPort 5500",
+        "Find processes running on port 5500"
+    ],
+    [
         [
             "<span>$size = (Get-ChildItem \"C:\\Users\\Cole\\Documents\\Data\" -Recurse | Measure-Object -Property Length -Sum).Sum</span>",
             "<pre>5501150314</pre>",

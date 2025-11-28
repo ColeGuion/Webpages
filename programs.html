@@ -417,11 +417,53 @@ path.parts      <span class="comment"># ('/', 'home', 'Documents', 'GEC', 'train
     <div id="go-sect" class="content-section">
         <h1>Golang</h1> 
         <div class="sect-btn-bar">
+            <button type="button" onclick="scrollToSection('go-maps')">Maps</button>
             <button type="button" onclick="scrollToSection('go-printing')">Printing</button>
         </div>
 
         <table id="go-table">
             <tr><th>Commands</th><th>Description</th></tr>
+            
+            <tr>
+                <td class="codes"><pre><code class="language-go">type person struct {
+    name string
+    age  int
+}
+
+dog := struct {
+    name   string
+    isGood bool
+}{
+    "Rex",
+    true,
+}</code></pre></td>
+                <td class="description">Go Structures</td>
+            </tr>
+
+            <!--***** Working With Maps *****-->
+            <tr id="go-maps">
+                <td colspan="2" class="tabSect">Working With Maps</td>
+            </tr> 
+            <tr>
+                <td class="codes"><pre><code class="language-go">m := make(map[string]int)
+m["Jim"] = 59
+m["Cole"] = 25
+m["Brock"] = 22
+fmt.Println(m) // map[Brock:22 Cole:25 Jim:59]
+
+delete(m, "Brock")
+fmt.Println(m) // map[Cole:25 Jim:59]
+
+clear(m)
+fmt.Println(m) // map[]
+
+age, exists := m["Jim"]
+fmt.Println(exists) // false
+
+m2 := map[string]int{"foo": 1, "bar": 2}
+fmt.Println(m2) // map[bar:2 foo:1]</code></pre></td>
+                <td class="description">Go Maps</td>
+            </tr>
 
             <!--***** Printing *****-->
             <tr id="go-printing">
@@ -437,6 +479,7 @@ fmt.Printf("|%-12s|\n", myName) // |Alice       |
 fmt.Printf("|%12s|\n", myName) // |       Alice|</code></pre></td>
                 <td class="description">Formatting strings left or right</td>
             </tr>
+
         </table>
         <br><br>
     </div>
