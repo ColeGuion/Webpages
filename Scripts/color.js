@@ -27,13 +27,19 @@ function MakeColorLightener() {
 function updateColors() {
     let colorValue = document.getElementById("color-inp").value;
     let lightenPercent = document.getElementById("volume-inp").value;
-    
+
+    // Ensure colorValue starts with '#'
+    if (!colorValue.startsWith('#')) {
+        colorValue = '#' + colorValue;
+        document.getElementById("color-inp").value = colorValue;
+    }
+
     // Check if valid color input value
     if (/^#[0-9A-F]{6}$/i.test(colorValue)) {
         document.getElementById("color-block").style.backgroundColor = colorValue;
         let newColor = lightenColor(colorValue, lightenPercent);
         let rgbVal = hexToRgb(newColor);
-        
+
         document.getElementById("newColor-block").style.backgroundColor = newColor;
         document.getElementById("hex").value = newColor;
         document.getElementById("rgb").value = `rgb(${rgbVal.r}, ${rgbVal.g}, ${rgbVal.b})`;
