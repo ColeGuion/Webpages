@@ -1,9 +1,10 @@
 // color.js
-document.addEventListener("DOMContentLoaded", function () {
-    MakeColorLightener();
-});
+let LightenColors = true;
 
-function MakeColorLightener() {
+
+document.addEventListener("DOMContentLoaded", function () {
+    const colorShadeHead = document.getElementById("color-shade-header");
+    const colorInput = document.getElementById("color-inp");
     const volumeInput = document.getElementById("volume-inp");
     const volumeSpan = volumeInput.nextElementSibling;
     volumeInput.addEventListener('input', function() {
@@ -12,8 +13,20 @@ function MakeColorLightener() {
 
     // Update colors on input changes
     updateColors();
-    document.getElementById("color-inp").addEventListener('input', updateColors);
+    colorInput.addEventListener('input', updateColors);
     volumeInput.addEventListener('input', updateColors);
+
+    // Toggle to text between "Color Lightener" and "Color Darkener" on header click
+    colorShadeHead.addEventListener('click', function() {
+        if (LightenColors) {
+            LightenColors = false;
+            colorShadeHead.textContent = "Color Darkener";
+        } else {
+            LightenColors = true;
+            colorShadeHead.textContent = "Color Lightener";
+        }
+        updateColors();
+    });
 
     // Add click event to color blocks for copying color value
     document.querySelectorAll(".best-colors div.colorBlk").forEach(colorDiv => {
@@ -23,10 +36,12 @@ function MakeColorLightener() {
         let hexColor = (bgColor.startsWith('rgb')) ? rgbStringToHex(bgColor) : bgColor; 
         colorDiv.onclick = () => copyColorToClipboard(hexColor, colorDiv);
     });
-}
+
+});
+
 function updateColors() {
     let colorValue = document.getElementById("color-inp").value;
-    let lightenPercent = document.getElementById("volume-inp").value;
+    let shadePercent = document.getElementById("volume-inp").value;
 
     // Ensure colorValue starts with '#'
     if (!colorValue.startsWith('#')) {
@@ -37,7 +52,10 @@ function updateColors() {
     // Check if valid color input value
     if (/^#[0-9A-F]{6}$/i.test(colorValue)) {
         document.getElementById("color-block").style.backgroundColor = colorValue;
-        let newColor = lightenColor(colorValue, lightenPercent);
+        let newColor = lightenColor(colorValue, shadePercent);
+        if (!LightenColors) {
+            newColor = darkenColor(colorValue, shadePercent);
+        }
         let rgbVal = hexToRgb(newColor);
 
         document.getElementById("newColor-block").style.backgroundColor = newColor;
@@ -57,6 +75,17 @@ function lightenColor(hex, percent) {
     const b = lighten(rgb.b);
     return rgbToHex(r, g, b);
 }
+
+// Darkens a hex color by a percentage (0–100)
+function darkenColor(hex, percent) {
+    const rgb = hexToRgb(hex);
+    const darken = (channel) => channel * (1 - percent / 100);
+    const r = darken(rgb.r);
+    const g = darken(rgb.g);
+    const b = darken(rgb.b);
+    return rgbToHex(r, g, b);
+}
+
 
 // Converts a hex color string to an RGB object
 function hexToRgb(hex) { 
