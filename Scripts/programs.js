@@ -97,11 +97,11 @@ const Linux_Commands = [
 const Powershell_Commands = [
     //TODO: Make certain parts of command not copyable (like the C:\\Users\\Cole\\Docs path)
     [
-        "scp tech@172.21.188.179:/home/tech/f1.txt C:\\Users\\Cole\\Docs", 
+        "scp tech@172.21.188.179:/home/tech/f1.txt ~\\Documents", 
         "Copy file from Linux <i class=\"fas fa-arrow-right\"></i> Windows machine"
     ],
     [
-        "scp C:\\Users\\Cole\\Docs\\f1.txt tech@172.21.188.179:/home/tech/Documents", 
+        "scp ~\\Documents\\f1.txt tech@172.21.188.179:/home/tech/Documents", 
         "Copy file from Windows <i class=\"fas fa-arrow-right\"></i> Linux machine"
     ],
     [
@@ -110,7 +110,7 @@ const Powershell_Commands = [
     ],
     [
         [
-            "<span>$size = (Get-ChildItem \"C:\\Users\\Cole\\Documents\\Data\" -Recurse | Measure-Object -Property Length -Sum).Sum</span>",
+            "<span>$size = (Get-ChildItem \"~\\Documents\\Data\" -Recurse | Measure-Object -Property Length -Sum).Sum</span>",
             "<pre>5501150314</pre>",
             "<span><span style=\"font-weight: normal\">$</span> Write-Host \"Folder size: $([math]::Round($size/1MB, 2)) MB\"</span>",
             "<pre>Folder size: 5246.31 MB</pre>",
