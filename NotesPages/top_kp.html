@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top-K & Top-P Sampling Notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="top_kp.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <a href="../home.html" id="back-arrow"><span><i class="fa-solid fa-arrow-left"></i></span></a>
+    <div class="notes-container">
+        <div class="notes-block">
+            <h1>Top-K & Top-P (Nucleus) Sampling Explained</h1>
+
+            <p>Two of the most important sampling methods used in modern large language models to control randomness and
+                creativity during text generation.</p>
+
+            <h2>How They Work</h2>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>What it Controls</th>
+                    <th>Mechanism</th>
+                    <th>Low Value</th>
+                    <th>High Value</th>
+                </tr>
+                <tr>
+                    <td><strong>Top-K</strong></td>
+                    <td>Fixed number of most probable tokens</td>
+                    <td>Keep only the K highest-probability tokens → renormalize → sample</td>
+                    <td>Very deterministic, safe, repetitive<br><span class="highlight">K=10–50</span></td>
+                    <td>More creative, diverse, sometimes weird<br><span class="highlight">K=100–1000+</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Top-P<br>(Nucleus Sampling)</strong></td>
+                    <td>Dynamic set of tokens whose cumulative probability ≥ P</td>
+                    <td>Sort tokens → add until sum ≥ P → discard the rest → sample</td>
+                    <td>Sharp & coherent (often just top 1–3 tokens)<br><span class="highlight">P=0.1–0.3</span></td>
+                    <td>Highly diverse & creative<br><span class="highlight">P=0.9–0.99</span></td>
+                </tr>
+            </table>
+
+            <h2>Key Differences</h2>
+            <table>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Top-K</th>
+                    <th>Top-P (Nucleus)</th>
+                </tr>
+                <tr>
+                    <td>Number of tokens kept</td>
+                    <td>Fixed K</td>
+                    <td>Variable (adapts to confidence)</td>
+                </tr>
+                <tr>
+                    <td>High-confidence step (99% on one token)</td>
+                    <td>Still includes K tokens → can hurt quality</td>
+                    <td>Keeps ~1–2 tokens → stays sharp</td>
+                </tr>
+                <tr>
+                    <td>Low-confidence step (flat distribution)</td>
+                    <td>Cuts off at fixed K</td>
+                    <td>Includes many tokens → more diversity</td>
+                </tr>
+                <tr>
+                    <td>Modern preference</td>
+                    <td>Mostly replaced</td>
+                    <td><strong>Preferred today (2024–2025)</strong></td>
+                </tr>
+            </table>
+
+            <h2>Practical Guide</h2>
+            <table>
+                <tr>
+                    <th>Setting</th>
+                    <th>Diversity</th>
+                    <th>Coherence</th>
+                    <th>Use Case</th>
+                </tr>
+                <tr>
+                    <td>Top-K ≤20 or Top-P ≤0.3</td>
+                    <td>Very Low</td>
+                    <td>Very High</td>
+                    <td>Code, math, facts</td>
+                </tr>
+                <tr>
+                    <td>Top-K 40–100 or Top-P 0.8–0.95</td>
+                    <td>Balanced</td>
+                    <td>Good</td>
+                    <td>Chatbots (default)</td>
+                </tr>
+                <tr>
+                    <td>Top-K ≥500 or Top-P ≥0.98</td>
+                    <td>Very High</td>
+                    <td>Can drop</td>
+                    <td>Creative writing, brainstorming</td>
+                </tr>
+                <tr>
+                    <td>Top-P = 1.0</td>
+                    <td>Maximum</td>
+                    <td>Depends on temperature</td>
+                    <td>Pure temperature sampling</td>
+                </tr>
+            </table>
+
+            <p style="text-align:center; margin-top: 3rem; color: #718096;">
+                <strong>Bottom line:</strong> Use <code>top_p=0.9–0.96</code> (optionally with a moderate
+                <code>top_k=50</code> cap) + temperature 0.7–1.0 for the best balance of creativity and coherence in
+                2025 models.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>

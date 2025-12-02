@@ -38,6 +38,7 @@
             width: 26vw;
             height: 10vh;
             margin: 0 auto;
+            margin-top: 12px;
             border: 1px solid black;
             font-size: 14px;
         }
@@ -74,6 +75,12 @@
         #byteExplanations > span > em {
             font-size: 12px;
         }
+        #key-notes {
+            display: flex;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -100,19 +107,18 @@
         <span>1,048,576 bytes = 1 MiB (Mebibyte) <em>(Uses the binary (base 2) system)</em></span><br>
     </div>
 
-    <div class="copyable-divs">
-        <h2 style="margin: 0;">Copyable Commands</h2>
-        <div onclick="copyText(this)">$ <span>ssh tech@172.21.188.179</span></div>
-        <div onclick="copyText(this)">$ <span>ssh -4NL 127.0.0.1:80:127.0.0.1:80 cole.guion@code.goldkey.com</span></div>
-        <div onclick="copyText(this)">$ <span>.\GoldKeyAssociator.exe</span></div>
-        <div onclick="copyText(this)"><u><b>GPT Prompt</b></u>: <span>If I got really good and became a pro at pythons <b><em>DATASETS</em></b> library what would be some of the stuff I could do</span></div>
-    </div>
-
-    <div class="notes">
-        <textarea id="notesBlock" placeholder="Enter notes here..."></textarea>
+    <div id="key-notes">
+        <a href="NotesPages/top_kp.html"><span>Top-K & Top-P Explained</span></a>
     </div>
 
     <div class="flex-center-row" style="justify-content: space-around; align-items: stretch;">
+        <div class="copyable-divs">
+            <h2 style="margin: 0;">Copyable Commands</h2>
+            <div onclick="copyText(this)">$ <span>ssh tech@172.21.188.179</span></div>
+            <div onclick="copyText(this)">$ <span>ssh -4NL 127.0.0.1:80:127.0.0.1:80 cole.guion@code.goldkey.com</span></div>
+            <div onclick="copyText(this)">$ <span>.\GoldKeyAssociator.exe</span></div>
+            <div onclick="copyText(this)"><u><b>GPT Prompt</b></u>: <span>If I got really good and became a pro at pythons <b><em>DATASETS</em></b> library what would be some of the stuff I could do</span></div>
+        </div>
         <div id="win-paths">
             <div class="grid-title">Windows Compter Important Paths</div>
             <div>CMake</div><div class="paths">C:\Program Files\CMake\</div>
@@ -125,23 +131,11 @@
             <div>php</div><div class="paths">C:\Users\Cole\php</div>
             <div>Xampp PHP</div><div class="paths">C:\xampp\htdocs</div>
         </div>
+    </div>
 
-        <div id="BestColors">
-            <div class="best-colors">
-                <div style="color: #df6900;"><div class="colorBlk" style="background-color: #DF6900;"></div><span>Orange</span></div>
-                <div style="color: #E20000;"><div class="colorBlk" style="background-color: #E20000;"></div><span>Red</span></div>
-                <div style="color: #2F650C;"><div class="colorBlk" style="background-color: #2F650C;"></div><span>Green</span></div>
-                <div style="color: #9900FF;"><div class="colorBlk" style="background-color: #9900FF;"></div><span>Purple #1</span></div>
-                <div style="color: #800080;"><div class="colorBlk" style="background-color: #800080;"></div><span>Purple #3</span></div>
-            </div>
-            <div class="best-colors">
-                <div style="color: #FF4500;"><div class="colorBlk" style="background-color: #FF4500;"></div><span>Red-Orange</span></div>
-                <div style="color: #b8860b;"><div class="colorBlk" style="background-color: #B8860B;"></div><span>Yellow</span></div>
-                <div style="color: #188038;"><div class="colorBlk" style="background-color: #188038;"></div><span>Green</span></div>
-                <div style="color: #8300DC;"><div class="colorBlk" style="background-color: #8300DC;"></div><span>Purple #2</span></div>
-                <div style="color: #B200B2;"><div class="colorBlk" style="background-color: #B200B2;"></div><span>Pink</span></div>
-            </div>
-        </div>
+
+    <div class="notes">
+        <textarea id="notesBlock" placeholder="Enter notes here..."></textarea>
     </div>
 
     <script>

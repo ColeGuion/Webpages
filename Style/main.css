@@ -62,6 +62,7 @@ h2 {
     height: 100%;
     max-width: 50%;
     width: 40%;
+    /* width: 100%; */
     background-color: white;
 }
 /* All children except heading */

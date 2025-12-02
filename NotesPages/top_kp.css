@@ -1,0 +1,104 @@
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    background: #f4f6f9;
+}
+
+.notes-container {
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notes-block {
+    width: 100%;
+    max-width: 70vw;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 3rem;
+    line-height: 1.7;
+    color: #2d3748;
+}
+
+h1, h2, h3 {
+    color: #4a5568;
+}
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #2d3748;
+}
+h2 {
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    color: #667eea;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: #f8f9ff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background: #667eea;
+    color: white;
+    font-weight: 600;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:nth-child(even) {
+    background: #edf2ff;
+}
+
+.highlight {
+    background: #fff5c0;
+    font-weight: 600;
+}
+
+code {
+    background: #e2e8f0;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Consolas', monospace;
+}
+#back-arrow {
+    position: absolute; 
+    top: 32px; 
+    left: 32px; 
+    text-decoration: none; 
+    color: #667eea; 
+    font-size: 2.5rem; 
+    z-index: 10; 
+    display: flex; 
+    align-items: center;
+    background-color: white;
+    /* border: 1px solid black; */
+    border-radius: 50%;
+    color: white; 
+    color: black; 
+    padding: 16px;
+    justify-content: center;
+    text-align: center;
+    width: 50px;
+}
