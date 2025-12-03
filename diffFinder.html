@@ -6,25 +6,40 @@
     <title>String Difference Finder</title>
     <link rel="stylesheet" href="Style/diffFinder.css">
     <style>
+        .diffsHolder {
+            display: flex;
+            flex-direction: row;
+            box-sizing: border-box;
+            width: 100%;
+            gap: 4%;
+            margin-bottom: 2rem;
+            /* background-color: wheat; */
+        }
+        .diffsHolder textarea{
+            min-height: 300px;
+        }
     </style>
 </head>
 <body>
-    <div class="main-content">
+    <!-- <div class="main-content"></div> -->
     <div class="container">
-        <div class="header">
+    <div class="container">
+        <!-- <div class="header">
             <h1>🔍 String Difference Finder</h1>
             <p>Compare two strings and find their differences</p>
-        </div>
+        </div> -->
         
         <div class="content">
-            <div class="input-group">
-                <label for="string1">First String:</label>
-                <textarea id="string1" placeholder="Enter your first string here...">we shood buy an car.</textarea>
-            </div>
-            
-            <div class="input-group">
-                <label for="string2">Second String:</label>
-                <textarea id="string2" placeholder="Enter your second string here...">We should buy a car.</textarea>
+            <div class="diffsHolder">
+                <div class="input-group">
+                    <label for="string1">Input:</label>
+                    <textarea id="string1" placeholder="Enter your first string here...">we shood buy an car.</textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="string2">Corrected:</label>
+                    <textarea id="string2" placeholder="Enter your second string here...">We should buy a car.</textarea>
+                </div>
             </div>
             
             <div class="button-group">
@@ -40,7 +55,6 @@
 
             <div id="markupContainer" class="markup-container"></div>
         </div>
-    </div>
     </div>
     <script src="Scripts/diffFinder.js"></script>
     <script src="Scripts/navigation.js"></script>
