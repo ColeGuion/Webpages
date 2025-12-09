@@ -6,6 +6,11 @@
   to = "/finddiff.html"
   status = 200
 
+[[redirects]]
+  from = "/newsletter"
+  to = "/.netlify/functions/newsletter"
+  status = 200
+
 # Go functions configuration
 [functions]
   directory = "netlify/functions"

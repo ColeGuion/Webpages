@@ -1,29 +1,24 @@
-fetchNewsletterContent();
+document.addEventListener('DOMContentLoaded', function() {
+    fetchNewsletterContent();
+});
 
 async function fetchNewsletterContent() {
     try {
         // Call the Netlify function
-        const response = await fetch('/.netlify/functions/newsletter', {
-            method: 'GET',
-            headers: {
-            'Content-Type': 'application/json',
-            }
+        const res = await fetch('/newsletter', {
+            method: "GET"
         });
 
-        const data = await response.json();
-        console.log("Data received:", data);
+        const data = await res.json();
+        console.log("Newsletter response:", data);
 
-        if (!response.ok) {
+        /* if (!response.ok) {
             throw new Error(data.error || 'Something went wrong');
-        }
+        } */
+        document.getElementById("content").textContent =  JSON.stringify(data, null, 2);
 
-        //displayResult(string1, data.result);
     } catch (error) {
-        //showError(error.message);
         console.log("Error fetching newsletter:", error);
-    } finally {
-        //setLoading(false);
-        console.log("Finished newsletter fetch attempt");
-    }
+    } 
 
 }

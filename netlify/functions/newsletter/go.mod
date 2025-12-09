@@ -1,4 +1,4 @@
-module tldrserver
+module newsletter
 
 go 1.24.6
 
