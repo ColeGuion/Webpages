@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 async function fetchNewsletterContent() {
     try {
         // Call the Netlify function
-        const res = await fetch('/newsletter', {
+        const res = await fetch('https://mainnotes.netlify.app/.netlify/functions/newsletter', {
             method: "GET"
         });
 
