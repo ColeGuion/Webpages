@@ -4,11 +4,10 @@ async function fetchNewsletterContent() {
     try {
         // Call the Netlify function
         const response = await fetch('/.netlify/functions/newsletter', {
-            method: 'POST',
+            method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ string1: string1, string2: string2})
+            'Content-Type': 'application/json',
+            }
         });
 
         const data = await response.json();

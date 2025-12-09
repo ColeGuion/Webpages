@@ -29,12 +29,27 @@ nav a {
     color:#333;
     color:#00aaff;
     color:#ffdd00;
+
+    color: #ffffff; /* **White text** for high contrast against the dark background */
+    font-size: 1.1em; /* Slightly larger font size */
+    text-transform: uppercase; /* Subtle styling touch */
+    letter-spacing: 1px; /* Increase space between letters */
+    
+    /* Animation preparation */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
 }
+
 nav a:hover {
     background-color: #ddd;
     color: black;
     background-color: #00aaff;
-    color:#ffdd00;
+    color:#ffd700;
+
+    /* **Background color change:** A medium-light gray or a subtle accent color */
+    background-color: #00aaff;
+    background-color: #555555; /* A slightly lighter shade of gray for a subtle highlight */
+    /* **OR** use an accent color like this: **#00aaff** (a bright blue) */
+
 }
 nav a.active {
     background-color: #04AA6D;
