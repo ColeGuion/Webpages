@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Maker</title>
-    <link rel="stylesheet" href="Style/make_data.css">
+    <link rel="stylesheet" href="Style/DataMaker.css">
     <style>
     </style>
 </head>
@@ -49,9 +49,9 @@
         <div class="button-container" style="margin-bottom: 16px;">
             <div class="button-row">
                 <button class="action-btn remove-numbers" onclick="removeNumbers()">Remove Numbers</button>
+                <button class="action-btn remove-empties" onclick="removeEmptyLines()">Strip Whitespace</button>
                 <button class="action-btn remove-quotes" onclick="removeQuotes()">Remove Quotes</button>
                 <button class="action-btn replace-apostrophe" onclick="replaceApostrophes()">Replace Apostrophes</button>
-                <button class="action-btn remove-empties" onclick="removeEmptyLines()">Remove Empty Lines</button>
                 <button class="action-btn combine-sents" onclick="combineToSentences()">Combine To Sentences</button>
             </div>
         </div>
@@ -115,7 +115,7 @@
     <!-- // TODO: Fix line number issues. (When mulit-line string ends with one word sometimes the alignment doesn't align properly) -->
     <!-- TODO: Add bigger space between different lines, but not the same line that is wrapped -->
     <!-- TODO: Make source and dtype inputs smaller; Make text boxes wider (line numbers smaller) -->
-    <script src="Scripts/data_maker.js"></script>
+    <script src="Scripts/DataMaker.js"></script>
     <script> 
         // Auto capitalize text in homophones input boxes
         document.getElementById('phone1').addEventListener('input', function(e) {

@@ -447,10 +447,10 @@ function submitData() {
 }
 
 function make_data_samples(orig, correcteds) {
-    let dtype = document.getElementById('dtype').value;
-    let src = document.getElementById('source').value;
-    let phone1 = document.getElementById('phone1').value;
-    let phone2 = document.getElementById('phone2').value;
+    let dtype = document.getElementById('dtype').value.trim();
+    let src = document.getElementById('source').value.trim();
+    let phone1 = document.getElementById('phone1').value.trim();
+    let phone2 = document.getElementById('phone2').value.trim();
     //console.log(`Source: ${JSON.stringify(src)}\nDtype: ${JSON.stringify(dtype)}\nPhone #1: ${JSON.stringify(phone1)}\nPhone #2: ${JSON.stringify(phone2)}`);
 
     // Format homophone inputs (Capital letter followed by all lowercase)
