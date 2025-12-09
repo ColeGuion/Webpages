@@ -11,9 +11,33 @@
 <body>
     <h1>Extracted Content</h1>
     <div id="content"></div>
+    <br>
+    <pre id="newsletter"></pre>
 
 
-    <script src="Scripts/newsletter.js"></script>
+    <!-- <script src="Scripts/newsletter.js"></script> -->
+<script>
+async function loadNewsletter() {
+    try {
+        const res = await fetch("/.netlify/functions/newsletter", {
+            method: "GET"
+        });
+
+        const data = await res.json();
+        console.log("Newsletter response:", data);
+        
+        // Example: update DOM
+        document.getElementById("newsletter").textContent =  JSON.stringify(data, null, 2);
+
+    } catch (err) {
+        console.error("Error fetching newsletter", err);
+    }
+}
+
+loadNewsletter();
+</script>
+
+
     <script src="Scripts/navigation.js"></script>
 </body>
 </html>
