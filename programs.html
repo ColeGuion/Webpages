@@ -440,6 +440,40 @@ dog := struct {
                 <td class="description">Go Structures</td>
             </tr>
 
+            <!--***** Printing *****-->
+            <tr id="go-printing">
+                <td colspan="2" class="tabSect">Printing</td>
+            </tr> 
+            
+            <tr>
+                <td class="codes"><pre><code class="language-go">myName := "Alice"
+// Left Justify
+fmt.Printf("|%-12s|\n", myName) // |Alice       |
+
+// Right Justify
+fmt.Printf("|%12s|\n", myName) // |       Alice|</code></pre></td>
+                <td class="description">Formatting strings left or right</td>
+            </tr>
+
+            <tr>
+                <td class="codes"><pre><code class="language-go">import "encoding/json"
+                    
+func printPrettyJSON(v interface{}) {
+    data, err := json.MarshalIndent(v, "", "  ")
+    if err != nil {
+        fmt.Printf("Error: %v\n", err)
+        return
+    }
+    fmt.Println(string(data))
+}
+
+// Usage
+printPrettyJSON(textMarkups) // for []TextMarkup
+printPrettyJSON(textMarkup)  // for single TextMarkup
+</code></pre></td>
+                <td class="description">Pretty printing go structs</td>
+            </tr>
+
             <!--***** Working With Maps *****-->
             <tr id="go-maps">
                 <td colspan="2" class="tabSect">Working With Maps</td>
@@ -463,21 +497,6 @@ fmt.Println(exists) // false
 m2 := map[string]int{"foo": 1, "bar": 2}
 fmt.Println(m2) // map[bar:2 foo:1]</code></pre></td>
                 <td class="description">Go Maps</td>
-            </tr>
-
-            <!--***** Printing *****-->
-            <tr id="go-printing">
-                <td colspan="2" class="tabSect">Printing</td>
-            </tr> 
-            
-            <tr>
-                <td class="codes"><pre><code class="language-go">myName := "Alice"
-// Left Justify
-fmt.Printf("|%-12s|\n", myName) // |Alice       |
-
-// Right Justify
-fmt.Printf("|%12s|\n", myName) // |       Alice|</code></pre></td>
-                <td class="description">Formatting strings left or right</td>
             </tr>
 
         </table>
