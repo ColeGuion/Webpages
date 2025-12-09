@@ -1,66 +1,59 @@
+// scraper.go
 package main
 
 import (
-    "encoding/json"
-    "github.com/aws/aws-lambda-go/events"
-    "github.com/aws/aws-lambda-go/lambda"
+	"fmt"
+	"net/http"
+	"time"
+
+	"github.com/PuerkitoBio/goquery"
 )
 
-func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-    // Set CORS headers
-    headers := map[string]string{
-        "Content-Type":                 "application/json",
-        "Access-Control-Allow-Origin":  "*",
-        "Access-Control-Allow-Methods": "GET, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type",
-    }
+func GetNewsletter() ([]Article, error) {
+	url := "https://tldr.tech/ai/2025-12-08"
 
-    // OPTIONS preflight
-    if request.HTTPMethod == "OPTIONS" {
-        return events.APIGatewayProxyResponse{
-            StatusCode: 200,
-            Headers:    headers,
-        }, nil
-    }
+	client := &http.Client{
+		Timeout: 10 * time.Second,
+	}
 
-    // Only allow GET
-    if request.HTTPMethod != "GET" {
-        return events.APIGatewayProxyResponse{
-            StatusCode: 405,
-            Headers:    headers,
-            Body:       `{"error": "Method not allowed"}`,
-        }, nil
-    }
+	resp, err := client.Get(url)
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch page: %w", err)
+	}
+	defer resp.Body.Close()
 
-    Info("Fetching TLDR newsletter")
-    result, err := GetNewsletter()
+	if resp.StatusCode != 200 {
+		return nil, fmt.Errorf("unexpected status %d", resp.StatusCode)
+	}
 
-    // Create response
-    response := ServerResponse{
-        Result: result,
-    }
-    if err != nil {
-        response.Error = err.Error()
-    }
+	doc, err := goquery.NewDocumentFromReader(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse HTML: %w", err)
+	}
 
-    Info("Converting to JSON")
-    jsonResponse, err := json.Marshal(response)
-    if err != nil {
-        return events.APIGatewayProxyResponse{
-            StatusCode: 500,
-            Headers:    headers,
-            Body:       `{"error": "Internal server error"}`,
-        }, nil
-    }
+	var articles []Article
 
-    Info("Returning success")
-    return events.APIGatewayProxyResponse{
-        StatusCode: 200,
-        Headers:    headers,
-        Body:       string(jsonResponse),
-    }, nil
-}
+	// Grab each <article> element
+	doc.Find("article").Each(func(i int, sel *goquery.Selection) {
+		title := sel.Find("h1, h2, h3").First().Text()
+		//text := sel.Find("p").Text()
 
-func main() {
-    lambda.Start(handler)
+		newsletterDiv := sel.Find("div.newsletter-html")
+		//newsletterHTML, err := newsletterDiv.Html()
+		//if err == nil && newsletterHTML != "" {
+		//	text += "\n" + newsletterHTML
+		//}
+		text := newsletterDiv.Text()
+
+		if title == "" && text == "" {
+			return
+		}
+
+		articles = append(articles, Article{
+			Title: title,
+			Text:  text,
+		})
+	})
+
+	return articles, nil
 }
