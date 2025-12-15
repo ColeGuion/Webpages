@@ -1,7 +1,7 @@
 // Navigation Links
 const pages = [
     { href: 'home.html', text: 'Home' },
-    { href: 'Newsletter.html', text: 'News' },
+    { href: 'newsletter.html', text: 'News' },
     { href: 'Key_Links.html', text: 'Key Links' },
     { href: 'ShortCuts.html', text: 'Shortcuts' },
     { href: 'programs.html#Linux', text: 'Programming' },
@@ -13,7 +13,6 @@ const pages = [
     //{ href: 'playground.html', text: 'Playground' },
     //{ href: 'bootstrap.html', text: 'Bootstrap' },
     //{ href: 'todo.html', text: 'To Do' },
-    { href: 'newsletter.html', text: 'News' },
     { href: 'diffFinder.html', text: 'Diff Finder' },
     { href: 'DataMaker.html', text: 'Make Data' },
     { href: 'finddiff.html', text: 'FindDiff' },
