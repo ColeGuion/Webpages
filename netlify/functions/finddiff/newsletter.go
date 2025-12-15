@@ -36,6 +36,10 @@ func GetNewsletter(url string) ([]Article, error) {
 
 	// Grab each <article> element
 	doc.Find("article").Each(func(i int, sel *goquery.Selection) {
+		article_link := sel.Find("a").First().AttrOr("href", "")
+		if article_link != "" {
+			Info("Article link: %s", article_link)
+		}
 		title := sel.Find("h1, h2, h3").First().Text()
 		//text := sel.Find("p").Text()
 
@@ -54,6 +58,7 @@ func GetNewsletter(url string) ([]Article, error) {
 
 		articles = append(articles, Article{
 			Title: title,
+			Link: article_link,
 			Text:  text,
 			HtmlContent:  htmlContent,
 		})

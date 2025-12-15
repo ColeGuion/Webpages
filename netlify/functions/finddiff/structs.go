@@ -39,6 +39,7 @@ type Response struct {
 
 type Article struct {
     Title string `json:"title"`
+	Link string `json:"link,omitempty"`
     Text  string `json:"text"`
 	HtmlContent string `json:"htmlContent,omitempty"` // Optional HTML content
 }
