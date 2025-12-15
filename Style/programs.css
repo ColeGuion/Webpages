@@ -1,4 +1,5 @@
 @import url('main.css');
+@import url('tooltip.css');
 
 
 h1 {
@@ -72,8 +73,11 @@ tr:nth-child(even):hover {
     font-size: 24pt;
     font-weight: 500;
     border: 3px solid #ddd;
+    /* background-color: #ffbebe;
+    background-color: #FFF0F0;
+    background-color: #FFF5E6; */
+    background-color: #FFFFE0;
 }
-
 
 /* Sections Button Bar Styling */
 .sect-btn-bar {
@@ -104,7 +108,6 @@ tr:nth-child(even):hover {
     background-color: #ffe066 !important;
     transition: background-color 0.5s;
 }
-
 
 .rowAdder {
     border: 0px solid #ddd;
@@ -176,63 +179,7 @@ tr:nth-child(even):hover {
     z-index: 1000;
 }
 
-/* Tooltip container */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
 
-/* Tooltip text */
-.tooltip .tooltip-text {
-    visibility: hidden;
-    width: 120px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 5px;
-    border-radius: 5px;
-
-    /* Positioning */
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    /* Position above the element */
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-/* Tooltip arrow */
-.tooltip .tooltip-text::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    /* Position below the tooltip text */
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #333 transparent transparent transparent;
-}
-
-/* Show the tooltip when hovering */
-.tooltip:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}
-
-.tooltips {
-    position: absolute;
-    background-color: #222;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    z-index: 1000;
-    transition: opacity 0.3s ease-out;
-}
 
 .ignore {
     display: inline;
