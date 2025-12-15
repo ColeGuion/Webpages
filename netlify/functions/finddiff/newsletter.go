@@ -2,6 +2,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"time"
@@ -44,6 +45,8 @@ func GetNewsletter(url string) ([]Article, error) {
 		//	text += "\n" + newsletterHTML
 		//}
 		text := newsletterDiv.Text()
+		htmlContent, _ := newsletterDiv.Html()
+		htmlContent, _ = htmlToJSONString(htmlContent)
 
 		if title == "" && text == "" {
 			return
@@ -52,8 +55,18 @@ func GetNewsletter(url string) ([]Article, error) {
 		articles = append(articles, Article{
 			Title: title,
 			Text:  text,
+			HtmlContent:  htmlContent,
 		})
 	})
 
 	return articles, nil
+}
+
+func htmlToJSONString(html string) (string, error) {
+	// Marshal the HTML string as JSON
+	jsonBytes, err := json.Marshal(html)
+	if err != nil {
+		return "", err
+	}
+	return string(jsonBytes), nil
 }

@@ -54,6 +54,7 @@ func handleFindDiff(request events.APIGatewayProxyRequest, headers map[string]st
 	}, nil
 }
 
+//TODO: Add links to articles
 func handleGetNewsletter(request events.APIGatewayProxyRequest, headers map[string]string) (events.APIGatewayProxyResponse, error) {
 	var req NewsletterRequest
 	if err := json.Unmarshal([]byte(request.Body), &req); err != nil {
