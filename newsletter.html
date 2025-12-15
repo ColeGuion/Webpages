@@ -16,20 +16,25 @@
                 <button class="grad-btn" id="extractBtn">Extract Content</button>
             </div>
 
-            <div class="button-group button-group-two btn-design-3">
-                <button>AI</button>
-                <button>Design</button>
-            </div>
-              
-            
-            <h1 id="main-heading">TLDR AI</h1>
-            <div id="newsletter" class="news-content">
-                <div id="loading" class="loading hidden">
-                    <div class="spinner"></div>
-                    <p>Extracting content...</p>
-                </div>
+            <div class="button-group-two design-3">
+                <!-- <button>AI</button>
+                <button>Design</button> -->
+                <button class="toggle-button selected">AI</button>
+                <button class="toggle-button">Design</button>
             </div>
 
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Extracting content...</p>
+            </div>
+            
+            <div class="newsletter" id="ai-newsletter">
+                <h1 class="main-heading">TLDR AI</h1>
+            </div>
+
+            <div class="newsletter hidden" id="design-newsletter">
+                <h1 class="main-heading">TLDR Design</h1>
+            </div>
     
             <div id="error" class="error hidden"></div>
         </div>
