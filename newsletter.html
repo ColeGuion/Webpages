@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TLDR Newsletter</title>
+    <link rel="stylesheet" href="Style/newsletter.css">
+    <style>
+        #resultBlk {
+            min-height: 400px;
+            border: 2px solid #ccc;
+            padding: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="button-group">
+                <button id="extractBtn">Extract Content</button>
+            </div>
+            
+            <h1 style="text-align: center; padding: 10px;">Extracted Content</h1>
+            <!-- <pre id="content"></pre> -->
+            <div id="resultBlk"></div>
+
+    
+            
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Extracting content...</p>
+            </div>
+            
+            <div id="error" class="error hidden"></div>
+        </div>
+    </div>
+
+
+    <script src="Scripts/newsletter.js"></script>
+    <script src="Scripts/navigation.js"></script>
+</body>
+</html>

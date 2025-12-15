@@ -1,6 +1,28 @@
 // structs.go
 package main
 
+// Request structure matches what we send from JavaScript
+type Request struct {
+    String1 string `json:"string1"`
+    String2 string `json:"string2"`
+}
+
+// ServerResponse structure for what we return to JavaScript
+type ServerResponse struct {
+    Result []Response `json:"result"`
+    Error  string   `json:"error,omitempty"`
+}
+
+type NewsletterRequest struct {
+    Url string `json:"url"`
+}
+
+// ServerResponse structure for what we return to JavaScript
+type NewsletterResponse struct {
+    Result []Article `json:"result,omitempty"`
+    Error  string    `json:"error,omitempty"`
+}
+
 type Misspell struct {
 	Index       int      // The index of the misspelled word in the text
 	Length      int      // The length of the misspelled word
@@ -15,18 +37,10 @@ type Response struct {
 	Type    string `json:"type"`
 }
 
-
-
-// Request structure matches what we send from JavaScript
-type Request struct {
-    String1 string `json:"string1"`
-    String2 string `json:"string2"`
+type Article struct {
+    Title string `json:"title"`
+    Text  string `json:"text"`
 }
 
-// ServerResponse structure for what we return to JavaScript
-type ServerResponse struct {
-    //Result []string `json:"result"`
-    Result []Response `json:"result"`
 
-    Error  string   `json:"error,omitempty"`
-}
+

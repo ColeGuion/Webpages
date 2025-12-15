@@ -1,0 +1,109 @@
+/* @import url('main.css'); */
+@import url('navbar.css');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.container {
+    max-width: 96vw;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+    min-height: 80vh;
+}
+
+.content {
+    padding: 40px;
+    padding-top: 0;
+}
+
+.button-group {
+    text-align: center;
+    margin: 30px 0;
+}
+button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+}
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #667eea;
+}
+
+.error {
+    background: #ffe6e6;
+    border-left-color: #ff4444;
+    color: #cc0000;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    button {
+        width: 100%;
+        padding: 18px;
+    }
+}
