@@ -52,14 +52,15 @@ document.addEventListener('DOMContentLoaded', function() {
             newsContent.classList.add('news-content');
             //newsHead.textContent = article.title;
 
-            let title = article.title;
-            const match = title.match(/^(.*?)(\s*\(.*\))$/);
+            //let title = article.title;
+            const match = article.title.match(/^(.*?)(\s*\(.*\))$/);
             if (match) {
-                newsHead.innerHTML = `${match[1].trim()} <span class="subhead">${match[2].trim()}</span>`;
+                //newsHead.innerHTML = `${match[1].trim()} <span class="subhead">${match[2].trim()}</span>`;
+                newsHead.innerHTML = `<a href="${article.link}" target="_blank">${match[1].trim()} <span class="subhead">${match[2].trim()}</span></a>`;
             } else {
-                newsHead.innerHTML = title;
+                //newsHead.innerHTML = article.title;
+                newsHead.innerHTML = `<a href="${article.link}" target="_blank">${article.title}</a>`;
             } 
-            //newsHead.innerHTML = article.title;
 
             if (article.htmlContent) {
                 newsContent.innerHTML = article.htmlContent;
