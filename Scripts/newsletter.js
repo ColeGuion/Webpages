@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Global variable to store the article type
     let article_type = 'ai';
 
-    dummyFill();
+    //dummyFill();
 
     buttons.forEach(button => {
         button.addEventListener('click', function() {
