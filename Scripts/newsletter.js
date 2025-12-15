@@ -1,9 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-    const extractBtn = document.getElementById('extractBtn');
     const loadingElement = document.getElementById('loading');
     const errorElement = document.getElementById('error');
-    //const aiNewsletter = document.getElementById('ai-newsletter');
     const buttonGroup = document.querySelector('.button-group-two.design-3');
     const buttons = buttonGroup.querySelectorAll('.toggle-button');
 
@@ -36,53 +34,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
-    //TODO: Add link to article to top of page
-    //  OR add link to headers to specific article (tldr-ai or tldr-design)
-    //const today = new Date().toISOString().split('T')[0];
-    //const url_string = "https://tldr.tech/" + article_type + "/" + today;
-    //console.log("URL String:", url_string);
+    // Load right away
     FetchNews("ai");
     FetchNews("design");
-    /* extractBtn.addEventListener('click', async function() {
-        const today = new Date().toISOString().split('T')[0];
-        const url_string = "https://tldr.tech/" + article_type + "/" + today;
-        console.log("URL String:", url_string);
-        if (!url_string) {
-            showError('Please enter URL string');
-            return;
-        }
-
-        // Show loading state
-        setLoading(true);
-        hideError();
-        //hideResult();
-
-        try {
-            // Call the Netlify function
-            const response = await fetch('/.netlify/functions/finddiff/newsletter', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ url: url_string})
-            });
-
-            const data = await response.json();
-            console.log("Data received:", data);
-
-            if (!response.ok) {
-                throw new Error(data.error || 'Something went wrong');
-            }
-
-            displayResult(data.result);
-        } catch (error) {
-            showError(error.message);
-        } finally {
-            setLoading(false);
-        }
-    }); */
-
+    //TODO: Add link to article to top of page
+    //  OR add link to headers to specific article (tldr-ai or tldr-design)
+    
+    
     function displayResult(data_result, newsletterBlock) {
         //newsletterBlock.innerHTML = data_result;
         data_result.forEach(article => {
@@ -92,7 +50,17 @@ document.addEventListener('DOMContentLoaded', function() {
             let newsContent = document.createElement('div');
             newsDiv.classList.add('news-block');
             newsContent.classList.add('news-content');
-            newsHead.textContent = article.title;
+            //newsHead.textContent = article.title;
+
+            let title = article.title;
+            const match = title.match(/^(.*?)(\s*\(.*\))$/);
+            if (match) {
+                newsHead.innerHTML = `${match[1].trim()} <span class="subhead">${match[2].trim()}</span>`;
+            } else {
+                newsHead.innerHTML = title;
+            } 
+            //newsHead.innerHTML = article.title;
+
             if (article.htmlContent) {
                 newsContent.innerHTML = article.htmlContent;
             } else {
@@ -108,12 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function setLoading(isLoading) {
         if (isLoading) {
             loadingElement.classList.remove('hidden');
-            extractBtn.disabled = true;
-            extractBtn.textContent = 'Processing...';
         } else {
             loadingElement.classList.add('hidden');
-            extractBtn.disabled = false;
-            extractBtn.textContent = 'Extract Content';
         }
     }
 
@@ -138,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show loading state
         setLoading(true);
         hideError();
-        //hideResult();
 
         try {
             // Call the Netlify function
@@ -177,6 +140,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function dummyFill() {
     document.getElementById('ai-newsletter').innerHTML += `<div class="news-block"><h3>How Ramp built an AI operating system for scalable work (Sponsor)</h3><div class="news-content">Learn how Ramp became one of the most productive companies in the world by adopting a Builder mindset—understanding that work is fundamentally changing and actively building an AI operating system instead of waiting for the perfect tool.<p></p><p>Key takeaways from the story:</p><ul><li>The Builder mindset: Don't wait for AI to get easier—start designing your future work now</li><li>Three steps to scale: Getting precise with AI, centralizing information, and building workflows without engineers</li><li>Real results: 270 features shipped in H1 2025 (more than all of 2024 combined) with 90% of 1,200 employees using Notion AI monthly</li></ul><p>The blog includes a CTA to watch the Make with Notion session with Ben Levik (Ramp's operations and AI product leader)                                                                                    </p></div></div>
-    <div class="news-block"><h3>OpenAI is quietly adopting skills, now available in ChatGPT and Codex CLI (8 minute read)</h3><div class="news-content">Skills support is quietly showing up in OpenAI's Codex CLI tool and ChatGPT. The skills folder can be accessed by prompting, 'Create a zip file of /home/oai/skills'. So far, the skills cover spreadsheets, docx, and PDFs. A link to a repository with a copy of the skills is available in the article.</div></div>`;
+    
+                <div class="news-block">
+                    <h3>Disney Signs Deal with OpenAI to Allow Sora to Generate AI Videos Featuring its Characters <span class="subhead">(3 minute read)</span></h3>
+                    <div class="news-content">Disney signed a three-year partnership with OpenAI and invested $1 billion, allowing Sora
+                        and ChatGPT Images to generate content featuring over 200 characters from Disney, Marvel, Pixar, and Star Wars.
+                        Users can create videos and images using iconic characters like Mickey Mouse and Darth Vader, though talent
+                        likenesses and voices are excluded from the agreement. Despite previously suing Midjourney and sending
+                        cease-and-desist letters to Character.AI over IP violations, Disney will become a major OpenAI customer to build
+                        new products.</div>
+                </div>
+                <div class="news-block">
+                    <h3>Instagram Supercharges Creation and Feed Control with new Edits App Features and “Your Algorithm” <span class="subhead">(2 minute read)</span></h3>
+                    <div class="news-content">Instagram's Edits app now includes pre-built templates, storyboards, advanced text tools,
+                        and an iPhone lock screen widget for instant camera access and quick content capture. The platform is
+                        introducing "Your Algorithm" in the US, allowing users to view and modify the topics Instagram uses to curate
+                        their Reels feed by adding or removing interests. These updates aim to streamline content creation for creators
+                        while giving regular users more control over their algorithmic feeds, with similar Explore page features
+                        planned.</div>
+                </div>
+                <div class="news-block">
+                    <h3>With iOS 26.2, Apple lets you roll back Liquid Glass again — this time on the Lock Screen <span class="subhead">(3 minute read)</span></h3>
+                    <div class="news-content">Apple's iOS 26.2 adds another control to reduce Liquid Glass transparency—this time for
+                        the Lock Screen clock—continuing Apple's rollback via user-controlled settings after complaints that the new
+                        glassy UI hurt readability. The update also brings AirDrop codes, Reminders alarms, offline lyrics in Apple
+                        Music, AI features in Podcasts, a Sleep Score on Apple Watch, and critical security patches across Apple
+                        devices.</div>
+                </div>`;
 
 }

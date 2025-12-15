@@ -16,6 +16,12 @@ body {
     text-align: center; 
     padding: 10px;
 }
+.subhead {
+    font-size: 0.8em;
+    color: gray;
+    margin-left: 8px;
+    font-weight: 600;
+}
 .container {
     max-width: 96vw;
     max-width: 100vw;
