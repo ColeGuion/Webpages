@@ -6,27 +6,31 @@
     <title>TLDR Newsletter</title>
     <link rel="stylesheet" href="Style/newsletter.css">
     <style>
-        
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="content">
             <div class="button-group">
-                <button id="extractBtn">Extract Content</button>
+                <button class="grad-btn" id="extractBtn">Extract Content</button>
             </div>
+
+            <div class="button-group button-group-two btn-design-3">
+                <button>AI</button>
+                <button>Design</button>
+            </div>
+              
             
-            <h1 style="text-align: center; padding: 10px;">Extracted Content</h1>
+            <h1 id="main-heading">TLDR AI</h1>
             <div id="newsletter" class="news-content">
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Extracting content...</p>
+                </div>
             </div>
 
     
-            
-            <div id="loading" class="loading hidden">
-                <div class="spinner"></div>
-                <p>Extracting content...</p>
-            </div>
-            
             <div id="error" class="error hidden"></div>
         </div>
     </div>
