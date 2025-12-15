@@ -46,7 +46,7 @@ func GetNewsletter(url string) ([]Article, error) {
 		//}
 		text := newsletterDiv.Text()
 		htmlContent, _ := newsletterDiv.Html()
-		htmlContent, _ = htmlToJSONString(htmlContent)
+		//htmlContent, _ = htmlToJSONString(htmlContent)
 
 		if title == "" && text == "" {
 			return
