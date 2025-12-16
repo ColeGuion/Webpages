@@ -144,32 +144,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function dummyFill() {
     document.getElementById('ai-newsletter').innerHTML += `<div class="news-block"><h3>How Ramp built an AI operating system for scalable work (Sponsor)</h3><div class="news-content">Learn how Ramp became one of the most productive companies in the world by adopting a Builder mindset—understanding that work is fundamentally changing and actively building an AI operating system instead of waiting for the perfect tool.<p></p><p>Key takeaways from the story:</p><ul><li>The Builder mindset: Don't wait for AI to get easier—start designing your future work now</li><li>Three steps to scale: Getting precise with AI, centralizing information, and building workflows without engineers</li><li>Real results: 270 features shipped in H1 2025 (more than all of 2024 combined) with 90% of 1,200 employees using Notion AI monthly</li></ul><p>The blog includes a CTA to watch the Make with Notion session with Ben Levik (Ramp's operations and AI product leader)                                                                                    </p></div></div>
-    
-                <div class="news-block">
-                    <h3>Disney Signs Deal with OpenAI to Allow Sora to Generate AI Videos Featuring its Characters <span class="subhead">(3 minute read)</span></h3>
-                    <div class="news-content">Disney signed a three-year partnership with OpenAI and invested $1 billion, allowing Sora
-                        and ChatGPT Images to generate content featuring over 200 characters from Disney, Marvel, Pixar, and Star Wars.
-                        Users can create videos and images using iconic characters like Mickey Mouse and Darth Vader, though talent
-                        likenesses and voices are excluded from the agreement. Despite previously suing Midjourney and sending
-                        cease-and-desist letters to Character.AI over IP violations, Disney will become a major OpenAI customer to build
-                        new products.</div>
-                </div>
-                <div class="news-block">
-                    <h3>Instagram Supercharges Creation and Feed Control with new Edits App Features and “Your Algorithm” <span class="subhead">(2 minute read)</span></h3>
-                    <div class="news-content">Instagram's Edits app now includes pre-built templates, storyboards, advanced text tools,
-                        and an iPhone lock screen widget for instant camera access and quick content capture. The platform is
-                        introducing "Your Algorithm" in the US, allowing users to view and modify the topics Instagram uses to curate
-                        their Reels feed by adding or removing interests. These updates aim to streamline content creation for creators
-                        while giving regular users more control over their algorithmic feeds, with similar Explore page features
-                        planned.</div>
-                </div>
-                <div class="news-block">
-                    <h3>With iOS 26.2, Apple lets you roll back Liquid Glass again — this time on the Lock Screen <span class="subhead">(3 minute read)</span></h3>
-                    <div class="news-content">Apple's iOS 26.2 adds another control to reduce Liquid Glass transparency—this time for
-                        the Lock Screen clock—continuing Apple's rollback via user-controlled settings after complaints that the new
-                        glassy UI hurt readability. The update also brings AirDrop codes, Reminders alarms, offline lyrics in Apple
-                        Music, AI features in Podcasts, a Sleep Score on Apple Watch, and critical security patches across Apple
-                        devices.</div>
-                </div>`;
+    <div class="news-block"><h3><a href="https://metronome.com/quiz?utm_campaign=pricing%20quiz&amp;utm_medium=newsletter&amp;utm_source=tldr-ai&amp;utm_content=" target="_blank">Tools to align AI pricing with value <span class="subhead">(Sponsor)</span></a></h3><div class="news-content">It might seem like everyone is struggling with sustainable monetization for AI, but Metronome works with the companies who have actually figured it out - Anyscale, NVIDIA, Databricks, and many others. Their team has created <a href="https://metronome.com/quiz?utm_campaign=pricing%20quiz&amp;utm_medium=newsletter&amp;utm_source=tldr-ai&amp;utm_content=" rel="noopener noreferrer nofollow" target="_blank">two resources</a> to help you do the same:<p></p><p>1️⃣ <a href="https://metronome.com/quiz?utm_campaign=pricing%20quiz&amp;utm_medium=newsletter&amp;utm_source=tldr-ai&amp;utm_content=" rel="noopener noreferrer nofollow" target="_blank">Self-assessment (5 minutes)</a>: Answer 8 quick questions to discover which pricing model best fits how your customers get value from your product.</p><p>2️⃣ <a href="https://metronome.com/quiz?utm_campaign=pricing%20quiz&amp;utm_medium=newsletter&amp;utm_source=tldr-ai&amp;utm_content=" rel="noopener noreferrer nofollow" target="_blank">The Pricing Experimentation Playbook</a>: This guide can help you test, validate, and optimize your pricing strategy. (Complete the assessment to get the most out of the guide.)</p></div></div>
+    <div class="news-block"><h3><a href="https://www.testingcatalog.com/anthropic-testing-new-agentic-tasks-mode-for-claude/?utm_source=tldrai" target="_blank">Anthropic preparing new Agentic Tasks Mode for Claude <span class="subhead">(2 minute read)</span></a></h3><div class="news-content">Anthropic is testing a new interface for tasks in Claude's Agent mode. It is also introducing new modes for research, analysis, writing, and building. The updated interface introduces a toggle that allows users to switch between classic chat and agent modes. Screenshots of the new interface are available in the article.</div></div>
+    <div class="news-block"><h3><a href="https://nvidianews.nvidia.com/news/nvidia-debuts-nemotron-3-family-of-open-models?utm_source=tldrai" target="_blank">NVIDIA Debuts Nemotron 3 Family of Open Models <span class="subhead">(4 minute read)</span></a></h3><div class="news-content">Nvidia released Nemotron 3 Nano (30B parameters, 3B active) with Super (100B) and Ultra (500B) coming in early 2026, with Nano's benchmark scores rivaling or exceeding closed-source rivals. Nvidia is publishing training data and releasing libraries for agent customization in what appears to be an attempt to undermine OpenAI, Google, and Anthropic, which are increasingly developing their own chips instead of using Nvidia.</div></div>`;
 
 }
