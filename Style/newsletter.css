@@ -16,6 +16,10 @@ body {
     text-align: center; 
     padding: 10px;
 }
+.main-heading > a {
+    text-decoration: none;
+    color: black;
+}
 .subhead {
     font-size: 0.8em;
     color: gray;
