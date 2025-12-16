@@ -39,9 +39,57 @@ document.addEventListener('DOMContentLoaded', function() {
     FetchNews("design");
     //TODO: Add link to article to top of page
     //  OR add link to headers to specific article (tldr-ai or tldr-design)
+
+    async function FetchNews(articleType) {
+        const today = new Date().toISOString().split('T')[0];
+        const url_string = "https://tldr.tech/" + articleType + "/" + today;
+        console.log("Fetching URL String:", url_string);
+        if (!url_string) {
+            showError('Please enter URL string');
+            return;
+        }
+
+        // Show loading state
+        setLoading(true);
+        hideError();
+
+        try {
+            // Call the Netlify function
+            const response = await fetch('/.netlify/functions/finddiff/newsletter', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ url: url_string})
+            });
+
+            const data = await response.json();
+            console.log("Data received:", data);
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Something went wrong');
+            }
+
+            if (articleType === 'ai') {
+                const aiNewsletterBlock = document.getElementById('ai-newsletter');
+                displayResult(aiNewsletterBlock, data.result, url_string);
+            } else if (articleType === 'design') {
+                const designNewsletterBlock = document.getElementById('design-newsletter');
+                displayResult(designNewsletterBlock, data.result, url_string);
+            }
+
+            //displayResult(data.result);
+        } catch (error) {
+            showError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    }
     
     
-    function displayResult(data_result, newsletterBlock) {
+    function displayResult(newsletterBlock, data_result, url_string) {
+        const mainHead = newsletterBlock.querySelector(".main-heading");
+        mainHead.innerHTML = `<a href="${url_string}" target="_blank">${mainHead.textContent}</a>`
         //newsletterBlock.innerHTML = data_result;
         data_result.forEach(article => {
             console.log("Article:", article);
@@ -91,51 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
         errorElement.classList.add('hidden');
     }
 
-    async function FetchNews(articleType) {
-        const today = new Date().toISOString().split('T')[0];
-        const url_string = "https://tldr.tech/" + articleType + "/" + today;
-        console.log("Fetching URL String:", url_string);
-        if (!url_string) {
-            showError('Please enter URL string');
-            return;
-        }
-
-        // Show loading state
-        setLoading(true);
-        hideError();
-
-        try {
-            // Call the Netlify function
-            const response = await fetch('/.netlify/functions/finddiff/newsletter', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ url: url_string})
-            });
-
-            const data = await response.json();
-            console.log("Data received:", data);
-
-            if (!response.ok) {
-                throw new Error(data.error || 'Something went wrong');
-            }
-
-            if (articleType === 'ai') {
-                const aiNewsletterBlock = document.getElementById('ai-newsletter');
-                displayResult(data.result, aiNewsletterBlock);
-            } else if (articleType === 'design') {
-                const designNewsletterBlock = document.getElementById('design-newsletter');
-                displayResult(data.result, designNewsletterBlock);
-            }
-
-            //displayResult(data.result);
-        } catch (error) {
-            showError(error.message);
-        } finally {
-            setLoading(false);
-        }
-    }
 });
 
 
