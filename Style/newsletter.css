@@ -33,6 +33,8 @@ body {
 .main-heading {
     text-align: center; 
     padding: 10px;
+    color: #ffffff;
+
 }
 .main-heading > a {
     text-decoration: none;
