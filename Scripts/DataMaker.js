@@ -7,6 +7,51 @@
 //   4. Window.load
 //       - The entire page has loaded, including all dependent resources
 
+// Track last Ctrl+D search state per textarea
+const ctrlDState = new WeakMap();
+
+function selectNextOccurrence(textarea) {
+    const text = textarea.value;
+    let state = ctrlDState.get(textarea);
+
+    // If no state or selection changed, initialize
+    const selStart = textarea.selectionStart;
+    const selEnd = textarea.selectionEnd;
+
+    if (!state || state.start !== selStart || state.end !== selEnd) {
+        if (selStart === selEnd) return; // nothing selected
+
+        const selectedText = text.slice(selStart, selEnd);
+        if (!selectedText.trim()) return;
+
+        state = {
+            query: selectedText,
+            index: selEnd
+        };
+    }
+
+    const nextIndex = text.indexOf(state.query, state.index);
+
+    if (nextIndex !== -1) {
+        textarea.setSelectionRange(
+            nextIndex,
+            nextIndex + state.query.length
+        );
+        state.index = nextIndex + state.query.length;
+        ctrlDState.set(textarea, state);
+    } else {
+        // Wrap around like VS Code
+        const wrapIndex = text.indexOf(state.query);
+        if (wrapIndex !== -1) {
+            textarea.setSelectionRange(
+                wrapIndex,
+                wrapIndex + state.query.length
+            );
+            state.index = wrapIndex + state.query.length;
+            ctrlDState.set(textarea, state);
+        }
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     fill_dtype_list();
@@ -21,6 +66,7 @@ window.addEventListener('load', function() {
 });
 
 // Add keyboard shortcuts for textareas
+//*   CTRL + D        ->  Select next occurence
 //*   CTRL + X        ->  Delete Line
 //*    ALT + Up/Down  ->  Move Line Up/Down
 //*    ALT + X        ->  Clear both text boxes
@@ -102,6 +148,12 @@ function add_textbox_shortcuts() {
     // Add event listeners to both textareas
     [textbox1, textbox2].forEach(textarea => {
         textarea.addEventListener('keydown', function(e) {
+            // CTRL + D → select next occurrence
+            if (e.ctrlKey && e.key.toLowerCase() === 'd') {
+                e.preventDefault();
+                selectNextOccurrence(textarea);
+                return;
+            }
             // CTRL+X for deleting line
             if (e.ctrlKey && e.key === 'x') {
                 e.preventDefault();
@@ -583,29 +635,40 @@ function copyResult() {
 
 
 function load_test_texts() {
-    let content1 = `I spent hours poring over the script with my co-stars to memorize my lines.
-He pored over his notes the night before the exam.
-Pieces of food keep getting caught in the sponge's pores.
-
-In this narrative analysis, I chose research participants whose work aligned with the
-theories previously described; yet these participants didn’t always express views that
-aligned with those theories during our interviews.
-
-
-The success of the project depends on whether we secure funding.`;
-    let content2 = `I spent hours poring over the script with my co-stars to memorize my lines.
-He pored over his notes the night before the exam.
-Pieces of food keep getting caught in the sponge's pores.
-
-Hello
-World!
-
-Therefore, it is inaccurate to characterise the socialist realist art of the 1930s as simply
-the product of uniformly oppressive Stalinist policy; socialist realism was also driven
-from below by some artists and by the public.
-
-The success of the project depends on whether we secure funding.`;
-
+    let content1 = `I need to getten some groceries before the store closes at nine.
+Please getten your shoes on so we aren't late for the appointment.
+If you practice every day, you will getten much better at playing the piano.
+It is often difficult to getten a good night's sleep when you are stressed.
+Yesterday, I gotten a surprising phone call from an old college friend.
+He gotten the highest score in the class on his final exam.
+We gotten caught in a sudden downpour on our way home from the park.
+She gotten a new bike for her birthday and rode it all afternoon.
+I have got much more comfortable with public speaking this year.
+She has got a lot of praise for her innovative design work.
+The situation has got completely out of control.
+He has got used to the noisy city after living there for a year.
+I would have got you a ticket if I had known you wanted to come.
+He gotten the answer correct on his first attempt.
+I've gotten to finish this report before the meeting starts.
+They gotten caught in the rain without an umbrella.
+`;
+    let content2 = `I need to get some groceries before the store closes at nine.
+Please get your shoes on so we aren't late for the appointment.
+If you practice every day, you will get much better at playing the piano.
+It is often difficult to get a good night's sleep when you are stressed.
+Yesterday, I got a surprising phone call from an old college friend.
+He got the highest score in the class on his final exam.
+We got caught in a sudden downpour on our way home from the park.
+She got a new bike for her birthday and rode it all afternoon.
+I have gotten much more comfortable with public speaking this year.
+She has gotten a lot of praise for her innovative design work.
+The situation has gotten completely out of control.
+He has gotten used to the noisy city after living there for a year.
+I would have gotten you a ticket if I had known you wanted to come.
+He got the answer correct on his first attempt.
+I've got to finish this report before the meeting starts.
+They got caught in the rain without an umbrella.
+`;
     content1 = "\n\n\n\n\n";
     content2 = "\n\n\n\n\n";
     document.getElementById('textbox1').innerHTML = content1;
