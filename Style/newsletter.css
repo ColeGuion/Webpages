@@ -12,20 +12,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.main-heading {
-    text-align: center; 
-    padding: 10px;
-}
-.main-heading > a {
-    text-decoration: none;
-    color: black;
-}
-.subhead {
-    font-size: 0.8em;
-    color: gray;
-    margin-left: 8px;
-    font-weight: 600;
-}
 .container {
     max-width: 96vw;
     max-width: 100vw;
@@ -44,15 +30,32 @@ body {
     display: none;
 }
 
+.main-heading {
+    text-align: center; 
+    padding: 10px;
+}
+.main-heading > a {
+    text-decoration: none;
+    color: black;
+}
+.subhead {
+    font-size: 0.8em;
+    color: gray;
+    margin-left: 8px;
+    font-weight: 600;
+}
+
 
 .newsletter {
     max-width: 100%;
-    max-width: 60%;
+    max-width: 75%;
+    background-color: #030108;
+    color: #ffffff;
     margin: 0 auto;
     min-height: 400px;
     box-sizing: border-box;
     border: 2px solid #ccc;
-    padding: 10px;
+    padding: 10px 50px;
     font-family: "Quicksand", "Nunito Sans", "Rubik", sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -63,11 +66,12 @@ body {
     box-sizing: border-box;
     overflow-wrap: break-word;
     word-break: break-word;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
 }
 .news-block a {
     text-decoration: none;
     color: #1a0dab;
+    color: #ffffff;
 }
 .news-content > ul {
     margin: 5px 0;

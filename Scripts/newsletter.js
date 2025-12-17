@@ -4,11 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorElement = document.getElementById('error');
     const buttonGroup = document.querySelector('.button-group-two.design-3');
     const buttons = buttonGroup.querySelectorAll('.toggle-button');
-    //dummyFill();
-
-    // Global variable to store the article type
-    let article_type = 'ai';
-
+    dummyFill();
 
     buttons.forEach(button => {
         button.addEventListener('click', function() {
@@ -30,19 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             // Show the right newsletter block
             document.getElementById(newsId).classList.remove('hidden');
-
-            /* if (this.textContent === 'AI') {
-                console.log("AI button clicked");
-                article_type = 'ai';
-                document.getElementById('design-newsletter').classList.add('hidden');
-                document.getElementById('ai-newsletter').classList.remove('hidden');
-            } else if (this.textContent === 'Design') {
-                console.log("Design button clicked");
-                article_type = 'design';
-                document.getElementById('design-newsletter').classList.remove('hidden');
-                document.getElementById('ai-newsletter').classList.add('hidden');
-            } */
-            console.log(`Selected Button: ${this.textContent}`);
         });
     });
 
@@ -85,20 +68,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const newsletterBlock = document.getElementById(`${articleType}-newsletter`);
             displayResult(newsletterBlock, data.result, url_string);
-            /* if (articleType === 'ai') {
-                const newsletterBlock = document.getElementById('ai-newsletter');
-                displayResult(aiNewsletterBlock, data.result, url_string);
-            } else if (articleType === 'design') {
-                const designNewsletterBlock = document.getElementById('design-newsletter');
-                displayResult(designNewsletterBlock, data.result, url_string);
-            } */
         } catch (error) {
             showError(error.message);
         } finally {
             setLoading(false);
         }
     }
-    
     
     function displayResult(newsletterBlock, data_result, url_string) {
         const mainHead = newsletterBlock.querySelector(".main-heading");

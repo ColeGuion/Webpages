@@ -1,6 +1,7 @@
 // Navigation Links
 const pages = [
     { href: 'home.html', text: 'Home' },
+    { href: 'colors.html', text: 'Colors' },
     { href: 'newsletter.html', text: 'News' },
     { href: 'Key_Links.html', text: 'Key Links' },
     { href: 'ShortCuts.html', text: 'Shortcuts' },
@@ -16,7 +17,6 @@ const pages = [
     { href: 'diffFinder.html', text: 'Diff Finder' },
     { href: 'DataMaker.html', text: 'Make Data' },
     { href: 'finddiff.html', text: 'FindDiff' },
-    { href: 'colors.html', text: 'Colors' },
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
