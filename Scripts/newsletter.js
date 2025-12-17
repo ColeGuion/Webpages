@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorElement = document.getElementById('error');
     const buttonGroup = document.querySelector('.button-group-two.design-3');
     const buttons = buttonGroup.querySelectorAll('.toggle-button');
+    //dummyFill();
 
     // Global variable to store the article type
     let article_type = 'ai';
 
-    //dummyFill();
 
     buttons.forEach(button => {
         button.addEventListener('click', function() {
@@ -17,19 +17,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Add 'selected' class to the clicked button
             this.classList.add('selected');
-            if (this.textContent === 'AI') {
+
+            let btnType = this.textContent;
+            let newsId = `${btnType.toLowerCase()}-newsletter`;
+            console.log(`${btnType} button clicked!\nID: "${newsId}"`);
+
+            // Hide all .newsletter elements
+            document.querySelectorAll('.newsletter').forEach(el => {
+                if (!el.classList.contains('hidden')) {
+                    el.classList.add('hidden');
+                }
+            });
+            // Show the right newsletter block
+            document.getElementById(newsId).classList.remove('hidden');
+
+            /* if (this.textContent === 'AI') {
                 console.log("AI button clicked");
                 article_type = 'ai';
-                //document.getElementById('main-heading').innerText = 'TLDR AI';
-                document.getElementById('ai-newsletter').classList.remove('hidden');
                 document.getElementById('design-newsletter').classList.add('hidden');
+                document.getElementById('ai-newsletter').classList.remove('hidden');
             } else if (this.textContent === 'Design') {
                 console.log("Design button clicked");
                 article_type = 'design';
                 document.getElementById('design-newsletter').classList.remove('hidden');
                 document.getElementById('ai-newsletter').classList.add('hidden');
-                //document.getElementById('main-heading').innerText = 'TLDR Design';
-            }
+            } */
             console.log(`Selected Button: ${this.textContent}`);
         });
     });
@@ -37,8 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load right away
     FetchNews("ai");
     FetchNews("design");
-    //TODO: Add link to article to top of page
-    //  OR add link to headers to specific article (tldr-ai or tldr-design)
+    FetchNews("tech");
+    FetchNews("dev");
+    FetchNews("data");
 
     async function FetchNews(articleType) {
         const today = new Date().toISOString().split('T')[0];
@@ -60,25 +73,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ url: url_string})
+                body: JSON.stringify({ url: url_string })
             });
-
-            const data = await response.json();
-            console.log("Data received:", data);
 
             if (!response.ok) {
                 throw new Error(data.error || 'Something went wrong');
             }
 
-            if (articleType === 'ai') {
-                const aiNewsletterBlock = document.getElementById('ai-newsletter');
+            const data = await response.json();
+            console.log("Data received:", data);
+
+            const newsletterBlock = document.getElementById(`${articleType}-newsletter`);
+            displayResult(newsletterBlock, data.result, url_string);
+            /* if (articleType === 'ai') {
+                const newsletterBlock = document.getElementById('ai-newsletter');
                 displayResult(aiNewsletterBlock, data.result, url_string);
             } else if (articleType === 'design') {
                 const designNewsletterBlock = document.getElementById('design-newsletter');
                 displayResult(designNewsletterBlock, data.result, url_string);
-            }
-
-            //displayResult(data.result);
+            } */
         } catch (error) {
             showError(error.message);
         } finally {
@@ -90,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayResult(newsletterBlock, data_result, url_string) {
         const mainHead = newsletterBlock.querySelector(".main-heading");
         mainHead.innerHTML = `<a href="${url_string}" target="_blank">${mainHead.textContent}</a>`
-        //newsletterBlock.innerHTML = data_result;
         data_result.forEach(article => {
             console.log("Article:", article);
             let newsDiv = document.createElement('div');
@@ -98,15 +110,11 @@ document.addEventListener('DOMContentLoaded', function() {
             let newsContent = document.createElement('div');
             newsDiv.classList.add('news-block');
             newsContent.classList.add('news-content');
-            //newsHead.textContent = article.title;
 
-            //let title = article.title;
             const match = article.title.match(/^(.*?)(\s*\(.*\))$/);
             if (match) {
-                //newsHead.innerHTML = `${match[1].trim()} <span class="subhead">${match[2].trim()}</span>`;
                 newsHead.innerHTML = `<a href="${article.link}" target="_blank">${match[1].trim()} <span class="subhead">${match[2].trim()}</span></a>`;
             } else {
-                //newsHead.innerHTML = article.title;
                 newsHead.innerHTML = `<a href="${article.link}" target="_blank">${article.title}</a>`;
             } 
 
