@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorElement = document.getElementById('error');
     const buttonGroup = document.querySelector('.button-group-two.design-3');
     const buttons = buttonGroup.querySelectorAll('.toggle-button');
-    dummyFill();
+    //dummyFill();
 
     buttons.forEach(button => {
         button.addEventListener('click', function() {
