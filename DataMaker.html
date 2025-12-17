@@ -125,6 +125,28 @@
             e.target.value = e.target.value.toUpperCase();
         });
 
+        // Remove quotes from dtype input as user types or pastes
+        const dtypeInput = document.getElementById('dtype');
+        function removeQuotesFromDtype(e) {
+            const oldValue = e.target.value;
+            const newValue = oldValue.replace(/["']/g, '');
+            if (oldValue !== newValue) {
+                e.target.value = newValue;
+            }
+        }
+        dtypeInput.addEventListener('input', removeQuotesFromDtype);
+        dtypeInput.addEventListener('paste', function(e) {
+            e.preventDefault();
+            let paste = (e.clipboardData || window.clipboardData).getData('text');
+            paste = paste.replace(/["']/g, '');
+            const start = dtypeInput.selectionStart;
+            const end = dtypeInput.selectionEnd;
+            const value = dtypeInput.value;
+            dtypeInput.value = value.slice(0, start) + paste + value.slice(end);
+            // Move cursor to end of pasted text
+            dtypeInput.selectionStart = dtypeInput.selectionEnd = start + paste.length;
+        });
+
         /* // Custom double-click selection for textareas
         function selectWordNoSpace(e) {
             const textarea = e.target;
