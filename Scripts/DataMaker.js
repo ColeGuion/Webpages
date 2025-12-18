@@ -212,29 +212,7 @@ function clearInput(inputId) {
     }
 }
 
-function togglePhonesSection() {
-    {
-        const dtypeInput = document.getElementById('dtype');
-        const phonesSection = document.getElementById('phones-section');
-
-        if (dtypeInput.value.trim().toLowerCase() === 'homophones') {
-            phonesSection.style.display = 'flex';
-        } else {
-            phonesSection.style.display = 'none';
-            // Clear phones inputs when hiding
-            document.getElementById('phone1').value = '';
-            document.getElementById('phone2').value = '';
-        }
-
-        // Add event listeners to show/hide phones section when dtypeInput is focused or selected
-        if (!dtypeInput._togglePhonesListenerAdded) {
-            dtypeInput.addEventListener('focus', togglePhonesSection);
-            dtypeInput.addEventListener('select', togglePhonesSection);
-            dtypeInput.addEventListener('input', togglePhonesSection);
-            dtypeInput._togglePhonesListenerAdded = true;
-        }
-    }
-    
+function togglePhonesSection() {    
     const dtypeInput = document.getElementById('dtype');
     const phonesSection = document.getElementById('phones-section');
     
