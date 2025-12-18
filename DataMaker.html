@@ -111,6 +111,7 @@
     <!-- TODO: Add bigger space between different lines, but not the same line that is wrapped -->
     <script src="Scripts/DataMaker.js"></script>
     <script> 
+        const dtypeInput = document.getElementById('dtype');
         // Auto capitalize text in homophones input boxes
         document.getElementById('phone1').addEventListener('input', function(e) {
             e.target.value = e.target.value.toUpperCase();
@@ -119,8 +120,19 @@
             e.target.value = e.target.value.toUpperCase();
         });
 
+        
+        function togglePhonesSect() {
+            if (dtypeInput.value.trim().toLowerCase() === 'homophones') {
+                document.getElementById('phones-section').style.display = 'flex';
+            } else {
+                document.getElementById('phones-section').style.display = 'none';
+                // Clear phones inputs when hiding
+                document.getElementById('phone1').value = '';
+                document.getElementById('phone2').value = '';
+            }
+        }
+
         // Remove quotes from dtype input as user types or pastes
-        const dtypeInput = document.getElementById('dtype');
         function removeQuotesFromDtype(e) {
             const oldValue = e.target.value;
             const newValue = oldValue.replace(/["']/g, '');
@@ -140,6 +152,10 @@
             // Move cursor to end of pasted text
             dtypeInput.selectionStart = dtypeInput.selectionEnd = start + paste.length;
         });
+
+        dtypeInput.addEventListener('focus', togglePhonesSect);
+        dtypeInput.addEventListener('select', togglePhonesSect);
+
 
         /* // Custom double-click selection for textareas
         function selectWordNoSpace(e) {
