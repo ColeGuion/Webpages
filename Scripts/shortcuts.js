@@ -1,6 +1,7 @@
 const shortcut_tables = {
     "chrome": {
         "Navigation": [
+            ["CTRL + L", "Jump to Address Bar"],
             ["CTRL + T", "Open a New Tab"],
             ["CTRL + W", "Close the current tab"],
             ["CTRL + TAB", "Go to the Next tab"],
