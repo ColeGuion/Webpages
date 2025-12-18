@@ -552,7 +552,7 @@ function make_data_samples(orig, correcteds) {
             } else if (text_has_phone2 && correct_has_phone2) {
                 phone_list = [phone2, phone2];
             } else {
-                phone_list = ["???", "????"];
+                phone_list = ["PHONE_ONE", "PHONE_TWO"];
             }
         }
         
