@@ -51,43 +51,19 @@
 .design-3 button {
   padding: 10px 20px;
   margin: 0 10px;
-  border: 2px solid #000; /* Prominent black outline */
-  border-radius: 20px; /* Highly rounded corners (pill shape) */
-  background-color: transparent; /* Transparent background */
-  color: #000;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: monospace; /* Simple, non-serif font */
-  min-width: 150px;
-}
-.design-3 button:hover {
-  background-color: #000; /* Solid background on hover */
-  color: #fff; /* White text on hover */
-}
-
-.design-3 .toggle-button {
-  padding: 10px 20px;
-  margin: 0 10px;
-  border: 2px solid #000; /* Prominent black outline */
-  border-radius: 20px; /* Highly rounded corners (pill shape) */
-  background-color: transparent; /* Transparent background */
+  border: 2px solid #000; 
+  border-radius: 20px; 
+  background-color: transparent;
   color: #000;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: monospace;
+  min-width: 150px;
 }
-/* Hover state (for non-selected buttons) */
-.design-3 .toggle-button:not(.selected):hover {
-  background-color: #f0f0f0; /* Light background on hover */
-}
-
-/* Selected state (The key style for the active button) */
-.design-3 .toggle-button.selected {
-  background-color: #000; /* Solid background when selected */
-  color: #fff; /* White text when selected */
-  pointer-events: none; /* Optional: Prevents clicking the selected button */
+.design-3 button:hover {
+  background-color: #000;
+  color: #fff;
 }
 
 @media (max-width: 600px) {

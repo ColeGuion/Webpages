@@ -6,52 +6,52 @@
     <title>TLDR Newsletter</title>
     <link rel="stylesheet" href="Style/newsletter.css">
     <style>
-
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <!--TODO: Add Reddit Futurology/Tech sections -->
     <div class="container">
-        <div class="content">
-            <div class="button-group-two design-3">
-                <button class="toggle-button selected">AI</button>
-                <button class="toggle-button">Design</button>
-                <button class="toggle-button">Tech</button>
-                <button class="toggle-button">Dev</button>
-                <button class="toggle-button">Data</button>
-                <!-- <button class="toggle-button">Product</button> -->
-                <!-- <button class="toggle-button">Marketing</button> -->
-                <!-- <button class="toggle-button">Infosec</button> -->
-                <!-- <button class="toggle-button">Crypto</button> -->
-                <!-- <button class="toggle-button">DevOps</button> -->
-                <!-- <button class="toggle-button">Founders</button> -->
-                <!-- <button class="toggle-button">FinTech</button> -->
-            </div>
+        <div id="BtnGroup" class="button-group-two design-3">
+            <button class="toggle-button selected">AI</button>
+            <button class="toggle-button">Design</button>
+            <button class="toggle-button">Tech</button>
+            <button class="toggle-button">Dev</button>
+            <button class="toggle-button">Data</button>
+            <!-- <button class="toggle-button">Product</button> -->
+            <!-- <button class="toggle-button">Marketing</button> -->
+            <!-- <button class="toggle-button">Infosec</button> -->
+            <!-- <button class="toggle-button">Crypto</button> -->
+            <!-- <button class="toggle-button">DevOps</button> -->
+            <!-- <button class="toggle-button">Founders</button> -->
+            <!-- <button class="toggle-button">FinTech</button> -->
+        </div>
+        
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Extracting content...</p>
+        </div>
+        <div id="error" class="error hidden"></div>
 
-            <div id="loading" class="loading hidden">
-                <div class="spinner"></div>
-                <p>Extracting content...</p>
-            </div>
-            
-            <div class="newsletter" id="ai-newsletter">
-                <h1 class="main-heading">TLDR AI</h1>
-            </div>
-            <div class="newsletter hidden" id="design-newsletter">
-                <h1 class="main-heading">TLDR Design</h1>
-            </div>
-            <div class="newsletter hidden" id="tech-newsletter">
-                <h1 class="main-heading">TLDR Tech</h1>
-            </div>
-            <div class="newsletter hidden" id="dev-newsletter">
-                <h1 class="main-heading">TLDR Dev</h1>
-            </div>
-            <div class="newsletter hidden" id="data-newsletter">
-                <h1 class="main-heading">TLDR Data</h1>
-            </div>
-    
-            <div id="error" class="error hidden"></div>
+        <!-- Newsletters -->
+        <div class="newsletter" id="ai-newsletter">
+            <h1 class="main-heading">TLDR AI</h1>
+        </div>
+        <div class="newsletter hidden" id="design-newsletter">
+            <h1 class="main-heading">TLDR Design</h1>
+        </div>
+        <div class="newsletter hidden" id="tech-newsletter">
+            <h1 class="main-heading">TLDR Tech</h1>
+        </div>
+        <div class="newsletter hidden" id="dev-newsletter">
+            <h1 class="main-heading">TLDR Dev</h1>
+        </div>
+        <div class="newsletter hidden" id="data-newsletter">
+            <h1 class="main-heading">TLDR Data</h1>
         </div>
     </div>
-
     <script src="Scripts/newsletter.js"></script>
     <script src="Scripts/navigation.js"></script>
 </body>
