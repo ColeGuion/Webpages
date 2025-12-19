@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setLoading(true);
         hideError();
 
+        const newsletterBlock = document.getElementById(`${articleType}-newsletter`);
         try {
             // Call the Netlify function
             const response = await fetch('/.netlify/functions/finddiff/newsletter', {
@@ -68,11 +69,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const data = await response.json();
             console.log("Data received:", data);
 
-            const newsletterBlock = document.getElementById(`${articleType}-newsletter`);
             displayResult(newsletterBlock, data.result, url_string);
         } catch (error) {
+            //TODO: Go back in dates until last successful for a section
             //showError(error.message);
-            showError(error.message, url_string);
+            //showError(error.message, url_string);
+
+            let errDiv = document.createElement('div');
+            errDiv.classList.add("errMsg");
+            errDiv.textContent = "ERROR: " + error.message;
+            newsletterBlock.appendChild(errDiv);
+            
         } finally {
             setLoading(false);
         }
@@ -116,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    //function ShowError(msg)
     function showError(message, pg_link) {
         //errorElement.textContent = message;
         errorElement.innerHTML = `[Error from '${pg_link}']<br>${message}`
