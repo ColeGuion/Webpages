@@ -260,9 +260,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Fill_PyTable(); //* Works, but haven't extended past Dictionaries yet
     document.addEventListener("click", function (event) {
-        const cmd_cell = event.target.closest("td.commands");
         let tt_text = "";
+        const cmd_cell = event.target.closest("td.commands");
         console.log("Copy Element:", cmd_cell);
+        if (!cmd_cell) return;
         cmd_cell.querySelectorAll('span').forEach(span => {
             // Remove text in angle brackets <>
             let cleanedText = span.innerText.replace(/<.*?>/g, '');
