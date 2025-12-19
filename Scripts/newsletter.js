@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const buttonGroup = document.getElementById('BtnGroup');
     //const buttonGroup = document.querySelector('.button-group-two.design-3');
     const buttons = buttonGroup.querySelectorAll('.toggle-button');
-    dummyFill();
+    //dummyFill();
     //TODO: Fix error management when no website is fetched
 
     buttons.forEach(button => {
