@@ -71,7 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const newsletterBlock = document.getElementById(`${articleType}-newsletter`);
             displayResult(newsletterBlock, data.result, url_string);
         } catch (error) {
-            showError(error.message);
+            //showError(error.message);
+            showError(error.message, url_string);
         } finally {
             setLoading(false);
         }
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const mainHead = newsletterBlock.querySelector(".main-heading");
         mainHead.innerHTML = `<a href="${url_string}" target="_blank">${mainHead.textContent}</a>`
         data_result.forEach(article => {
-            console.log("Article:", article);
+            //console.log("Article:", article);
             let newsDiv = document.createElement('div');
             let newsHead = document.createElement('h3');
             let newsContent = document.createElement('div');
@@ -115,8 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function showError(message) {
-        errorElement.textContent = message;
+    function showError(message, pg_link) {
+        //errorElement.textContent = message;
+        errorElement.innerHTML = `[Error from '${pg_link}']<br>${message}`
         errorElement.classList.remove('hidden');
     }
 
