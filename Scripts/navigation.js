@@ -1,22 +1,22 @@
 // Navigation Links
 const pages = [
-    { href: '../pages/index.html', text: 'Home' },
-    { href: '../pages/colors.html', text: 'Colors' },
-    { href: '../pages/newsletter.html', text: 'News' },
-    { href: '../pages/Key_Links.html', text: 'Key Links' },
-    { href: '../pages/shortcuts.html', text: 'Shortcuts' },
-    { href: '../pages/programs.html#Linux', text: 'Programming' },
-    { href: '../pages/css_grids.html', text: 'Grids' },
-    { href: '../pages/editor.html', text: 'Text Editor' },
+    { href: 'home.html', text: 'Home' },
+    { href: 'colors.html', text: 'Colors' },
+    { href: 'newsletter.html', text: 'News' },
+    { href: 'Key_Links.html', text: 'Key Links' },
+    { href: 'ShortCuts.html', text: 'Shortcuts' },
+    { href: 'programs.html#Linux', text: 'Programming' },
+    { href: 'css_grids.html', text: 'Grids' },
+    { href: 'editor.html', text: 'Text Editor' },
     
-    //{ href: '../pages/progs.html', text: 'PROG' },
-    //{ href: '../pages/docs.html', text: 'Docs' },
-    //{ href: '../pages/playground.html', text: 'Playground' },
-    //{ href: '../pages/bootstrap.html', text: 'Bootstrap' },
-    //{ href: '../pages/todo.html', text: 'To Do' },
-    { href: '../pages/diffFinder.html', text: 'Diff Finder' },
-    { href: '../pages/DataMaker.html', text: 'Make Data' },
-    { href: '../pages/finddiff.html', text: 'FindDiff' },
+    //{ href: 'progs.html', text: 'PROG' },
+    //{ href: 'docs.html', text: 'Docs' },
+    //{ href: 'playground.html', text: 'Playground' },
+    //{ href: 'bootstrap.html', text: 'Bootstrap' },
+    //{ href: 'todo.html', text: 'To Do' },
+    { href: 'diffFinder.html', text: 'Diff Finder' },
+    { href: 'DataMaker.html', text: 'Make Data' },
+    { href: 'finddiff.html', text: 'FindDiff' },
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     FillHead();
 
     // Get the current page's filename
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPage = window.location.pathname.split('/').pop() || 'home.html';
     console.log(`Current Page: "${currentPage}"`);
     AddNavBar(currentPage); 
 });
@@ -40,7 +40,7 @@ function FillHead() {
     const hd = document.querySelector("head");
     hd.innerHTML = `<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../../public/icons/pinned.png" type="image/png">` + hd.innerHTML;
+    <link rel="icon" href="icons/pinned.png" type="image/png">` + hd.innerHTML;
 }
 
 function AddNavBar(currentPage) {

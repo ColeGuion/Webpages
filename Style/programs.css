@@ -1,5 +1,6 @@
-@import url('base/main.css');
-@import url('components/tooltip.css');
+@import url('main.css');
+@import url('tooltip.css');
+
 
 h1 {
     width: 50%;
