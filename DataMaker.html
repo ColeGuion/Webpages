@@ -112,6 +112,10 @@
     <script src="Scripts/DataMaker.js"></script>
     <script> 
         const dtypeInput = document.getElementById('dtype');
+        // Select all text in dtype input on focus
+        dtypeInput.addEventListener('focus', function(e) {
+            e.target.select();
+        });
         // Auto capitalize text in homophones input boxes
         document.getElementById('phone1').addEventListener('input', function(e) {
             e.target.value = e.target.value.toUpperCase();
