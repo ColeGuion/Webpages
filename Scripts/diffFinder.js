@@ -5,10 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const string2Input = document.getElementById('string2');
     const loadingElement = document.getElementById('loading');
     const errorElement = document.getElementById('error');
-    //const resultContainer = document.getElementById('resultContainer');
-    const resultList = document.getElementById('resultList');
     const markupContainer = document.getElementById('markupContainer');
-    DummyFill();
+    //DummyFill();
 
     findDiffBtn.addEventListener('click', async function() {
         const string1 = string1Input.value.trim();
@@ -95,33 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
         markupContainer.classList.remove('hidden');
     }
 
-    /* function displayResults(differences) {
-        resultList.innerHTML = '';
-        
-        if (differences && differences.length > 0) {
-            differences.forEach(diff => {
-                const li = document.createElement('li');
-                li.className = 'result-item';
-                li.textContent = diff;
-                resultList.appendChild(li);
-            });
-        } else {
-            const li = document.createElement('li');
-            li.className = 'result-item';
-            li.textContent = 'No differences found';
-            resultList.appendChild(li);
-        }
-        
-        markupContainer.classList.remove('hidden');
-    } */
-
     function hideResult() {
         markupContainer.classList.add('hidden');
     }
-
-    // Add some example text for quick testing
-    //string1Input.value = "Hello World!";
-    //string2Input.value = "Hello Netlify!";
 });
 
 function DummyFill() {
@@ -145,22 +119,6 @@ If I knew then what I know now.
 She affected an air of superiority.
 Didn't he say when he would arrive at Arnie's house?
 The moon's rays shone feebly on the path, and I heard a lone cricket's chirpings and whistlings.`;
-
-    /* document.getElementById('markupContainer').innerHTML = `<div id="markupItem" class="markup-item">
-            <div class="markup-title">Marked Text:</div>
-            <div class="marked-text">
-                <span class="textSpan">========== <span class="markTxt" data-tooltip="Did you mean “CORRECT”?">TEXT</span> ==========
-The fleet was led by <span class="markTxt" data-tooltip="Did you mean “a”?">an</span> U.S. ship during the exercise.
-The instructor looked through his <span class="markTxt" data-tooltip="Add comma “briefcase,”">briefcase</span> through his <span class="markTxt" data-tooltip="Add comma “desk,”">desk</span> and around the office for the lost grade book.
-The <span class="markTxt" data-tooltip="Add comma “axe,”">axe</span> sharp and <span class="markTxt" data-tooltip="Add comma “deadly,”">deadly</span> was brand new.
-<span class="markTxt" data-tooltip="Change the capitalization “Wilson”">wilson</span>, the mayor of our city, gave an inspirational speech.
-My dad has two brothers, but <span class="markTxt" data-tooltip="Change the capitalization “Brother”">brother</span> Paul is his favorite.
-If I knew <span class="markTxt" data-tooltip="Did you mean “then”?">than</span> what I know <span class="markTxt" data-tooltip="Add period “now.”">now</span>
-She <span class="markTxt" data-tooltip="Did you mean “affected”?">effected</span> an air of superiority.
-<span class="markTxt" data-tooltip="Did you mean “Didn't”?">Didnt</span> he say when he would arrive at <span class="markTxt" data-tooltip="Did you mean “Arnie's”?">Arnies</span> house?
-The <span class="markTxt" data-tooltip="Did you mean “moon's”?">moons</span> rays shone feebly on the path, and I heard a lone <span class="markTxt" data-tooltip="Did you mean “cricket's”?">crickets</span> chirpings and whistlings.</span>
-            </div>
-        </div>`; */
 
 }
 
