@@ -116,6 +116,12 @@
         dtypeInput.addEventListener('focus', function(e) {
             e.target.select();
         });
+        document.getElementById('phone1').addEventListener('focus', function(e) {
+            e.target.select();
+        });
+        document.getElementById('phone2').addEventListener('focus', function(e) {
+            e.target.select();
+        });
         // Auto capitalize text in homophones input boxes
         document.getElementById('phone1').addEventListener('input', function(e) {
             e.target.value = e.target.value.toUpperCase();
