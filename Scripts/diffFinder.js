@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //const resultContainer = document.getElementById('resultContainer');
     const resultList = document.getElementById('resultList');
     const markupContainer = document.getElementById('markupContainer');
+    DummyFill();
 
     findDiffBtn.addEventListener('click', async function() {
         const string1 = string1Input.value.trim();
@@ -81,17 +82,20 @@ document.addEventListener('DOMContentLoaded', function() {
         let markedText = markupText(prompt, markupList);
 
         // Append result to start of markup container
-        let newMarkup = `<div id="markupItem" class="markup-item">
+        /* let newMarkup = `<div id="markupItem" class="markup-item">
             <div class="markup-title">Marked Text:</div>
             <div class="marked-text">
                 <span class="textSpan">${markedText}</span>
             </div>
+        </div>\n`; */
+        let newMarkup = `<div class="marked-text">
+            <span class="textSpan">${markedText}</span>
         </div>\n`;
         markupContainer.innerHTML = newMarkup + markupContainer.innerHTML;
         markupContainer.classList.remove('hidden');
     }
 
-    function displayResults(differences) {
+    /* function displayResults(differences) {
         resultList.innerHTML = '';
         
         if (differences && differences.length > 0) {
@@ -109,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         markupContainer.classList.remove('hidden');
-    }
+    } */
 
     function hideResult() {
         markupContainer.classList.add('hidden');
@@ -119,6 +123,46 @@ document.addEventListener('DOMContentLoaded', function() {
     //string1Input.value = "Hello World!";
     //string2Input.value = "Hello Netlify!";
 });
+
+function DummyFill() {
+    document.getElementById('string1').value = `========== TEXT ==========  
+The fleet was led by an U.S. ship during the exercise.
+The instructor looked through his briefcase through his desk and around the office for the lost grade book.
+The axe sharp and deadly was brand new.
+wilson, the mayor of our city, gave an inspirational speech.
+My dad has two brothers, but brother Paul is his favorite.
+If I knew than what I know now
+She effected an air of superiority.
+Didnt he say when he would arrive at Arnies house?
+The moons rays shone feebly on the path, and I heard a lone crickets chirpings and whistlings.`;
+    document.getElementById('string2').value = `========== CORRECT ==========
+The fleet was led by a U.S. ship during the exercise.
+The instructor looked through his briefcase, through his desk, and around the office for the lost grade book.
+The axe, sharp and deadly, was brand new.
+Wilson, the mayor of our city, gave an inspirational speech.
+My dad has two brothers, but Brother Paul is his favorite.
+If I knew then what I know now.
+She affected an air of superiority.
+Didn't he say when he would arrive at Arnie's house?
+The moon's rays shone feebly on the path, and I heard a lone cricket's chirpings and whistlings.`;
+
+    /* document.getElementById('markupContainer').innerHTML = `<div id="markupItem" class="markup-item">
+            <div class="markup-title">Marked Text:</div>
+            <div class="marked-text">
+                <span class="textSpan">========== <span class="markTxt" data-tooltip="Did you mean “CORRECT”?">TEXT</span> ==========
+The fleet was led by <span class="markTxt" data-tooltip="Did you mean “a”?">an</span> U.S. ship during the exercise.
+The instructor looked through his <span class="markTxt" data-tooltip="Add comma “briefcase,”">briefcase</span> through his <span class="markTxt" data-tooltip="Add comma “desk,”">desk</span> and around the office for the lost grade book.
+The <span class="markTxt" data-tooltip="Add comma “axe,”">axe</span> sharp and <span class="markTxt" data-tooltip="Add comma “deadly,”">deadly</span> was brand new.
+<span class="markTxt" data-tooltip="Change the capitalization “Wilson”">wilson</span>, the mayor of our city, gave an inspirational speech.
+My dad has two brothers, but <span class="markTxt" data-tooltip="Change the capitalization “Brother”">brother</span> Paul is his favorite.
+If I knew <span class="markTxt" data-tooltip="Did you mean “then”?">than</span> what I know <span class="markTxt" data-tooltip="Add period “now.”">now</span>
+She <span class="markTxt" data-tooltip="Did you mean “affected”?">effected</span> an air of superiority.
+<span class="markTxt" data-tooltip="Did you mean “Didn't”?">Didnt</span> he say when he would arrive at <span class="markTxt" data-tooltip="Did you mean “Arnie's”?">Arnies</span> house?
+The <span class="markTxt" data-tooltip="Did you mean “moon's”?">moons</span> rays shone feebly on the path, and I heard a lone <span class="markTxt" data-tooltip="Did you mean “cricket's”?">crickets</span> chirpings and whistlings.</span>
+            </div>
+        </div>`; */
+
+}
 
 /**
  * Markup the text given an array of markups.
