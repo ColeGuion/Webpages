@@ -496,6 +496,7 @@ function submitData() {
         resultContainer.style.display = 'block';
         resultDisplay.textContent = `ERROR: Mismatched number of texts!\nTextBox #1 = ${orig.length}\nTextBox #2 = ${correcteds.length}`;
     }
+    copyResult();
 }
 
 function make_data_samples(orig, correcteds) {
