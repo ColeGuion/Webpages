@@ -6,6 +6,9 @@
     <title>Data Maker</title>
     <link rel="stylesheet" href="Style/DataMaker.css">
     <style>
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -29,21 +32,25 @@
             </div>
         </div>
 
-        <div id="phones-section" class="input-row" style="display: none;">
+        <div id="phones-section" class="input-row hidden">
             <div class="input-group">
-                <!-- <label for="phone1">Phones</label> -->
                 <div class="input-wrapper">
                     <input type="text" id="phone1" placeholder="PHONE #1">
                     <button class="clear-btn" onclick="clearInput('phone1')" title="Clear phone 1">×</button>
                 </div>
             </div>
             <div class="input-group">
-                <!-- <label for="phone2">&nbsp;</label> -->
                 <div class="input-wrapper">
                     <input type="text" id="phone2" placeholder="PHONE #2">
                     <button class="clear-btn" onclick="clearInput('phone2')" title="Clear phone 2">×</button>
                 </div>
             </div>
+            <!-- <div class="input-group">
+                <div class="input-wrapper">
+                    <input type="text" id="phone3" placeholder="PHONE #3">
+                    <button class="clear-btn" onclick="clearInput('phone3')" title="Clear phone 3">×</button>
+                </div>
+            </div> -->
         </div>
 
         <div class="button-container" style="margin-bottom: 16px;">
@@ -112,33 +119,36 @@
     <script src="Scripts/DataMaker.js"></script>
     <script> 
         const dtypeInput = document.getElementById('dtype');
+        const phoneInp1 = document.getElementById('phone1');
+        const phoneInp2 = document.getElementById('phone2');
         // Select all text in dtype input on focus
         dtypeInput.addEventListener('focus', function(e) {
             e.target.select();
         });
-        document.getElementById('phone1').addEventListener('focus', function(e) {
+        phoneInp1.addEventListener('focus', function(e) {
             e.target.select();
         });
-        document.getElementById('phone2').addEventListener('focus', function(e) {
+        phoneInp2.addEventListener('focus', function(e) {
             e.target.select();
         });
+
         // Auto capitalize text in homophones input boxes
-        document.getElementById('phone1').addEventListener('input', function(e) {
+        phoneInp1.addEventListener('input', function(e) {
             e.target.value = e.target.value.toUpperCase();
         });
-        document.getElementById('phone2').addEventListener('input', function(e) {
+        phoneInp2.addEventListener('input', function(e) {
             e.target.value = e.target.value.toUpperCase();
         });
 
         
         function togglePhonesSect() {
             if (dtypeInput.value.trim().toLowerCase() === 'homophones') {
-                document.getElementById('phones-section').style.display = 'flex';
+                document.getElementById('phones-section').classList.remove('hidden');
             } else {
-                document.getElementById('phones-section').style.display = 'none';
+                document.getElementById('phones-section').classList.add('hidden');
                 // Clear phones inputs when hiding
-                document.getElementById('phone1').value = '';
-                document.getElementById('phone2').value = '';
+                phoneInp1.value = '';
+                phoneInp2.value = '';
             }
         }
 
