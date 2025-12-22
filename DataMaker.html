@@ -45,12 +45,12 @@
                     <button class="clear-btn" onclick="clearInput('phone2')" title="Clear phone 2">×</button>
                 </div>
             </div>
-            <!-- <div class="input-group">
+            <div class="input-group">
                 <div class="input-wrapper">
                     <input type="text" id="phone3" placeholder="PHONE #3">
                     <button class="clear-btn" onclick="clearInput('phone3')" title="Clear phone 3">×</button>
                 </div>
-            </div> -->
+            </div>
         </div>
 
         <div class="button-container" style="margin-bottom: 16px;">
@@ -121,6 +121,7 @@
         const dtypeInput = document.getElementById('dtype');
         const phoneInp1 = document.getElementById('phone1');
         const phoneInp2 = document.getElementById('phone2');
+        const phoneInp3 = document.getElementById('phone3');
         // Select all text in dtype input on focus
         dtypeInput.addEventListener('focus', function(e) {
             e.target.select();
@@ -131,12 +132,18 @@
         phoneInp2.addEventListener('focus', function(e) {
             e.target.select();
         });
+        phoneInp3.addEventListener('focus', function(e) {
+            e.target.select();
+        });
 
         // Auto capitalize text in homophones input boxes
         phoneInp1.addEventListener('input', function(e) {
             e.target.value = e.target.value.toUpperCase();
         });
         phoneInp2.addEventListener('input', function(e) {
+            e.target.value = e.target.value.toUpperCase();
+        });
+        phoneInp3.addEventListener('input', function(e) {
             e.target.value = e.target.value.toUpperCase();
         });
 
@@ -149,6 +156,7 @@
                 // Clear phones inputs when hiding
                 phoneInp1.value = '';
                 phoneInp2.value = '';
+                phoneInp3.value = '';
             }
         }
 

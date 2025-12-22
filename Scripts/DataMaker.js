@@ -223,6 +223,7 @@ function togglePhonesSection() {
         // Clear phones inputs when hiding
         document.getElementById('phone1').value = '';
         document.getElementById('phone2').value = '';
+        document.getElementById('phone3').value = '';
     }
 }
 
@@ -504,6 +505,7 @@ function make_data_samples(orig, correcteds) {
     let src = document.getElementById('source').value.trim();
     let phone1 = document.getElementById('phone1').value.trim();
     let phone2 = document.getElementById('phone2').value.trim();
+    let phone3 = document.getElementById('phone3').value.trim();
     //console.log(`Source: ${JSON.stringify(src)}\nDtype: ${JSON.stringify(dtype)}\nPhone #1: ${JSON.stringify(phone1)}\nPhone #2: ${JSON.stringify(phone2)}`);
 
     // Format homophone inputs (Capital letter followed by all lowercase)
@@ -512,6 +514,9 @@ function make_data_samples(orig, correcteds) {
     }
     if (phone2.length > 0) {
         phone2 = phone2.charAt(0).toUpperCase() + phone2.slice(1).toLowerCase();
+    }
+    if (phone3.length > 0) {
+        phone3 = phone3.charAt(0).toUpperCase() + phone3.slice(1).toLowerCase();
     }
 
 
@@ -540,20 +545,52 @@ function make_data_samples(orig, correcteds) {
                 return;
             }
 
-            text_has_phone1 = text.toLowerCase().includes(phone1.toLowerCase());
-            text_has_phone2 = text.toLowerCase().includes(phone2.toLowerCase());
-            correct_has_phone1 = correct.toLowerCase().includes(phone1.toLowerCase());
-            correct_has_phone2 = correct.toLowerCase().includes(phone2.toLowerCase());
-            if (text_has_phone1 && correct_has_phone2) {
-                phone_list = [phone1, phone2];
-            } else if (text_has_phone2 && correct_has_phone1) {
-                phone_list = [phone2, phone1];
-            } else if (text_has_phone1 && correct_has_phone1) {
-                phone_list = [phone1, phone1];
-            } else if (text_has_phone2 && correct_has_phone2) {
-                phone_list = [phone2, phone2];
+            if (phone3 === '') {
+                text_has_phone1 = text.toLowerCase().includes(phone1.toLowerCase());
+                text_has_phone2 = text.toLowerCase().includes(phone2.toLowerCase());
+                correct_has_phone1 = correct.toLowerCase().includes(phone1.toLowerCase());
+                correct_has_phone2 = correct.toLowerCase().includes(phone2.toLowerCase());
+
+                if (text_has_phone1 && correct_has_phone2) {
+                    phone_list = [phone1, phone2];
+                } else if (text_has_phone2 && correct_has_phone1) {
+                    phone_list = [phone2, phone1];
+                } else if (text_has_phone1 && correct_has_phone1) {
+                    phone_list = [phone1, phone1];
+                } else if (text_has_phone2 && correct_has_phone2) {
+                    phone_list = [phone2, phone2];
+                } else {
+                    phone_list = ["PHONE", "PHONE"];
+                }
             } else {
-                phone_list = ["PHONE_ONE", "PHONE_TWO"];
+                text_has_phone1 = text.toLowerCase().includes(phone1.toLowerCase());
+                text_has_phone2 = text.toLowerCase().includes(phone2.toLowerCase());
+                text_has_phone3 = text.toLowerCase().includes(phone3.toLowerCase());
+                correct_has_phone1 = correct.toLowerCase().includes(phone1.toLowerCase());
+                correct_has_phone2 = correct.toLowerCase().includes(phone2.toLowerCase());
+                correct_has_phone3 = correct.toLowerCase().includes(phone3.toLowerCase());
+
+                if (text_has_phone1 && correct_has_phone2) {
+                    phone_list = [phone1, phone2];
+                } else if (text_has_phone1 && correct_has_phone3) {
+                    phone_list = [phone1, phone3];
+                } else if (text_has_phone2 && correct_has_phone1) {
+                    phone_list = [phone2, phone1];
+                } else if (text_has_phone2 && correct_has_phone3) {
+                    phone_list = [phone2, phone3];
+                } else if (text_has_phone3 && correct_has_phone1) {
+                    phone_list = [phone3, phone1];
+                } else if (text_has_phone3 && correct_has_phone2) {
+                    phone_list = [phone3, phone2];
+                } else if (text_has_phone1 && correct_has_phone1) {
+                    phone_list = [phone1, phone1];
+                } else if (text_has_phone2 && correct_has_phone2) {
+                    phone_list = [phone2, phone2];
+                } else if (text_has_phone3 && correct_has_phone3) {
+                    phone_list = [phone3, phone3];
+                } else {
+                    phone_list = ["PHONE", "PHONE"];
+                }
             }
         }
         
