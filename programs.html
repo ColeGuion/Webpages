@@ -160,6 +160,7 @@
         <h1>Python</h1> 
         <div class="sect-btn-bar">
             <button type="button" onclick="scrollToSection('py-dictionaries')">Dictionaries</button>
+            <button type="button" onclick="scrollToSection('py-os-paths')">OS Paths</button>
             <button type="button" onclick="scrollToSection('py-pandas')">Pandas</button>
             <button type="button" onclick="scrollToSection('py-regex')">Regex</button>
             <button type="button" onclick="scrollToSection('py-pathlib')">Pathlib</button>
@@ -209,6 +210,58 @@ for type_name, count in type_counts.items():
     print(f"{type_name}: {count}")</code></pre></td>
                 <td class="description">Count the number of unique "type" values in a list of object</td>
             </tr>
+            
+            <!--***** OS Paths *****-->
+            <tr id="py-os-paths">
+                <td colspan="2" class="tabSect">OS Paths</td>
+            </tr> 
+            <tr>
+                <td class="codes"><pre><code class="language-python">import os
+os.path.join('dir', 'file.txt') # dir\file.txt
+os.path.join(r'\home\tech\MyDir', 'file.txt') # \home\tech\MyDir\file.txt</code></pre></td>
+                <td class="description">Joins path components</td>
+            </tr>
+            <tr>
+                <td class="codes"><pre><code class="language-python">os.path.split('a/b/c.txt') # ('a/b', 'c.txt')</code></pre></td>
+                <td class="description">Split into (head, tail)</td>
+            </tr>
+            <tr>
+                <td class="codes"><pre><code class="language-python">os.path.splitext('file.txt') # ('file', '.txt')</code></pre></td>
+                <td class="description">Split into (root, extension)</td>
+            </tr>
+            <tr>
+                <td class="codes"><pre><code class="language-python">os.path.dirname('a/b/c.txt') # a/b</code></pre></td>
+                <td class="description">Get directory name</td>
+            </tr>
+            <tr>
+                <td class="codes"><pre><code class="language-python">os.path.basename('a/b/c.txt') # c.txt</code></pre></td>
+                <td class="description">Get filename</td>
+            </tr>
+            <tr>
+                <td class="codes"><pre><code class="language-python">os.path.commonprefix(['a/b', 'a/c']) # a/</code></pre></td>
+                <td class="description">Common prefix of paths</td>
+            </tr>
+            <tr>
+                <td class="codes"><pre><code class="language-python">os.getcwd()                    # Get current working directory
+os.chdir(path)                 # Change working directory
+os.listdir(path='.')           # List directory contents
+os.scandir(path='.')           # Iterator of DirEntry objects (more efficient)
+os.walk(top, topdown=True)     # Directory tree generator
+os.makedirs(name, exist_ok=False)  # Create directories recursively
+os.removedirs(name)            # Remove empty directories recursively
+os.mkdir(path)                 # Create single directory
+os.rmdir(path)                 # Remove empty directory</code></pre></td>
+                <td class="description">Directory Operations</td>
+            </tr>
+            <tr>
+                <td class="codes"><pre><code class="language-python">os.path.exists(path)           # True if path exists
+os.path.isfile(path)           # True if regular file
+os.path.isdir(path)            # True if directory
+os.path.islink(path)           # True if symbolic link
+os.path.ismount(path)          # True if mount point</code></pre></td>
+                <td class="description">Existence & Type Checks</td>
+            </tr>
+
 
             <!--***** Dictionaries *****-->
             <tr id="py-dictionaries">
