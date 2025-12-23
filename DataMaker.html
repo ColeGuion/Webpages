@@ -9,51 +9,52 @@
         .hidden {
             display: none;
         }
+
     </style>
 </head>
 <body>
     <div class="container">
         <!-- <h1>Dual Text Processor</h1> -->
-        <div class="input-row">
-            <div class="input-group">
-                <!-- <label for="dtype">DType</label> -->
-                <div class="input-wrapper">
-                    <input type="text" id="dtype" list="dtype-list" placeholder="DTYPE" oninput="togglePhonesSection()">
-                    <datalist id="dtype-list"></datalist>
-                    <button class="clear-btn" onclick="clearInput('dtype')" title="Clear dtype">×</button>
+        <div class="input-container">
+            <div class="input-row">
+                <div class="input-group" style="flex: 3;">
+                    <div class="input-wrapper">
+                        <input type="text" id="dtype" list="dtype-list" placeholder="DTYPE" oninput="togglePhonesSection()">
+                        <datalist id="dtype-list"></datalist>
+                        <button class="clear-btn" onclick="clearInput('dtype')" title="Clear dtype">×</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="source" placeholder="SOURCE">
+                        <button class="clear-btn" onclick="clearInput('source')" title="Clear source">×</button>
+                    </div>
                 </div>
             </div>
-            <div class="input-group">
-                <!-- <label for="source">Source</label> -->
-                <div class="input-wrapper">
-                    <input type="text" id="source" placeholder="SOURCE">
-                    <button class="clear-btn" onclick="clearInput('source')" title="Clear source">×</button>
+
+            <div id="phones-section" class="input-row hidden">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="phone1" class="phone-inp" placeholder="PHONE #1">
+                        <button class="clear-btn" onclick="clearInput('phone1')" title="Clear phone 1">×</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="phone2" class="phone-inp" placeholder="PHONE #2">
+                        <button class="clear-btn" onclick="clearInput('phone2')" title="Clear phone 2">×</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="phone3" class="phone-inp" placeholder="PHONE #3">
+                        <button class="clear-btn" onclick="clearInput('phone3')" title="Clear phone 3">×</button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div id="phones-section" class="input-row hidden">
-            <div class="input-group">
-                <div class="input-wrapper">
-                    <input type="text" id="phone1" placeholder="PHONE #1">
-                    <button class="clear-btn" onclick="clearInput('phone1')" title="Clear phone 1">×</button>
-                </div>
-            </div>
-            <div class="input-group">
-                <div class="input-wrapper">
-                    <input type="text" id="phone2" placeholder="PHONE #2">
-                    <button class="clear-btn" onclick="clearInput('phone2')" title="Clear phone 2">×</button>
-                </div>
-            </div>
-            <div class="input-group">
-                <div class="input-wrapper">
-                    <input type="text" id="phone3" placeholder="PHONE #3">
-                    <button class="clear-btn" onclick="clearInput('phone3')" title="Clear phone 3">×</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="button-container" style="margin-bottom: 16px;">
+        <div class="button-container" style="margin: 15px 0;">
             <div class="button-row">
                 <button class="action-btn remove-empties" onclick="removeEmptyLines()">Strip Whitespace</button>
                 <button class="action-btn remove-quotes" onclick="removeQuotes()">Remove Quotes</button>
@@ -103,10 +104,10 @@
             </div>
         </div>
 
-        <div id="result-container" style="display: none; margin-top: 30px;">
-            <h2 id="result-objects-header" style="color: #333; margin-bottom: 15px; text-align: center;">Generated JSON Objects</h2>
+        <div id="result-container">
+            <h2 id="result-objects-header">Generated JSON Objects</h2>
             <div style="position: relative;">
-                <pre id="result-display" style="background: rgba(0, 0, 0, 0.05); padding: 20px; border-radius: 10px; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6; max-height: 400px; overflow-y: auto; border: 2px solid #e0e0e0;"></pre>
+                <pre id="result-display"></pre>
                 <button class="action-btn" onclick="copyResult()" style="position: absolute; top: 10px; right: 30px; padding: 8px 16px; font-size: 12px; min-width: auto; background: linear-gradient(45deg, #667eea, #764ba2);">
                     📋 Copy JSON
                 </button>
@@ -119,34 +120,19 @@
     <script src="Scripts/DataMaker.js"></script>
     <script> 
         const dtypeInput = document.getElementById('dtype');
-        const phoneInp1 = document.getElementById('phone1');
-        const phoneInp2 = document.getElementById('phone2');
-        const phoneInp3 = document.getElementById('phone3');
-        // Select all text in dtype input on focus
+        // Select entire text on focus
         dtypeInput.addEventListener('focus', function(e) {
             e.target.select();
         });
-        phoneInp1.addEventListener('focus', function(e) {
-            e.target.select();
-        });
-        phoneInp2.addEventListener('focus', function(e) {
-            e.target.select();
-        });
-        phoneInp3.addEventListener('focus', function(e) {
-            e.target.select();
-        });
+        document.querySelectorAll('.phone-inp').forEach(phoneInput => {
+            // Select entire text on focus
+            phoneInput.addEventListener('focus', e => e.target.select());
 
-        // Auto capitalize text in homophones input boxes
-        phoneInp1.addEventListener('input', function(e) {
-            e.target.value = e.target.value.toUpperCase();
+            // Auto capitalize text in homophones input boxes
+            phoneInput.addEventListener('input', function(e) {
+                e.target.value = e.target.value.toUpperCase();
+            });
         });
-        phoneInp2.addEventListener('input', function(e) {
-            e.target.value = e.target.value.toUpperCase();
-        });
-        phoneInp3.addEventListener('input', function(e) {
-            e.target.value = e.target.value.toUpperCase();
-        });
-
         
         function togglePhonesSect() {
             if (dtypeInput.value.trim().toLowerCase() === 'homophones') {
@@ -154,9 +140,9 @@
             } else {
                 document.getElementById('phones-section').classList.add('hidden');
                 // Clear phones inputs when hiding
-                phoneInp1.value = '';
-                phoneInp2.value = '';
-                phoneInp3.value = '';
+                document.getElementById('phone1').value = '';
+                document.getElementById('phone2').value = '';
+                document.getElementById('phone3').value = '';
             }
         }
 
