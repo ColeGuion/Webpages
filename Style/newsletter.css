@@ -121,11 +121,13 @@ nav {
 .button-group-two .toggle-button {
     padding: 10px 20px;
     margin: 0 10px;
-    border: 2px solid #000;
+    border: 3px solid #000;
     border-radius: 20px;
     background-color: transparent;
     color: #000;
+    font-weight: 700;
     font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: monospace;
@@ -143,7 +145,12 @@ nav {
     pointer-events: none;   /* Optional: Prevents clicking the selected button */
 }
 
-
+.button-group-two .toggle-button.failed {
+    color: #FF0000;
+    border-color: #FF0000;
+    font-weight: 700;
+    font-size: 20px;
+}
 
 
 

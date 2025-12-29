@@ -79,7 +79,10 @@ document.addEventListener('DOMContentLoaded', function() {
             errDiv.classList.add("errMsg");
             errDiv.textContent = "ERROR: " + error.message;
             newsletterBlock.appendChild(errDiv);
-            
+            //document.getElementById(`${articleType}-button`).style.color = "#FF0000";
+            //document.getElementById(`${articleType}-button`).style.borderColor = "#FF0000";
+            console.log(`Failed fetching '${articleType.toUpperCase()}' article`);
+            document.getElementById(`${articleType}-button`).classList.add("failed");
         } finally {
             setLoading(false);
         }
