@@ -11,6 +11,8 @@
 }
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0810 0%, #1a1625 100%);
+    background: #121026;
 }
 
 nav {
@@ -19,7 +21,7 @@ nav {
 }
 
 .container {
-    background: white;
+    /* background: white; */
     margin: 0 auto;
     padding: 10px 40px 40px;
     border-radius: 15px;
@@ -78,7 +80,14 @@ nav {
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
+
+    box-shadow:
+        0 0 60px rgba(99, 102, 241, 0.15),
+        0 0 100px rgba(168, 85, 247, 0.1),
+        0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(99, 102, 241, 0.1);
 }
+
 
 .news-block {
     max-width: 100%;
@@ -124,6 +133,7 @@ nav {
     border: 3px solid #000;
     border-radius: 20px;
     background-color: transparent;
+    background-color: white;
     color: #000;
     font-weight: 700;
     font-size: 16px;
