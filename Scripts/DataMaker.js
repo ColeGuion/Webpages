@@ -373,6 +373,29 @@ function removeNumbers() {
     textbox2.value = processedLines2.join('\n');
 }
 
+function removeDashes() {
+    const textbox1 = document.getElementById('textbox1');
+    const textbox2 = document.getElementById('textbox2');
+    
+    // Process textbox1
+    const lines1 = textbox1.value.split('\n');
+    const processedLines1 = lines1.map(line => {
+        // Remove dashes starting a line
+        line = line.replace(/^\s*-*\s*/, '');
+        return line;
+    });
+    textbox1.value = processedLines1.join('\n');
+
+    // Process textbox1
+    const lines2 = textbox2.value.split('\n');
+    const processedLines2 = lines2.map(line => { 
+        // Remove dashes starting a line
+        line = line.replace(/^\s*-*\s*/, '');
+        return line;
+    });
+    textbox2.value = processedLines2.join('\n');
+}
+
 function removeQuotes() {
     const textbox1 = document.getElementById('textbox1');
     const textbox2 = document.getElementById('textbox2');

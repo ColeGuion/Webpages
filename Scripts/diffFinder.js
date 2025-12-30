@@ -70,12 +70,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function displayResult(prompt, data_result) {
-        let markupList = [];
-        if (data_result != null) {
-            markupList = data_result.map(item => {
-                return [item.length, item.index, item.message];
-            });
+        if (data_result == null) {
+            console.log("NULL data_result variable.");
+            let newMarkup = `<div class="marked-text"><span class="textSpan"></span></div>\n`;
+            markupContainer.innerHTML = newMarkup + markupContainer.innerHTML;
+            markupContainer.classList.remove('hidden');
+            return;
         }
+        let markupList = data_result.map(item => [item.length, item.index, item.message]);
         console.log('Markups:', markupList);
         let markedText = markupText(prompt, markupList);
 

@@ -112,6 +112,12 @@
 .remove-numbers:hover {
     box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
 }
+.remove-dashes {
+    background: linear-gradient(45deg, #0d47a1, #1976d2);
+}
+.remove-dashes:hover {
+    box-shadow: 0 8px 25px rgba(25, 118, 210, 0.4);
+}
 
 .replace-apostrophe {
     background: linear-gradient(45deg, #4ecdc4, #44a08d);
