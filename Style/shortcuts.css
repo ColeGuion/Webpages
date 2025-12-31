@@ -85,7 +85,7 @@
     background-color: #f2f2f2;
 }
 
-#winTables .scTable {
+.longerDesc .scTable {
     grid-template-columns: 1fr 2fr;
     width: 30%;
 }

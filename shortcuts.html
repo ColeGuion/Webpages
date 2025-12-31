@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="Style/main.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="Scripts/navigation.js"></script>
 </head>
 <body>
     <nav id="prognav" style="margin: -2vh -2vw 0vh;">
@@ -18,7 +19,8 @@
     
      
     <div class="shortcut-section" id="windows" name="windows">
-        <h2 onclick="toggleSection(this)" onmouseover="toggleSection(this)" onmouseleave="toggleSection(this)">Windows</h2>
+        <!-- <h2 onclick="toggleSection(this)" onmouseover="toggleSection(this)" onmouseleave="toggleSection(this)">Windows</h2> -->
+        <h2 onclick="toggleSection(this)">Windows</h2>
         <div class="cuts collapsed">
             <div class="helper-link">
                 <a href="https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec">Windows Keys Shortcuts</a>
@@ -174,7 +176,7 @@
 
     <div class="shortcut-section" id="chrome" name="google_chrome">
         <h2 onclick="toggleSection(this)">Google Chrome</h2>
-        <div class="cuts">
+        <div class="cuts collapsed">
             <div class="helper-link">
                 <a href="https://support.google.com/chrome/answer/157179?hl=en&co=GENIE.Platform%3DDesktop#zippy=%2Ctab-window-shortcuts%2Cgoogle-chrome-feature-shortcuts">Chrome Keyboard Shortcuts</a>
             </div>
@@ -242,7 +244,7 @@
 
     <div class="shortcut-section" id="ditto" name="ditto">
         <h2 onclick="toggleSection(this)">Ditto</h2>
-        <div class="cuts" id="winTables">
+        <div class="cuts longerDesc collapsed">
             <div class="scTable" style="width: 50%;">
                 <div class="tableName">Ditto</div>
                 <div>CTRL + ALT + `</div>
@@ -264,7 +266,7 @@
 
     <div class="shortcut-section" id="nano" name="nano">
         <h2 onclick="toggleSection(this)">Nano</h2>
-        <div class="cuts collapsed" id="winTables">
+        <div class="cuts longerDesc collapsed">
             <div class="scTable">
                 <div class="tableName">Navigation</div>
                 <div>CTRL + E</div>
@@ -299,7 +301,9 @@
             const element = document.getElementById(id);
             toggleSection(element.firstElementChild); // Expand the section if it's collapsed
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                //element.scrollIntoView({ behavior: 'smooth' });
+                const y = element.getBoundingClientRect().top + window.pageYOffset - 120;
+                window.scrollTo({ top: y, behavior: 'smooth' });
             }
         }
 
@@ -415,8 +419,10 @@
                     div.innerHTML = div.innerHTML.replace(/WIN/g, repl);
                 });
             });
+
+            //document.querySelectorAll('.cuts').forEach(el => el.classList.remove('collapsed'));
+            document.querySelectorAll('.cuts').forEach(el => el.classList.add('collapsed'));
         });
     </script>
-    <script src="Scripts/navigation.js"></script>
 </body>
 </html>
