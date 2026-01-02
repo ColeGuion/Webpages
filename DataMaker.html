@@ -15,7 +15,7 @@
             <div class="input-row">
                 <div class="input-group" style="flex: 3;">
                     <div class="input-wrapper">
-                        <input type="text" id="dtype" list="dtype-list" placeholder="DTYPE" oninput="togglePhonesSection()">
+                        <input type="text" id="dtype" list="dtype-list" placeholder="DTYPE" oninput="togglePhonesSection();">
                         <datalist id="dtype-list"></datalist>
                         <button class="clear-btn" onclick="clearInput('dtype')" title="Clear dtype">×</button>
                     </div>
@@ -120,6 +120,22 @@
         // Select entire text on focus
         dtypeInput.addEventListener('focus', function(e) {
             e.target.select();
+        });
+        // Capitalize each word as user types in dtype input
+        dtypeInput.addEventListener('input', function(e) {
+            // Only run if not caused by programmatic value change
+            if (document.activeElement !== dtypeInput) return;
+            let value = dtypeInput.value;
+            // Capitalize each word
+            value = value.replace(/\b\w+/g, function(word) {
+                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            });
+            if (dtypeInput.value !== value) {
+                const start = dtypeInput.selectionStart;
+                const end = dtypeInput.selectionEnd;
+                dtypeInput.value = value;
+                dtypeInput.setSelectionRange(start, end);
+            }
         });
         document.querySelectorAll('.phone-inp').forEach(phoneInput => {
             // Select entire text on focus
