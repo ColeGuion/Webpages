@@ -23,6 +23,14 @@
             color: green;
         }
 
+        /* Prism comments: green except inside #css-table */
+        #css-table span.token.comment {
+            color: rgb(112, 128, 144); /* DEFAULT */
+        }
+        #css-table span.token.string {
+            background-color: transparent;
+        }
+
         /* Make code background transparent */
         pre[class*="language-"],
         code[class*="language-"] {
@@ -74,10 +82,6 @@
             font-weight: 600;
         }
 
-
-        #css-table .code > .comment {
-            font-style: italic;
-        }
         #powershell-table pre {
             color: green; 
             font-weight: normal;
@@ -562,47 +566,55 @@ fmt.Println(m2) // map[bar:2 foo:1]</code></pre></td>
 
     <div id="css-sect" class="content-section">
         <h1>CSS</h1>
-        
         <table id="css-table">
-            <tr><th>CSS Code</th><th>Description</th></tr>
+            <tr><th>Description</th><th>CSS Code</th></tr>
+            <tr>
+                <td class="description">Font Shorthand</td>
+                <td class="codes"><pre><code class="language-css">/* font-size font-family */
+font: 1.2em "Fira Sans", sans-serif;
+
+/* font-size/line-height font-family */
+font: 1.2em/2 "Fira Sans", sans-serif;
+
+/* font-style font-weight font-size font-family */
+font: italic bold 1.2em "Fira Sans", sans-serif;</code></pre></td>
+            </tr>
             <tr>
                 <td class="description"><b>:has() — Parent Selector</b><br><br>Style an element if it contains certain child/descendant elements.</td>
-                <td class="code"><span class="comment">/* Select divs that contain an image */</span>
+                <td class="codes"><pre><code class="language-css">/* Select divs that contain an image */
 div:has(img) {
   border: 2px solid blue;
   padding: 10px;
 }
 
-<span class="comment">/* Select list items that contain a link */</span>
+/* Select list items that contain a link */
 li:has(a) {
   font-weight: bold;
 }
 
-<span class="comment">/* Select h2 if the card has an image */</span>
+/* Select h2 if the card has an image */
 .card:has(img) > h2 {
   color: red;
 }
 
-<span class="comment">/* Select form groups that contain invalid inputs */</span>
+/* Select form groups that contain invalid inputs */
 .form-group:has(input:invalid) {
   border-left: 3px solid red;
-}</td>
+}</code></pre></td>
             </tr>
-            
             <tr>
                 <td class="description"><b>:is() — Simplify Complex Selectors</b><br><br>Takes a list of selectors and matches any of them, reducing repetition.</td>
-                <td class="code"><span class="comment">/* Applies styling to headings, paragraphs, and .active list items */</span>
+                <td class="codes"><pre><code class="language-css">/* Applies styling to headings, paragraphs, and .active list items */
 :is(h1, h2, h3, p, li.active) {
   color: blue;
-}</td>
+}</code></pre></td>
             </tr>
-
             <tr>
                 <td class="description"><b>:not() — Exclude Elements</b><br><br>Excludes elements from a selector.</td>
-                <td class="code"><span class="comment">/* Style all list items except .highlight */</span>
+                <td class="codes"><pre><code class="language-css">/* Style all list items except .highlight */
 li:not(.highlight) {
   color: gray;
-}</td>
+}</code></pre></td>
             </tr>
         </table>
 
