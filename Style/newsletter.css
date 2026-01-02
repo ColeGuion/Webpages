@@ -112,6 +112,22 @@ nav {
     margin-left: 25.2px;
 }
 
+
+.section-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    /* background-color: grey; */
+    padding: 10px 0;
+
+}
+.section-block .section-emoji {
+    font-size: 30px;
+}
+
 /**** Button Group ****/
 .button-group {
     text-align: center;

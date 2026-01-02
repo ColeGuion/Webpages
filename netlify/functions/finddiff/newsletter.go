@@ -40,10 +40,8 @@ func GetNewsletter(url string) ([]Article, error) {
 		// Get section heading
 		parent := sel.Parent()
 		sect_head := parent.Find("header").First()
-		hd_div := sect_head.Find("div").First().Text()
-		hd_h3 := sect_head.Find("h3").First().Text()
-		sect_heading := hd_div + " " + hd_h3
-		sect_heading = strings.TrimSpace(sect_heading)
+		sect_emoji := sect_head.Find("div").First().Text()
+		sect_heading := sect_head.Find("h3").First().Text()
 		Info("Section Heading: %q", sect_heading)
 		
 		article_link := sel.Find("a").First().AttrOr("href", "")
@@ -68,7 +66,8 @@ func GetNewsletter(url string) ([]Article, error) {
 
 		articles = append(articles, Article{
 			Title: title,
-			Section: sect_heading,
+			Section: strings.TrimSpace(sect_heading),
+			SectionEmoji: strings.TrimSpace(sect_emoji),
 			Link: article_link,
 			Text:  text,
 			HtmlContent:  htmlContent,
