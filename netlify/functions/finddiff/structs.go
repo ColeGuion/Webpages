@@ -37,11 +37,15 @@ type Response struct {
 	Type    string `json:"type"`
 }
 
+
 type Article struct {
-	Title       string `json:"title"`
-	Section     string `json:"section"`
-	SectionEmoji     string `json:"sectionEmoji"`
+	Title string `json:"title"`
 	Link        string `json:"link,omitempty"`
 	Text        string `json:"text"`
 	HtmlContent string `json:"htmlContent,omitempty"` // Optional HTML content
+}
+type Section struct {
+	Title    string    `json:"title"`
+	Emoji    string    `json:"emoji"`
+	Articles []Article `json:"articles"`
 }

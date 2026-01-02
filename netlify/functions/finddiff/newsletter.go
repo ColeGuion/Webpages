@@ -11,70 +11,65 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-func GetNewsletter(url string) ([]Article, error) {
-	//url := "https://tldr.tech/ai/2025-12-08"
 
-	client := &http.Client{
-		Timeout: 10 * time.Second,
-	}
-
+func GetNewsletter(url string) ([]Section, error) {
+	client := &http.Client{Timeout: 10 * time.Second}
 	resp, err := client.Get(url)
 	if err != nil {
 		return nil, fmt.Errorf("failed to fetch page: %w", err)
 	}
 	defer resp.Body.Close()
-
 	if resp.StatusCode != 200 {
 		return nil, fmt.Errorf("unexpected status %d", resp.StatusCode)
 	}
-
 	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse HTML: %w", err)
 	}
 
-	var articles []Article
-
-	// Grab each <article> element
-	doc.Find("article").Each(func(i int, sel *goquery.Selection) {
+	// Grab each <section> element
+	var sections []Section
+	doc.Find("section").Each(func(k int, sect_sel *goquery.Selection) {
 		// Get section heading
-		parent := sel.Parent()
-		sect_head := parent.Find("header").First()
-		sect_emoji := sect_head.Find("div").First().Text()
-		sect_heading := sect_head.Find("h3").First().Text()
-		Info("Section Heading: %q", sect_heading)
-		
-		article_link := sel.Find("a").First().AttrOr("href", "")
-		if article_link != "" {
-			Info("Article link: %s", article_link)
-		}
-		title := sel.Find("h1, h2, h3").First().Text()
-		//text := sel.Find("p").Text()
+		header := sect_sel.Find("header").First()
+		sect_emoji := header.Find("div").First().Text()
+		sect_title := header.Find("h3").First().Text()
+		Info("Section Title: %q", sect_title)
 
-		newsletterDiv := sel.Find("div.newsletter-html")
-		//newsletterHTML, err := newsletterDiv.Html()
-		//if err == nil && newsletterHTML != "" {
-		//	text += "\n" + newsletterHTML
-		//}
-		text := newsletterDiv.Text()
-		htmlContent, _ := newsletterDiv.Html()
-		//htmlContent, _ = htmlToJSONString(htmlContent)
+		// Grab each <article> element
+		var articles []Article
+		sect_sel.Find("article").Each(func(i int, sel *goquery.Selection) {
+			link := sel.Find("a").First().AttrOr("href", "")
+			if link != "" {
+				Info("Article link: %s", link)
+			}
+			title := sel.Find("h1, h2, h3").First().Text()
 
-		if title == "" && text == "" {
-			return
-		}
+			newsletterDiv := sel.Find("div.newsletter-html")
+			text := newsletterDiv.Text()
+			htmlContent, _ := newsletterDiv.Html()
+			if title == "" && text == "" {
+				return
+			}
 
-		articles = append(articles, Article{
-			Title: title,
-			Section: strings.TrimSpace(sect_heading),
-			SectionEmoji: strings.TrimSpace(sect_emoji),
-			Link: article_link,
-			Text:  text,
-			HtmlContent:  htmlContent,
+			articles = append(articles, Article{
+				Title:       title,
+				Link:        link,
+				Text:        text,
+				HtmlContent: htmlContent,
+			})
 		})
-	})
 
-	return articles, nil
+		// Section must contain articles
+		if len(articles) > 0 {
+			sections = append(sections, Section{
+				Title:    strings.TrimSpace(sect_title),
+				Emoji:    strings.TrimSpace(sect_emoji),
+				Articles: articles,
+			})
+		}
+	})
+	return sections, nil
 }
 
 func htmlToJSONString(html string) (string, error) {

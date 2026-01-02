@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //const buttonGroup = document.querySelector('.button-group-two.design-3');
     const buttons = buttonGroup.querySelectorAll('.toggle-button');
     let current_section = "";
-    dummyFill();
+    dummyFill_Sections();
     //TODO: Fix error management when no website is fetched
 
     buttons.forEach(button => {
@@ -91,7 +91,54 @@ document.addEventListener('DOMContentLoaded', function() {
     
     //TODO: Add section-block's and put into sections
     // Could make Go group them better
+    
     function displayResult(newsletterBlock, data_result, url_string) {
+        const mainHead = newsletterBlock.querySelector(".main-heading");
+        mainHead.innerHTML = `<a href="${url_string}" target="_blank">${mainHead.textContent}</a>`;
+
+        data_result.forEach(section => {
+            let sectionElem = document.createElement('section');
+            sectionElem.innerHTML = `<div class="section-block"><span class="section-emoji">${section.emoji}</span><span>${section.title}</span></div>`;
+            console.log(`Total Articles: ${section.articles.length}`);
+            //newsletterBlock.appendChild(sectionElem);
+
+            //    <div class="section-block">
+            //        <span class="section-emoji">🧠</span>
+            //        <span>Deep Dives & Analysis</span>
+            //    </div>
+
+            section.articles.forEach(article => {
+                //console.log("Article:", article);
+                let newsDiv = document.createElement('div');
+                let newsHead = document.createElement('h3');
+                let newsContent = document.createElement('div');
+                newsDiv.classList.add('news-block');
+                newsContent.classList.add('news-content');
+
+                const match = article.title.match(/^(.*?)(\s*\(.*\))$/);
+                if (match) {
+                    newsHead.innerHTML = `<a href="${article.link}" target="_blank">${match[1].trim()} <span class="subhead">${match[2].trim()}</span></a>`;
+                } else {
+                    newsHead.innerHTML = `<a href="${article.link}" target="_blank">${article.title}</a>`;
+                } 
+
+                if (article.htmlContent) {
+                    newsContent.innerHTML = article.htmlContent;
+                } else {
+                    newsContent.textContent = article.text;
+                }
+
+                newsDiv.appendChild(newsHead);
+                newsDiv.appendChild(newsContent);
+                sectionElem.appendChild(newsDiv);
+            });
+
+            newsletterBlock.appendChild(sectionElem);
+        });
+    }
+    
+    
+    function displayResult_old(newsletterBlock, data_result, url_string) {
         const mainHead = newsletterBlock.querySelector(".main-heading");
         mainHead.innerHTML = `<a href="${url_string}" target="_blank">${mainHead.textContent}</a>`
         data_result.forEach(article => {
