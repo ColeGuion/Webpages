@@ -3,24 +3,24 @@ package main
 
 // Request structure matches what we send from JavaScript
 type Request struct {
-    String1 string `json:"string1"`
-    String2 string `json:"string2"`
+	String1 string `json:"string1"`
+	String2 string `json:"string2"`
 }
 
 // ServerResponse structure for what we return to JavaScript
 type ServerResponse struct {
-    Result []Response `json:"result"`
-    Error  string   `json:"error,omitempty"`
+	Result []Response `json:"result"`
+	Error  string     `json:"error,omitempty"`
 }
 
 type NewsletterRequest struct {
-    Url string `json:"url"`
+	Url string `json:"url"`
 }
 
 // ServerResponse structure for what we return to JavaScript
 type NewsletterResponse struct {
-    Result []Article `json:"result,omitempty"`
-    Error  string    `json:"error,omitempty"`
+	Result []Article `json:"result,omitempty"`
+	Error  string    `json:"error,omitempty"`
 }
 
 type Misspell struct {
@@ -38,11 +38,9 @@ type Response struct {
 }
 
 type Article struct {
-    Title string `json:"title"`
-	Link string `json:"link,omitempty"`
-    Text  string `json:"text"`
+	Title       string `json:"title"`
+	Section     string `json:"section"`
+	Link        string `json:"link,omitempty"`
+	Text        string `json:"text"`
 	HtmlContent string `json:"htmlContent,omitempty"` // Optional HTML content
 }
-
-
-

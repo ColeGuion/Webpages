@@ -3,6 +3,7 @@ package main
 
 import (
 	"encoding/json"
+	"strings"
 	"fmt"
 	"net/http"
 	"time"
@@ -36,6 +37,15 @@ func GetNewsletter(url string) ([]Article, error) {
 
 	// Grab each <article> element
 	doc.Find("article").Each(func(i int, sel *goquery.Selection) {
+		// Get section heading
+		parent := sel.Parent()
+		sect_head := parent.Find("header").First()
+		hd_div := sect_head.Find("div").First().Text()
+		hd_h3 := sect_head.Find("h3").First().Text()
+		sect_heading := hd_div + " " + hd_h3
+		sect_heading = strings.TrimSpace(sect_heading)
+		Info("Section Heading: %q", sect_heading)
+		
 		article_link := sel.Find("a").First().AttrOr("href", "")
 		if article_link != "" {
 			Info("Article link: %s", article_link)
@@ -58,6 +68,7 @@ func GetNewsletter(url string) ([]Article, error) {
 
 		articles = append(articles, Article{
 			Title: title,
+			Section: sect_heading,
 			Link: article_link,
 			Text:  text,
 			HtmlContent:  htmlContent,
