@@ -19,7 +19,7 @@ type NewsletterRequest struct {
 
 // ServerResponse structure for what we return to JavaScript
 type NewsletterResponse struct {
-	Result []Article `json:"result,omitempty"`
+	Result []Section `json:"result,omitempty"`
 	Error  string    `json:"error,omitempty"`
 }
 
