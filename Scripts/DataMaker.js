@@ -10,48 +10,6 @@
 // Track last Ctrl+D search state per textarea
 const ctrlDState = new WeakMap();
 
-function selectNextOccurrence(textarea) {
-    const text = textarea.value;
-    let state = ctrlDState.get(textarea);
-
-    // If no state or selection changed, initialize
-    const selStart = textarea.selectionStart;
-    const selEnd = textarea.selectionEnd;
-
-    if (!state || state.start !== selStart || state.end !== selEnd) {
-        if (selStart === selEnd) return; // nothing selected
-
-        const selectedText = text.slice(selStart, selEnd);
-        if (!selectedText.trim()) return;
-
-        state = {
-            query: selectedText,
-            index: selEnd
-        };
-    }
-
-    const nextIndex = text.indexOf(state.query, state.index);
-
-    if (nextIndex !== -1) {
-        textarea.setSelectionRange(
-            nextIndex,
-            nextIndex + state.query.length
-        );
-        state.index = nextIndex + state.query.length;
-        ctrlDState.set(textarea, state);
-    } else {
-        // Wrap around like VS Code
-        const wrapIndex = text.indexOf(state.query);
-        if (wrapIndex !== -1) {
-            textarea.setSelectionRange(
-                wrapIndex,
-                wrapIndex + state.query.length
-            );
-            state.index = wrapIndex + state.query.length;
-            ctrlDState.set(textarea, state);
-        }
-    }
-}
 
 document.addEventListener("DOMContentLoaded", function () {
     fill_dtype_list();
@@ -202,6 +160,49 @@ function fill_dtype_list() {
     dtype_values.forEach(val => {
         dtypeList.innerHTML += `<option value="${val}">${val}</option>`;
     });
+}
+
+function selectNextOccurrence(textarea) {
+    const text = textarea.value;
+    let state = ctrlDState.get(textarea);
+
+    // If no state or selection changed, initialize
+    const selStart = textarea.selectionStart;
+    const selEnd = textarea.selectionEnd;
+
+    if (!state || state.start !== selStart || state.end !== selEnd) {
+        if (selStart === selEnd) return; // nothing selected
+
+        const selectedText = text.slice(selStart, selEnd);
+        if (!selectedText.trim()) return;
+
+        state = {
+            query: selectedText,
+            index: selEnd
+        };
+    }
+
+    const nextIndex = text.indexOf(state.query, state.index);
+
+    if (nextIndex !== -1) {
+        textarea.setSelectionRange(
+            nextIndex,
+            nextIndex + state.query.length
+        );
+        state.index = nextIndex + state.query.length;
+        ctrlDState.set(textarea, state);
+    } else {
+        // Wrap around like VS Code
+        const wrapIndex = text.indexOf(state.query);
+        if (wrapIndex !== -1) {
+            textarea.setSelectionRange(
+                wrapIndex,
+                wrapIndex + state.query.length
+            );
+            state.index = wrapIndex + state.query.length;
+            ctrlDState.set(textarea, state);
+        }
+    }
 }
 
 function clearInput(inputId) {
