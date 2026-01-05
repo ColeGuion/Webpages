@@ -54,22 +54,32 @@
             <div id="date-formats-section" class="input-row hidden">
                 <div class="input-group">
                     <div class="input-wrapper">
-                        <input type="text" id="dateTag1" class="dateTag-inp" placeholder="DATE TAG">
+                        <input type="text" id="dateTag1" class="dateTag-inp" list="dateTag-list" placeholder="DATE TAG">
                         <button class="clear-btn" onclick="clearInput('dateTag1')" title="Clear">×</button>
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-wrapper">
-                        <input type="text" id="dateTag2" class="dateTag-inp" placeholder="DATE TAG">
+                        <input type="text" id="dateTag2" class="dateTag-inp" list="dateTag-list" placeholder="DATE TAG">
                         <button class="clear-btn" onclick="clearInput('dateTag2')" title="Clear">×</button>
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-wrapper">
-                        <input type="text" id="dateTag3" class="dateTag-inp" placeholder="DATE TAG">
+                        <input type="text" id="dateTag3" class="dateTag-inp" list="dateTag-list" placeholder="DATE TAG">
                         <button class="clear-btn" onclick="clearInput('dateTag3')" title="Clear">×</button>
                     </div>
                 </div>
+                <datalist id="dateTag-list">
+                    <option value="British Dates">British Dates</option>
+                    <option value="Date Ranges">Date Ranges</option>
+                    <option value="Month Abbreviations">Month Abbreviations</option>
+                    <option value="Numerical Dates">Numerical Dates</option>
+                    <option value="Ordinal Dates">Ordinal Dates</option>
+                    <option value="MONTH DAY">MONTH DAY</option>
+                    <option value="MONTH DAY, YEAR">MONTH DAY, YEAR</option>
+                    <option value="WEEKDAY, DATE">WEEKDAY, DATE</option>
+                </datalist>
             </div>
         </div>
 
