@@ -15,7 +15,7 @@
             <div class="input-row">
                 <div class="input-group" style="flex: 3;">
                     <div class="input-wrapper">
-                        <input type="text" id="dtype" list="dtype-list" placeholder="DTYPE" oninput="togglePhonesSection();">
+                        <input type="text" id="dtype" list="dtype-list" placeholder="DTYPE" oninput="toggleSections();">
                         <datalist id="dtype-list"></datalist>
                         <button class="clear-btn" onclick="clearInput('dtype')" title="Clear dtype">×</button>
                     </div>
@@ -28,6 +28,7 @@
                 </div>
             </div>
 
+            <!-- Homophones -->
             <div id="phones-section" class="input-row hidden">
                 <div class="input-group">
                     <div class="input-wrapper">
@@ -45,6 +46,28 @@
                     <div class="input-wrapper">
                         <input type="text" id="phone3" class="phone-inp" placeholder="PHONE #3">
                         <button class="clear-btn" onclick="clearInput('phone3')" title="Clear phone 3">×</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date Formatting Tags -->
+            <div id="date-formats-section" class="input-row hidden">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="dateTag1" class="dateTag-inp" placeholder="DATE TAG">
+                        <button class="clear-btn" onclick="clearInput('dateTag1')" title="Clear">×</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="dateTag2" class="dateTag-inp" placeholder="DATE TAG">
+                        <button class="clear-btn" onclick="clearInput('dateTag2')" title="Clear">×</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="dateTag3" class="dateTag-inp" placeholder="DATE TAG">
+                        <button class="clear-btn" onclick="clearInput('dateTag3')" title="Clear">×</button>
                     </div>
                 </div>
             </div>
@@ -147,7 +170,9 @@
             });
         });
         
-        function togglePhonesSect() {
+        function toggleSections() {
+            console.log("Toggling Sections");
+            // Homophones
             if (dtypeInput.value.trim().toLowerCase() === 'homophones') {
                 document.getElementById('phones-section').classList.remove('hidden');
             } else {
@@ -157,7 +182,19 @@
                 document.getElementById('phone2').value = '';
                 document.getElementById('phone3').value = '';
             }
+
+            // Date Formatting Tags
+            if (dtypeInput.value.trim().toLowerCase() === 'date formatting') {
+                document.getElementById('date-formats-section').classList.remove('hidden');
+            } else {
+                document.getElementById('date-formats-section').classList.add('hidden');
+                // Clear inputs when hiding
+                document.getElementById('dateTag1').value = '';
+                document.getElementById('dateTag2').value = '';
+                document.getElementById('dateTag3').value = '';
+            }
         }
+
 
         // Remove quotes from dtype input as user types or pastes
         function removeQuotesFromDtype(e) {
@@ -180,8 +217,8 @@
             dtypeInput.selectionStart = dtypeInput.selectionEnd = start + paste.length;
         });
 
-        dtypeInput.addEventListener('focus', togglePhonesSect);
-        dtypeInput.addEventListener('select', togglePhonesSect);
+        dtypeInput.addEventListener('focus', toggleSections);
+        dtypeInput.addEventListener('select', toggleSections);
 
 
         /* // Custom double-click selection for textareas

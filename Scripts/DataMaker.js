@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
     fill_dtype_list();
     add_textbox_shortcuts();
     load_test_texts();
+
+    //const dtypeInput = document.getElementById('dtype');
+    //dtypeInput.addEventListener('focus', toggleSections);
+    //dtypeInput.addEventListener('select', toggleSections);
 });
 
 // Initialize line numbers on page load
@@ -209,22 +213,33 @@ function clearInput(inputId) {
     document.getElementById(inputId).value = '';
     // If clearing dtype, hide phones section
     if (inputId === 'dtype') {
-        togglePhonesSection();
+        toggle_sections();
     }
 }
 
-function togglePhonesSection() {    
+function toggle_sections() {
+    // Homophones
     const dtypeInput = document.getElementById('dtype');
     const phonesSection = document.getElementById('phones-section');
-    
     if (dtypeInput.value.trim().toLowerCase() === 'homophones') {
-        phonesSection.style.display = 'flex';
+        phonesSection.classList.remove('hidden');
     } else {
-        phonesSection.style.display = 'none';
+        phonesSection.classList.add('hidden');
         // Clear phones inputs when hiding
         document.getElementById('phone1').value = '';
         document.getElementById('phone2').value = '';
         document.getElementById('phone3').value = '';
+    }
+
+    // Date Formatting Tags
+    if (dtypeInput.value.trim().toLowerCase() === 'date formatting') {
+        document.getElementById('date-formats-section').classList.remove('hidden');
+    } else {
+        document.getElementById('date-formats-section').classList.add('hidden');
+        // Clear inputs when hiding
+        document.getElementById('dateTag1').value = '';
+        document.getElementById('dateTag2').value = '';
+        document.getElementById('dateTag3').value = '';
     }
 }
 
@@ -530,6 +545,9 @@ function make_data_samples(orig, correcteds) {
     let phone1 = document.getElementById('phone1').value.trim();
     let phone2 = document.getElementById('phone2').value.trim();
     let phone3 = document.getElementById('phone3').value.trim();
+    let dateTag1 = document.getElementById('dateTag1').value.trim();
+    let dateTag2 = document.getElementById('dateTag2').value.trim();
+    let dateTag3 = document.getElementById('dateTag3').value.trim();
     //console.log(`Source: ${JSON.stringify(src)}\nDtype: ${JSON.stringify(dtype)}\nPhone #1: ${JSON.stringify(phone1)}\nPhone #2: ${JSON.stringify(phone2)}`);
 
     // Format homophone inputs (Capital letter followed by all lowercase)
@@ -617,11 +635,25 @@ function make_data_samples(orig, correcteds) {
                 }
             }
         }
+
+        dateTags_list = [];
+        if (dtype.toLowerCase() === 'date formatting') {
+            if (dateTag1 !== "") {
+                dateTags_list.push(dateTag1);
+            }
+            if (dateTag2 !== "") {
+                dateTags_list.push(dateTag2);
+            }
+            if (dateTag3 !== "") {
+                dateTags_list.push(dateTag3);
+            }
+        }
         
         jsonObjects.push({
             ...(dtype !== "" ? { type: dtype } : {}),   // Add "type" field if dtype does not equal ""
             //...(phone1 !== "" ? { phones: [phone1, phone2] } : {}),   // Add "phones" field if phone1 does not equal ""
             ...(phone1 !== "" ? { phones: phone_list } : {}),   // Add "phones" field if phone1 does not equal ""
+            ...(dateTags_list.length > 0 ? { tags: dateTags_list } : {}),
             text: text,
             correct: correct,
             ...(src !== "" ? { source: src } : {}),   // Add "source" field if src does not equal ""
