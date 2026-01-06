@@ -105,10 +105,16 @@
                         <div class="line-numbers" id="line-numbers-1"></div>
                         <textarea id="textbox1" oninput="updateLineNumbers('textbox1', 'line-numbers-1')" onscroll="syncScroll('textbox1', 'line-numbers-1')" onpaste="handlePaste('textbox1')"></textarea>
                     </div>
+                    <div class="find-replace-panel hidden" id="find-replace-panel-1">
+                        <input type="text" id="find-text-1" placeholder="Find (case-sensitive)">
+                        <input type="text" id="replace-text-1" placeholder="Replace with">
+                        <button class="fr-btn" onclick="runFindReplace('textbox1', 'find-text-1', 'replace-text-1')">Replace All</button>
+                    </div>
                 </div>
                 <div class="textbox-footer">
                     <button class="textarea-copy-btn" onclick="copyTextarea('textbox1')" title="Copy text">📋 Copy</button>
                     <button class="textarea-clear-btn" onclick="clearTextarea('textbox1')" title="Clear text">× Clear</button>
+                    <button class="textarea-opt-btn" onclick="toggleFindReplace(1)" title="Find & Replace">🔎 Find/Replace</button>
                 </div>
             </div>
             <div class="textbox-group">
@@ -120,10 +126,16 @@
                         <div class="line-numbers" id="line-numbers-2"></div>
                         <textarea id="textbox2" oninput="updateLineNumbers('textbox2', 'line-numbers-2')" onscroll="syncScroll('textbox2', 'line-numbers-2')" onpaste="handlePaste('textbox2')"></textarea>
                     </div> 
+                    <div class="find-replace-panel hidden" id="find-replace-panel-2">
+                        <input type="text" id="find-text-2" placeholder="Find (case-sensitive)">
+                        <input type="text" id="replace-text-2" placeholder="Replace with">
+                        <button class="fr-btn" onclick="runFindReplace('textbox2', 'find-text-2', 'replace-text-2')">Replace All</button>
+                    </div>
                 </div>
                 <div class="textbox-footer">
                     <button class="textarea-copy-btn" onclick="copyTextarea('textbox2')" title="Copy text">📋 Copy</button>
                     <button class="textarea-clear-btn" onclick="clearTextarea('textbox2')" title="Clear text">× Clear</button>
+                    <button class="textarea-opt-btn" onclick="toggleFindReplace(2)" title="Find & Replace">🔎 Find/Replace</button>
                 </div>
             </div>
         </div>

@@ -216,3 +216,48 @@ textarea:focus {
         max-width: 300px;
     }
 }
+
+/* Find & Replace (per textarea) */
+.find-replace-panel {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.find-replace-panel input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.find-replace-panel input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.fr-btn, .textarea-opt-btn {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fr-btn:hover, .textarea-opt-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.fr-btn:active, .textarea-opt-btn:active {
+    transform: translateY(0px);
+}

@@ -347,6 +347,60 @@ function handlePaste(textareaId) {
     }, 0);
 }
 
+function toggleFindReplace(panelNum) {
+    const panel = document.getElementById(`find-replace-panel-${panelNum}`);
+    if (!panel) return;
+
+    const isHidden = panel.classList.contains('hidden');
+    // Hide all panels first (so only one is open at a time)
+    document.querySelectorAll('.find-replace-panel').forEach(p => p.classList.add('hidden'));
+
+    if (isHidden) {
+        panel.classList.remove('hidden');
+        // Focus the "Find" box for convenience
+        const findInput = panel.querySelector('input');
+        if (findInput) {
+            findInput.focus();
+            findInput.select();
+        }
+    } else {
+        panel.classList.add('hidden');
+    }
+}
+
+// Case-sensitive, literal "Replace All" for a given textarea
+function runFindReplace(textareaId, findInputId, replaceInputId) {
+    const textarea = document.getElementById(textareaId);
+    const findInput = document.getElementById(findInputId);
+    const replaceInput = document.getElementById(replaceInputId);
+    if (!textarea || !findInput || !replaceInput) return;
+
+    const findStr = findInput.value;
+    const replaceStr = replaceInput.value;
+
+    if (findStr.length === 0) return; // nothing to find
+
+    // Literal, case-sensitive replace of ALL instances
+    const before = textarea.value;
+    const after = before.split(findStr).join(replaceStr);
+
+    if (before !== after) {
+        // Preserve cursor selection as best as possible (simple approach)
+        const selStart = textarea.selectionStart;
+        const selEnd = textarea.selectionEnd;
+
+        textarea.value = after;
+
+        // Re-apply selection bounds (clamp to new length)
+        const newLen = textarea.value.length;
+        textarea.setSelectionRange(Math.min(selStart, newLen), Math.min(selEnd, newLen));
+
+        const lineNumberId = textareaId === 'textbox1' ? 'line-numbers-1' : 'line-numbers-2';
+        updateLineNumbers(textareaId, lineNumberId);
+    }
+}
+
+
 function copyTextarea(textareaId) {
     const textarea = document.getElementById(textareaId);
     textarea.select();
@@ -763,8 +817,28 @@ He got the answer correct on his first attempt.
 I've got to finish this report before the meeting starts.
 They got caught in the rain without an umbrella.
 `;
-    content1 = "\n\n\n\n\n";
-    content2 = "\n\n\n\n\n";
+    content1=`Please click the link below to download the latest version of the software. It includes several important security patches.
+The file is quite large, so it may take a few minutes to download completely. Make sure you have a stable internet connection.
+I need to download my flight boarding pass before we head to the airport. I prefer having a digital copy on my phone.
+You can download the full report in PDF format from our website. It contains all the data from the recent study.
+If you download the app today, you will receive a 10% discount on your first order. It is available on both iOS and Android.
+She forgot to download the offline maps before her hiking trip. Fortunately, she still had a paper map in her backpack.
+The system will automatically download the updates overnight. You won't have to worry about manual installations.
+I recommend that you download the lecture slides before class starts. This way, you can take notes directly on the images.
+He decided to download a few movies for the long train ride. It's a great way to pass the time when there is no Wi-Fi.
+To access your digital certificate, log in to your account and click the download button. You can then print it or save it to your desktop.`;
+    content2=`Please click the link below to download the latest version of the software. It includes several important security patches.
+The file is quite large, so it may take a few minutes to download completely. Make sure you have a stable internet connection.
+I need to download my flight boarding pass before we head to the airport. I prefer having a digital copy on my phone.
+You can download the full report in PDF format from our website. It contains all the data from the recent study.
+If you download the app today, you will receive a 10% discount on your first order. It is available on both iOS and Android.
+She forgot to download the offline maps before her hiking trip. Fortunately, she still had a paper map in her backpack.
+The system will automatically download the updates overnight. You won't have to worry about manual installations.
+I recommend that you download the lecture slides before class starts. This way, you can take notes directly on the images.
+He decided to download a few movies for the long train ride. It's a great way to pass the time when there is no Wi-Fi.
+To access your digital certificate, log in to your account and click the download button. You can then print it or save it to your desktop.`;
+    //content1 = "\n\n\n\n\n";
+    //content2 = "\n\n\n\n\n";
     document.getElementById('textbox1').innerHTML = content1;
     document.getElementById('textbox2').innerHTML = content2;
     updateLineNumbers('textbox1', 'line-numbers-1');
