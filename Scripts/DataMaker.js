@@ -817,28 +817,10 @@ He got the answer correct on his first attempt.
 I've got to finish this report before the meeting starts.
 They got caught in the rain without an umbrella.
 `;
-    content1=`Please click the link below to download the latest version of the software. It includes several important security patches.
-The file is quite large, so it may take a few minutes to download completely. Make sure you have a stable internet connection.
-I need to download my flight boarding pass before we head to the airport. I prefer having a digital copy on my phone.
-You can download the full report in PDF format from our website. It contains all the data from the recent study.
-If you download the app today, you will receive a 10% discount on your first order. It is available on both iOS and Android.
-She forgot to download the offline maps before her hiking trip. Fortunately, she still had a paper map in her backpack.
-The system will automatically download the updates overnight. You won't have to worry about manual installations.
-I recommend that you download the lecture slides before class starts. This way, you can take notes directly on the images.
-He decided to download a few movies for the long train ride. It's a great way to pass the time when there is no Wi-Fi.
-To access your digital certificate, log in to your account and click the download button. You can then print it or save it to your desktop.`;
-    content2=`Please click the link below to download the latest version of the software. It includes several important security patches.
-The file is quite large, so it may take a few minutes to download completely. Make sure you have a stable internet connection.
-I need to download my flight boarding pass before we head to the airport. I prefer having a digital copy on my phone.
-You can download the full report in PDF format from our website. It contains all the data from the recent study.
-If you download the app today, you will receive a 10% discount on your first order. It is available on both iOS and Android.
-She forgot to download the offline maps before her hiking trip. Fortunately, she still had a paper map in her backpack.
-The system will automatically download the updates overnight. You won't have to worry about manual installations.
-I recommend that you download the lecture slides before class starts. This way, you can take notes directly on the images.
-He decided to download a few movies for the long train ride. It's a great way to pass the time when there is no Wi-Fi.
-To access your digital certificate, log in to your account and click the download button. You can then print it or save it to your desktop.`;
-    //content1 = "\n\n\n\n\n";
-    //content2 = "\n\n\n\n\n";
+    content1=``;
+    content2=``;
+    content1 = "\n\n\n\n\n";
+    content2 = "\n\n\n\n\n";
     document.getElementById('textbox1').innerHTML = content1;
     document.getElementById('textbox2').innerHTML = content2;
     updateLineNumbers('textbox1', 'line-numbers-1');
