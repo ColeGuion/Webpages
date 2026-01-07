@@ -158,6 +158,9 @@ function fill_dtype_list() {
         "Plurality", "Preposition", "Pronouns", "Quotation Marks", "Semicolons",
         "Subject-Verb Agreement", "Their, There, They're", "Then vs. Than", "Times", "To, Too, Two",
         "Verb Tense & Form", "Who vs. Whom", "Writing Decades & Centuries", "You, Your, You're",
+        "Dialogue Interruptions",
+        "Compound Words",
+
     ];
     // Sort values alphabetically
     dtype_values.sort();
