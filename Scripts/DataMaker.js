@@ -160,6 +160,7 @@ function fill_dtype_list() {
         "Verb Tense & Form", "Who vs. Whom", "Writing Decades & Centuries", "You, Your, You're",
         "Dialogue Interruptions",
         "Compound Words",
+        "Parentheses",
 
     ];
     // Sort values alphabetically
