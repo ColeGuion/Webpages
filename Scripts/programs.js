@@ -48,7 +48,7 @@ const Linux_Commands = [
     ["alias ll='ls -lh'", "Create a bash alias `ll` that runs `ls -lh`"],
     ["<span>man ps</span><br>$ <span>ps --help</span><br>$ <span>ps --help all</span><br>$ <span>info ps</span>", "Get Help for the Linux `ps` command"],
 
-    // "Memory Management" Section
+    //***** "Memory Management" Section *****
     ["HEADER", "Memory Management", "lx-memory"], // [HEADER, Name, id]
     ["ls -lh", "Get the size of every file in a folder"],
     ["df -h", "Available disk space"],
@@ -56,7 +56,7 @@ const Linux_Commands = [
     ["du -h --max-depth=1 /Models | sort -hr", "List the sizes of the largest folders in `/Models`<br>Change to `du -ah` to list files too"],
     ["du -ah ~ | sort -rh | head -20", "Check large files in home directory"],
 
-    // "Screen" Section
+    //***** "Screen" Section *****
     ["HEADER", "Screen", "lx-screen"], 
     ["screen", "Start a new screen session"],
     ["screen -ls", "List available screens"],
@@ -66,8 +66,9 @@ const Linux_Commands = [
     ["screen -X -S <ID or name> quit", "Kill a specific screen session"],
     ["screen -wipe", "Remove dead (terminated screen sessions)"],
 
-    // "Processes" Section
+    //***** "Processes" Section *****
     ["HEADER", "Processes", "lx-processes"], 
+    ["sudo ss -tulpn", "List ALL listening ports"],
     ["lsof -i :8010", "Find processes running on port 8010"],
     ["ps", "Show processes for current shell"],
     ["ps aux", "Show all processes for all users"],
@@ -83,7 +84,7 @@ const Linux_Commands = [
     ["ps -o pid,ppid,cmd,%mem,%cpu --sort=-%mem | head", "Top memory processes"],
     ["<span>ps aux --sort=-%cpu | head -10</span><br>$ <span>ps aux --sort=-%mem | head -10</span>", "Top 10 cpu / memory using processes"],
 
-    // "Advanced & GPU" Section
+    //***** "Advanced & GPU" Section *****
     ["HEADER", "Advanced & GPU", "lx-gpu"], 
     ["nvtop", "GPU Usage"],
     ["htop", "CPU Usage"],

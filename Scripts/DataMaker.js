@@ -784,7 +784,83 @@ function copyResult() {
     document.body.removeChild(tempTextarea);
 }
 
+//TODO: Utilize and somehow fill in homophone phones
+// Checks for homophone replacements between two strings
+/* Example:
+    T1: "he all ready couldnt bare anymore pain."
+    T2: "He already couldn't bear anymore pain."
+    Result: [["All ready", "Already"], ["Bear", "Bare"]]
+*/
+/* 
+TEST THE FUNCTION:
 
+function runTests() {
+  let testcases = [
+    ["He has all ready taken care off it.", "He has already taken care of it.", [["All ready", "Already"]]],
+    ["He has already taken care of it.", "He has all ready taken care off it.", [["All ready", "Already"],]],
+    ["She gave my a complement on my new haircut.", "She gave me a compliment on my new haircut.", [["Compliment", "Complement"],]],
+    ["He took a quick peak through the door.", "He took a quick peek through the door.", [["Peak", "Peek"]]],
+    ["He couldn't bare the pain anymore.", "He couldn't bear the pain anymore.", [["Bear", "Bare"]]],
+    ["he all ready couldnt bare anymore pain.", "He already couldn't bear anymore pain.", [["All ready", "Already"], ["Bear", "Bare"]]],
+    ["They are all ready to go to the theater accept for Thomas.", "They are all ready to go to the theater except for Thomas.", [["Except", "Accept"]]],
+    ["The committee has excepted our proposal", "The committee has accepted our proposal.", [["Except", "Accept"]]],
+  ]
+  testcases.forEach(tc => {
+    let result = findHomophoneReplacements(tc[0], tc[1]);
+    let resStr = JSON.stringify(result);
+    if (resStr === JSON.stringify(tc[2])) {
+      console.log(`T1: ${JSON.stringify(tc[0])}\nT2: ${JSON.stringify(tc[1])}\nMATCH: ${resStr}\n`);
+    } else {
+      console.log(`T1: ${JSON.stringify(tc[0])}\nT2: ${JSON.stringify(tc[1])}\nResult: ${resStr}\nExpected: ${JSON.stringify(tc[2])}\n`);
+    }
+  })
+}
+runTests();
+*/
+function findHomophoneReplacements(text1, text2) {
+    const homophonePairs = [
+        //TODO: Add more homophones
+        ["Principal", "Principle"],
+        ["Capital", "Capitol"],
+        ["Compliment", "Complement"],
+        ["Peak", "Peek"],
+        ["Pique", "Peek"],
+        ["Pique", "Peak"],
+        ["All ready", "Already"],
+        ["Stationery", "Stationary"],
+        ["Bear", "Bare"],
+        ["Rain", "Rein"],
+        ["Bite", "Byte"],
+        ["Bite", "Bight"],
+        ["Byte", "Bight"],
+        ["Except", "Accept"]
+    ];
+
+    const t1 = text1.toLowerCase();
+    const t2 = text2.toLowerCase();
+
+    const results = [];
+
+    for (const [a, b] of homophonePairs) {
+        const aLower = a.toLowerCase();
+        const bLower = b.toLowerCase();
+
+        const aInT1 = t1.includes(aLower);
+        const bInT1 = t1.includes(bLower);
+        const aInT2 = t2.includes(aLower);
+        const bInT2 = t2.includes(bLower);
+
+        // Detect replacement in either direction
+        if (
+            (aInT1 && bInT2 && !bInT1 && !aInT2) ||
+            (bInT1 && aInT2 && !aInT1 && !bInT2)
+        ) {
+            results.push([a, b]);
+        }
+    }
+
+    return results;
+}
 
 function load_test_texts() {
     let content1 = `I need to getten some groceries before the store closes at nine.
@@ -825,6 +901,7 @@ They got caught in the rain without an umbrella.
     content2=``;
     content1 = "\n\n\n\n\n";
     content2 = "\n\n\n\n\n";
+    
     document.getElementById('textbox1').innerHTML = content1;
     document.getElementById('textbox2').innerHTML = content2;
     updateLineNumbers('textbox1', 'line-numbers-1');
