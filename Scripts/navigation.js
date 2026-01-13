@@ -1,22 +1,21 @@
 // Navigation Links
 const pages = [
     { href: 'home.html', text: 'Home' },
-    { href: 'colors.html', text: 'Colors' },
     { href: 'newsletter.html', text: 'News' },
+    { href: 'colors.html', text: 'Colors' },
     { href: 'Key_Links.html', text: 'Key Links' },
     { href: 'ShortCuts.html', text: 'Shortcuts' },
     { href: 'programs.html#Linux', text: 'Programming' },
-    { href: 'css_grids.html', text: 'Grids' },
+    { href: 'DataMaker.html', text: 'Make Data' },
+    { href: 'diffFinder.html', text: 'Diff Finder' },
+    { href: 'finddiff.html', text: 'FindDiff' },
     { href: 'editor.html', text: 'Text Editor' },
-    
+    { href: 'css_grids.html', text: 'Grids' },
     //{ href: 'progs.html', text: 'PROG' },
     //{ href: 'docs.html', text: 'Docs' },
     //{ href: 'playground.html', text: 'Playground' },
     //{ href: 'bootstrap.html', text: 'Bootstrap' },
     //{ href: 'todo.html', text: 'To Do' },
-    { href: 'diffFinder.html', text: 'Diff Finder' },
-    { href: 'DataMaker.html', text: 'Make Data' },
-    { href: 'finddiff.html', text: 'FindDiff' },
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
