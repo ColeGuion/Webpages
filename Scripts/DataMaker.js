@@ -151,17 +151,15 @@ function add_textbox_shortcuts() {
 function fill_dtype_list() {
     let dtypeList = document.getElementById("dtype-list");
     const dtype_values = [
-        "Abbreviations", "Adjective & Adverbs", "Affect vs. Effect", "Apostrophes", "Articles", 
-        "Capitalization", "Capitalization - Directions", "Capitalization - Family Titles", "Colons", "Commas",
-        "Comparatives & Superlatives", "Date Formatting", "Good vs Well", "Homophones", "Hyphens",
-        "Irregular Verbs", "Its vs. It's", "Me vs I", "More", "Periods",
-        "Plurality", "Preposition", "Pronouns", "Quotation Marks", "Semicolons",
-        "Subject-Verb Agreement", "Their, There, They're", "Then vs. Than", "Times", "To, Too, Two",
-        "Verb Tense & Form", "Who vs. Whom", "Writing Decades & Centuries", "You, Your, You're",
-        "Dialogue Interruptions",
-        "Compound Words",
-        "Parentheses", "Prefixes"
-
+        "Abbreviations", "Adjective & Adverbs", "Affect vs. Effect", "Apostrophes", "Articles",
+        "Capitalization", "Capitalization - Directions", "Capitalization - Family Titles",
+        "Colons", "Commas", "Comparatives & Superlatives", "Compound Words",
+        "Date Formatting", "Dialogue Interruptions", "Good vs Well", 
+        "Homophones", "Hyphens", "Irregular Verbs", "Its vs. It's", "Me vs I", "More", 
+        "Parentheses", "Periods", "Plurality", "Prefixes", "Preposition", "Pronouns",
+        "Quotation Marks", "Semicolons", "Special Characters", "Subject-Verb Agreement",
+        "Their, There, They're", "Then vs. Than", "Times", "To, Too, Two",
+        "Verb Tense & Form", "Who vs. Whom", "Writing Decades & Centuries", "You, Your, You're"
     ];
     // Sort values alphabetically
     dtype_values.sort();
