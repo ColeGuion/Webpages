@@ -155,7 +155,7 @@ function fill_dtype_list() {
         "Capitalization", "Capitalization - Directions", "Capitalization - Family Titles",
         "Colons", "Commas", "Comparatives & Superlatives", "Compound Words",
         "Date Formatting", "Dialogue Interruptions", "Good vs Well", 
-        "Homophones", "Hyphens", "Irregular Verbs", "Its vs. It's", "Me vs I", "More", 
+        "Homophones", "Hyphens", "Irregular Verbs", "Its vs. It's", "Me vs I", "More", "Misspelling",
         "Parentheses", "Periods", "Plurality", "Prefixes", "Preposition", "Pronouns",
         "Quotation Marks", "Semicolons", "Special Characters", "Subject-Verb Agreement",
         "Their, There, They're", "Then vs. Than", "Times", "To, Too, Two",
