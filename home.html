@@ -41,16 +41,15 @@
             margin-top: 12px;
             border: 1px solid black;
             font-size: 14px;
+            background-color: #add9e6;
         }
         #byteBlk > div {
             border: 1px solid black;
             text-align: center;
             align-content: center;
         }
-        .topBytes {
-            background-color: #add9e6;
-        }
-        .bottomBytes {
+        #byteBlk > div:nth-last-child(-n+5) {
+            /* Style the last 5 elements */
             background-color: #90ee91;
             font-weight: bold;
             font-size: clamp(1vw, 1.5vw, 3vw); /* Clamp(min, preferred, max) */
@@ -86,21 +85,19 @@
 
 <body>
     <span class="todo"><u>TODO</u>: Better notes section; Have it expand as more notes are added</span><br>
-    <span class="todo"><u>TODO</u>: Links Page. Paste in link and have it fill out its title using the link data. Have an organized list of bookmarks</span><br>
     <span class="todo"><u>TODO</u>: Request Page. Send a POST request with the given data to the given link. Make it also work with sending audio files</span><br>
-    <!-- <span class="todo"><u>TODO</u>: </span><br> -->
-
+     
     <div id="byteBlk">
-        <div class="topBytes">1024 Bytes</div>
-        <div class="topBytes">1024 KB</div>
-        <div class="topBytes">1024 MB</div>
-        <div class="topBytes">1024 GB</div>
-        <div class="topBytes">1024 TB</div>
-        <div class="bottomBytes">KB</div>
-        <div class="bottomBytes">MB</div>
-        <div class="bottomBytes">GB</div>
-        <div class="bottomBytes">TB</div>
-        <div class="bottomBytes">PB</div>
+        <div>1024 Bytes</div>
+        <div>1024 KB</div>
+        <div>1024 MB</div>
+        <div>1024 GB</div>
+        <div>1024 TB</div>
+        <div><u>K</u>B</div>
+        <div><u>M</u>B</div>
+        <div><u>G</u>B</div>
+        <div><u>T</u>B</div>
+        <div><u>P</u>B</div>
     </div>
     <div id="byteExplanations">
         <span>1,000,000 bytes = 1 MB  (Megabyte) <em>(Uses the decimal (base 10) system)</em></span><br>
