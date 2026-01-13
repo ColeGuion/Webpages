@@ -159,7 +159,7 @@ function fill_dtype_list() {
         "Parentheses", "Periods", "Plurality", "Prefixes", "Preposition", "Pronouns",
         "Quotation Marks", "Semicolons", "Special Characters", "Subject-Verb Agreement",
         "Their, There, They're", "Then vs. Than", "Times", "To, Too, Two",
-        "Verb Tense & Form", "Who vs. Whom", "Writing Decades & Centuries", "You, Your, You're"
+        "Verb Tense & Form", "Who vs. Whom", "Writing Decades & Centuries", "Word Choice", "You, Your, You're"
     ];
     // Sort values alphabetically
     dtype_values.sort();
